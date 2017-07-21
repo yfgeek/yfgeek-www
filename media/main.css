@@ -236,7 +236,7 @@ a:focus {
 }
 
 .block-simple {
-    background: #EC6F6D url('../img/me.jpg') top left no-repeat;
+    background: #fff url('../img/me.jpg') top left no-repeat;
     background-size: 100% auto;
 }
 
