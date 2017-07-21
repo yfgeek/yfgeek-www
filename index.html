@@ -1,0 +1,251 @@
+<!DOCTYPE html>
+<html>
+<head>
+ <title>一凡 小极客一枚</title>
+
+ <meta charset="utf-8">
+ <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+ <!--<? /* We inline css using php include -->
+ <link rel="stylesheet" href="media/main.css" />
+ <!--*/ ?>-->
+ <noscript><link rel="stylesheet" href="media/fonts.css" /></noscript>
+ <meta name="viewport" content="width=device-width,initial-scale=1">
+
+ <style id='style'>
+ <? include("media/main.css"); ?>
+
+ h2,h3,h4,h5,h6,a,li,ul,small,span { visibility: hidden; } /* Avoid font flicker */
+ h1 { opacity: 0; transition: all 0.3s ease-in-out; }
+ @font-face {
+  font-family: 'Text Me One';
+  font-style: normal;
+  font-weight: 300;
+  src:
+    local('Text Me One'),
+    url(data:application/font-woff2;charset=utf-8;base64,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) format('woff2'),
+    url('font/TextMeOne-Regular.woff') format('woff');
+ }
+
+ </style>
+ <link rel="preload" href="media/fonts.css" as="style">
+ <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/material-design-iconic-font/2.2.0/css/material-design-iconic-font.min.css">
+
+</head>
+<body>
+
+<!-- <div id="language_changer">
+ <a id="language" href="#" onclick="document.querySelector('#language_changer').classList.toggle('opened');return false">
+  <svg class="icon icon-lang"><use xlink:href="#icon-lang"></use></svg>
+  <?=$locale?>
+ </a>
+ <div id="language_menu">
+  <a href="/zh">Chinese (Simplified)</a>
+  <a href="/zh-tw">Chinese (Traditional)</a>
+  <a href="/nl">Dutch</a>
+  <a href="/en">English</a>
+  <a href="/de">German</a>
+  <a href="/fr">French</a>
+  <a href="/hu">Hungarian</a>
+  <a href="/it">Italian</a>
+  <a href="/pt">Portuguese</a>
+  <a href="/pt-br">Portuguese (Brazil)</a>
+ </div>
+</div> -->
+
+<!-- Top -->
+<div class="block block-100 head-top">
+ <h1>一凡</h1>
+ <h2><i class="zmdi zmdi-favorite"></i> 人生，勤奋以达卓越</h2>
+ <div class="description">
+  <div class="button-container">
+   <a href="" class="button button-outline">探索文章</a><br>
+  </div>
+
+ </div>
+
+
+</div>
+
+<!-- Load fonts -->
+<script>
+  var cb = function() {
+    var l = document.createElement('link'); l.rel = 'stylesheet';
+    l.href = 'media/fonts.css';
+    var h = document.getElementsByTagName('head')[0]; h.parentNode.insertBefore(l, h);
+  };
+  setTimeout(cb, 0);
+  var raf = requestAnimationFrame || mozRequestAnimationFrame ||
+      webkitRequestAnimationFrame || msRequestAnimationFrame;
+  if (raf) raf(cb);
+  else window.addEventListener('load', cb);
+
+  setTimeout(function() {
+    document.getElementById("style").innerHTML += "\nh2 { visibility: visible !important }"
+  }, 800)
+
+  setTimeout(function() {
+    document.getElementById("style").innerHTML += "\nh3,h4,h5,h6,a,li,ul,small,span { visibility: visible !important }"
+  }, 4000)
+
+  setTimeout(function() {
+    document.getElementsByTagName("h1")[0].style.opacity = 1
+    document.getElementsByTagName("h1")[0].style.transform = "none"
+  }, 100)
+</script>
+<!-- EOF Load fonts -->
+
+<div class="block block-33 block-simple">
+ <!-- <h3>Simple</h3>
+ <h4>No configuration needed:<br>Download, unpack and start using it.</h4> -->
+</div>
+<!-- 1. line -->
+
+
+<div class="block block-34 block-detail arrow-left block-more-detail">
+<h3></h3>
+ <ul>
+  <li><h5>我是谁？</h5><small>1993年生，居住北京，出生河北，祖籍山西，走南闯北，多地长大生活过</small></li>
+  <li><h5>喜爱计算机？</h5><small>没错！从我第一次接触计算机我就爱上了，Mac党，但偏爱Linux</small></li>
+  <!-- <li><h5>果粉？</h5><small>不完全是，我确实喜欢苹果的产品，但我也喜欢谷歌、微软的产品</small></li> -->
+ </ul>
+</div>
+
+<div class="block block-33 block-more">
+ <h3>更多介绍</h3>
+ <h4><small>小极客一枚，硕士研究生，热爱生活，对美食、旅游、政治、历史、文化以及任何新生事物感兴趣，对任何技术充满敬畏之心</small></h4>
+</div>
+
+
+<!-- 2. line -->
+<div class="block block-33 block-detail arrow-right block-programming-detail">
+ <h3>编程</h3>
+ <h4><small>曾经的OIer，喜欢研究算法。从小到大，接触编程语言无数，掌握PHP、Java、Python、Rust，前端偏爱React系列</small></h4>
+</div>
+
+<div class="block block-67 block-programming"></div>
+
+<div class="block block-33 block-rasberrypi">
+    <h3>树莓派</h3>
+    <h4><small>基于树莓派,DHT11/DHT22,LCD1602的一个实时温度湿度检测系统，React重构版本，可在web上显示实时的温度及湿度变化情况</small></h4>
+    <div class="button-container">
+     <a href="http://blockvotes.com" class="button button-outline" target="_blank">查看</a>
+    </div>
+
+
+</div>
+
+<!-- 5. line -->
+
+
+<div class="block block-34 block-blockvotes">
+ <h3>BlockVotes</h3>
+ <h4><small>全新的下一代投票系统，依靠区块链技术，致力于保障选民的隐私性、选票的公开性，让投票舞弊成为历史，此项目将于九月开源</small></h4>
+ <div class="button-container">
+  <a href="http://blockvotes.com" class="button button-outline" target="_blank">查看</a>
+ </div>
+</div>
+
+
+<div class="block block-33 block-githubmore">
+    <h3>更多</h3>
+    <h4><small>在我的Github中，有大大小小30+个项目，设计前端、后端、Python小程序，充满热情的黑客与极客的小项目，欢迎围观与Star <i class="zmdi zmdi-star"></i>
+</samll></h4>
+    <div class="button-container">
+     <a href="https://github.com/yfgeek" class="button button-outline" target="_blank">围观</a>
+     </div>
+</div>
+
+<div class="block block-33 block-detail arrow-right block-travel-detail">
+ <h3>旅游</h3>
+ <h4><small>去过大半个中国，曾想周游世界，喜欢旅行体验文化、拍照摄影，适应能力强，爱生活</small></h4>
+
+</div>
+
+<div class="block block-67 block-travel"></div>
+
+<div class="block block-67 block-cooking"></div>
+
+<div class="block block-33 block-detail arrow-left block-cooking-detail">
+ <h3>爱烹饪</h3>
+ <h4><small>闲暇时间，喜欢做饭，口味广泛，中餐、西餐、韩餐、日料、东南亚菜都可接受，是个十足的吃货</small></h4>
+ <div class="button-container">
+  <a href="https://www.instagram.com/ivan_beijing/" class="button button-outline" target="_blank">Instagram 围观</a>
+ </div>
+</div>
+
+
+
+<div class="block block-100 block-endblock">
+ <h3>极客</h3>
+ <h4><small>随着互联网的发展，我这一代人也长大了</samll></h4>
+ <h4><small>曾经，很小的时候，照猫画虎做出了一个VB6小程序，感觉如获珍宝</samll></h4>
+ <h4><small>小学的时候，曾经每天宅在家里玩IIS6与ASP，那曾经是我最喜欢的玩具</samll></h4>
+ <h4><small>初中的时候，偶尔玩玩百度空间，或者随便拿下一个网站的webshell，欣喜若狂</samll></h4>
+ <h4><small>喜欢一切和编程有关的东西，哪怕是当时最火的S60系统，也能写个Python小程序玩一玩</samll></h4>
+ <h4><small>高中的时候，做了无数个博客模板，喜欢上了前端，玩过NOIP，也获过奖，感受到了算法之美</samll></h4>
+ <h4><small>自从被安利了Ubuntu大法，喜欢上了Linux，喜欢上了开源社区，原来用CLI也可以解决一切</samll></h4>
+ <h4><small>喜欢上了刷机、越狱、root，不管是iOS还是Android，哪怕是一个小小的MP4，都只做了自己的美化固件</samll></h4>
+ <h4><small>而这一切的动机与目的很简单，通宵做自己喜欢的事情，给我带来的快感，除了开心，还是开心</samll></h4>
+ <h4><small>大学的时候，互联网发展最快的几年，技术的革新让我震惊，学会的技术数不胜数，越陷越深</samll></h4>
+ <h4><small>生活越发丰富，我开始玩Github，曾经当一个白帽子，或是写写Web前后端代码，做做小项目</samll></h4>
+ <h4><small>当我闲下来，也不知道为什么自己走的路线如此复杂，遍地开花</samll></h4>
+ <h4><small>其实，并不是因为自己东搞搞西搞搞</samll></h4>
+ <h4><small>只是，时间维度太宽广，而喜爱技术的我，一直都在</samll></h4>
+
+<h3><i class="zmdi zmdi-favorite"></i><small>  不忘初心，追随内心</small></h3>
+</div>
+
+<div style="clear: both"></div>
+
+
+<!-- Foot -->
+
+<div class="block block-50 block-foot">
+</div>
+
+<!-- Add animation delay to blocks -->
+<script>
+function addAnimationDelay() {
+    var blocks = document.getElementsByClassName("block")
+    for (var i = 0; i < blocks.length; i++) {
+        (function (block) {
+            setTimeout(function() {
+                block.style.transform = "none"
+                block.style.opacity = 1
+            }, i*100)
+        })(blocks[i])
+    }
+}
+addAnimationDelay()
+</script>
+<noscript>
+<style>
+.block { opacity: 1; transform: none; }
+.h1 { opacity: 1; }
+</style>
+</noscript>
+
+<!-- SVG icons by https://icomoon.io/  && https://www.flaticon.com -->
+<svg style="display: none">
+<symbol id="icon-facebook" viewBox="-100 -100 1224 1224">
+<title>facebook</title>
+<path class="path1" d="M608 192h160v-192h-160c-123.514 0-224 100.486-224 224v96h-128v192h128v512h192v-512h160l32-192h-192v-96c0-17.346 14.654-32 32-32z"></path>
+</symbol>
+<symbol id="icon-github" viewBox="0 0 1024 1024">
+    <title>github</title>
+    <path class="path1" d="M512.008 12.642c-282.738 0-512.008 229.218-512.008 511.998 0 226.214 146.704 418.132 350.136 485.836 25.586 4.738 34.992-11.11 34.992-24.632 0-12.204-0.48-52.542-0.696-95.324-142.448 30.976-172.504-60.41-172.504-60.41-23.282-59.176-56.848-74.916-56.848-74.916-46.452-31.778 3.51-31.124 3.51-31.124 51.4 3.61 78.476 52.766 78.476 52.766 45.672 78.27 119.776 55.64 149.004 42.558 4.588-33.086 17.852-55.68 32.506-68.464-113.73-12.942-233.276-56.85-233.276-253.032 0-55.898 20.004-101.574 52.76-137.428-5.316-12.9-22.854-64.972 4.952-135.5 0 0 43.006-13.752 140.84 52.49 40.836-11.348 84.636-17.036 128.154-17.234 43.502 0.198 87.336 5.886 128.256 17.234 97.734-66.244 140.656-52.49 140.656-52.49 27.872 70.528 10.35 122.6 5.036 135.5 32.82 35.856 52.694 81.532 52.694 137.428 0 196.654-119.778 239.95-233.79 252.624 18.364 15.89 34.724 47.046 34.724 94.812 0 68.508-0.596 123.644-0.596 140.508 0 13.628 9.222 29.594 35.172 24.566 203.322-67.776 349.842-259.626 349.842-485.768 0-282.78-229.234-511.998-511.992-511.998z"></path>
+</symbol>
+<!-- <symbol id="icon-lang" viewBox="0 0 24 24">
+    <title>lang</title>
+    <path d="M18.604 16.111c.018.276.048.531.092.758-.583.106-.606-.469-.092-.758zm-4.354.16h.996l-.498-1.43-.498 1.43zm2.75-6.105c3.697 0 7 2.465 7 5.837 0 1.196-.432 2.37-1.193 3.281-.033 1.068.596 2.6 1.162 3.715-1.518-.274-3.676-.88-4.654-1.48-5.387 1.313-9.315-1.984-9.315-5.516 0-3.39 3.326-5.837 7-5.837zm-.437 7.584l-1.44-3.792h-.76l-1.447 3.792h.812l.312-.875h1.422l.313.875h.788zm3.988-2.296l.079-.353-.642-.125-.064.292c-.215-.032-.445-.036-.679-.012l.028-.458h.717v-.608h-.631l.084-.335-.627-.188c-.046.154-.084.304-.123.523h-.715v.608h.638c-.018.196-.026.399-.03.605-.704.259-1.002.751-1.002 1.198 0 .528.416.992 1.074.932.817-.074 1.362-.691 1.682-1.45.332.19.471.511.346.807-.115.275-.455.536-1.104.523v.654c.721.011 1.429-.262 1.707-.923.27-.647-.041-1.352-.738-1.69zm-1.25 1.073c.17-.177.305-.401.407-.626-.147-.013-.306-.009-.462.012.011.22.028.425.055.614zm-10.492 2.703c-1.887-.271-3.571-1.165-4.827-2.478-.182-.189-.315-.636-.019-.819l.302-.078c.235-.199-.221-1.009-.04-1.14.561-.401.295-.893-.051-1.299-.146-.172-.948-1-1.038-.853.067-.226-.146-.772-.274-.987-.217-.362-.502-.585-.617-.982-.046-.158-.046-.64-.139-.751-.038-.045-.327-.167-.317-.233.278-1.655 1.044-3.143 2.149-4.318l.746-.301c.468-.703.495-.158.916-.341.141 0 .301-.578.452-.667.261-.169.062-.169.013-.245-.104-.168 2.191-1.003 2.229-.853.032.127-1.135.734-1.007.716-.296.039-.352.571-.297.568.147-.005 1.074-.704 1.506-.555.423.146 1.183-.336 1.48-.582.149-.125.286-.344.483-.344.909 0 2.268.374 2.579.56.474.283-.204.263-.277.447-.058.142-.19.335-.249.412-.102.133-.399.077-.341-.082.059-.167.348-.231-.086-.271-.445-.041-.568-.341-1.014.034-.134.113-.234.286-.321.433-.123.21-.42.201-.544.396-.12.192.07.512.304.371.062-.038.765.645.674.095-.059-.364.196-.612.201-.887.003-.184.28-.066.206.03-.097.121-.203.534.051.554.096.008.339-.158.425-.084-.096-.002-.315.383-.3.376-.108.048-.233-.021-.15.21.074.228-.408.201-.495.247-.037.02-.417-.114-.408-.028-.131-.109.037-.379-.072-.422-.11.168-.058.512-.294.512-.202 0-.482.229-.604.369-.087.097-.609.308-.666.302.299.031.286.25.261.437-.06.433-.995.032-.956.196.038.158-.107.586-.139.724-.029.125.402.205.378.267.002-.007.583-.199.64-.25l.131-.293c.11-.073.226-.133.35-.179l.149-.258c.05-.02.645-.112.686-.092.149.068.428.353.532.483.036.047.227.117.227.188.069.107-.051.148-.006.223.104.193.132-.401.087-.29 0-.189.142.071.174.049l-.657-.654c-.204-.342.543.183.64.247.096.063.285.629.537.501.158-.08-.004-.139.106-.229l.449-.09c-.357.261.279.602.182.556.16.074.254-.058.354-.021.057.022.663.015.566-.082.151.076.082.748-.044.851-.204.169-1.182.1-1.399-.057-.361-.262-.297.279-.473.352-.344.142-.857-.463-1.218-.482.176.026.015-.445.015-.478-.139-.171-1.02.019-1.252.05-.434.058-.89.052-1.223.324-.234.189-.237.5-.477.651-.156.095-.325.064-.456.189-.234.222-.504.552-.637.845-.054.123.072.416.041.574-.307.967.076 2.308 1.248 2.456.25.032.506.144.759.117 1.332-2.88 4.568-4.92 8.347-4.92.932 0 1.831.124 2.678.354-1.105-4.322-5.012-7.521-9.678-7.521-5.523 0-10 4.477-10 10s4.477 10 10 10l.074-.004c-.509-.533-.931-1.128-1.265-1.766zm4.778-13.035c.068-.008-.089.138-.089.138.027.212.183.327.479.435.36.129.03.375-.176.317-.114-.032-.704-.21-.725.021 0 .138-.56.001-.473-.145.061-.098.041-.319.152-.464.16-.21.313-.096.318.026.002.327.332-.306.514-.328zm-4.532-.292c.08.113.688-.163.591-.146.187-.094.024-.104-.082-.159-.035-.179-.065-.456-.177-.566l.074-.085c-.173-.249-.301.302-.301.302l.09-.026-.042.113c.071.129.019.207.007.277l-.124.077c-.045.055.215.062.217.071.009.028-.313.074-.253.142zm-.396-.286c-.069.071.002.116.073.085.104-.045.244-.044.26-.183l.066-.084c.029-.043-.057-.114-.092-.121l-.124.086-.061.016-.056.072.006.04-.072.089zm2.634 2.107c-.055 0-.369.029-.34.084.178.293.403-.076.34-.084z"></path>
+</symbol> -->
+</svg>
+
+<div class="block block-50 block-follow" style="opacity: 1; transform: none">
+ <a href="https://github.com/yfgeek"><svg class="icon icon-github" width=50><use xlink:href="#icon-github"></use></svg></a>
+</div>
+
+<div style="clear: both"></div>
+
+</body>
+</html>
