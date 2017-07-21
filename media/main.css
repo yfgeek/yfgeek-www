@@ -241,7 +241,7 @@ a:focus {
 }
 
 .block-programming {
-	background: #EC6F6D url('../img/code.jpg') center left no-repeat;
+	background: #fff url('../img/code.jpg') bottom left no-repeat;
     background-size: 100% auto;
 }
 
@@ -250,7 +250,7 @@ a:focus {
 }
 
 .block-travel {
-	background: #EC6F6D url('../img/travel.jpg') bottom left no-repeat;
+	background: #fff url('../img/travel.jpg') bottom left no-repeat;
     background-size: 100% auto;
 }
 
