@@ -280,9 +280,9 @@ a:focus {
 }
 
 .block-githubmore {
-	background-color: #F33A58;
+	background-color: #101115;
 	color: white;
-	background: #F33A58 url('../img/github.jpg') center center no-repeat;
+    background: #101115 url('../img/github.jpg') center center no-repeat;
 
 }
 .block-githubmore .button {
