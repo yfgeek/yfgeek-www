@@ -134,10 +134,7 @@
  <h4><small>当我闲下来，也不知道为什么自己走的路线如此复杂，遍地开花</small></h4>
  <h4><small>其实，并不是因为自己东搞搞西搞搞</small></h4>
  <h4><small>只是，时间维度太宽广，而喜爱技术的我，一直都在</small></h4>
- <span id="outputblock"></span>
-<div id="endblock" style="display:none">
-<h3><i class="zmdi zmdi-favorite"></i><small>  不忘初心，追随内心</small></h3>
-</div>
+ <h3><i class="zmdi zmdi-favorite"></i><small>  不忘初心，追随内心</small></h3>
 </div>
 
 <!-- Add animation delay to blocks -->
@@ -154,54 +151,6 @@ function addAnimationDelay() {
     }
 }
 addAnimationDelay()
-</script>
-<script>
-var typing = new Typing({
-  source: document.getElementById('endblock'),
-  output: document.getElementById('outputblock'),
-  delay: 200,
-  done: function() {}
-});
-function getDocumentTop() {
-    var scrollTop = 0, bodyScrollTop = 0, documentScrollTop = 0;
-    if (document.body) {
-        bodyScrollTop = document.body.scrollTop;
-    }
-    if (document.documentElement) {
-        documentScrollTop = document.documentElement.scrollTop;
-    }
-    scrollTop = (bodyScrollTop - documentScrollTop > 0) ? bodyScrollTop : documentScrollTop;
-    return scrollTop;
-}
-function getWindowHeight() {
-    var windowHeight = 0;
-    if (document.compatMode == "CSS1Compat") {
-        windowHeight = document.documentElement.clientHeight;
-    } else {
-        windowHeight = document.body.clientHeight;
-    }
-    return windowHeight;
-}
-
-function getScrollHeight() {
-    var scrollHeight = 0, bodyScrollHeight = 0, documentScrollHeight = 0;
-    if (document.body) {
-        bodyScrollHeight = document.body.scrollHeight;
-    }
-    if (document.documentElement) {
-        documentScrollHeight = document.documentElement.scrollHeight;
-    }
-    scrollHeight = (bodyScrollHeight - documentScrollHeight > 0) ? bodyScrollHeight : documentScrollHeight;
-    return scrollHeight;
-}
-    var flag = true;
-    window.onscroll = function () {
-        if(flag && getDocumentTop() + getWindowHeight() >= (getScrollHeight() - 50)){
-            typing.start();
-            flag = false;
-        }
-    }
-
 </script>
 <noscript>
 <style>
