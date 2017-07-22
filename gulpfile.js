@@ -13,7 +13,7 @@ var cleanCSS = require('gulp-clean-css');
 gulp.task('minicss', () => {
   return gulp.src('src/media/*.css')
     .pipe(cleanCSS({compatibility: 'ie8'}))
-    .pipe(gulp.dest('media'));
+    .pipe(gulp.dest('docs/media'));
 });
 
 
@@ -23,21 +23,21 @@ gulp.task('uncss', function () {
         .pipe(uncss({
             html: ['src/index.html']
         }))
-        .pipe(gulp.dest('media'));
+        .pipe(gulp.dest('docs/media'));
 });
 
 // 压缩html
 gulp.task('html', function() {
   return gulp.src('src/index.html')
     .pipe(htmlmin({collapseWhitespace: true,removeComments: true}))
-    .pipe(gulp.dest('.'));
+    .pipe(gulp.dest('docs/'));
 });
 
 //压缩图片
 gulp.task('img', function () {
     gulp.src(['src/img/*'])
         .pipe(imagemin())
-        .pipe(gulp.dest('img'))
+        .pipe(gulp.dest('docs/img'))
 });
 
 // // HTML组合分离的css、js
@@ -55,4 +55,4 @@ gulp.task('img', function () {
 // });
 
 
-gulp.task('default', ['minicss','uncss','html']);
+gulp.task('default', ['minicss','html']);
