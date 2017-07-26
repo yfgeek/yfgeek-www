@@ -5,7 +5,7 @@ _H5Lang_['en'] = {
     "detail-header-1" : 'Who am I?',
     "detail-des-1" : "I'm an international student studying at Birmingham. I come from Beijing, China. ",
     "detail-header-2" : 'Computer Science?',
-    "detail-des-2" : 'The first time I used computer I fell love in love with it. Especially, the Linux. ',
+    "detail-des-2" : 'The first time I used computer I fell in love with it. Especially, the Linux. ',
     "more-header" : 'And more?',
     "more-des" : 'A computer geek with great passion, loving life, food, travel, politics, culture and any new things of the technologies.',
     "programming-header" : 'Programming',
