@@ -32,7 +32,7 @@ _H5Lang_['en'] = {
     "endblock-des-6" : 'When I was in high school, I took part in an algorithm competition. After that, I can see the beauty of the algorithm.',
     "endblock-des-7" : 'Once my friend recommend me to use Ubuntu, Linux became my favorite system and got that even CLI can make everything.',
     "endblock-des-8" : 'Anyway, I am a real computer geek who is keen on jailbreaking, rooting and any other operation can control your device.',
-    "endblock-des-9" : 'The motivation of above ideas is quite simple. Doing what I love to do makes me feel happier again and again.',
+    "endblock-des-9" : 'The motivation of above idea is quite simple. Doing what I love to do makes me feel happier again and again.',
     "endblock-des-10" : 'The years I studying at the university were the fastest growing years of technologies. I learned more as possbile.',
     "endblock-des-11" : 'The life became more meaningful after I joined GitHub. I started writing some repositories related to the front-end and back-end.',
     "endblock-des-12" : 'Since 2000, I have been studying different programming languages and technologies.',
