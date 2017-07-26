@@ -3,11 +3,19 @@
  * Author   ：yfgeek
  */
 var gulp = require('gulp');
+var uglify = require('gulp-uglify');
 var uncss = require('gulp-uncss');
 var imagemin = require('gulp-imagemin');
 var htmlmin = require('gulp-htmlmin');
 var useref = require('gulp-useref');
 var cleanCSS = require('gulp-clean-css');
+
+// 压缩 js 文件
+gulp.task('script', function() {
+    gulp.src('src/i18n/*.js')
+        .pipe(uglify())
+        .pipe(gulp.dest('docs/i18n'))
+});
 
 // 压缩 css 文件
 gulp.task('minicss', () => {
@@ -40,19 +48,5 @@ gulp.task('img', function () {
         .pipe(gulp.dest('docs/img'))
 });
 
-// // HTML组合分离的css、js
-// gulp.task('efhtml', function () {
-//     return gulp.src('src/index.html')
-//         .pipe(useref())
-//         .pipe(gulp.dest('docs'));
-// });
 
-// // 自动化
-// gulp.task('auto', function () {
-//     gulp.watch('src/js/*.js', ['script']);
-//     gulp.watch('src/sass/*.css', ['css']);
-//     gulp.watch('src/css/*.css', ['sass']);
-// });
-
-
-gulp.task('default', ['minicss','html']);
+gulp.task('default', ['script','minicss','html']);
