@@ -57,8 +57,8 @@
 				var langs = navigator.language ||  navigator.browserLanguage;   //判断除IE外其他浏览器使用语言
 				//如果 定义了  window.H5LangType ，优先使用 window.H5LangType
 				//var langs = window.navigator.userAgent.match( /Language\/([\w\-]+)/i) || [] ;
-				console.log(langs);
-				return window.H5LangType || langs || this.opt.defaultLang || 'en';
+				console.log(langs.toLowerCase());
+				return window.H5LangType || langs.toLowerCase() || this.opt.defaultLang || 'en';
 			},
 			type : 'en'
 

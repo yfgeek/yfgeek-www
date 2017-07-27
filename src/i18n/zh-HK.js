@@ -1,4 +1,4 @@
-_H5Lang_['zh-HK'] = {
+_H5Lang_['zh-hk'] = {
     "header" : '一凡',
     "header-des" : ' 人生，勤奮以達卓越',
     "header-link" : '探索文章',
