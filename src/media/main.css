@@ -340,23 +340,30 @@ a:focus {
 	color: white
 }
 
+
 .block-foot h2 span {
 	display: inline-block;
 	background-color: #6B14D3;
 	color: white;
 	padding: 6px 10px;
-	margin: 1px;
+    margin: 1px;
 	background: linear-gradient(45deg, #6B14D3 0, #7A26E2 15%, #4962DD 120%);
 }
 
 .block-foot, .block-follow {
-	min-height: 240px;
+    background: #19143e;
+	min-height: 250px;
 }
 
 .block-follow {
 	text-align: right;
 	padding: 40px;
-	padding-bottom: 0px
+	padding-bottom: 0px;
+}
+
+.block-follow a{
+	text-decoration: none;
+	border: none;
 }
 
 .block-follow .icon {

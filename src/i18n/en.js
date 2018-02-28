@@ -24,7 +24,7 @@ _H5Lang_['en'] = {
     "btn-follow" : 'Follow',
     "btn-instagram" : "Instagram",
     "endblock-header" : 'Geek',
-    "endblock-des-1" : 'With the development of the Internet, generation Z has grown up.',
+    "endblock-des-1" : 'My name is Yifan, a geek who was born in 1993.',
     "endblock-des-2" : 'When I was a child, I made a simple VB6 program according to the textbook, feeling like a treasure.',
     "endblock-des-3" : 'At the age of 12, I have always been exploring the functionality of IIS & ASP which was my toy.',
     "endblock-des-4" : 'When I was 14, I made a lot of templates for a blog system or even got a webshell of a website with the feeling of stirring.',
@@ -37,6 +37,6 @@ _H5Lang_['en'] = {
     "endblock-des-11" : 'The life became more meaningful after I joined GitHub. I started writing some repositories related to the front-end and back-end.',
     "endblock-des-12" : 'Since 2000, I have been studying different programming languages and technologies.',
     "endblock-des-13" : "Even I do not know why my path is so complicated.",
-    "endblock-des-14" : "The technologies is so wide but for me, I'm just keeping",
-    "endblock-des-15" : '  Follwing my heart',
+    "endblock-des-14" : "The technology is so wide but for me, I'm just keeping",
+    "endblock-des-15" : '  follwing my heart',
 };
