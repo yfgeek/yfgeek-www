@@ -9,7 +9,7 @@ _H5Lang_['zh-hant'] = {
     "more-header" : '更多介紹',
     "more-des" : '小極客一枚，碩士研究生，熱愛生活，對美食、旅遊、政治、歷史、文化以及任何新生事物感興趣，對任何技術充滿敬畏之心',
     "programming-header" : '編程',
-    "programming-des" : '曾經的OIer，喜歡研究算法。從小到大，接觸編程語言無數，掌握PHP、Java、Python、Rust，前端偏愛React系列',
+    "programming-des" : '曾經的OIer，喜歡研究算法。從小到大，接觸編程語言無數，掌握PHP、Java、Python、Golang，前端偏愛React系列',
     "rasberrypi-header" : '樹莓派',
     "rasberrypi-des" : '基於樹莓派,DHT11/DHT22,LCD1602的一個實時溫度濕度檢測系統，同時有React重構版本',
     "blockvotes-header" : 'BlockVotes',

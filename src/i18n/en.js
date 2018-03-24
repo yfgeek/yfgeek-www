@@ -9,7 +9,7 @@ _H5Lang_['en'] = {
     "more-header" : 'And more?',
     "more-des" : 'A computer geek with great passion, loving life, food, travel, politics, culture and any new things of the technologies.',
     "programming-header" : 'Programming',
-    "programming-des" : "I'm good at the algorithm and have programming language skills with PHP, Java, Python, Rust. Especially, loving doing the front-end things.",
+    "programming-des" : "I'm good at the algorithm and have programming language skills with PHP, Java, Python, Golang. Especially, loving doing the front-end things.",
     "rasberrypi-header" : 'RasberryPi',
     "rasberrypi-des" : 'A realtime temperature monitoring web system based on Rasberry Pi, DHT11/DHT22 and LCD1602. Refactoring the codes with React.js.',
     "blockvotes-header" : 'BlockVotes',

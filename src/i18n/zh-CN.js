@@ -9,7 +9,7 @@ _H5Lang_['zh-cn'] = {
     "more-header" : '更多介绍',
     "more-des" : '小极客一枚，硕士研究生，热爱生活，对美食、旅游、政治、历史、文化以及任何新生事物感兴趣，对任何技术充满敬畏之心',
     "programming-header" : '编程',
-    "programming-des" : '曾经的OIer，喜欢研究算法。从小到大，接触编程语言无数，掌握PHP、Java、Python、Rust，前端偏爱React系列',
+    "programming-des" : '曾经的OIer，喜欢研究算法。从小到大，接触编程语言无数，掌握PHP、Java、Python、Golang，前端偏爱React系列',
     "rasberrypi-header" : '树莓派',
     "rasberrypi-des" : '基于树莓派,DHT11/DHT22,LCD1602的一个实时温度湿度检测系统，同时有React重构版本',
     "blockvotes-header" : 'BlockVotes',
