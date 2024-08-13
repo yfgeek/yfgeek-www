@@ -1,5 +1,5 @@
 _H5Lang_['zh-hans'] = {
-    "header" : '一凡',
+    "header" : '极客凡',
     "header-des" : ' 人生，勤奋以达卓越',
     "header-link" : '探索文章',
     "detail-header-1" : '我是谁？',

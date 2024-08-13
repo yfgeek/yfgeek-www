@@ -1,6 +1,6 @@
 _H5Lang_['zh-cn'] = {
-    "header" : '一凡',
-    "header-des" : ' 人生，勤奋以达卓越',
+    "header" : '极客凡',
+    "header-des" : ' INTJ，北京，金融科技',
     "header-link" : '探索文章',
     "detail-header-1" : '我是谁？',
     "detail-des-1" : "1993年生，居住北京，出生河北，祖籍山西，走南闯北，多地长大生活过",
