@@ -212,7 +212,7 @@ body {
     content: "\f6a9";  /* Font Awesome 静音图标 */
 }
 
-@media screen and (min-width: 391px) {
+@media screen and (min-width: 450px) {
     .game-content {
         border-radius: 40px;
         box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
