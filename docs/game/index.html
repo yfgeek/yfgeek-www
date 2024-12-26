@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>农场连连看</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+</head>
+<body>
+    <div class="game-container">
+        <div class="game-content">
+            <div class="game-header">
+                <div class="level-text">第 1 关</div>
+                <button class="music-btn">
+                    <i class="fas fa-volume-up"></i>
+                </button>
+            </div>
+            <audio id="bgMusic" loop>
+                <source src="background-music.mp3" type="audio/mpeg">
+            </audio>
+            <div class="game-grid">
+                <!-- 网格将通过 JavaScript 动态生成 -->
+            </div>
+            <div class="game-controls">
+                <button class="control-btn hint-btn">
+                    <span class="plus-icon">+</span>
+                </button>
+                <button class="control-btn shuffle-btn">
+                    <span class="plus-icon">+</span>
+                </button>
+            </div>
+        </div>
+    </div>
+    <script src="game.js"></script>
+</body>
+</html> 
