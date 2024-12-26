@@ -50,10 +50,10 @@ body {
 
 .game-grid {
     width: 85%;
-    aspect-ratio: 6/11;
+    aspect-ratio: 6/10;
     display: grid;
     grid-template-columns: repeat(6, 1fr);
-    grid-template-rows: repeat(11, 1fr);
+    grid-template-rows: repeat(10, 1fr);
     gap: 1px;
     padding: 8px;
     background-color: #8B4513;

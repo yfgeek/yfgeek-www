@@ -57,15 +57,16 @@ class FarmGame {
     }
 
     generatePairs() {
-        // 创建配对数组（每个图标出现4次，总共66个格子）
+        // 创建配对数组（每个图标出现4次，总共60个格子）
         let pairs = [];
         this.icons.forEach(icon => {
-            for (let i = 0; i < 4; i++) {  // 每个图标出现4次，确保能填满6x11的网格
+            for (let i = 0; i < 4; i++) {  // 每个图标出现4次
                 pairs.push(icon);
             }
         });
-        // 随机打乱数组
-        return this.shuffleArray(pairs);
+
+        // 随机打乱数组并确保只取前60个
+        return this.shuffleArray(pairs).slice(0, 60); // 确保只取前60个
     }
 
     shuffleArray(array) {
@@ -84,7 +85,7 @@ class FarmGame {
     createGrid() {
         this.grid.innerHTML = '';
         
-        for (let i = 0; i < 66; i++) {  // 6x11=66个格子
+        for (let i = 0; i < 60; i++) {  // 6x10=60个格子
             const item = document.createElement('div');
             item.className = 'grid-item';
             const iconObj = this.gameIcons[i];
@@ -250,7 +251,7 @@ class FarmGame {
         return false;
     }
 
-    // 检查位置是否为空（���括超出边界的情况）
+    // 检查位置是否（包括超出边界的情况）
     isEmptyCell(row, col) {
         // 边界外的格子视为墙，不可通过
         if (row < 0 || row >= 12 || col < 0 || col >= 6) {
@@ -364,7 +365,7 @@ class FarmGame {
         
         item1.classList.add(highlightClass);
         item2.classList.add(highlightClass);
-        // 移除3秒后自动取消高亮的定时器
+        // 移除3秒后自动取消高亮定时器
     }
 
     // 实现打乱功能
@@ -374,7 +375,7 @@ class FarmGame {
         this.shuffleCount--;
         this.updateButtonCounts();
         
-        // 获取所有未消除的方���
+        // 获取所有未消除的方块
         const activeItems = Array.from(this.grid.children)
             .filter(item => !item.classList.contains('matched'));
         
@@ -411,7 +412,7 @@ class FarmGame {
             this.isMuted = !this.isMuted;
         });
 
-        // 监听页面可见性变化
+        // 监听页面可见变化
         document.addEventListener('visibilitychange', () => {
             if (document.hidden) {
                 this.bgMusic.pause();
