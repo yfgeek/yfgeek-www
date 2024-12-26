@@ -57,10 +57,10 @@ class FarmGame {
     }
 
     generatePairs() {
-        // 创建配对数组（每个图标出现3次，总共72个格子）
+        // 创建配对数组（每个图标出现4次，总共66个格子）
         let pairs = [];
         this.icons.forEach(icon => {
-            for (let i = 0; i < 3; i++) {  // 每个图标出现3次，确保能填满6x12的网格
+            for (let i = 0; i < 4; i++) {  // 每个图标出现4次，确保能填满6x11的网格
                 pairs.push(icon);
             }
         });
@@ -84,7 +84,7 @@ class FarmGame {
     createGrid() {
         this.grid.innerHTML = '';
         
-        for (let i = 0; i < 72; i++) {
+        for (let i = 0; i < 66; i++) {  // 6x11=66个格子
             const item = document.createElement('div');
             item.className = 'grid-item';
             const iconObj = this.gameIcons[i];
@@ -171,7 +171,7 @@ class FarmGame {
             return true;
         }
 
-        // 检查一个拐角的连接
+        // 检查一个拐角连接
         if (this.checkOneCorner(pos1, pos2)) {
             return true;
         }
@@ -250,11 +250,11 @@ class FarmGame {
         return false;
     }
 
-    // 检查位置是否为空（包括超出边界的情况）
+    // 检查位置是否为空（���括超出边界的情况）
     isEmptyCell(row, col) {
         // 边界外的格子视为墙，不可通过
         if (row < 0 || row >= 12 || col < 0 || col >= 6) {
-            return false; // 改为 false，表示边界不可通过
+            return false; // 改为 false，表示界不可通过
         }
         const index = row * 6 + col;
         const item = this.grid.children[index];
@@ -285,7 +285,7 @@ class FarmGame {
         // 任意一组被消除后，重置提示状态
         if (this.isHinting) {
             this.isHinting = false;
-            // 如果还有提示次数，启用提示���钮
+            // 如果还有提示次数，启用提示按钮
             if (this.hintCount > 0) {
                 this.hintBtn.disabled = false;
             }
@@ -374,7 +374,7 @@ class FarmGame {
         this.shuffleCount--;
         this.updateButtonCounts();
         
-        // 获取所有未消除的方块
+        // 获取所有未消除的方���
         const activeItems = Array.from(this.grid.children)
             .filter(item => !item.classList.contains('matched'));
         
