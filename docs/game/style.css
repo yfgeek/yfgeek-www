@@ -88,6 +88,8 @@ body {
     opacity: 0;
     transform: scale(0);
     transition: all 0.1s ease;
+    transform-style: preserve-3d;
+    perspective: 1000px;
 }
 
 /* 修改图标样式 */
@@ -254,18 +256,14 @@ body {
 } 
 
 .match-animation {
-    animation: match-fade 0.5s ease-out;
+    animation: match-animation 0.2s ease-out;
     transform-origin: center center;
 }
 
-@keyframes match-fade {
+@keyframes match-animation {
     0% {
         transform: scale(1);
         opacity: 1;
-    }
-    50% {
-        transform: scale(1.2);
-        opacity: 0.5;
     }
     100% {
         transform: scale(0);
@@ -343,5 +341,23 @@ body {
     100% {
         transform: translateY(100vh) rotate(360deg);
         opacity: 0;
+    }
+} 
+
+@keyframes flip-out {
+    0% {
+        transform: scale(1) rotateY(0deg);
+    }
+    100% {
+        transform: scale(0.8) rotateY(90deg);
+    }
+}
+
+@keyframes flip-in {
+    0% {
+        transform: scale(0.8) rotateY(-90deg);
+    }
+    100% {
+        transform: scale(1) rotateY(0deg);
     }
 } 

@@ -5,96 +5,200 @@ class FarmGame {
         this.shuffleBtn = document.querySelector('.shuffle-btn');
         this.selectedItems = [];
         
-        // 使用确定存在的图标，并为每个图标指定颜色
-        this.icons = [
-            { icon: '<i class="fas fa-heart"></i>', color: '#F44336' },         // 红心
-            { icon: '<i class="fas fa-star"></i>', color: '#E91E63' },          // 星星-粉色
-            { icon: '<i class="fas fa-moon"></i>', color: '#5C6BC0' },          // 月亮-靛蓝
-            { icon: '<i class="fas fa-cloud"></i>', color: '#90A4AE' },         // 云朵-灰蓝
-            { icon: '<i class="fas fa-sun"></i>', color: '#FF9800' },           // 太阳-橙色
-            { icon: '<i class="fas fa-tree"></i>', color: '#2E7D32' },          // 树-深绿
-            { icon: '<i class="fas fa-gift"></i>', color: '#9C27B0' },          // 礼物-紫色
-            { icon: '<i class="fas fa-bell"></i>', color: '#7E57C2' },          // 铃铛-紫色
-            { icon: '<i class="fas fa-snowflake"></i>', color: '#03A9F4' },     // 雪花-蓝色
-            { icon: '<i class="fas fa-crown"></i>', color: '#FF5722' },         // 皇冠-橙红
-            { icon: '<i class="fas fa-gem"></i>', color: '#E91E63' },           // 宝石-粉色
-            { icon: '<i class="fas fa-music"></i>', color: '#4CAF50' },         // 音符-绿色
-            { icon: '<i class="fas fa-fire"></i>', color: '#FF5722' },          // 火焰-橙色
-            { icon: '<i class="fas fa-bolt"></i>', color: '#7B1FA2' },          // 闪电-紫色
-            { icon: '<i class="fas fa-bomb"></i>', color: '#455A64' },          // 炸弹-深灰
-            { icon: '<i class="fas fa-ghost"></i>', color: '#5E35B1' },         // 幽灵-紫色
-            { icon: '<i class="fas fa-rocket"></i>', color: '#D32F2F' },        // 火箭-红色
-            { icon: '<i class="fas fa-dice"></i>', color: '#00897B' },          // 骰子-青色
-            { icon: '<i class="fas fa-puzzle-piece"></i>', color: '#3949AB' },  // 拼图-蓝色
-            { icon: '<i class="fas fa-compass"></i>', color: '#00ACC1' },       // 指南针-青色
-            { icon: '<i class="fas fa-palette"></i>', color: '#8E24AA' },       // 调色板-紫色
-            { icon: '<i class="fas fa-magic"></i>', color: '#6D4C41' },         // 魔杖-棕色
-            { icon: '<i class="fas fa-key"></i>', color: '#F4511E' },           // 钥匙-橙色
-            { icon: '<i class="fas fa-shield-alt"></i>', color: '#0288D1' }     // 盾牌-蓝色
+        // 修改消除动画的 CSS
+        this.style = document.createElement('style');
+        this.style.textContent = `
+            .match-animation {
+                animation: match-fade 0.3s ease-out forwards;
+                transform-origin: center center;
+                pointer-events: none;
+            }
+
+            @keyframes match-fade {
+                0% {
+                    transform: scale(1);
+                    opacity: 1;
+                }
+                60% {
+                    transform: scale(1.2);
+                    opacity: 0.3;
+                }
+                100% {
+                    transform: scale(0);
+                    opacity: 0;
+                    visibility: hidden;
+                }
+            }
+
+            @keyframes shake {
+                0%, 100% {
+                    transform: translateX(0);
+                    border-color: #333;
+                }
+                20%, 60% {
+                    transform: translateX(-2px);
+                    border-color: #D32F2F;
+                }
+                40%, 80% {
+                    transform: translateX(2px);
+                    border-color: #D32F2F;
+                }
+            }
+
+            .shake-animation {
+                animation: shake 0.4s ease-in-out;
+                border: 2px solid #D32F2F;
+            }
+        `;
+        document.head.appendChild(this.style);
+
+        // 重新设计可爱图标库 - 使用更深的红色和绿色
+        this.cuteIcons = [
+            // 食物类
+            { icon: '<i class="fas fa-ice-cream"></i>', color: '#D32F2F' },     // 冰淇淋-深红色
+            { icon: '<i class="fas fa-cookie"></i>', color: '#FF4081' },        // 饼干-亮粉
+            { icon: '<i class="fas fa-candy-cane"></i>', color: '#C2185B' },    // 糖果-深玫红
+            { icon: '<i class="fas fa-apple-alt"></i>', color: '#B71C1C' },     // 苹果-深红色
+            { icon: '<i class="fas fa-pizza-slice"></i>', color: '#C62828' },   // 披萨-深红色
+            { icon: '<i class="fas fa-hamburger"></i>', color: '#FF6D00' },     // 汉堡-亮橙
+            { icon: '<i class="fas fa-cheese"></i>', color: '#FF5722' },        // 奶酪-深橙
+            { icon: '<i class="fas fa-carrot"></i>', color: '#FF3D00' },        // 胡萝卜-亮橙红
+            { icon: '<i class="fas fa-bread-slice"></i>', color: '#E65100' },   // 面包-深橙
+            { icon: '<i class="fas fa-egg"></i>', color: '#FF4081' },           // 鸡蛋-亮粉
+            
+            // 水果和甜点
+            { icon: '<i class="fas fa-lemon"></i>', color: '#FF6D00' },         // 柠檬-亮橙
+            { icon: '<i class="fas fa-pepper-hot"></i>', color: '#C62828' },    // 辣椒-深红色
+            { icon: '<i class="fas fa-birthday-cake"></i>', color: '#FF4081' }, // 蛋糕-亮粉
+            { icon: '<i class="fas fa-coffee"></i>', color: '#FF3D00' },        // 咖啡-亮橙红
+            { icon: '<i class="fas fa-wine-glass"></i>', color: '#D500F9' },    // 酒杯-亮紫
+            
+            // 心形和星星
+            { icon: '<i class="fas fa-heart"></i>', color: '#C62828' },         // 心-深红色
+            { icon: '<i class="fas fa-star"></i>', color: '#FF6D00' },          // 星-亮橙
+            { icon: '<i class="fas fa-crown"></i>', color: '#FF3D00' },         // 皇冠-亮橙红
+            { icon: '<i class="fas fa-sun"></i>', color: '#FF5722' },           // 太阳-深橙
+            { icon: '<i class="fas fa-moon"></i>', color: '#651FFF' },          // 月亮-亮紫
+            
+            // 自然元素
+            { icon: '<i class="fas fa-leaf"></i>', color: '#2E7D32' },          // 叶子-深绿色
+            { icon: '<i class="fas fa-snowflake"></i>', color: '#00B0FF' },     // 雪花-亮蓝
+            { icon: '<i class="fas fa-cloud"></i>', color: '#2979FF' },         // 云-亮蓝
+            { icon: '<i class="fas fa-fire"></i>', color: '#C62828' },          // 火-深红色
+            { icon: '<i class="fas fa-bolt"></i>', color: '#C62828' },          // 闪电-深红色
+            
+            // 音乐元素
+            { icon: '<i class="fas fa-music"></i>', color: '#651FFF' },         // 音符-亮紫
+            { icon: '<i class="fas fa-guitar"></i>', color: '#FF6D00' },        // 吉他-亮橙
+            { icon: '<i class="fas fa-headphones"></i>', color: '#2979FF' },    // 耳机-亮蓝
+            { icon: '<i class="fas fa-drum"></i>', color: '#1B5E20' },          // 鼓-深绿色
+            { icon: '<i class="fas fa-bell"></i>', color: '#C62828' },          // 铃铛-深红色
+            
+            // 可爱物品
+            { icon: '<i class="fas fa-gift"></i>', color: '#FF4081' },          // 礼物-亮粉
+            { icon: '<i class="fas fa-key"></i>', color: '#FF5722' },           // 钥匙-深橙
+            { icon: '<i class="fas fa-gem"></i>', color: '#00B0FF' },           // 宝石-亮蓝
+            { icon: '<i class="fas fa-book"></i>', color: '#1B5E20' },          // 书本-深绿色
+            { icon: '<i class="fas fa-palette"></i>', color: '#651FFF' }        // 调色板-亮紫
         ];
-        
+
         // 修改关卡配置
         this.levelConfig = {
-            1: { iconCount: 8 },  // 第1关：每种图案8个
-            2: { iconCount: 6 },  // 第2关：每种图案6个
-            3: { iconCount: 4 },  // 第3关：每种图案4个
-            4: { iconCount: 2 },  // 第4关：每种图案2个
-            5: { iconCount: 2 }   // 第5关：每种图案2个
+            1: { 
+                icons: this.cuteIcons,
+                maxPairs: 2  // 每种图案最多2对（4个）
+            },
+            2: { 
+                icons: this.cuteIcons,
+                maxPairs: 2
+            },
+            3: { 
+                icons: this.cuteIcons,
+                maxPairs: 2
+            },
+            4: { 
+                icons: this.cuteIcons,
+                maxPairs: 2
+            },
+            5: { 
+                icons: this.cuteIcons,
+                maxPairs: 2
+            }
         };
+
+        // 初始化关卡
+        this.level = 1;
         
+        // 生成初始图标对
         this.gameIcons = this.generatePairs();
         
-        // 添加音乐和音效控制
+        // 初始化其他属性
+        this.hintCount = 3;
+        this.shuffleCount = 3;
+        this.isHinting = false;
+        
+        // 初始化音乐和音效
         this.bgMusic = document.getElementById('bgMusic');
         this.matchSound = document.getElementById('matchSound');
         this.musicBtn = document.querySelector('.music-btn');
         this.isMuted = false;
         
-        // 设置音效音量
         if (this.matchSound) {
             this.matchSound.volume = 0.5;
         }
         
+        // 确保游戏初始化完成后再创建网格
+        this.init();
+        
         // 初始化音乐
         this.initMusic();
         
-        // 添加按钮使用次数计数器
-        this.hintCount = 3;
-        this.shuffleCount = 3;
-        
-        // 添加按钮次数显示
+        // 更新显示
         this.updateButtonCounts();
-        
-        // 添加提示状态标记
-        this.isHinting = false;
-        
-        this.level = 1;
         this.updateLevelDisplay();
         
-        // 直接初始化游戏，不播放动画
-        this.init();
+        // 移除多余的关卡显示
+        const gameInfo = document.querySelector('.game-info');
+        if (gameInfo) {
+            gameInfo.remove();
+        }
     }
 
     generatePairs() {
         let pairs = [];
-        const iconCount = this.levelConfig[this.level]?.iconCount || 4; // 默认为4
+        const currentLevel = this.levelConfig[this.level];
+        const totalSlots = 60; // 总格子数
+        const maxPairsPerIcon = 2; // 每种图案最多2对（4个）
+        let remainingSlots = totalSlots;
         
-        // 计算需要多少种不同的图案
-        const neededIconTypes = Math.floor(60 / iconCount); // 60是总格子数
+        // 随机打乱所有图标
+        const shuffledIcons = this.shuffleArray([...currentLevel.icons]);
+        // 随机选择需要的图标数量
+        const neededIcons = Math.ceil(totalSlots / 4); // 每个图标最多4个，所以至少需要这么多种图标
+        const selectedIcons = shuffledIcons.slice(0, neededIcons);
         
-        // 从图标池中随机选择需要的图标类型
-        const selectedIcons = this.shuffleArray([...this.icons]).slice(0, neededIconTypes);
-        
-        // 为每个选中的图标生成指定数量的副本
-        selectedIcons.forEach(icon => {
-            for (let i = 0; i < iconCount; i++) {
-                pairs.push(icon);
+        // 为每个选中的图标随机分配1-2对（2-4个）
+        while (remainingSlots > 0 && selectedIcons.length > 0) {
+            const currentIcon = selectedIcons.pop();
+            const pairsToAdd = Math.min(
+                1 + Math.floor(Math.random() * maxPairsPerIcon), // 随机1-2对
+                Math.floor(remainingSlots / 2) // 确保不超过剩余空位
+            );
+            
+            // 添加图案对
+            for (let i = 0; i < pairsToAdd; i++) {
+                pairs.push(currentIcon);
+                pairs.push(currentIcon);
+                remainingSlots -= 2;
             }
-        });
-
-        // 如果生成的对数不足60个，用第一个图标补足
-        while (pairs.length < 60) {
-            pairs.push(selectedIcons[0]);
+        }
+        
+        // 如果还有剩余空位，用随机图标填充（保持2N原则）
+        while (remainingSlots > 0) {
+            const randomIcon = shuffledIcons[Math.floor(Math.random() * shuffledIcons.length)];
+            pairs.push(randomIcon);
+            pairs.push(randomIcon);
+            remainingSlots -= 2;
         }
 
         return this.shuffleArray(pairs);
@@ -109,8 +213,16 @@ class FarmGame {
     }
 
     init() {
-        this.createGrid();
-        this.bindEvents();
+        // 确保所有资源加载完成后再创建网格
+        if (document.readyState === 'complete') {
+            this.createGrid();
+            this.bindEvents();
+        } else {
+            window.addEventListener('load', () => {
+                this.createGrid();
+                this.bindEvents();
+            });
+        }
     }
 
     createGrid() {
@@ -233,7 +345,7 @@ class FarmGame {
             return true;
         }
 
-        // 检查一个拐角连接
+        // 检查一个拐角的连接
         if (this.checkOneCorner(pos1, pos2)) {
             return true;
         }
@@ -277,7 +389,7 @@ class FarmGame {
 
     // 检查一个拐角的连接
     checkOneCorner(pos1, pos2) {
-        // 检查两个可能的拐角点
+        // 检查两个可能的拐角
         const corner1 = { row: pos1.row, col: pos2.col };
         const corner2 = { row: pos2.row, col: pos1.col };
 
@@ -350,12 +462,15 @@ class FarmGame {
             }
         }
 
-        // 修改消除动画处理
+        // 修改消除动画理
         let removedCount = 0;
         const totalToRemove = this.selectedItems.length;
 
         this.selectedItems.forEach(item => {
             item.classList.add('match-animation');
+            
+            // 减少动画时间
+            item.style.animation = 'match-animation 0.2s ease-out'; // 从默认的 0.3s 改为 0.2s
             
             // 动画结束后处理
             item.addEventListener('animationend', () => {
@@ -379,28 +494,11 @@ class FarmGame {
                         setTimeout(() => {
                             const nextLevel = this.level + 1;
                             
-                            // 创建烟花容器
-                            const fireworksContainer = document.createElement('div');
-                            fireworksContainer.className = 'fireworks-container';
-                            document.querySelector('.game-content').appendChild(fireworksContainer);
-
-                            // 创建多个烟花
-                            const fireworkCount = 15;
-                            for (let i = 0; i < fireworkCount; i++) {
-                                setTimeout(() => {
-                                    this.createFirework(fireworksContainer);
-                                }, i * 150);
-                            }
-
-                            // 等待烟花动画完成后进入下一关
-                            setTimeout(() => {
-                                fireworksContainer.remove();
-                                
+                            // 触发烟花动画
+                            this.showFireworks(() => {
                                 if (this.level === 5) {
-                                    alert('恭喜你通关了所有关卡！游戏结束！');
                                     this.level = 1;
                                 } else {
-                                    alert(`恭喜通关！即将进入第 ${nextLevel} 关`);
                                     this.level = nextLevel;
                                 }
                                 
@@ -411,7 +509,7 @@ class FarmGame {
                                 this.updateButtonCounts();
                                 this.gameIcons = this.generatePairs();
                                 this.createGrid();
-                            }, 2000);
+                            });
                         }, 300);
                     }
                 }
@@ -430,12 +528,18 @@ class FarmGame {
     }
 
     resetSelection() {
+        const [item1, item2] = this.selectedItems;
+        
+        // 添加摇晃动画
+        item1.classList.add('shake-animation');
+        item2.classList.add('shake-animation');
+        
+        // 动画结束后移除类名
         setTimeout(() => {
-            this.selectedItems.forEach(item => {
-                item.classList.remove('selected');
-            });
+            item1.classList.remove('selected', 'shake-animation');
+            item2.classList.remove('selected', 'shake-animation');
             this.selectedItems = [];
-        }, 500);
+        }, 400); // 与动画持续时间相同
     }
 
     // 更新按钮上的次数显示
@@ -523,74 +627,34 @@ class FarmGame {
         this.shuffleCount--;
         this.updateButtonCounts();
         
-        // 获取木框（grid）的位置信息
-        const gridRect = this.grid.getBoundingClientRect();
-        
         // 获取所有未消除的方块
         const activeItems = Array.from(this.grid.children)
             .filter(item => !item.classList.contains('matched'));
         
-        // 获取所有活跃方块的当前位置（相对于木框）
-        const positions = activeItems.map(item => {
-            const rect = item.getBoundingClientRect();
-            return {
-                left: rect.left - gridRect.left,
-                top: rect.top - gridRect.top,
-                width: rect.width,
-                height: rect.height
-            };
+        // 只打乱图标和颜色，保持位置不变
+        const icons = activeItems.map(item => {
+            const index = parseInt(item.dataset.iconIndex);
+            return this.gameIcons[index];
         });
         
-        // 随机打乱顺序
-        const shuffledItems = this.shuffleArray([...activeItems]);
+        // 打乱图标数组
+        const shuffledIcons = this.shuffleArray([...icons]);
         
-        // 为所有活跃方块添加相对定位
+        // 更新方块的图标和颜色（添加动画）
         activeItems.forEach((item, i) => {
-            const pos = positions[i];
-            item.style.position = 'absolute';
-            item.style.left = `${pos.left}px`;
-            item.style.top = `${pos.top}px`;
-            item.style.width = `${pos.width}px`;
-            item.style.height = `${pos.height}px`;
-            item.style.transition = 'none';
-            item.style.zIndex = '1';
-        });
-        
-        // 强制重排
-        void this.grid.offsetHeight;
-        
-        // 添加过渡效果
-        activeItems.forEach(item => {
-            item.style.transition = 'all 0.3s ease';
-        });
-        
-        // 将方块移动到新位置
-        setTimeout(() => {
-            shuffledItems.forEach((item, i) => {
-                const newPos = positions[i];
-                item.style.left = `${newPos.left}px`;
-                item.style.top = `${newPos.top}px`;
-            });
-        }, 50);
-        
-        // 动画完成后恢复正常布局
-        setTimeout(() => {
-            // 移除过渡动画和临时样式
-            activeItems.forEach(item => {
-                item.style.transition = '';
-                item.style.position = '';
-                item.style.left = '';
-                item.style.top = '';
-                item.style.width = '';
-                item.style.height = '';
-                item.style.zIndex = '';
-            });
+            // 添加翻转动
+            item.style.animation = 'flip-out 0.15s ease-out';
             
-            // 重新排列DOM顺序
-            shuffledItems.forEach(item => {
-                this.grid.appendChild(item);
-            });
-        }, 350); // 动画时间缩短到0.3秒
+            setTimeout(() => {
+                const newIcon = shuffledIcons[i];
+                item.innerHTML = newIcon.icon;
+                item.querySelector('i').style.color = newIcon.color;
+                item.dataset.iconIndex = this.gameIcons.indexOf(newIcon);
+                
+                // 翻转回来
+                item.style.animation = 'flip-in 0.15s ease-out';
+            }, 150);
+        });
     }
 
     initMusic() {
@@ -668,7 +732,7 @@ class FarmGame {
         if (remainingItems.length === 0) {
             const nextLevel = this.level + 1;
             
-            // 显示过关动画，然后直接进入下一关
+            // 显示过关动画，然后直接进入下一��
             this.showConfetti(() => {
                 if (this.level === 5) {
                     this.level = 1;
@@ -686,7 +750,7 @@ class FarmGame {
         }
     }
 
-    // 在消除方块的方法中加完成检查
+    // 在消除方块的方法中加完成
     removeBlocks(block1, block2) {
         // 原有的消除逻辑
         // ...
@@ -710,7 +774,7 @@ class FarmGame {
         document.querySelector('.game-content').appendChild(fireworksContainer);
 
         // 创建多个烟花
-        const fireworkCount = 15; // 增加烟花数量
+        const fireworkCount = 15; // 增加烟花数
         const duration = 2000; // 动画持续时间
 
         for (let i = 0; i < fireworkCount; i++) {
@@ -814,3 +878,20 @@ class FarmGame {
 document.addEventListener('DOMContentLoaded', () => {
     new FarmGame();
 }); 
+
+// 添加过关动画
+function showLevelUpAnimation() {
+    const levelUpElement = document.createElement('div');
+    levelUpElement.className = 'level-up-animation';
+    levelUpElement.innerText = '恭喜你过关！';
+    document.body.appendChild(levelUpElement);
+    
+    // 动画效果
+    setTimeout(() => {
+        levelUpElement.classList.add('fade-out');
+    }, 2000); // 2秒后开始淡
+
+    setTimeout(() => {
+        document.body.removeChild(levelUpElement);
+    }, 4000); // 4秒后移除元素
+} 
