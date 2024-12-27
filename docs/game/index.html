@@ -19,6 +19,9 @@
             <audio id="bgMusic" loop>
                 <source src="background-music.mp3" type="audio/mpeg">
             </audio>
+            <audio id="matchSound" preload="auto">
+                <source src="match.mp3" type="audio/mpeg">
+            </audio>
             <div class="game-grid">
                 <!-- 网格将通过 JavaScript 动态生成 -->
             </div>
@@ -29,6 +32,9 @@
                 <button class="control-btn shuffle-btn">
                     <span class="plus-icon">+</span>
                 </button>
+            </div>
+            <div class="game-info">
+                <span>当前关卡: <span id="level">1</span></span>
             </div>
         </div>
     </div>

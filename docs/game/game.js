@@ -33,6 +33,15 @@ class FarmGame {
             { icon: '<i class="fas fa-shield-alt"></i>', color: '#0288D1' }     // 盾牌-蓝色
         ];
         
+        // 修改关卡配置
+        this.levelConfig = {
+            1: { iconCount: 8 },  // 第1关：每种图案8个
+            2: { iconCount: 6 },  // 第2关：每种图案6个
+            3: { iconCount: 4 },  // 第3关：每种图案4个
+            4: { iconCount: 2 },  // 第4关：每种图案2个
+            5: { iconCount: 2 }   // 第5关：每种图案2个
+        };
+        
         this.gameIcons = this.generatePairs();
         
         // 添加音乐控制
@@ -53,20 +62,36 @@ class FarmGame {
         // 添加提示状态标记
         this.isHinting = false;
         
+        this.level = 1;
+        this.updateLevelDisplay();
+        
+        // 直接初始化游戏，不播放动画
         this.init();
     }
 
     generatePairs() {
-        // 创建配对数组（每个图标出现4次，总共60个格子）
         let pairs = [];
-        this.icons.forEach(icon => {
-            for (let i = 0; i < 4; i++) {  // 每个图标出现4次
+        const iconCount = this.levelConfig[this.level]?.iconCount || 4; // 默认为4
+        
+        // 计算需要多少种不同的图案
+        const neededIconTypes = Math.floor(60 / iconCount); // 60是总格子数
+        
+        // 从图标池中随机选择需要的图标类型
+        const selectedIcons = this.shuffleArray([...this.icons]).slice(0, neededIconTypes);
+        
+        // 为每个选中的图标生成指定数量的副本
+        selectedIcons.forEach(icon => {
+            for (let i = 0; i < iconCount; i++) {
                 pairs.push(icon);
             }
         });
 
-        // 随机打乱数组并确保只取前60个
-        return this.shuffleArray(pairs).slice(0, 60); // 确保只取前60个
+        // 如果生成的对数不足60个，用第一个图标补足
+        while (pairs.length < 60) {
+            pairs.push(selectedIcons[0]);
+        }
+
+        return this.shuffleArray(pairs);
     }
 
     shuffleArray(array) {
@@ -85,16 +110,33 @@ class FarmGame {
     createGrid() {
         this.grid.innerHTML = '';
         
-        for (let i = 0; i < 60; i++) {  // 6x10=60个格子
+        // 创建所有格子但初始不显示
+        for (let i = 0; i < 60; i++) {
             const item = document.createElement('div');
             item.className = 'grid-item';
             const iconObj = this.gameIcons[i];
             item.innerHTML = iconObj.icon;
             item.querySelector('i').style.color = iconObj.color;
-            // 存储图标数据到元素上，用于后续匹配判断
             item.dataset.iconIndex = i;
             this.grid.appendChild(item);
         }
+
+        // 随机顺序显示格子
+        const items = Array.from(this.grid.children);
+        const shuffledItems = this.shuffleArray([...items]);
+        
+        // 使用递归函数依次显示格子
+        const showItem = (index) => {
+            if (index >= shuffledItems.length) return;
+            
+            setTimeout(() => {
+                shuffledItems[index].classList.add('show');
+                showItem(index + 1);
+            }, 7); // 从 20ms 改为 7ms
+        };
+
+        // 开始显示动画
+        showItem(0);
     }
 
     bindEvents() {
@@ -154,7 +196,7 @@ class FarmGame {
         return icon1.icon === icon2.icon && icon1.color === icon2.color;
     }
 
-    // 获取元素在网格中的位置
+    // 获取元素��网格中的位置
     getItemPosition(item) {
         const items = Array.from(this.grid.children);
         const index = items.indexOf(item);
@@ -277,16 +319,85 @@ class FarmGame {
             item.classList.remove('hint-highlight');
         });
 
+        // 播放消除音效
+        if (!this.isMuted) {
+            this.matchSound.currentTime = 0;
+            this.matchSound.play();
+        }
+
+        // 修改消除动画处理
+        let removedCount = 0;
+        const totalToRemove = this.selectedItems.length;
+
         this.selectedItems.forEach(item => {
-            item.classList.add('matched');
-            item.classList.remove('selected');
+            item.classList.add('match-animation');
+            
+            // 动画结束后处理
+            item.addEventListener('animationend', () => {
+                item.classList.remove('match-animation');
+                item.classList.add('matched');
+                item.classList.remove('selected');
+                item.style.backgroundColor = 'transparent';
+                item.style.border = 'none';
+                item.innerHTML = '';
+                
+                removedCount++;
+                
+                // 当所有选中的方块都被移除后，检查游戏是否完成
+                if (removedCount === totalToRemove) {
+                    // 检查是否所有方块都已被消除
+                    const allItems = Array.from(this.grid.children);
+                    const remainingItems = allItems.filter(item => !item.classList.contains('matched'));
+                    
+                    if (remainingItems.length === 0) {
+                        // 所有方块都被消除，触发过关
+                        setTimeout(() => {
+                            const nextLevel = this.level + 1;
+                            
+                            // 创建烟花容器
+                            const fireworksContainer = document.createElement('div');
+                            fireworksContainer.className = 'fireworks-container';
+                            document.querySelector('.game-content').appendChild(fireworksContainer);
+
+                            // 创建多个烟花
+                            const fireworkCount = 15;
+                            for (let i = 0; i < fireworkCount; i++) {
+                                setTimeout(() => {
+                                    this.createFirework(fireworksContainer);
+                                }, i * 150);
+                            }
+
+                            // 等待烟花动画完成后进入下一关
+                            setTimeout(() => {
+                                fireworksContainer.remove();
+                                
+                                if (this.level === 5) {
+                                    alert('恭喜你通关了所有关卡！游戏结束！');
+                                    this.level = 1;
+                                } else {
+                                    alert(`恭喜通关！即将进入第 ${nextLevel} 关`);
+                                    this.level = nextLevel;
+                                }
+                                
+                                // 更新关卡显示和重置游戏状态
+                                this.updateLevelDisplay();
+                                this.hintCount = 3;
+                                this.shuffleCount = 3;
+                                this.updateButtonCounts();
+                                this.gameIcons = this.generatePairs();
+                                this.createGrid();
+                            }, 2000);
+                        }, 300);
+                    }
+                }
+            }, { once: true });
         });
+
         this.selectedItems = [];
         
-        // 任意一组被消除后，重置提示状态
+        // 重置提示状态
         if (this.isHinting) {
             this.isHinting = false;
-            // 如果还有提示次数，启用提示按钮
             if (this.hintCount > 0) {
                 this.hintBtn.disabled = false;
             }
@@ -323,9 +434,21 @@ class FarmGame {
             this.hintCount--;
             this.updateButtonCounts();
             this.isHinting = true;
-            this.hintBtn.disabled = true;  // 禁用提示按钮
             
+            // 高亮显示
             this.highlightPair(matchingPair);
+            
+            // 3秒后自动取消高亮
+            setTimeout(() => {
+                matchingPair.forEach(item => {
+                    item.classList.remove('hint-highlight');
+                });
+                this.isHinting = false;
+                // 如果还有提示次数，重新启用按钮
+                if (this.hintCount > 0) {
+                    this.hintBtn.disabled = false;
+                }
+            }, 3000);
         }
     }
 
@@ -375,32 +498,94 @@ class FarmGame {
         this.shuffleCount--;
         this.updateButtonCounts();
         
+        // 获取木框（grid）的位置信息
+        const gridRect = this.grid.getBoundingClientRect();
+        
         // 获取所有未消除的方块
         const activeItems = Array.from(this.grid.children)
             .filter(item => !item.classList.contains('matched'));
         
-        // 获取这些方块的图标索引
-        const activeIndices = activeItems.map(item => 
-            parseInt(item.dataset.iconIndex));
-        
-        // 打乱索引
-        const shuffledIndices = this.shuffleArray([...activeIndices]);
-        
-        // 重新分配图标
-        activeItems.forEach((item, i) => {
-            const newIndex = shuffledIndices[i];
-            const iconObj = this.gameIcons[newIndex];
-            item.innerHTML = iconObj.icon;
-            item.querySelector('i').style.color = iconObj.color;
-            item.dataset.iconIndex = newIndex;
+        // 获取所有活跃方块的当前位置（相对于木框）
+        const positions = activeItems.map(item => {
+            const rect = item.getBoundingClientRect();
+            return {
+                left: rect.left - gridRect.left,
+                top: rect.top - gridRect.top,
+                width: rect.width,
+                height: rect.height
+            };
         });
+        
+        // 随机打乱顺序
+        const shuffledItems = this.shuffleArray([...activeItems]);
+        
+        // 为所有活跃方块添加相对定位
+        activeItems.forEach((item, i) => {
+            const pos = positions[i];
+            item.style.position = 'absolute';
+            item.style.left = `${pos.left}px`;
+            item.style.top = `${pos.top}px`;
+            item.style.width = `${pos.width}px`;
+            item.style.height = `${pos.height}px`;
+            item.style.transition = 'none';
+            item.style.zIndex = '1';
+        });
+        
+        // 强制重排
+        void this.grid.offsetHeight;
+        
+        // 添加过渡效果
+        activeItems.forEach(item => {
+            item.style.transition = 'all 0.3s ease';
+        });
+        
+        // 将方块移动到新位置
+        setTimeout(() => {
+            shuffledItems.forEach((item, i) => {
+                const newPos = positions[i];
+                item.style.left = `${newPos.left}px`;
+                item.style.top = `${newPos.top}px`;
+            });
+        }, 50);
+        
+        // 动画完成后恢复正常布局
+        setTimeout(() => {
+            // 移除过渡动画和临时样式
+            activeItems.forEach(item => {
+                item.style.transition = '';
+                item.style.position = '';
+                item.style.left = '';
+                item.style.top = '';
+                item.style.width = '';
+                item.style.height = '';
+                item.style.zIndex = '';
+            });
+            
+            // 重新排列DOM顺序
+            shuffledItems.forEach(item => {
+                this.grid.appendChild(item);
+            });
+        }, 350); // 动画时间缩短到0.3秒
     }
 
     initMusic() {
-        // 设置音量
         this.bgMusic.volume = 0.3;
+        
+        // 尝试自动播放
+        const playPromise = this.bgMusic.play();
+        
+        if (playPromise !== undefined) {
+            playPromise.catch(error => {
+                // 自动播放失败时，添加一次性点击事件来开始播放
+                const startMusic = () => {
+                    this.bgMusic.play();
+                    document.removeEventListener('click', startMusic);
+                };
+                document.addEventListener('click', startMusic, { once: true });
+            });
+        }
 
-        // 添加音乐控制事件
+        // 音乐控制按钮事件
         this.musicBtn.addEventListener('click', () => {
             if (this.isMuted) {
                 this.bgMusic.play();
@@ -411,24 +596,191 @@ class FarmGame {
             }
             this.isMuted = !this.isMuted;
         });
+    }
 
-        // 监听页面可见变化
-        document.addEventListener('visibilitychange', () => {
-            if (document.hidden) {
-                this.bgMusic.pause();
-            } else if (!this.isMuted) {
-                this.bgMusic.play();
+    validateLayout() {
+        const blocks = [...this.blocks];
+        while (blocks.length > 0) {
+            let found = false;
+            for (let i = 0; i < blocks.length; i++) {
+                for (let j = i + 1; j < blocks.length; j++) {
+                    if (blocks[i].type === blocks[j].type && 
+                        this.canConnect(blocks[i], blocks[j])) {
+                        // 移除可以连接的方块对
+                        blocks.splice(j, 1);
+                        blocks.splice(i, 1);
+                        found = true;
+                        break;
+                    }
+                }
+                if (found) break;
             }
+            // 如果没有找到可以连接的方块对，说明布局无解
+            if (!found && blocks.length > 0) {
+                return false;
+            }
+        }
+        return true;
+    }
+
+    // 修改初始化方法，确保生成可解的布局
+    initBlocks() {
+        do {
+            this.blocks = [];
+            // 原有的方块生成逻辑
+            // ...
+        } while (!this.validateLayout());
+    }
+
+    // 添加检查游戏是否结束的方法
+    checkGameComplete() {
+        const remainingItems = Array.from(this.grid.children).filter(
+            item => !item.classList.contains('matched')
+        );
+
+        if (remainingItems.length === 0) {
+            const nextLevel = this.level + 1;
+            
+            // 显示过关动画，然后直接进入下一关
+            this.showConfetti(() => {
+                if (this.level === 5) {
+                    this.level = 1;
+                } else {
+                    this.level = nextLevel;
+                }
+                
+                this.updateLevelDisplay();
+                this.hintCount = 3;
+                this.shuffleCount = 3;
+                this.updateButtonCounts();
+                this.gameIcons = this.generatePairs();
+                this.createGrid();
+            });
+        }
+    }
+
+    // 在消除方块的方法中��加完成检查
+    removeBlocks(block1, block2) {
+        // 原有的消除逻辑
+        // ...
+
+        // 检查是否完成当前关卡
+        this.checkGameComplete();
+    }
+
+    updateLevelDisplay() {
+        const levelText = document.querySelector('.level-text');
+        if (levelText) {
+            levelText.textContent = `第 ${this.level} 关`;
+        }
+    }
+
+    // 添加烟花动画方法
+    showFireworks(callback) {
+        // 创建烟花容器
+        const fireworksContainer = document.createElement('div');
+        fireworksContainer.className = 'fireworks-container';
+        document.querySelector('.game-content').appendChild(fireworksContainer);
+
+        // 创建多个烟花
+        const fireworkCount = 15; // 增加烟花数量
+        const duration = 2000; // 动画持续时间
+
+        for (let i = 0; i < fireworkCount; i++) {
+            setTimeout(() => {
+                this.createFirework(fireworksContainer);
+            }, i * 150); // 调整发射间隔
+        }
+
+        // 动画结束后清理并执行回调
+        setTimeout(() => {
+            fireworksContainer.remove();
+            if (callback) callback();
+        }, duration);
+    }
+
+    // 修改单个烟花创建方法
+    createFirework(container) {
+        const firework = document.createElement('div');
+        firework.className = 'firework';
+        
+        // 随机位置（确保在游戏区域内）
+        const x = 20 + Math.random() * 60; // 20% 到 80% 之间
+        const y = 20 + Math.random() * 60; // 20% 到 80% 之间
+        firework.style.left = `${x}%`;
+        firework.style.top = `${y}%`;
+        
+        // 更丰富的颜色选择
+        const colors = [
+            '#FFD700', // 金色
+            '#FF69B4', // 粉红
+            '#4ECDC4', // 青绿
+            '#FF6B6B', // 珊瑚红
+            '#A1E887', // 浅绿
+            '#87CEEB', // 天蓝
+            '#DDA0DD', // 梅红
+            '#F0E68C'  // 卡其黄
+        ];
+        const color = colors[Math.floor(Math.random() * colors.length)];
+        firework.style.setProperty('--firework-color', color);
+        
+        container.appendChild(firework);
+        
+        // 动画结束后移除
+        firework.addEventListener('animationend', () => {
+            firework.remove();
         });
+    }
 
-        // 用户首次交互时开始播放音乐
-        const startMusic = () => {
-            if (!this.isMuted) {
-                this.bgMusic.play();
-                document.removeEventListener('click', startMusic);
-            }
-        };
-        document.addEventListener('click', startMusic);
+    // 修改五彩纸屑动画方法
+    showConfetti(callback) {
+        const container = document.createElement('div');
+        container.className = 'confetti-container';
+        document.querySelector('.game-content').appendChild(container);
+
+        // 创建多个彩色粒子
+        const colors = [
+            '#FF69B4', // 粉红
+            '#87CEEB', // 天蓝
+            '#90EE90', // 浅绿
+            '#FFD700', // 金色
+            '#FF7F50', // 珊瑚色
+            '#DDA0DD', // 梅红
+            '#F0E68C', // 卡其黄
+            '#00CED1'  // 青色
+        ];
+        const particleCount = 35;  // 调整粒子数量
+
+        for (let i = 0; i < particleCount; i++) {
+            const particle = document.createElement('div');
+            particle.className = 'confetti-particle';
+            
+            // 随机颜色
+            particle.style.backgroundColor = colors[Math.floor(Math.random() * colors.length)];
+            
+            // 随机初始位置（在整个宽度范围内）
+            particle.style.left = `${Math.random() * 100}%`;
+            
+            // 随机延迟开始
+            particle.style.animationDelay = `${Math.random() * 0.4}s`;  // 缩短最大延迟时间
+            
+            // 随机动画持续时间（增加一些变化）
+            const duration = 1 + Math.random() * 0.4; // 1-1.4秒的随机持续时间
+            particle.style.animationDuration = `${duration}s`;
+            
+            // 随机大小变化
+            const size = 8 + Math.random() * 6;  // 8-14px的随机大小
+            particle.style.width = `${size}px`;
+            particle.style.height = `${size}px`;
+            
+            container.appendChild(particle);
+        }
+
+        // 等待所有粒子动画完成后清理
+        setTimeout(() => {
+            container.remove();
+            if (callback) callback();
+        }, 1800);  // 略大于最大动画时间（1.4s + 0.4s延迟）
     }
 }
 
