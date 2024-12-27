@@ -44,10 +44,16 @@ class FarmGame {
         
         this.gameIcons = this.generatePairs();
         
-        // 添加音乐控制
+        // 添加音乐和音效控制
         this.bgMusic = document.getElementById('bgMusic');
+        this.matchSound = document.getElementById('matchSound');
         this.musicBtn = document.querySelector('.music-btn');
         this.isMuted = false;
+        
+        // 设置音效音量
+        if (this.matchSound) {
+            this.matchSound.volume = 0.5;
+        }
         
         // 初始化音乐
         this.initMusic();
@@ -179,7 +185,11 @@ class FarmGame {
         const index2 = parseInt(item2.dataset.iconIndex);
         
         // 检查是否是相同的图标（包括颜色）
-        if (!this.isSameIcon(this.gameIcons[index1], this.gameIcons[index2])) {
+        const icon1 = this.gameIcons[index1];
+        const icon2 = this.gameIcons[index2];
+        
+        // 先检查是否是相同图标
+        if (!this.isSameIcon(icon1, icon2)) {
             return false;
         }
 
@@ -191,12 +201,16 @@ class FarmGame {
         return this.canConnect(pos1, pos2);
     }
 
-    // 添加新方法：检查两个图标是否完全相同
+    // 修改检查图标是否相同的方法
     isSameIcon(icon1, icon2) {
+        // 确保两个图标对象都存在
+        if (!icon1 || !icon2) return false;
+        
+        // 检查图标和颜色是否完全相同
         return icon1.icon === icon2.icon && icon1.color === icon2.color;
     }
 
-    // 获取元素��网格中的位置
+    // 修改获取位置的方法
     getItemPosition(item) {
         const items = Array.from(this.grid.children);
         const index = items.indexOf(item);
@@ -207,8 +221,13 @@ class FarmGame {
         };
     }
 
-    // 检查两点是否可以连接
+    // 修改连接检查方法
     canConnect(pos1, pos2) {
+        // 如果是同一个位置，返回false
+        if (pos1.index === pos2.index) {
+            return false;
+        }
+
         // 检查直线连接
         if (this.checkStraightLine(pos1, pos2)) {
             return true;
@@ -319,10 +338,16 @@ class FarmGame {
             item.classList.remove('hint-highlight');
         });
 
-        // 播放消除音效
-        if (!this.isMuted) {
-            this.matchSound.currentTime = 0;
-            this.matchSound.play();
+        // 播放消除音效（添加检查）
+        if (this.matchSound && !this.isMuted) {
+            try {
+                this.matchSound.currentTime = 0;
+                this.matchSound.play().catch(error => {
+                    console.log('音效播放失败:', error);
+                });
+            } catch (error) {
+                console.log('音效处理错误:', error);
+            }
         }
 
         // 修改消除动画处理
@@ -569,6 +594,8 @@ class FarmGame {
     }
 
     initMusic() {
+        if (!this.bgMusic || !this.musicBtn) return;
+
         this.bgMusic.volume = 0.3;
         
         // 尝试自动播放
@@ -578,7 +605,7 @@ class FarmGame {
             playPromise.catch(error => {
                 // 自动播放失败时，添加一次性点击事件来开始播放
                 const startMusic = () => {
-                    this.bgMusic.play();
+                    this.bgMusic.play().catch(() => {});
                     document.removeEventListener('click', startMusic);
                 };
                 document.addEventListener('click', startMusic, { once: true });
@@ -588,7 +615,7 @@ class FarmGame {
         // 音乐控制按钮事件
         this.musicBtn.addEventListener('click', () => {
             if (this.isMuted) {
-                this.bgMusic.play();
+                this.bgMusic.play().catch(() => {});
                 this.musicBtn.classList.remove('muted');
             } else {
                 this.bgMusic.pause();
@@ -659,7 +686,7 @@ class FarmGame {
         }
     }
 
-    // 在消除方块的方法中��加完成检查
+    // 在消除方块的方法中加完成检查
     removeBlocks(block1, block2) {
         // 原有的消除逻辑
         // ...
