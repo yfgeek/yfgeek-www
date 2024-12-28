@@ -5,7 +5,7 @@ body {
     display: flex;
     justify-content: center;
     align-items: center;
-    background-color: #f0f0f0;
+    background-color: #2E7D32;
 }
 
 .game-container {
@@ -14,6 +14,12 @@ body {
     display: flex;
     justify-content: center;
     align-items: center;
+    opacity: 0;
+    transition: opacity 0.5s ease;
+}
+
+.game-container.show {
+    opacity: 1;
 }
 
 .game-content {
@@ -28,24 +34,44 @@ body {
     align-items: center;
     padding: 15px;
     box-sizing: border-box;
+    opacity: 1;
 }
 
 .game-header {
     margin-bottom: 20px;
     display: flex;
-    justify-content: center;
     align-items: center;
     position: relative;
     width: 100%;
+    padding: 0 15px;
+    box-sizing: border-box;
+}
+
+.header-row {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
 }
 
 .level-text {
-    background-color: rgba(0, 0, 0, 0.7);
+    background: rgba(0, 0, 0, 0.7);
     color: white;
-    padding: 5px 15px;
+    padding: 8px 20px;
     border-radius: 20px;
-    display: inline-block;
-    font-size: 16px;
+    font-family: 'Orbitron', 'Microsoft YaHei', sans-serif;
+}
+
+.score-display {
+    background: rgba(0, 0, 0, 0.7);
+    color: white;
+    padding: 8px 20px;
+    border-radius: 20px;
+    font-family: 'Orbitron', 'Microsoft YaHei', sans-serif;
+    position: absolute;
+    right: 60px;
+    min-width: 60px;
+    text-align: center;
 }
 
 .game-grid {
@@ -62,6 +88,10 @@ body {
     position: relative;
     box-shadow: inset 0 0 10px rgba(0,0,0,0.3);
     margin: auto 0;
+    overflow: visible !important;
+    transform: translateX(100vw);
+    opacity: 0;
+    animation: slide-in-grid 0.5s ease forwards;
 }
 
 .game-grid::before {
@@ -90,6 +120,8 @@ body {
     transition: all 0.1s ease;
     transform-style: preserve-3d;
     perspective: 1000px;
+    overflow: visible !important;
+    z-index: 1;
 }
 
 /* 修改图标样式 */
@@ -102,6 +134,7 @@ body {
 .grid-item.selected {
     background-color: #FFF3E0;
     transform: scale(0.95);
+    z-index: 2;
 }
 
 .grid-item.selected i {
@@ -136,49 +169,60 @@ body {
     padding: 5px;
     display: flex;
     justify-content: center;
-    gap: 20px;
+    gap: 30px;
+    transform: translateX(-100vw);
+    opacity: 0;
+    animation: slide-in-controls 0.5s ease forwards 0.5s;
 }
 
 .control-btn {
-    background-color: #2ECC71;
+    width: 65px;
+    height: 65px;
     border: none;
     border-radius: 12px;
-    padding: 12px 24px;
+    background-color: #3CD681;
     position: relative;
     cursor: pointer;
-    font-size: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
     transition: all 0.3s ease;
-    box-shadow: 0 2px 8px rgba(46, 204, 113, 0.3);
 }
 
 .control-btn:hover {
-    background-color: #27AE60;
+    background-color: #35C176;
     transform: translateY(-2px);
-    box-shadow: 0 4px 12px rgba(46, 204, 113, 0.4);
 }
 
 .control-btn:active {
     transform: translateY(0);
 }
 
-.control-btn img {
-    width: 24px;
-    height: 24px;
+/* 图标样式 */
+.control-btn i {
+    font-size: 24px;
+    color: white;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
 }
 
+/* 数样式 */
 .plus-icon {
     position: absolute;
-    top: -5px;
-    right: -5px;
-    background-color: rgba(0, 0, 0, 0.2);
-    color: #FFFFFF;
-    width: 20px;
-    height: 20px;
+    top: -10px;
+    right: -10px;
+    background-color: #2BA366;
+    color: white;
+    width: 22px;
+    height: 22px;
     border-radius: 50%;
     display: flex;
-    justify-content: center;
     align-items: center;
+    justify-content: center;
     font-size: 14px;
+    font-weight: bold;
 }
 
 .hint-btn::after {
@@ -197,20 +241,18 @@ body {
 
 .music-btn {
     position: absolute;
-    right: 10px;
-    background: none;
+    right: 15px;
+    top: 0;
+    background: rgba(0, 0, 0, 0.7);
     border: none;
     color: white;
-    font-size: 20px;
-    cursor: pointer;
-    padding: 8px;
-    border-radius: 50%;
     width: 36px;
     height: 36px;
+    border-radius: 50%;
     display: flex;
     justify-content: center;
     align-items: center;
-    background-color: rgba(0, 0, 0, 0.2);
+    cursor: pointer;
     transition: all 0.3s ease;
 }
 
@@ -231,29 +273,40 @@ body {
 
 /* 添加提示高亮动画 */
 @keyframes hint-pulse {
-    0% { transform: scale(1); box-shadow: 0 0 0 0 rgba(255, 193, 7, 0.7); }
-    50% { transform: scale(1.1); box-shadow: 0 0 0 10px rgba(255, 193, 7, 0); }
-    100% { transform: scale(1); box-shadow: 0 0 0 0 rgba(255, 193, 7, 0); }
+    0% {
+        transform: scale(1);
+        box-shadow: 0 0 0 0 rgba(255, 193, 7, 0.9);
+        background-color: rgba(255, 193, 7, 0.3);
+    }
+    50% {
+        transform: scale(1.3);
+        box-shadow: 0 0 20px rgba(255, 193, 7, 0.6);
+        background-color: rgba(255, 193, 7, 0.5);
+    }
+    100% {
+        transform: scale(1);
+        box-shadow: 0 0 0 0 rgba(255, 193, 7, 0.9);
+        background-color: rgba(255, 193, 7, 0.3);
+    }
 }
 
 .hint-highlight {
     animation: hint-pulse 1s infinite;
-    border: 2px solid #FFC107 !important;
-    z-index: 1;
+    border: 3px solid #FFC107 !important;
+    z-index: 3;
 }
 
 /* 禁用按钮样式 */
 .control-btn:disabled {
-    opacity: 0.5;
+    opacity: 0.7;
     cursor: not-allowed;
-    background-color: #999;
+    transform: none;
 }
 
-/* 修改按钮次数显示样式 */
-.plus-icon {
-    background-color: rgba(0, 0, 0, 0.3);
-    font-weight: bold;
-} 
+.control-btn:disabled:hover {
+    transform: none;
+    background-color: #3CD681;
+}
 
 .match-animation {
     animation: match-animation 0.2s ease-out;
@@ -271,7 +324,7 @@ body {
     }
 } 
 
-/* 显示状态的样式 */
+/* 显示状态的式 */
 .grid-item.show {
     opacity: 1;
     transform: scale(1);
@@ -359,5 +412,238 @@ body {
     }
     100% {
         transform: scale(1) rotateY(0deg);
+    }
+} 
+
+/* 不匹配时的晃动动画 */
+@keyframes shake {
+    0%, 100% {
+        transform: translateX(0) scale(1);
+        border-color: #333;
+    }
+    20%, 60% {
+        transform: translateX(-5px) scale(1.1);
+        border-color: #D32F2F;
+    }
+    40%, 80% {
+        transform: translateX(5px) scale(1.1);
+        border-color: #D32F2F;
+    }
+}
+
+.shake-animation {
+    animation: shake 0.4s ease-in-out;
+    border: 2px solid #D32F2F !important;
+    z-index: 2;
+}
+
+.score-display {
+    background: rgba(0, 0, 0, 0.7);
+    color: white;
+    padding: 8px 20px;
+    border-radius: 20px;
+    display: inline-block;
+    font-family: 'Orbitron', 'Microsoft YaHei', sans-serif;
+    margin-left: auto;
+    min-width: 60px;
+    text-align: center;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    max-width: 120px;
+}
+
+.score-value {
+    color: #FFD700;
+    font-size: 20px;
+    font-weight: bold;
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+} 
+
+.score-popup {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%) scale(1);
+    font-size: 60px;
+    font-weight: bold;
+    font-family: 'Orbitron', 'Microsoft YaHei', sans-serif;
+    color: #FF8C00;
+    background: linear-gradient(135deg, #FFD700, #FFA500);
+    padding: 20px 60px;
+    border-radius: 40px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2),
+                inset 0 2px 10px rgba(255, 255, 255, 0.3);
+    border: 2px solid rgba(255, 255, 255, 0.3);
+    opacity: 0;
+    animation: score-appear 0.2s ease-out forwards;
+    z-index: 1000;
+}
+
+@keyframes score-fly-to-target {
+    0% {
+        transform: translate(-50%, -50%) scale(1);
+        opacity: 1;
+    }
+    100% {
+        transform: translate(var(--target-x), var(--target-y)) scale(0.3);
+        opacity: 0;
+    }
+}
+
+@keyframes score-appear {
+    0% {
+        transform: translate(-50%, -50%) scale(0.5);
+        opacity: 0;
+    }
+    100% {
+        transform: translate(-50%, -50%) scale(1);
+        opacity: 1;
+    }
+}
+
+@keyframes score-pop {
+    0% {
+        transform: scale(1);
+    }
+    50% {
+        transform: scale(1.3);
+    }
+    100% {
+        transform: scale(1);
+    }
+} 
+
+.game-over-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 2000;
+    animation: overlay-fade-in 0.5s ease-out forwards;
+}
+
+.game-over-modal {
+    background: linear-gradient(135deg, #2c3e50, #34495e);
+    padding: 30px 50px;
+    border-radius: 20px;
+    text-align: center;
+    transform: scale(0.8);
+    opacity: 0;
+    animation: modal-appear 0.5s ease-out 0.3s forwards;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+    border: 2px solid rgba(255, 255, 255, 0.1);
+}
+
+.game-over-text {
+    color: #fff;
+    font-size: 36px;
+    font-family: 'Orbitron', 'Microsoft YaHei', sans-serif;
+    margin: 0;
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+}
+
+@keyframes overlay-fade-in {
+    from {
+        background-color: rgba(0, 0, 0, 0);
+    }
+    to {
+        background-color: rgba(0, 0, 0, 0.7);
+    }
+}
+
+@keyframes modal-appear {
+    from {
+        transform: scale(0.8);
+        opacity: 0;
+    }
+    to {
+        transform: scale(1);
+        opacity: 1;
+    }
+} 
+
+/* 加载界面样式 */
+.loading-screen {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: #4CAF50;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    z-index: 9999;
+}
+
+.loading-text {
+    font-size: 40px;
+    color: white;
+    font-weight: bold;
+    margin-bottom: 20px;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+}
+
+.loading-progress {
+    width: 200px;
+    height: 10px;
+    background: rgba(255, 255, 255, 0.2);
+    border-radius: 5px;
+    overflow: hidden;
+}
+
+.progress-bar {
+    width: 0%;
+    height: 100%;
+    background: white;
+    border-radius: 5px;
+    transition: width 0.3s ease;
+}
+
+.loading-tip {
+    margin-top: 10px;
+    color: rgba(255, 255, 255, 0.8);
+    font-size: 14px;
+}
+
+/* 游戏元素的入场动画 */
+.game-grid {
+    transform: translateX(100vw);
+    opacity: 0;
+    animation: slide-in-grid 0.5s ease forwards;
+}
+
+.game-controls {
+    transform: translateX(-100vw);
+    opacity: 0;
+    animation: slide-in-controls 0.5s ease forwards 0.5s;
+}
+
+@keyframes slide-in-grid {
+    0% {
+        transform: translateX(100vw);
+        opacity: 0;
+    }
+    100% {
+        transform: translateX(0);
+        opacity: 1;
+    }
+}
+
+@keyframes slide-in-controls {
+    0% {
+        transform: translateX(-100vw);
+        opacity: 0;
+    }
+    100% {
+        transform: translateX(0);
+        opacity: 1;
     }
 } 

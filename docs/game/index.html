@@ -3,41 +3,68 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>农场连连看</title>
+    <title>消消派对</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
     <link rel="stylesheet" href="style.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link href="https://fonts.cdnfonts.com/css/orbitron-2" rel="stylesheet">
 </head>
 <body>
-    <div class="game-container">
+    <!-- 加载界面 -->
+    <div class="loading-screen">
+        <div class="loading-text">消消派对</div>
+        <div class="loading-progress">
+            <div class="progress-bar"></div>
+        </div>
+        <div class="loading-tip">加载游戏场景...</div>
+    </div>
+
+    <!-- 游戏容器 -->
+    <div class="game-container" style="opacity: 0;">
         <div class="game-content">
             <div class="game-header">
-                <div class="level-text">第 1 关</div>
-                <button class="music-btn">
-                    <i class="fas fa-volume-up"></i>
-                </button>
+                <div class="header-row">
+                    <div class="level-text">第 1 关</div>
+                    <button class="music-btn">
+                        <i class="fas fa-volume-up"></i>
+                    </button>
+                </div>
+                <div class="header-row">
+                    <div class="score-display">
+                        <span class="score-value">0</span>
+                    </div>
+                </div>
             </div>
-            <audio id="bgMusic" loop>
-                <source src="background-music.mp3" type="audio/mpeg">
-            </audio>
-            <audio id="matchSound" preload="auto">
-                <source src="match.mp3" type="audio/mpeg">
-            </audio>
-            <div class="game-grid">
-                <!-- 网格将通过 JavaScript 动态生成 -->
-            </div>
+            <div class="game-grid"></div>
             <div class="game-controls">
                 <button class="control-btn hint-btn">
-                    <span class="plus-icon">+</span>
+                    <i class="fas fa-lightbulb"></i>
+                    <span class="plus-icon">3</span>
                 </button>
                 <button class="control-btn shuffle-btn">
-                    <span class="plus-icon">+</span>
+                    <i class="fas fa-random"></i>
+                    <span class="plus-icon">3</span>
                 </button>
-            </div>
-            <div class="game-info">
-                <span>当前关卡: <span id="level">1</span></span>
             </div>
         </div>
     </div>
+
+    <!-- 音频元素 -->
+    <audio id="bgMusic" loop>
+        <source src="background-music.mp3" type="audio/mpeg">
+    </audio>
+    <audio id="matchSound" preload="auto">
+        <source src="match.mp3" type="audio/mpeg">
+    </audio>
+    <audio id="errorSound" preload="auto">
+        <source src="error.mp3" type="audio/mpeg">
+    </audio>
+    <audio id="dingSound" preload="auto">
+        <source src="ding.mp3" type="audio/mpeg">
+    </audio>
+    <audio id="gameOverSound" preload="auto">
+        <source src="gameover.mp3" type="audio/mpeg">
+    </audio>
+
     <script src="game.js"></script>
 </body>
 </html> 
