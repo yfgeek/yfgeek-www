@@ -287,6 +287,16 @@ class FarmGame {
     }
 
     bindEvents() {
+        // 使用 touchstart 事件代替 click 事件，提高响应速度
+        this.grid.addEventListener('touchstart', (e) => {
+            e.preventDefault(); // 阻止默认行为
+            const item = e.target.closest('.grid-item');
+            if (!item || item.classList.contains('matched')) return;
+            
+            this.handleItemClick(item);
+        });
+
+        // 保留 click 事件用于桌面端
         this.grid.addEventListener('click', (e) => {
             const item = e.target.closest('.grid-item');
             if (!item || item.classList.contains('matched')) return;
@@ -294,12 +304,29 @@ class FarmGame {
             this.handleItemClick(item);
         });
 
+        // 同样优化按钮的点击事件
+        this.hintBtn.addEventListener('touchstart', (e) => {
+            e.preventDefault();
+            if (!this.hintBtn.disabled) {
+                this.showHint();
+            }
+        });
         this.hintBtn.addEventListener('click', () => {
-            this.showHint();
+            if (!this.hintBtn.disabled) {
+                this.showHint();
+            }
         });
 
+        this.shuffleBtn.addEventListener('touchstart', (e) => {
+            e.preventDefault();
+            if (!this.shuffleBtn.disabled) {
+                this.shuffleGrid();
+            }
+        });
         this.shuffleBtn.addEventListener('click', () => {
-            this.shuffleGrid();
+            if (!this.shuffleBtn.disabled) {
+                this.shuffleGrid();
+            }
         });
     }
 
@@ -371,6 +398,22 @@ class FarmGame {
         const isPos1OnBorder = pos1.row === 0 || pos1.row === 9 || pos1.col === 0 || pos1.col === 5;
         const isPos2OnBorder = pos2.row === 0 || pos2.row === 9 || pos2.col === 0 || pos2.col === 5;
 
+        // 如果两个方块都在边界上，只允许直线连接或相邻
+        if (isPos1OnBorder && isPos2OnBorder) {
+            // 检查是否相邻
+            if (Math.abs(pos1.row - pos2.row) + Math.abs(pos1.col - pos2.col) === 1) {
+                return true;
+            }
+            // 检查是否在同一条边上且直线可达
+            if ((pos1.row === pos2.row && pos1.row === 0) ||
+                (pos1.row === pos2.row && pos1.row === 9) ||
+                (pos1.col === pos2.col && pos1.col === 0) ||
+                (pos1.col === pos2.col && pos1.col === 5)) {
+                return this.checkStraightLine(pos1, pos2);
+            }
+            return false;
+        }
+
         // 1. 直线连接（没有折线）
         if (this.checkStraightLine(pos1, pos2)) {
             return true;
@@ -385,7 +428,7 @@ class FarmGame {
         return this.checkTwoCorners(pos1, pos2);
     }
 
-    // 检查直线连接
+    // 修改检查直线连接的方法
     checkStraightLine(pos1, pos2) {
         // 水平直线
         if (pos1.row === pos2.row) {
@@ -443,14 +486,14 @@ class FarmGame {
         return false;
     }
 
-    // 检查两次折线连接
+    // 修改两次折线检查方法
     checkTwoCorners(pos1, pos2) {
-        // 遍历所有可能的拐点
+        // 遍历所有可能的拐点（包括边界外一格的位置）
         for (let row = -1; row <= 10; row++) {
             for (let col = -1; col <= 6; col++) {
                 const corner = { row, col };
                 
-                // 检查拐点是否有效（包括边界外的点）
+                // 检查拐点是否有效
                 if (!this.isValidCorner(corner)) continue;
                 
                 // 检查从pos1到corner的路径
@@ -461,7 +504,7 @@ class FarmGame {
                 const path2Valid = this.checkOneCorner(corner, pos2);
                 if (!path2Valid) continue;
 
-                // 计算跨过的方块数
+                // 计算跨过的方块数（不包括边界外的点）
                 const crossedCount1 = this.countCrossedItems(pos1, corner);
                 const crossedCount2 = this.countCrossedItems(corner, pos2);
 
@@ -474,14 +517,47 @@ class FarmGame {
         return false;
     }
 
-    // 检查位置是否有效（包括边界外的点）
+    // 修改计算跨过方块数的方法
+    countCrossedItems(pos1, pos2) {
+        let count = 0;
+        
+        if (pos1.row === pos2.row) {
+            // 水平方向
+            const minCol = Math.min(pos1.col, pos2.col);
+            const maxCol = Math.max(pos1.col, pos2.col);
+            for (let col = minCol + 1; col < maxCol; col++) {
+                // 只计算游戏区域内的方块
+                if (col >= 0 && col < 6 && pos1.row >= 0 && pos1.row < 10) {
+                    if (!this.isEmptyCell(pos1.row, col)) {
+                        count++;
+                    }
+                }
+            }
+        } else if (pos1.col === pos2.col) {
+            // 垂直方向
+            const minRow = Math.min(pos1.row, pos2.row);
+            const maxRow = Math.max(pos1.row, pos2.row);
+            for (let row = minRow + 1; row < maxRow; row++) {
+                // 只计算游戏区域内的方块
+                if (row >= 0 && row < 10 && pos1.col >= 0 && pos1.col < 6) {
+                    if (!this.isEmptyCell(row, pos1.col)) {
+                        count++;
+                    }
+                }
+            }
+        }
+        
+        return count;
+    }
+
+    // 修改检查位置是否有效的方法
     isValidCorner(pos) {
-        // 允许边界一格的位置
+        // 允许边界外一格的位置
         return pos.row >= -1 && pos.row <= 10 && 
                pos.col >= -1 && pos.col <= 6;
     }
 
-    // 检查位置是否为空（包括边界外的点）
+    // 修改检查位置是否为空的方法
     isEmptyCell(row, col) {
         // 边界外的点视为空
         if (row < 0 || row >= 10 || col < 0 || col >= 6) {
@@ -495,11 +571,19 @@ class FarmGame {
     removeItems() {
         const [item1, item2] = this.selectedItems;
         
+        // 确保两个方块都存在且未被消除
+        if (!item1 || !item2 || 
+            item1.classList.contains('matched') || 
+            item2.classList.contains('matched')) {
+            this.selectedItems = [];
+            return;
+        }
+        
         // 移除匹配状态
         item1.classList.add('matched');
         item2.classList.add('matched');
         
-        // 放消除音效
+        // 播放消除音效
         if (this.matchSound && !this.isMuted) {
             try {
                 this.matchSound.currentTime = 0;
@@ -511,17 +595,19 @@ class FarmGame {
             }
         }
         
-        // 显示分数动画
-        this.showScoreAnimation(10); // 假设每次消除加10分
+        // 直接更新分数
+        this.updateScore(10);
         
-        // 清除选中状态
+        // 除选中状态
+        item1.classList.remove('selected');
+        item2.classList.remove('selected');
         this.selectedItems = [];
         
         // 检查游戏是否完成
-        this.checkGameComplete();
-
-        // 在消除动画结束后检查是否有可消除方块
         setTimeout(() => {
+            this.checkGameComplete();
+            
+            // 检查是否还有可消除的方块
             if (!this.checkHasValidMoves()) {
                 this.showGameOver();
             }
@@ -598,8 +684,9 @@ class FarmGame {
         hintPlus.textContent = this.hintCount;
         shufflePlus.textContent = this.shuffleCount;
         
-        // 当次数用完时禁用按钮
+        // 只在提示次数为0时禁用提示按钮
         this.hintBtn.disabled = this.hintCount <= 0;
+        // 当次数用完时禁用洗牌按钮
         this.shuffleBtn.disabled = this.shuffleCount <= 0;
     }
 
@@ -607,36 +694,51 @@ class FarmGame {
     showHint() {
         if (this.hintCount <= 0 || this.isHinting) return;
         
+        const matchingPair = this.findMatchingPair();
+        if (!matchingPair) {
+            // 如果没有可匹配的对子，不做任何操作
+            return;
+        }
+        
         // 播放按钮音效
         if (this.dingSound && !this.isMuted) {
             this.dingSound.currentTime = 0;
             this.dingSound.play().catch(() => {});
         }
         
-        // 扣除分数
-        this.showScoreAnimation(-10);
+        // 扣分
+        this.updateScore(-10);
         
-        const matchingPair = this.findMatchingPair();
-        if (matchingPair) {
-            this.hintCount--;
-            this.updateButtonCounts();
-            this.isHinting = true;
-            
-            // 高亮显示
-            this.highlightPair(matchingPair);
-            
-            // 3秒后自动取消高亮
-            setTimeout(() => {
-                matchingPair.forEach(item => {
+        this.hintCount--;
+        this.updateButtonCounts();
+        this.isHinting = true;
+        
+        // 移除之前的提示高亮
+        const highlightedItems = document.querySelectorAll('.hint-highlight');
+        highlightedItems.forEach(item => {
+            item.classList.remove('hint-highlight');
+        });
+        
+        // 添加新的高亮
+        matchingPair[0].classList.add('hint-highlight');
+        matchingPair[1].classList.add('hint-highlight');
+        
+        // 3秒后自动取消高亮
+        setTimeout(() => {
+            const items = document.querySelectorAll('.hint-highlight');
+            items.forEach(item => {
+                if (item && !item.classList.contains('matched')) {
                     item.classList.remove('hint-highlight');
-                });
-                this.isHinting = false;
-                // 如果还有示次数重新启用按钮
-                if (this.hintCount > 0) {
-                    this.hintBtn.disabled = false;
                 }
-            }, 3000);
-        }
+            });
+            this.isHinting = false;
+            
+            // 如果还有提示次数且有可匹配的对子，重新启用按钮
+            if (this.hintCount > 0) {
+                const hasMatchingPair = this.findMatchingPair();
+                this.hintBtn.disabled = !hasMatchingPair;
+            }
+        }, 3000);
     }
 
     // 寻找可以消除的一对方块
@@ -668,7 +770,7 @@ class FarmGame {
         return null;
     }
 
-    // 高亮显示可以消除的一对方块
+    // 亮显示可以消除的一对方块
     highlightPair(pair) {
         const [item1, item2] = pair;
         const highlightClass = 'hint-highlight';
@@ -688,8 +790,8 @@ class FarmGame {
             this.dingSound.play().catch(() => {});
         }
         
-        // 扣除分数
-        this.showScoreAnimation(-20);
+        // 扣分
+        this.updateScore(-20);
         
         this.shuffleCount--;
         this.updateButtonCounts();
@@ -887,7 +989,7 @@ class FarmGame {
         for (let i = 0; i < fireworkCount; i++) {
             setTimeout(() => {
                 this.createFirework(fireworksContainer);
-            }, i * 150); // 调整发射间隔
+            }, i * 150); // 调整发��间隔
         }
 
         // 动画结束后清理并执行回调
@@ -902,7 +1004,7 @@ class FarmGame {
         const firework = document.createElement('div');
         firework.className = 'firework';
         
-        // 随机位置（确保在游戏区��内）
+        // 随机位置（确保在游戏区内
         const x = 20 + Math.random() * 60; // 20% 到 80% 之间
         const y = 20 + Math.random() * 60; // 20% 到 80% 之间
         firework.style.left = `${x}%`;
@@ -947,7 +1049,7 @@ class FarmGame {
             '#F0E68C', // 卡其黄
             '#00CED1'  // 青色
         ];
-        const particleCount = 35;  // 调整粒子数量
+        const particleCount = 35;  // 调整粒数量
 
         for (let i = 0; i < particleCount; i++) {
             const particle = document.createElement('div');
@@ -1021,11 +1123,6 @@ class FarmGame {
     updateScore(points) {
         this.score += points;
         this.scoreDisplay.textContent = this.score;
-        
-        // 添加弹跳动画
-        this.scoreDisplay.style.animation = 'none';
-        this.scoreDisplay.offsetHeight; // 触发重绘
-        this.scoreDisplay.style.animation = 'score-pop 0.3s ease-out';
     }
 
     // 添加检查是否有可消除方块的方法
