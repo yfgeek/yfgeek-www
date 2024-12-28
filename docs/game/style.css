@@ -2,15 +2,17 @@ body {
     margin: 0;
     padding: 0;
     min-height: 100vh;
+    min-height: -webkit-fill-available;
     display: flex;
     justify-content: center;
     align-items: center;
-    background-color: #2E7D32;
+    background-color: #4CAF50;
 }
 
 .game-container {
     width: 100%;
     height: 100vh;
+    height: -webkit-fill-available;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -26,8 +28,6 @@ body {
     width: 100%;
     height: 100%;
     background-color: #4CAF50;
-    max-width: 390px;
-    max-height: 844px;
     position: relative;
     display: flex;
     flex-direction: column;
@@ -35,10 +35,12 @@ body {
     padding: 15px;
     box-sizing: border-box;
     opacity: 1;
+    min-height: 0;
+    overflow: hidden;
 }
 
 .game-header {
-    margin-bottom: 20px;
+    margin-bottom: min(20px, 3vh);
     display: flex;
     align-items: center;
     position: relative;
@@ -77,6 +79,7 @@ body {
 .game-grid {
     width: 85%;
     aspect-ratio: 6/10;
+    max-height: calc(100vh - 200px);
     display: grid;
     grid-template-columns: repeat(6, 1fr);
     grid-template-rows: repeat(10, 1fr);
@@ -165,7 +168,7 @@ body {
 }
 
 .game-controls {
-    margin-top: 20px;
+    margin-top: min(20px, 3vh);
     padding: 5px;
     display: flex;
     justify-content: center;
@@ -581,10 +584,12 @@ body {
     justify-content: center;
     align-items: center;
     z-index: 9999;
+    padding: 20px;
+    box-sizing: border-box;
 }
 
 .loading-text {
-    font-size: 40px;
+    font-size: clamp(32px, 8vw, 40px);  /* 响应式字体大小 */
     color: white;
     font-weight: bold;
     margin-bottom: 20px;
@@ -592,7 +597,7 @@ body {
 }
 
 .loading-progress {
-    width: 200px;
+    width: min(200px, 60vw);  /* 响应式宽度 */
     height: 10px;
     background: rgba(255, 255, 255, 0.2);
     border-radius: 5px;
@@ -610,10 +615,10 @@ body {
 .loading-tip {
     margin-top: 10px;
     color: rgba(255, 255, 255, 0.8);
-    font-size: 14px;
+    font-size: clamp(12px, 4vw, 14px);  /* 响应式字体大小 */
 }
 
-/* 游戏元素的入场动画 */
+/* 游戏元��的入场动画 */
 .game-grid {
     transform: translateX(100vw);
     opacity: 0;
@@ -645,5 +650,53 @@ body {
     100% {
         transform: translateX(0);
         opacity: 1;
+    }
+} 
+
+/* 添加媒体查询，处理较小屏幕 */
+@media screen and (max-height: 700px) {
+    .game-content {
+        padding: 10px;
+    }
+    
+    .game-header {
+        margin-bottom: 10px;
+    }
+    
+    .game-controls {
+        margin-top: 10px;
+    }
+    
+    .control-btn {
+        width: 55px;
+        height: 55px;
+    }
+} 
+
+/* 移动端特别处理 */
+@media screen and (max-width: 480px) {
+    .game-content {
+        max-width: 100%;
+        max-height: 100vh;
+        padding: 10px;
+        border-radius: 0;
+    }
+
+    body {
+        background-color: #4CAF50;
+    }
+
+    .game-container {
+        padding: 0;
+    }
+}
+
+/* 处理 iPhone 的安全区域 */
+@supports (padding: max(0px)) {
+    .game-content {
+        padding-left: max(15px, env(safe-area-inset-left));
+        padding-right: max(15px, env(safe-area-inset-right));
+        padding-top: max(15px, env(safe-area-inset-top));
+        padding-bottom: max(15px, env(safe-area-inset-bottom));
     }
 } 
