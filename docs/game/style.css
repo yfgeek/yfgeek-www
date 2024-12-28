@@ -129,20 +129,25 @@ body {
 
 /* 修改图标样式 */
 .grid-item i {
-    font-size: 22px;
+    font-size: 24px;
     transition: all 0.3s ease;
+    transform: scale(0.9);
 }
 
 /* 选中状态的图标样式 */
 .grid-item.selected {
     background-color: #FFF3E0;
-    transform: scale(0.95);
+    transform: scale(1.1) !important;
     z-index: 2;
+    box-shadow: 0 0 15px rgba(255, 193, 7, 0.6);
+    border: 2px solid #FFB300;
+    transition: all 0.2s ease;
 }
 
 .grid-item.selected i {
     transform: scale(1.2);
     filter: brightness(1.2);
+    color: #FF9800;
 }
 
 /* 匹配后的样式 */
@@ -278,29 +283,27 @@ body {
 @keyframes hint-pulse {
     0% {
         transform: scale(1);
-        box-shadow: 0 0 0 0 rgba(255, 193, 7, 0.9);
-        background-color: rgba(255, 193, 7, 0.2);
-        border-color: rgba(255, 193, 7, 0.9);
+        border-color: #FFB300;
     }
     50% {
         transform: scale(1.2);
-        box-shadow: 0 0 30px rgba(255, 193, 7, 0.6);
-        background-color: rgba(255, 193, 7, 0.4);
-        border-color: rgba(255, 193, 7, 1);
+        border-color: #FFC107;
     }
     100% {
         transform: scale(1);
-        box-shadow: 0 0 0 0 rgba(255, 193, 7, 0.9);
-        background-color: rgba(255, 193, 7, 0.2);
-        border-color: rgba(255, 193, 7, 0.9);
+        border-color: #FFB300;
     }
 }
 
 .hint-highlight {
-    animation: hint-pulse 1.2s infinite;
-    border: 4px solid rgba(255, 193, 7, 0.9) !important;
-    z-index: 3;
-    position: relative;
+    animation: hint-pulse 1s infinite;
+    border: 2px solid #FFB300 !important;
+    z-index: 2;
+}
+
+.hint-highlight i {
+    transform: scale(1.2);
+    color: #FFB300;
 }
 
 /* 禁用按钮样式 */
@@ -316,20 +319,29 @@ body {
 }
 
 .match-animation {
-    animation: match-animation 0.2s ease-out;
-    transform-origin: center center;
+    animation: match-animation 0.3s ease-out forwards !important;
+    pointer-events: none;
+    z-index: 3;  /* 确保动画时在最上层 */
 }
 
 @keyframes match-animation {
     0% {
         transform: scale(1);
         opacity: 1;
+        visibility: visible;
     }
     100% {
         transform: scale(0);
         opacity: 0;
+        visibility: hidden;
     }
-} 
+}
+
+.matched {
+    visibility: hidden !important;
+    pointer-events: none !important;
+    opacity: 0 !important;
+}
 
 /* 显示状态的式 */
 .grid-item.show {
@@ -665,7 +677,7 @@ body {
     opacity: 0.8;
 }
 
-/* 禁用状态的样式 */
+/* ��用状态的样式 */
 .control-btn:disabled {
     opacity: 0.5;
     transform: none;
@@ -704,4 +716,9 @@ body {
     .game-content {
         transform: scale(1.2); /* 更大屏幕更大缩放 */
     }
+} 
+
+.matched {
+    visibility: hidden !important;
+    pointer-events: none !important;
 } 
