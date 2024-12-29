@@ -2,7 +2,7 @@
     "name": "消消派对",
     "short_name": "消消派对",
     "description": "一个有趣的连连看游戏",
-    "start_url": "./",
+    "start_url": "/game/",
     "display": "standalone",
     "background_color": "#4CAF50",
     "theme_color": "#4CAF50",

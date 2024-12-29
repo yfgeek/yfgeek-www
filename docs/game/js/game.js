@@ -1575,8 +1575,8 @@ function showLevelUpAnimation() {
 // 注册 Service Worker
 if ('serviceWorker' in navigator) {
     window.addEventListener('load', () => {
-        navigator.serviceWorker.register('./sw.js', {
-            scope: './'
+        navigator.serviceWorker.register('/game/sw.js', {
+            scope: '/game/'
         })
         .then(registration => {
             console.log('ServiceWorker registration successful');
