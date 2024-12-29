@@ -926,3 +926,18 @@ body {
     src: url('font.ttf') format('truetype');
     font-weight: bold;
 } 
+
+/* iOS 启动画面样式 */
+@media (display-mode: standalone) {
+    body {
+        padding-top: env(safe-area-inset-top);
+        padding-bottom: env(safe-area-inset-bottom);
+    }
+}
+
+/* 处理 iOS 状态栏 */
+@supports (-webkit-touch-callout: none) {
+    .game-content {
+        padding-top: max(env(safe-area-inset-top), 20px);
+    }
+} 
