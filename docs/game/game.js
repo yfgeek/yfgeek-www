@@ -187,7 +187,7 @@ class FarmGame {
             this.gameOverSound.volume = 0.5;
         }
 
-        // 添加加载动画
+        // 初始化加载
         this.initLoading();
     }
 
@@ -253,6 +253,7 @@ class FarmGame {
     }
 
     createGrid() {
+        console.log('开始创建网格');
         this.grid.innerHTML = '';
         
         // 创建所有格子但初始不显示
@@ -270,26 +271,41 @@ class FarmGame {
         const items = Array.from(this.grid.children);
         const shuffledItems = this.shuffleArray([...items]);
         
-        // 使用更快的显示间隔
-        const showItems = (startIndex) => {
-            // 每次显示多个方块
-            for (let i = 0; i < 4; i++) {
-                const index = startIndex + i;
-                if (index >= shuffledItems.length) return;
-                shuffledItems[index].classList.add('show');
-            }
-            
-            if (startIndex + 4 < shuffledItems.length) {
-                setTimeout(() => {
-                    showItems(startIndex + 4);
-                }, 10); // 减少延迟时间到10ms
-            }
+        // 分组显示，每组的延迟时间不同
+        const showItemsInGroups = () => {
+            const groupSize = 6; // 增加每组显示的数量
+            let currentIndex = 0;
+
+            const showNextGroup = () => {
+                if (currentIndex >= shuffledItems.length) return;
+
+                // 获取当前组的方块
+                const currentGroup = shuffledItems.slice(currentIndex, currentIndex + groupSize);
+                
+                // 为当前组的每个方块添加随机延迟显示
+                currentGroup.forEach(item => {
+                    const randomDelay = Math.random() * 75; // 减少随机延迟时间
+                    setTimeout(() => {
+                        item.classList.add('show');
+                        item.style.animation = 'item-appear 0.15s ease-out'; // 加快单个方块的动画
+                    }, randomDelay);
+                });
+
+                currentIndex += groupSize;
+                
+                // 继续显示下一组
+                if (currentIndex < shuffledItems.length) {
+                    setTimeout(showNextGroup, 50); // 减少组间延迟
+                }
+            };
+
+            showNextGroup();
         };
 
         // 等待木框滑入动画完成后开始显示方块
         setTimeout(() => {
-            showItems(0);
-        }, 500);
+            showItemsInGroups();
+        }, 300); // 减少等待时间
     }
 
     bindEvents() {
@@ -438,23 +454,28 @@ class FarmGame {
         const isPos1OnBorder = pos1.row === 0 || pos1.row === 9 || pos1.col === 0 || pos1.col === 5;
         const isPos2OnBorder = pos2.row === 0 || pos2.row === 9 || pos2.col === 0 || pos2.col === 5;
 
-        // 如果两个方块都在边界上，只允许直线连接或相邻
+        // 如果两个方块都在边界上，只允许在同一边界上直线连接或相邻
         if (isPos1OnBorder && isPos2OnBorder) {
-            // 检查是否相邻
+            // 检查是否在同一边界上
+            const onSameBorder = 
+                (pos1.row === 0 && pos2.row === 0) ||      // 上边界
+                (pos1.row === 9 && pos2.row === 9) ||      // 下边界
+                (pos1.col === 0 && pos2.col === 0) ||      // 左边界
+                (pos1.col === 5 && pos2.col === 5);        // 右边界
+            
+            if (!onSameBorder) {
+                console.log('不在同一边界上，无法连接');
+                return false;
+            }
+
+            // 检查是否相邻或在同一直线上
             if (Math.abs(pos1.row - pos2.row) + Math.abs(pos1.col - pos2.col) === 1) {
-                return true;
+                return true;  // 相邻
             }
-            // 检查是否在同一条边上且直线可达
-            if ((pos1.row === pos2.row && pos1.row === 0) ||
-                (pos1.row === pos2.row && pos1.row === 9) ||
-                (pos1.col === pos2.col && pos1.col === 0) ||
-                (pos1.col === pos2.col && pos1.col === 5)) {
-                return this.checkStraightLine(pos1, pos2);
-            }
-            return false;
+            return this.checkStraightLine(pos1, pos2);  // 同一直线
         }
 
-        // 1. 直线连接（没有折线）
+        // 1. 直线连接
         if (this.checkStraightLine(pos1, pos2)) {
             return true;
         }
@@ -794,7 +815,7 @@ class FarmGame {
         }, 400);
     }
 
-    // 更新按钮上次���显示
+    // 更新按钮上次显示
     updateButtonCounts() {
         const hintPlus = this.hintBtn.querySelector('.plus-icon');
         const shufflePlus = this.shuffleBtn.querySelector('.plus-icon');
@@ -994,7 +1015,7 @@ class FarmGame {
             window.addEventListener('load', playMusic);
         }
 
-        // 音乐控制按钮��件
+        // 音乐控制按钮件
         this.musicBtn.addEventListener('click', () => {
             if (this.isMuted) {
                 this.bgMusic.play();
@@ -1075,7 +1096,7 @@ class FarmGame {
         }
     }
 
-    // 在消��方块的方法中加完成
+    // 在消方块的方法中加完成
     removeBlocks(block1, block2) {
         // 原有的消除逻辑
         // ...
@@ -1199,7 +1220,7 @@ class FarmGame {
         }, 1800);  // 大于最大动画间（1.4s + 0.4s延迟）
     }
 
-    // 添加判断是否相���的方法
+    // 添加判断是否相的方法
     isAdjacent(item1, item2) {
         const pos1 = this.getItemPosition(item1);
         const pos2 = this.getItemPosition(item2);
@@ -1243,35 +1264,48 @@ class FarmGame {
 
     // 添加检查是否有可消除方块的方法
     checkHasValidMoves() {
+        console.log('检查是否还有可消除的方块');
+        
         // 如果还有洗牌机会，就不算游戏结束
         if (this.shuffleCount > 0) {
+            console.log('还有洗牌机会，游戏继续');
             return true;
         }
 
         const items = Array.from(this.grid.children);
-        for (let i = 0; i < items.length; i++) {
-            for (let j = i + 1; j < items.length; j++) {
-                const item1 = items[i];
-                const item2 = items[j];
+        const activeItems = items.filter(item => !item.classList.contains('matched'));
+        console.log('剩余未消除方块数:', activeItems.length);
+
+        // 检查所有未消除的方块对
+        for (let i = 0; i < activeItems.length; i++) {
+            for (let j = i + 1; j < activeItems.length; j++) {
+                const item1 = activeItems[i];
+                const item2 = activeItems[j];
                 
-                // 跳过已消除的方块
-                if (item1.classList.contains('matched') || 
-                    item2.classList.contains('matched')) {
-                    continue;
-                }
-                
-                // 检查是否可以匹配
-                const pos1 = this.getItemPosition(item1);
-                const pos2 = this.getItemPosition(item2);
+                // 获取图标索引
                 const index1 = parseInt(item1.dataset.iconIndex);
                 const index2 = parseInt(item2.dataset.iconIndex);
                 
-                if (this.isSameIcon(this.gameIcons[index1], this.gameIcons[index2]) && 
-                    this.canConnect(pos1, pos2)) {
-                    return true;
+                // 检查是否是相同图标
+                if (this.isSameIcon(this.gameIcons[index1], this.gameIcons[index2])) {
+                    // 获取位置并检查是否可以连接
+                    const pos1 = this.getItemPosition(item1);
+                    const pos2 = this.getItemPosition(item2);
+                    
+                    if (this.canConnect(pos1, pos2)) {
+                        console.log('找到可消除的方块对:', {
+                            pos1: pos1,
+                            pos2: pos2,
+                            icon1: this.gameIcons[index1],
+                            icon2: this.gameIcons[index2]
+                        });
+                        return true;
+                    }
                 }
             }
         }
+
+        console.log('没有找到可消除的方块对');
         return false;
     }
 
@@ -1300,36 +1334,220 @@ class FarmGame {
     }
 
     initLoading() {
+        console.log('开始加载资源...');
         const loadingScreen = document.querySelector('.loading-screen');
         const progressBar = document.querySelector('.progress-bar');
         const gameContainer = document.querySelector('.game-container');
-        let progress = 0;
+        const loadingTip = document.querySelector('.loading-tip');
+        const startBtn = document.querySelector('.start-btn');
+        const authorInfo = document.querySelector('.author-info');
+        
+        startBtn.style.display = 'none';
+        
+        // 定义加载阶段
+        const loadingTexts = [
+            '正在加载字体资源...',
+            '正在加载图标资源...',
+            '正在加载音乐资源...',
+            '正在初始化游戏...'
+        ];
 
-        // 模拟加载进度
-        const loadingInterval = setInterval(() => {
-            progress += Math.random() * 15;
-            if (progress > 100) progress = 100;
+        // 更新进度条
+        const updateProgress = (progress) => {
             progressBar.style.width = `${progress}%`;
+        };
 
-            if (progress === 100) {
-                clearInterval(loadingInterval);
+        // 加载完成后的处理
+        const onLoadComplete = () => {
+            loadingTip.textContent = '加载完成';
+            startBtn.style.display = 'block';
+            
+            // 添加开始游戏按钮点击事件
+            startBtn.addEventListener('click', () => {
+                startBtn.style.transform = 'scale(0.95)';
                 setTimeout(() => {
-                    // 淡出加载界面
                     loadingScreen.style.opacity = '0';
-                    loadingScreen.style.transition = 'opacity 0.5s ease';
-                    
-                    // 显示游戏界面
                     gameContainer.style.opacity = '1';
                     
-                    // 移除加载界面并开始游戏
+                    // 隐藏作者信息
+                    if (authorInfo) {
+                        authorInfo.style.opacity = '0';
+                        setTimeout(() => authorInfo.remove(), 500);
+                    }
+                    
                     setTimeout(() => {
                         loadingScreen.remove();
                         this.createGrid();
                         this.bindEvents();
                     }, 500);
-                }, 500);
+                }, 200);
+            });
+        };
+
+        // 执行实际的资源加载
+        const loadResources = async () => {
+            const startTime = Date.now();
+            
+            // 优先加载字体
+            loadingTip.textContent = loadingTexts[0];
+            await this.loadGameFont();
+            updateProgress(25);
+            
+            // 加载其他资源
+            const otherResources = await Promise.all([
+                this.loadFontAwesome(),
+                this.loadAudios()
+            ]);
+            
+            // 创建模拟加载动画
+            let progress = 25;
+            const interval = setInterval(() => {
+                progress += 1;
+                if (progress <= 100) {
+                    updateProgress(progress);
+                    const textIndex = Math.min(
+                        Math.floor(progress / 25),
+                        loadingTexts.length - 1
+                    );
+                    loadingTip.textContent = loadingTexts[textIndex];
+                }
+                if (progress >= 100) {
+                    clearInterval(interval);
+                    onLoadComplete();
+                }
+            }, 20);
+        };
+
+        // 开始加载
+        loadResources().catch(console.error);
+    }
+
+    // 加载游戏字体
+    loadGameFont() {
+        return new Promise((resolve) => {
+            const font = new FontFace('GameFont', 'url(font.ttf)');
+            font.load().then((loadedFont) => {
+                document.fonts.add(loadedFont);
+                console.log('游戏字体加载完成');
+                resolve();
+            }).catch((error) => {
+                console.error('游戏字体加载失败:', error);
+                resolve(); // 即使失败也继续
+            });
+        });
+    }
+
+    onResourcesLoaded(loadingScreen, gameContainer) {
+        console.log('All resources loaded');
+        loadingScreen.querySelector('.loading-tip').textContent = '加载完成，正在启动游戏...';
+        
+        setTimeout(() => {
+            // 淡出加载界面
+            loadingScreen.style.opacity = '0';
+            loadingScreen.style.transition = 'opacity 0.5s ease';
+            
+            // 显示游戏界面
+            gameContainer.style.opacity = '1';
+            
+            // 移除加载界面并开始游戏
+            setTimeout(() => {
+                loadingScreen.remove();
+                this.createGrid();
+                this.bindEvents();
+            }, 500);
+        }, 500);
+    }
+
+    // 加载字体资源
+    loadFonts() {
+        return Promise.all([
+            document.fonts.load('1em "Rubik Mono One"')
+        ]).catch(err => {
+            console.error('字体加载失败:', err);
+            return Promise.resolve(); // 即使失败也继续
+        });
+    }
+
+    // 加载音频资源
+    loadAudios() {
+        const audios = [
+            { id: 'bgMusic', src: 'background-music.mp3' },
+            { id: 'matchSound', src: 'match.mp3' },
+            { id: 'errorSound', src: 'error.mp3' },
+            { id: 'dingSound', src: 'ding.mp3' },
+            { id: 'gameOverSound', src: 'gameover.mp3' }
+        ];
+
+        return Promise.all(audios.map(audio => {
+            return new Promise((resolve) => {
+                const audioElement = document.getElementById(audio.id);
+                if (!audioElement) {
+                    console.warn(`音频元素 ${audio.id} 未找到`);
+                    resolve();
+                    return;
+                }
+                
+                const onLoad = () => {
+                    console.log(`音频加载完成: ${audio.id}`);
+                    resolve();
+                };
+                
+                audioElement.addEventListener('canplaythrough', onLoad, { once: true });
+                audioElement.addEventListener('error', () => {
+                    console.warn(`音频加载失败: ${audio.id}`);
+                    resolve();
+                }, { once: true });
+                
+                // 如果音频已经可以播放，直接解析
+                if (audioElement.readyState >= 4) {
+                    resolve();
+                }
+            });
+        }));
+    }
+
+    // 加载Font Awesome
+    loadFontAwesome() {
+        return new Promise((resolve) => {
+            const link = document.querySelector('link[href*="font-awesome"]');
+            if (link) {
+                // 如果已经加载，检查是否可用
+                const checkFontAwesome = () => {
+                    const testElement = document.createElement('i');
+                    testElement.className = 'fas fa-star';
+                    testElement.style.visibility = 'hidden';
+                    document.body.appendChild(testElement);
+                    
+                    const isFontLoaded = testElement.offsetWidth > 0;
+                    document.body.removeChild(testElement);
+                    
+                    if (isFontLoaded) {
+                        console.log('Font Awesome 已加载');
+                        resolve();
+                    } else {
+                        setTimeout(checkFontAwesome, 100);
+                    }
+                };
+                checkFontAwesome();
+            } else {
+                // 如果需要加载
+                const newLink = document.createElement('link');
+                newLink.rel = 'stylesheet';
+                newLink.href = 'https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css';
+                
+                newLink.onload = () => {
+                    console.log('Font Awesome 加载完成');
+                    resolve();
+                };
+                
+                newLink.onerror = () => {
+                    console.error('Font Awesome 加载失败');
+                    resolve(); // 即使失败也继续
+                };
+                
+                document.head.appendChild(newLink);
             }
-        }, 100);
+        });
     }
 }
 

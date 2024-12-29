@@ -6,16 +6,24 @@
     <title>消消派对</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
     <link rel="stylesheet" href="style.css">
-    <link href="https://fonts.cdnfonts.com/css/orbitron-2" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Rubik+Mono+One&display=swap" rel="stylesheet">
 </head>
 <body>
     <!-- 加载界面 -->
     <div class="loading-screen">
-        <div class="loading-text">消消派对</div>
+        <div class="game-title">
+            <div class="title-char">消</div>
+            <div class="title-char">消</div>
+            <div class="title-char">派</div>
+            <div class="title-char">对</div>
+        </div>
         <div class="loading-progress">
             <div class="progress-bar"></div>
         </div>
-        <div class="loading-tip">加载游戏场景...</div>
+        <div class="loading-tip">加载游戏资源...</div>
+        <button class="start-btn">
+            开始游戏
+        </button>
     </div>
 
     <!-- 游戏容器 -->
@@ -64,6 +72,9 @@
     <audio id="gameOverSound" preload="auto">
         <source src="gameover.mp3" type="audio/mpeg">
     </audio>
+
+    <!-- 添加作者信息 -->
+    <div class="author-info">Made by yfgeek & AI</div>
 
     <script src="game.js"></script>
 </body>

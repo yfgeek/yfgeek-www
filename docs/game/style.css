@@ -119,8 +119,8 @@ body {
     justify-content: center;
     align-items: center;
     opacity: 0;
-    transform: scale(0);
-    transition: all 0.1s ease;
+    transform: translateX(-20px);
+    transition: none;
     transform-style: preserve-3d;
     perspective: 1000px;
     overflow: visible !important;
@@ -346,8 +346,9 @@ body {
 /* 显示状态的式 */
 .grid-item.show {
     opacity: 1;
-    transform: scale(1);
-} 
+    transform: translateX(0);
+    animation: item-appear 0.3s ease-out;
+}
 
 /* 添加新的五彩纸屑动画样式 */
 .confetti-container {
@@ -564,6 +565,7 @@ body {
     background: rgba(255, 255, 255, 0.2);
     border-radius: 5px;
     overflow: hidden;
+    margin-top: 20px;
 }
 
 .progress-bar {
@@ -721,4 +723,206 @@ body {
 .matched {
     visibility: hidden !important;
     pointer-events: none !important;
+} 
+
+@keyframes item-appear {
+    0% {
+        transform: translateX(-20px);
+        opacity: 0;
+    }
+    50% {
+        transform: translateX(5px);
+        opacity: 0.8;
+    }
+    100% {
+        transform: translateX(0);
+        opacity: 1;
+    }
+} 
+
+/* 导入 Righteous 字体 */
+@import url('https://fonts.googleapis.com/css2?family=Righteous&display=swap');
+
+.loading-text {
+    font-family: 'Righteous', cursive;
+    font-size: 48px;
+    color: white;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+    margin-bottom: 30px;
+}
+
+.start-btn {
+    background: #FFB300;  /* 黄色背景 */
+    color: white;
+    padding: 15px 40px;
+    border-radius: 25px;
+    border: none;
+    font-size: 20px;
+    font-weight: bold;
+    cursor: pointer;
+    position: relative;
+    transition: transform 0.3s ease;
+    margin-top: 40px;
+    animation: float 2s ease-in-out infinite;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);  /* 添加阴影 */
+}
+
+.start-btn:hover {
+    background: #FFC107;  /* 悬停时稍微亮一点 */
+    transform: scale(1.05);
+}
+
+.start-btn:active {
+    background: #FFA000;  /* 点击时稍微暗一点 */
+    transform: scale(0.95);
+}
+
+/* 移除旋转发光效果 */
+.btn-glow {
+    display: none;
+}
+
+@keyframes float {
+    0%, 100% {
+        transform: translateY(0);
+    }
+    50% {
+        transform: translateY(-10px);
+    }
+}
+
+.author-info {
+    position: fixed;  /* 改为 fixed 定位 */
+    top: 20px;
+    right: 20px;
+    color: white;
+    font-size: 14px;
+    font-family: 'Arial', sans-serif;
+    background: rgba(0, 0, 0, 0.3);
+    padding: 5px 10px;
+    border-radius: 15px;
+    z-index: 9999;  /* 确保显示在最上层 */
+}
+
+/* 改用更粗的字体 */
+@import url('https://fonts.googleapis.com/css2?family=Rubik+Mono+One&display=swap');
+
+.loading-text {
+    font-family: 'Rubik Mono One', sans-serif;
+    font-size: 42px;
+    color: white;
+    text-shadow: 3px 3px 6px rgba(0, 0, 0, 0.3);
+    margin-bottom: 30px;
+    letter-spacing: 2px;
+}
+
+.start-btn {
+    background: #FFB300;  /* 黄色背景 */
+    color: white;
+    padding: 15px 40px;
+    border-radius: 25px;
+    border: none;
+    font-size: 20px;
+    font-weight: bold;
+    cursor: pointer;
+    position: relative;
+    transition: transform 0.3s ease;
+    margin-top: 40px;
+    animation: float 2s ease-in-out infinite;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);  /* 添加阴影 */
+}
+
+.start-btn:hover {
+    background: #FFC107;  /* 悬停时稍微亮一点 */
+    transform: scale(1.05);
+}
+
+.start-btn:active {
+    background: #FFA000;  /* 点击时稍微暗一点 */
+    transform: scale(0.95);
+}
+
+/* 移除旋转发光效果 */
+.btn-glow {
+    display: none;
+}
+
+@keyframes float {
+    0%, 100% {
+        transform: translateY(0);
+    }
+    50% {
+        transform: translateY(-10px);
+    }
+}
+
+.author-info {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    color: rgba(255, 255, 255, 0.8);
+    font-size: 14px;
+    font-family: 'Arial', sans-serif;
+} 
+
+.game-title {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 30px;
+    overflow: hidden;
+    width: 100%;
+    height: 60px;
+    gap: 5px;  /* 字符之间的间距 */
+    margin-top: -40px;  /* 往上移动 */
+}
+
+.title-char {
+    font-family: 'GameFont', sans-serif;
+    font-size: 60px;  /* 改为60px */
+    color: white;
+    text-shadow: 3px 3px 6px rgba(0, 0, 0, 0.3);
+    opacity: 0;
+    position: relative;
+    animation: rollChar 0.4s cubic-bezier(0.3, 1.8, 0.7, 1) forwards;
+}
+
+/* 为每个字符设置不同的延迟，但间隔缩短 */
+.title-char:nth-child(1) { animation-delay: 0s; }
+.title-char:nth-child(2) { animation-delay: 0.08s; }
+.title-char:nth-child(3) { animation-delay: 0.16s; }
+.title-char:nth-child(4) { animation-delay: 0.24s; }
+
+@keyframes rollChar {
+    0% {
+        transform: translateX(-200%) rotate(-540deg) scale(0);
+        opacity: 0;
+    }
+    60% {
+        transform: translateX(20%) rotate(20deg) scale(1.2);
+        opacity: 1;
+    }
+    80% {
+        transform: translateX(-10%) rotate(-10deg) scale(0.9);
+    }
+    100% {
+        transform: translateX(0) rotate(0) scale(1);
+        opacity: 1;
+    }
+}
+
+/* 移除原来的标题样式 */
+.title-left, .title-right {
+    display: none;
+}
+
+/* 移除原来的 loading-text 样式 */
+.loading-text {
+    display: none;
+} 
+
+@font-face {
+    font-family: 'GameFont';
+    src: url('font.ttf') format('truetype');
+    font-weight: bold;
 } 
