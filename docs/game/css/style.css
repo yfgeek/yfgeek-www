@@ -878,8 +878,8 @@ body {
 }
 
 .title-char {
-    font-family: 'GameFont', sans-serif;
-    font-size: 60px;  /* 改为60px */
+    font-family: 'GameFont', sans-serif;  /* 改回使用自定义字体 */
+    font-size: 60px;
     color: white;
     text-shadow: 3px 3px 6px rgba(0, 0, 0, 0.3);
     opacity: 0;
@@ -923,7 +923,7 @@ body {
 
 @font-face {
     font-family: 'GameFont';
-    src: url('font.ttf') format('truetype');
+    src: url('../webfonts/font.ttf') format('truetype');
     font-weight: bold;
 } 
 

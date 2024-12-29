@@ -1,19 +1,20 @@
 const CACHE_NAME = 'xiaoxiao-party-v1';
 const urlsToCache = [
-    '/',
-    '/index.html',
-    '/css/style.css',
-    '/css/all.min.css',
-    '/js/game.js',
-    '/font.ttf',
-    '/webfonts/fa-solid-900.woff2',
-    '/webfonts/fa-solid-900.woff',
-    '/webfonts/fa-solid-900.ttf',
-    '/audio/background-music.mp3',
-    '/audio/match.mp3',
-    '/audio/error.mp3',
-    '/audio/ding.mp3',
-    '/audio/gameover.mp3'
+    './',
+    './index.html',
+    './css/style.css',
+    './css/all.min.css',
+    './js/game.js',
+    './webfonts/font.ttf',
+    './favicon.png',
+    './webfonts/fa-solid-900.woff2',
+    './webfonts/fa-solid-900.woff',
+    './webfonts/fa-solid-900.ttf',
+    './audio/background-music.mp3',
+    './audio/match.mp3',
+    './audio/error.mp3',
+    './audio/ding.mp3',
+    './audio/gameover.mp3'
 ];
 
 self.addEventListener('install', (event) => {

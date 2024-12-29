@@ -1425,7 +1425,7 @@ class FarmGame {
     // 加载游戏字体
     loadGameFont() {
         return new Promise((resolve) => {
-            const font = new FontFace('GameFont', 'url(font.ttf)');
+            const font = new FontFace('GameFont', 'url(webfonts/font.ttf)');
             font.load().then((loadedFont) => {
                 document.fonts.add(loadedFont);
                 console.log('游戏字体加载完成');
@@ -1575,12 +1575,14 @@ function showLevelUpAnimation() {
 // 注册 Service Worker
 if ('serviceWorker' in navigator) {
     window.addEventListener('load', () => {
-        navigator.serviceWorker.register('/sw.js')
-            .then(registration => {
-                console.log('ServiceWorker registration successful');
-            })
-            .catch(err => {
-                console.log('ServiceWorker registration failed: ', err);
-            });
+        navigator.serviceWorker.register('./sw.js', {
+            scope: './'
+        })
+        .then(registration => {
+            console.log('ServiceWorker registration successful');
+        })
+        .catch(err => {
+            console.log('ServiceWorker registration failed: ', err);
+        });
     });
 } 
