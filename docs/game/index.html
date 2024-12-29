@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
     <meta name="apple-mobile-web-app-capable" content="yes">
-    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
     <meta name="apple-mobile-web-app-title" content="消消派对">
     <meta name="theme-color" content="#4CAF50">
     
@@ -15,10 +15,20 @@
     <link rel="apple-touch-icon" sizes="180x180" href="icons/apple-icon-180.png">
     <link rel="manifest" href="manifest.json">
     
-    <!-- 已有的其他链接 -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
-    <link rel="stylesheet" href="style.css">
-    <link href="https://fonts.googleapis.com/css2?family=Rubik+Mono+One&display=swap" rel="stylesheet">
+    <!-- 使用本地 Font Awesome -->
+    <link rel="stylesheet" href="css/all.min.css">
+    <link rel="stylesheet" href="css/style.css">
+    
+    <!-- iOS 启动画面 -->
+    <link rel="apple-touch-startup-image" href="splash/apple-splash-2048-2732.jpg" media="(device-width: 1024px) and (device-height: 1366px) and (-webkit-device-pixel-ratio: 2)">
+    <link rel="apple-touch-startup-image" href="splash/apple-splash-1668-2388.jpg" media="(device-width: 834px) and (device-height: 1194px) and (-webkit-device-pixel-ratio: 2)">
+    <link rel="apple-touch-startup-image" href="splash/apple-splash-1536-2048.jpg" media="(device-width: 768px) and (device-height: 1024px) and (-webkit-device-pixel-ratio: 2)">
+    <link rel="apple-touch-startup-image" href="splash/apple-splash-1125-2436.jpg" media="(device-width: 375px) and (device-height: 812px) and (-webkit-device-pixel-ratio: 3)">
+    <link rel="apple-touch-startup-image" href="splash/apple-splash-1242-2688.jpg" media="(device-width: 414px) and (device-height: 896px) and (-webkit-device-pixel-ratio: 3)">
+    <link rel="apple-touch-startup-image" href="splash/apple-splash-828-1792.jpg" media="(device-width: 414px) and (device-height: 896px) and (-webkit-device-pixel-ratio: 2)">
+    <link rel="apple-touch-startup-image" href="splash/apple-splash-1242-2208.jpg" media="(device-width: 414px) and (device-height: 736px) and (-webkit-device-pixel-ratio: 3)">
+    <link rel="apple-touch-startup-image" href="splash/apple-splash-750-1334.jpg" media="(device-width: 375px) and (device-height: 667px) and (-webkit-device-pixel-ratio: 2)">
+    <link rel="apple-touch-startup-image" href="splash/apple-splash-640-1136.jpg" media="(device-width: 320px) and (device-height: 568px) and (-webkit-device-pixel-ratio: 2)">
 </head>
 <body>
     <!-- 加载界面 -->
@@ -70,24 +80,24 @@
 
     <!-- 音频元素 -->
     <audio id="bgMusic" loop>
-        <source src="background-music.mp3" type="audio/mpeg">
+        <source src="audio/background-music.mp3" type="audio/mpeg">
     </audio>
     <audio id="matchSound" preload="auto">
-        <source src="match.mp3" type="audio/mpeg">
+        <source src="audio/match.mp3" type="audio/mpeg">
     </audio>
     <audio id="errorSound" preload="auto">
-        <source src="error.mp3" type="audio/mpeg">
+        <source src="audio/error.mp3" type="audio/mpeg">
     </audio>
     <audio id="dingSound" preload="auto">
-        <source src="ding.mp3" type="audio/mpeg">
+        <source src="audio/ding.mp3" type="audio/mpeg">
     </audio>
     <audio id="gameOverSound" preload="auto">
-        <source src="gameover.mp3" type="audio/mpeg">
+        <source src="audio/gameover.mp3" type="audio/mpeg">
     </audio>
 
     <!-- 添加作者信息 -->
     <div class="author-info">Made by yfgeek & AI</div>
 
-    <script src="game.js"></script>
+    <script src="js/game.js"></script>
 </body>
 </html> 
