@@ -18,8 +18,6 @@ Icon
 .VolumeIcon.icns
 .com.apple.timemachine.donotpresent
 
-# Build output
-docs/
 
 # IDE
 .idea/

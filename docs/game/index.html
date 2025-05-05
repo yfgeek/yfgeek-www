@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="apple-mobile-web-app-title" content="消消派对">
+    <meta name="theme-color" content="#4CAF50">
+    
+    <title>消消派对</title>
+    
+    <!-- 简化图标 -->
+    <link rel="icon" type="image/png" href="favicon.png">
+    <link rel="manifest" href="manifest.json">
+    
+    <!-- 使用本地 Font Awesome -->
+    <link rel="stylesheet" href="css/all.min.css">
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <!-- 加载界面 -->
+    <div class="loading-screen">
+        <div class="game-title">
+            <div class="title-char">消</div>
+            <div class="title-char">消</div>
+            <div class="title-char">派</div>
+            <div class="title-char">对</div>
+        </div>
+        <div class="loading-progress">
+            <div class="progress-bar"></div>
+        </div>
+        <div class="loading-tip">加载游戏资源...</div>
+        <button class="start-btn">
+            开始游戏
+        </button>
+    </div>
+
+    <!-- 游戏容器 -->
+    <div class="game-container" style="opacity: 0;">
+        <div class="game-content">
+            <div class="game-header">
+                <div class="header-row">
+                    <div class="level-text">第 1 关</div>
+                    <button class="music-btn">
+                        <i class="fas fa-volume-up"></i>
+                    </button>
+                </div>
+                <div class="header-row">
+                    <div class="score-display">
+                        <span class="score-value">0</span>
+                    </div>
+                </div>
+            </div>
+            <div class="game-grid"></div>
+            <div class="game-controls">
+                <button class="control-btn hint-btn">
+                    <i class="fas fa-lightbulb"></i>
+                    <span class="plus-icon">3</span>
+                </button>
+                <button class="control-btn shuffle-btn">
+                    <i class="fas fa-random"></i>
+                    <span class="plus-icon">3</span>
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- 音频元素 -->
+    <audio id="bgMusic" loop>
+        <source src="audio/background-music.mp3" type="audio/mpeg">
+    </audio>
+    <audio id="matchSound" preload="auto">
+        <source src="audio/match.mp3" type="audio/mpeg">
+    </audio>
+    <audio id="errorSound" preload="auto">
+        <source src="audio/error.mp3" type="audio/mpeg">
+    </audio>
+    <audio id="dingSound" preload="auto">
+        <source src="audio/ding.mp3" type="audio/mpeg">
+    </audio>
+    <audio id="gameOverSound" preload="auto">
+        <source src="audio/gameover.mp3" type="audio/mpeg">
+    </audio>
+
+    <!-- 添加作者信息 -->
+    <div class="author-info">Made by yfgeek & AI</div>
+
+    <script src="js/game.js"></script>
+</body>
+</html> 
