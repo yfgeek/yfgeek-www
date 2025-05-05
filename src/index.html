@@ -73,8 +73,42 @@
 <div class="block block-33 block-more">
  <h3 data-lang="more-header">And more?</h3>
  <h4><small data-lang="more-des">A computer geek with great passion, loving life, food, travel, politics, culture and any new things of the technologies.</small></h4>
+ 
+ <!-- 社交按钮 -->
+ <div class="social-btn-row">
+   <a href="mailto:your@email.com" class="social-btn" title="邮箱" target="_blank"><i class="fa fa-envelope"></i></a>
+   <a href="https://www.tiktok.com/@yourid" class="social-btn" title="TikTok" target="_blank"><i class="fa fa-music"></i></a>
+   <a href="https://www.xiaohongshu.com/user/profile/yourid" class="social-btn" title="小红书" target="_blank"><i class="fa fa-book"></i></a>
+   <a href="https://github.com/yfgeek" class="social-btn" title="GitHub" target="_blank"><i class="fa fa-github"></i></a>
+ </div>
 </div>
 
+<style>
+.social-btn-row {
+  display: flex;
+  gap: 16px;
+  margin-top: 18px;
+}
+.social-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 44px;
+  height: 44px;
+  border: 1.5px solid #fff;
+  border-radius: 12px;
+  background: transparent;
+  color: #fff;
+  font-size: 22px;
+  transition: background 0.2s, color 0.2s, border 0.2s;
+  text-decoration: none;
+}
+.social-btn:hover {
+  background: #fff;
+  color: #222;
+  border-color: #eee;
+}
+</style>
 
 <div class="block block-33 block-detail arrow-right block-programming-detail">
  <h3 data-lang="programming-header">Programming</h3>
@@ -114,10 +148,32 @@
 <div class="block block-33 block-detail arrow-right block-travel-detail">
  <h3 data-lang="travel-header">Travel</h3>
  <h4><small data-lang="travel-des">I have ever traveled extensively over China and was dreamming of traveling around the world. Really enjoying the different cultures and the photography when traveling.</small></h4>
-
+</div>
+<div class="block block-34 block-travel">
+</div>
+<div class="block block-33 block-travel-map">
+  <div id="travel-map" style="width: 100%; height: 450px; margin: 0 auto;"></div>
 </div>
 
-<div class="block block-67 block-travel"></div>
+<!-- 高德地图API -->
+<script src="https://webapi.amap.com/maps?v=2.0&key=90947f24f99562fcff40a29f38ecf84e"></script>
+<script>
+fetch('i18n/travel-locations.json')
+  .then(res => res.json())
+  .then(locations => {
+    var map = new AMap.Map('travel-map', {
+      zoom: 2,
+      center: [0, 30]
+    });
+    locations.forEach(function(loc) {
+      new AMap.Marker({
+        position: [loc.lng, loc.lat],
+        title: loc.name,
+        map: map
+      });
+    });
+  });
+</script>
 
 <div class="block block-67 block-cooking"></div>
 

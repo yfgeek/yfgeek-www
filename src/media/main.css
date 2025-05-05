@@ -236,7 +236,7 @@ a:focus {
 }
 
 .block-simple {
-    background: #fff url('../img/me.jpg') top left no-repeat;
+    background: #fff url('../img/me.jpg') center center no-repeat;
     background-size: 100% auto;
 }
 
@@ -447,6 +447,10 @@ a:focus {
 
 #language_menu a:hover {
 	background-color: #EEE
+}
+
+.block-travel-map{
+	padding: 0px !important;
 }
 
 /* Medium screen */
