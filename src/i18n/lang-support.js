@@ -53,12 +53,12 @@
 				return target;
 			},
 			getType : function(){
-				// 修改者 yfgeek，之前的方法无法获得真正的浏览器属性，已经改
 				var langs = navigator.language ||  navigator.browserLanguage;   //判断除IE外其他浏览器使用语言
 				//如果 定义了  window.H5LangType ，优先使用 window.H5LangType
 				//var langs = window.navigator.userAgent.match( /Language\/([\w\-]+)/i) || [] ;
 				console.log(langs.toLowerCase());
-				return window.H5LangType || langs.toLowerCase() || this.opt.defaultLang || 'en';
+				var type = window.H5LangType || langs.toLowerCase() || this.opt.defaultLang || 'en';
+				return normalizeLangType(type);
 			},
 			type : 'en'
 
@@ -103,7 +103,7 @@
 		var self = this,
 			config = document.body.getAttribute('data-lang-config') || {};
 
-		self.type = lang;
+		self.type = normalizeLangType(lang);
 
 		//合并后的 options
 		self.opt = self.extend({}, self.options, parseObj( config ) );
@@ -450,5 +450,15 @@
 		} catch (e) {
 			return {};
 		}
+	}
+
+	// 归一化语言类型，模糊匹配
+	function normalizeLangType(type) {
+		type = (type || '').toLowerCase();
+		if (type === 'zh-cn' || type === 'zh-hans' || type === 'zh') return 'zh-cn';
+		if (type === 'zh-tw' || type === 'zh-hant' || type === 'zh-hk') return 'zh-tw';
+		if (type === 'en' || type === 'en-us' || type === 'en-gb') return 'en';
+		// 其它语言可继续补充
+		return type;
 	}
 })(document, window);
