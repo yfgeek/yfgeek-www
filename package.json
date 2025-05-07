@@ -5,7 +5,8 @@
   "main": "index.js",
   "scripts": {
     "build": "gulp build",
-    "dev": "gulp watch"
+    "dev": "gulp watch",
+    "preview": "http-server docs -p 3000"
   },
   "author": "",
   "license": "MIT",
@@ -16,9 +17,8 @@
     "gulp-imagemin": "^7.1.0",
     "gulp-sass": "^5.1.0",
     "gulp-uglify": "^3.0.2",
-    "gulp-uncss": "^1.0.6",
     "gulp-useref": "^5.0.0",
-    "sass": "^1.87.0",
-    "uncss": "^0.17.3"
+    "http-server": "^14.1.1",
+    "sass": "^1.87.0"
   }
 }

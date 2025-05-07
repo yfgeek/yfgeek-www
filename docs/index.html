@@ -39,13 +39,17 @@
   .then(locations => {
     var map = new AMap.Map('travel-map', {
       zoom: 2,
-      center: [0, 30]
+      center: [60, 40]
     });
     locations.forEach(function(loc) {
       new AMap.Marker({
         position: [loc.lng, loc.lat],
         title: loc.name,
-        map: map
+        map: map,
+        label: {
+          content: loc.name,
+          offset: new AMap.Pixel(10, -30)
+        }
       });
     });
   });</script><div class="block block-67 block-cooking"></div><div class="block block-33 block-detail arrow-left block-cooking-detail"><h3 data-lang="cooking-header">Cooking</h3><h4><small data-lang="cooking-des">Enjoying the cuisine form different countries, including Chinese, French, Indian and any other cuisines. Literally, I'm a food lover and can cook for myself.</small></h4><div class="button-container"><a href="https://www.instagram.com/yfgeek/" class="button button-outline" target="_blank" data-lang="btn-instagram">Instagram</a></div></div><div class="block block-100 block-endblock"><h3 data-lang="endblock-header">Geek</h3><h4><small data-lang="endblock-des-1">With the development of the Internet, generation Z has grown up.</small></h4><h4><small data-lang="endblock-des-2">When I was a child, I made a simple VB6 program according to the textbook, feeling like a treasure.</small></h4><h4><small data-lang="endblock-des-3">At the age of 12, I have always been exploring the functionality of IIS and ASP which was my toy.</small></h4><h4><small data-lang="endblock-des-4">When I was 14, I made a lot of templates for a blog system or even got a webshell of a website with the feeling of stirring.</small></h4><h4><small data-lang="endblock-des-5">Finally, I fell in love with programming. Even in the S60 platform, I can write a Python program run on the phone.</small></h4><h4><small data-lang="endblock-des-6">When I was in high school, I took part in an algorithm competition. After that, I can see the beauty of the algorithm.</small></h4><h4><small data-lang="endblock-des-7">Once my friend recommend me to use Ubuntu, Linux became my favorite system and got that even CLI can make everything.</small></h4><h4><small data-lang="endblock-des-8">Anyway, I am a real computer geek who is keen on jailbreaking, rooting and any other operation can control your device.</small></h4><h4><small data-lang="endblock-des-9">The motivation of above idea is quite simple. Doing what I love to do makes me feel happier again and again.</small></h4><h4><small data-lang="endblock-des-10">The years I studying at the university were the fastest growing years of technologies. I learned more as possbile.</small></h4><h4><small data-lang="endblock-des-11">The life became more meaningful after I joined GitHub. I started writing some repositories related to the front-end and back-end.</small></h4><h4><small data-lang="endblock-des-12">Since 2000, I have been studying different programming languages and technologies.</small></h4><h4><small data-lang="endblock-des-13">Even I do not know why my path is so complicated.</small></h4><h4><small data-lang="endblock-des-14">The technologies is so wide but for me, I'm just keeping</small></h4><h3><i class="fa fa-heart" aria-hidden="true"></i><small data-lang="endblock-des-15"> Follwing my heart</small></h3></div><script>function addAnimationDelay() {

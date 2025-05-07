@@ -163,13 +163,17 @@ fetch('i18n/travel-locations.json')
   .then(locations => {
     var map = new AMap.Map('travel-map', {
       zoom: 2,
-      center: [0, 30]
+      center: [60, 40]
     });
     locations.forEach(function(loc) {
       new AMap.Marker({
         position: [loc.lng, loc.lat],
         title: loc.name,
-        map: map
+        map: map,
+        label: {
+          content: loc.name,
+          offset: new AMap.Pixel(10, -30)
+        }
       });
     });
   });

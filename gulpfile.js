@@ -4,8 +4,6 @@
  */
 const gulp = require('gulp');
 const uglify = require('gulp-uglify');
-const uncss = require('gulp-uncss');
-const imagemin = require('gulp-imagemin');
 const htmlmin = require('gulp-htmlmin');
 const useref = require('gulp-useref');
 const cleanCSS = require('gulp-clean-css');
@@ -13,6 +11,7 @@ const sass = require('gulp-sass')(require('sass'));
 
 // 压缩 js 文件
 function script() {
+    console.log('Processing JS files...');
     return gulp.src('src/i18n/*.js')
         .pipe(uglify())
         .pipe(gulp.dest('docs/i18n'));
@@ -20,46 +19,59 @@ function script() {
 
 // 压缩 css 文件
 function minicss() {
+    console.log('Processing CSS files...');
     return gulp.src('src/media/*.css')
         .pipe(cleanCSS({compatibility: 'ie8'}))
         .pipe(gulp.dest('docs/media'));
 }
 
-// 删除多余代码
-function uncssTask() {
-    return gulp.src(['src/*'])
-        .pipe(uncss({
-            html: ['src/index.html']
-        }))
-        .pipe(gulp.dest('docs/media'));
-}
-
 // 压缩html
 function html() {
+    console.log('Processing HTML files...');
     return gulp.src('src/index.html')
         .pipe(htmlmin({collapseWhitespace: true, removeComments: true}))
         .pipe(gulp.dest('docs/'));
 }
 
-// 压缩图片
+// 复制图片
 function img() {
+    console.log('Processing image files...');
     return gulp.src(['src/img/*'])
-        .pipe(imagemin())
         .pipe(gulp.dest('docs/img'));
 }
 
 // 复制 JSON 文件
 function copyJson() {
+    console.log('Processing JSON files...');
     return gulp.src('src/i18n/*.json')
         .pipe(gulp.dest('docs/i18n'));
 }
 
 // 监听文件变化
 function watch() {
-    gulp.watch('src/i18n/*.js', script);
-    gulp.watch('src/media/*.css', minicss);
-    gulp.watch('src/index.html', html);
-    gulp.watch('src/img/*', img);
+    console.log('Starting watch task...');
+    
+    // 先执行一次构建
+    build();
+    
+    // 监听文件变化
+    gulp.watch('src/i18n/*.js', script).on('change', function(path) {
+        console.log('JS file changed:', path);
+    });
+    
+    gulp.watch('src/media/*.css', minicss).on('change', function(path) {
+        console.log('CSS file changed:', path);
+    });
+    
+    gulp.watch('src/index.html', html).on('change', function(path) {
+        console.log('HTML file changed:', path);
+    });
+    
+    gulp.watch('src/img/*', img).on('change', function(path) {
+        console.log('Image file changed:', path);
+    });
+    
+    console.log('Watch task started successfully');
 }
 
 // 构建任务
@@ -68,7 +80,6 @@ const build = gulp.series(script, minicss, html, img, copyJson);
 // 导出任务
 exports.script = script;
 exports.minicss = minicss;
-exports.uncss = uncssTask;
 exports.html = html;
 exports.img = img;
 exports.watch = watch;
