@@ -651,9 +651,9 @@ body.theme-winxp {
   .theme-winxp :is(.context-menu,.system-menu,.start-menu):not(.hidden):not(.menu-closing),
   .theme-winxp :is(.context-submenu-group:hover>.context-submenu,.context-submenu-group:focus-within>.context-submenu),
   .theme-winxp :is(.program-group:hover>.program-menu,.program-group:focus-within>.program-menu,.start-subgroup:hover>.start-submenu,.start-subgroup:focus-within>.start-submenu,.office-group:hover>.office-menu,.office-group:focus-within>.office-menu) {
-    animation:xp-shell-fade-in .11s ease-out;
+    animation:xp-shell-fade-in .16s ease-out;
   }
-  .theme-winxp .menu-closing { pointer-events:none; animation:xp-shell-fade-out .11s ease-in forwards!important; }
+  .theme-winxp .menu-closing { pointer-events:none; animation:xp-shell-fade-out .16s ease-in forwards!important; }
 }
 
 @media (prefers-reduced-motion:reduce) {
