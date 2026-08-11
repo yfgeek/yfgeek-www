@@ -602,6 +602,64 @@ body.theme-winxp {
 }
 .theme-winxp .start-ico { width:32px; height:32px; flex:0 0 32px; image-rendering:auto; }
 
+/* XP context and command menus share one popup surface. */
+.theme-winxp :is(.context-menu,.context-submenu,.system-menu) {
+  padding:2px;
+  color:#111;
+  background:#fff;
+  border:1px solid #7f9db9;
+  border-radius:1px;
+  box-shadow:2px 2px 5px rgba(0,0,0,.38);
+}
+.theme-winxp .context-menu,
+.theme-winxp .context-submenu { width:178px; }
+.theme-winxp .context-submenu { left:calc(100% - 2px); top:-3px; }
+.theme-winxp .context-menu.context-flip .context-submenu { right:calc(100% - 2px); }
+.theme-winxp :is(.context-menu,.context-submenu,.system-menu) button {
+  min-height:24px;
+  padding:3px 20px;
+  color:#111;
+  background:transparent;
+  border:0;
+  border-radius:0;
+  font:11px/18px Tahoma,"PingFang SC",sans-serif;
+}
+.theme-winxp .system-menu button { padding-inline:18px; }
+.theme-winxp :is(.context-menu,.context-submenu,.system-menu) button:hover,
+.theme-winxp :is(.context-menu,.context-submenu,.system-menu) button:focus-visible {
+  color:#fff;
+  background:#316ac5;
+  outline:0;
+}
+.theme-winxp :is(.context-menu,.context-submenu,.system-menu) button:disabled {
+  color:#aca899;
+  background:transparent;
+  text-shadow:none;
+}
+.theme-winxp :is(.context-menu,.context-submenu,.system-menu) hr {
+  margin:3px 2px;
+  border:0;
+  border-top:1px solid #e0e0e0;
+}
+
+@keyframes xp-shell-fade-in { from { opacity:0; } to { opacity:1; } }
+@keyframes xp-shell-fade-out { from { opacity:1; } to { opacity:0; } }
+
+@media (hover:hover) and (min-width:761px) and (prefers-reduced-motion:no-preference) {
+  .theme-winxp .window:not(.hidden):not(.closing) { animation:xp-shell-fade-in .14s ease-out; }
+  .theme-winxp .window.closing { pointer-events:none; animation:xp-shell-fade-out .14s ease-in forwards; }
+  .theme-winxp :is(.context-menu,.system-menu,.start-menu):not(.hidden):not(.menu-closing),
+  .theme-winxp :is(.context-submenu-group:hover>.context-submenu,.context-submenu-group:focus-within>.context-submenu),
+  .theme-winxp :is(.program-group:hover>.program-menu,.program-group:focus-within>.program-menu,.start-subgroup:hover>.start-submenu,.start-subgroup:focus-within>.start-submenu,.office-group:hover>.office-menu,.office-group:focus-within>.office-menu) {
+    animation:xp-shell-fade-in .11s ease-out;
+  }
+  .theme-winxp .menu-closing { pointer-events:none; animation:xp-shell-fade-out .11s ease-in forwards!important; }
+}
+
+@media (prefers-reduced-motion:reduce) {
+  .theme-winxp :is(.window,.context-menu,.context-submenu,.system-menu,.start-menu,.program-menu,.start-submenu,.office-menu) { animation:none!important; }
+}
+
 /* Office XP uses flat gray toolbars with blue hot tracking. */
 .office-window .menubar,
 .office-window .office-toolbar { color:#111; background:linear-gradient(#f7f7f7,#dedede); border-color:#fff #9c9c9c #9c9c9c #fff; }
