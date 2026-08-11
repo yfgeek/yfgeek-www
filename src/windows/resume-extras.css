@@ -851,6 +851,16 @@
   border: 1px solid transparent;
 }
 
+.office-toolbar button > img {
+  display:block;
+  width:16px;
+  height:16px;
+  margin:auto;
+  object-fit:contain;
+  image-rendering:auto;
+  pointer-events:none;
+}
+
 .office-toolbar button:hover { border: 1px outset #fff; }
 .office-toolbar button:active { border-style: inset; }
 .office-toolbar > i { height: 24px; border-left: 1px solid #808080; border-right: 1px solid #fff; margin: 0 3px; }
@@ -870,7 +880,7 @@
   font: 9px monospace;
 }
 
-.word-workspace { padding: 24px; background: #808080; }
+.word-workspace { flex:1 1 0; min-height:0; padding:24px; overflow:scroll!important; background:#808080; scrollbar-gutter:stable both-edges; }
 .word-page {
   width: 760px;
   min-height: 1080px;
@@ -1110,6 +1120,8 @@ input[type="text"], input[type="password"], select, textarea { border-radius:0; 
 .ie-addressbar img { width:16px; height:16px; image-rendering:pixelated; }
 .ie-addressbar input { flex:1; min-width:0; height:24px; padding:2px 5px; background:#fff; border:2px inset #fff; font:12px Tahoma,Tahoma,sans-serif; }
 .ie-addressbar button { min-width:55px; height:25px; padding:0 8px; border:0; border-radius:0; background:#c0c0c0; box-shadow:inset -1px -1px #0a0a0a,inset 1px 1px #fff,inset -2px -2px #808080,inset 2px 2px #dfdfdf; font:12px Tahoma,Tahoma,sans-serif; }
+.ie-addressbar .ie-go-button { flex:0 0 28px; min-width:28px; width:28px; padding:2px; }
+.ie-addressbar .ie-go-button img { display:block; width:18px; height:18px; margin:auto; object-fit:contain; pointer-events:none; }
 .ie-addressbar button:active { box-shadow:inset -1px -1px #fff,inset 1px 1px #0a0a0a,inset -2px -2px #dfdfdf,inset 2px 2px #808080; transform:translate(1px,1px); }
 .ie-viewport { position:relative; overflow:hidden; background:#fff; }
 .ie-viewport iframe { display:block; width:100%; height:100%; border:0; background:#fff; }
@@ -1139,9 +1151,9 @@ input[type="text"], input[type="password"], select, textarea { border-radius:0; 
 .system-dialog .dialog-actions { min-height:48px; align-items:flex-start; padding:8px 14px 12px; }
 
 .remote-game-window { min-width:300px; min-height:260px; }
-.remote-game-stage { position:relative; flex:1; min-height:0; overflow:hidden; background:#087b18; }
+.remote-game-stage { position:relative; flex:1 1 0; min-width:0; min-height:0; overflow:hidden; contain:layout; background:#087b18; }
 .pinball-window .remote-game-stage { background:#000; }
-.remote-game-stage iframe { position:absolute; top:0; left:50%; display:block; border:0; background:transparent; transform:scale(var(--game-scale,1)); transform-origin:top center; }
+.remote-game-stage iframe { position:absolute; top:0; left:50%; display:block; border:0; background:transparent; transform:scale(var(--game-scale,1)); transform-origin:top center; will-change:transform; }
 .game-loading { position:absolute; inset:0; z-index:2; display:grid; place-content:center; justify-items:center; gap:8px; color:#000; background:#087b18; text-align:center; }
 .game-loading img { width:48px; height:48px; image-rendering:pixelated; }
 .game-loading b { font-size:16px; }

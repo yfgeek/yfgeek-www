@@ -14,9 +14,9 @@
       history.replaceState(null, '', location.pathname + location.hash);
     }
   </script>
-  <link rel="stylesheet" href="styles.css?v=20260811.14">
-  <link rel="stylesheet" href="resume-extras.css?v=20260811.14">
-  <link rel="stylesheet" href="theme-adapter.css?v=20260811.14">
+  <link rel="stylesheet" href="styles.css?v=20260811.15">
+  <link rel="stylesheet" href="resume-extras.css?v=20260811.15">
+  <link rel="stylesheet" href="theme-adapter.css?v=20260811.15">
 </head>
 <body class="theme-winxp shell-locked">
   <div class="boot-screen" id="bootScreen" aria-hidden="true"><div><img data-system-icon="logo" src="assets/icons/Logo_32x32_4.png" alt=""><section><small>YFGeek</small><b id="bootProductName">YFGeek XP</b><span id="bootEdition">Professional</span><em id="bootTagline">YFGeek Desktop</em></section></div><i></i></div>
@@ -74,7 +74,7 @@
         <button data-open="food"><img class="folder-item-icon" src="assets/icons/w2k/folder.svg" alt=""><b>美食图鉴</b><small>文件夹</small></button>
         <button data-url="https://blog.yfgeek.com"><span class="shortcut-wrap ie-shortcut"><img class="folder-item-icon" src="assets/icons/InternetExplorer6.png" alt=""><i>↗</i></span><b>探索文章.url</b><small>Internet 快捷方式</small></button>
       </div>
-      <footer class="statusbar"><span id="documentsCount">5 个对象</span><span id="documentsStatus">我的文档</span></footer>
+      <footer class="statusbar"><span id="documentsCount">5 个对象</span><span><b id="documentsAccess">内置目录</b> · <i id="documentsStatus">我的文档</i></span></footer>
     </section>
 
     <section class="window hidden" id="window-resume-files" data-app="resume-files" style="--x:26vw;--y:14vh;--w:min(560px,76vw);--h:min(420px,66vh)" aria-label="个人简历文件夹窗口">
@@ -257,7 +257,7 @@
       <header class="titlebar"><img class="title-icon" src="assets/icons/InternetExplorer6.png" alt=""><strong id="ieTitle">YFGeek Internet Explorer</strong><div class="window-actions"><button data-action="minimize" aria-label="最小化">_</button><button data-action="maximize" aria-label="还原">□</button><button data-action="close" aria-label="关闭">×</button></div></header>
       <div class="menubar"><button>文件(<u>F</u>)</button><button>编辑(<u>E</u>)</button><button>查看(<u>V</u>)</button><button>收藏(<u>A</u>)</button><button>工具(<u>T</u>)</button><button>帮助(<u>H</u>)</button></div>
       <div class="ie-toolbar" aria-label="浏览器工具栏"><button id="ieBack" title="后退" aria-label="后退"><img src="assets/icons/w2k/back.svg" alt=""><span>后退</span></button><button id="ieForward" title="前进" aria-label="前进"><img src="assets/icons/w2k/forward.svg" alt=""><span>前进</span></button><i></i><button id="ieStop" title="停止" aria-label="停止"><img src="assets/icons/Close_16x16_4.svg" alt=""><span>停止</span></button><button id="ieRefresh" title="刷新" aria-label="刷新"><img src="assets/icons/w2k/refresh.svg" alt=""><span>刷新</span></button><button id="ieHome" title="主页" aria-label="主页"><img src="assets/icons/w2k/home.svg" alt=""><span>主页</span></button><i></i><button id="ieSearch" title="搜索" aria-label="搜索"><img src="assets/icons/FindDc2_16x16_4.svg" alt=""><span>搜索</span></button><button id="ieFavorites" title="收藏夹" aria-label="收藏夹"><img src="assets/icons/Star_32x32_4.png" alt=""><span>收藏夹</span></button><button id="ieHistory" title="历史" aria-label="历史"><img src="assets/icons/Timedate_32x32_4.png" alt=""><span>历史</span></button><i></i><button id="iePrint" title="打印" aria-label="打印"><img src="assets/icons/Print_16x16_4.svg" alt=""><span>打印</span></button></div>
-      <form class="ie-addressbar" id="ieAddressForm"><label for="ieAddress">地址(<u>D</u>)</label><img src="assets/icons/InternetExplorer6.png" alt=""><input id="ieAddress" type="text" inputmode="url" autocomplete="url" value="https://blog.yfgeek.com"><button type="submit">转到</button></form>
+      <form class="ie-addressbar" id="ieAddressForm"><label for="ieAddress">地址(<u>D</u>)</label><img src="assets/icons/InternetExplorer6.png" alt=""><input id="ieAddress" type="text" inputmode="url" autocomplete="url" value="https://blog.yfgeek.com"><button class="ie-go-button" type="submit" title="转到" aria-label="转到"><img data-system-icon="forward" src="assets/icons/xp/forward.png" alt=""></button></form>
       <div class="window-body ie-viewport"><iframe id="ieFrame" title="网页预览" src="about:blank" sandbox="allow-forms allow-scripts allow-same-origin" referrerpolicy="strict-origin-when-cross-origin"></iframe><div class="ie-welcome" id="ieWelcome"><img src="assets/icons/InternetExplorer6.png" alt=""><h2>Internet Explorer</h2><p>正在准备浏览网页...</p></div></div>
       <footer class="statusbar"><span id="ieStatus">完成</span><span>Internet 区域</span></footer>
     </section>
@@ -283,7 +283,7 @@
     <section class="window hidden office-window" id="window-word" data-app="word" style="--x:12vw;--y:4vh;--w:min(980px,82vw);--h:min(720px,86vh)" aria-label="YFGeek Word XP 窗口">
       <header class="titlebar"><span class="office-title-icon word-color">W</span><strong id="wordTitle">极客凡_个人简历.doc - YFGeek Word</strong><div class="window-actions"><button data-action="minimize" aria-label="最小化">_</button><button data-action="maximize" aria-label="最大化">□</button><button data-action="close" aria-label="关闭">×</button></div></header>
       <div class="menubar"><button>文件(<u>F</u>)</button><button>编辑(<u>E</u>)</button><button>查看(<u>V</u>)</button><button>插入(<u>I</u>)</button><button>格式(<u>O</u>)</button><button>工具(<u>T</u>)</button><button>表格(<u>A</u>)</button><button>窗口(<u>W</u>)</button><button>帮助(<u>H</u>)</button></div>
-      <div class="office-toolbar"><button data-office-command="new" title="新建">▤</button><button data-office-command="save" title="保存">▣</button><button data-office-command="print" title="打印">▧</button><i></i><select id="wordFont" aria-label="字体"><option>宋体</option><option>Arial</option><option>Courier New</option></select><select id="wordSize" aria-label="字号"><option>10</option><option selected>12</option><option>14</option><option>18</option><option>24</option></select><button data-format="bold" title="粗体"><b>B</b></button><button data-format="italic" title="斜体"><i>I</i></button><button data-format="underline" title="下划线"><u>U</u></button><button data-format="justifyLeft" title="左对齐">≡</button><button data-format="justifyCenter" title="居中">≡</button></div>
+      <div class="office-toolbar"><button data-office-command="new" title="新建" aria-label="新建"><img src="assets/icons/w2k/file.svg" alt=""></button><button data-office-command="save" title="保存" aria-label="保存"><img src="assets/icons/Wordpad_16x16_4.png" alt=""></button><button data-office-command="print" title="打印" aria-label="打印"><img data-system-icon="print" src="assets/icons/xp/print.svg" alt=""></button><i></i><select id="wordFont" aria-label="字体"><option>宋体</option><option>Arial</option><option>Courier New</option></select><select id="wordSize" aria-label="字号"><option>10</option><option selected>12</option><option>14</option><option>18</option><option>24</option></select><button data-format="bold" title="粗体"><b>B</b></button><button data-format="italic" title="斜体"><i>I</i></button><button data-format="underline" title="下划线"><u>U</u></button><button data-format="justifyLeft" title="左对齐">≡</button><button data-format="justifyCenter" title="居中">≡</button></div>
       <div class="word-ruler"><span>1</span><span>2</span><span>3</span><span>4</span><span>5</span><span>6</span><span>7</span><span>8</span><span>9</span><span>10</span><span>11</span><span>12</span><span>13</span><span>14</span><span>15</span><span>16</span></div>
       <div class="window-body word-workspace"><article class="word-page" id="wordDocument" contenteditable="true" spellcheck="false">
         <header class="doc-header"><h1>极客凡</h1><p>网络安全 · 人工智能安全 · 金融科技</p></header>
@@ -323,14 +323,12 @@
 
     <section class="window hidden remote-game-window" id="window-solitaire" data-app="solitaire" style="--x:24vw;--y:10vh;--w:620px;--h:470px" aria-label="纸牌窗口">
       <header class="titlebar"><img class="title-icon" data-system-icon="solitaire" src="assets/icons/Sol1_16x16_4.svg" alt=""><strong>纸牌</strong><div class="window-actions"><button data-action="minimize" aria-label="最小化">_</button><button data-action="maximize" aria-label="最大化">□</button><button data-action="close" aria-label="关闭">×</button></div></header>
-      <div class="menubar"><button>游戏(<u>G</u>)</button><button>帮助(<u>H</u>)</button></div>
       <div class="window-body remote-game-stage" data-game-width="585" data-game-height="405"><div class="game-loading"><img data-system-icon="solitaire" src="assets/icons/Sol1_32x32_4.svg" alt=""><b>正在发牌...</b><span>Solitaire</span></div><iframe id="solitaireFrame" title="纸牌游戏" src="about:blank" data-src="https://98.js.org/programs/js-solitaire/index.html" width="585" height="405" sandbox="allow-scripts allow-same-origin allow-forms allow-modals" allow="autoplay"></iframe></div>
       <footer class="statusbar"><span>游戏：纸牌</span><span>鼠标或触摸操作</span></footer>
     </section>
 
     <section class="window hidden remote-game-window pinball-window" id="window-pinball" data-app="pinball" style="--x:22vw;--y:7vh;--w:636px;--h:500px" aria-label="3D 弹球窗口">
       <header class="titlebar"><img class="title-icon" data-system-icon="pinball" src="assets/icons/Joy102_16x16_4.svg" alt=""><strong>3D 弹球 - 太空军校生</strong><div class="window-actions"><button data-action="minimize" aria-label="最小化">_</button><button data-action="maximize" aria-label="最大化">□</button><button data-action="close" aria-label="关闭">×</button></div></header>
-      <div class="menubar"><button>游戏(<u>G</u>)</button><button>帮助(<u>H</u>)</button></div>
       <div class="window-body remote-game-stage" data-game-width="600" data-game-height="436"><div class="game-loading pinball-loading"><img data-system-icon="pinball" src="assets/icons/Joy102_32x32_4.svg" alt=""><b>3D Pinball</b><span>SPACE CADET</span><i></i></div><iframe id="pinballFrame" title="3D 弹球游戏" src="about:blank" data-src="https://98.js.org/programs/pinball/space-cadet.html" width="600" height="436" sandbox="allow-scripts allow-same-origin allow-forms allow-modals allow-pointer-lock" allow="autoplay; fullscreen"></iframe></div>
       <footer class="statusbar"><span>F2：新游戏　Z 与 /：挡板　空格：发射</span><span>SpaceCadetPinball</span></footer>
     </section>
@@ -377,6 +375,6 @@
       <button class="sound-toggle" id="soundToggle" type="button" aria-label="打开音量控制" title="音量"><img class="speaker" src="assets/icons/w2k/speaker.svg" alt=""></button><time id="clock">00:00</time>
     </div>
   </footer>
-  <script src="site.js?v=20260811.14"></script>
+  <script src="site.js?v=20260811.15"></script>
 </body>
 </html>
