@@ -552,6 +552,50 @@ body.theme-winxp {
 .theme-winxp .start-items { padding:4px 5px 6px; background:#fff; }
 .theme-winxp :is(.program-menu,.start-submenu,.office-menu,.system-menu,.context-menu) { background:#fff; border:1px solid #316ac5; box-shadow:2px 2px 4px rgba(0,0,0,.4); }
 
+/* Luna menu popups use XP's white, blue-highlighted command rows. */
+.theme-winxp :is(.program-menu,.start-submenu,.office-menu) {
+  width:240px;
+  padding:4px;
+  background:#fff;
+  border:1px solid #7f9db9;
+  border-radius:2px;
+  box-shadow:2px 2px 5px rgba(0,0,0,.38);
+}
+.theme-winxp :is(.program-menu,.start-submenu,.office-menu) button {
+  height:30px;
+  min-height:30px;
+  padding:3px 8px;
+  gap:9px;
+  color:#111;
+  background:transparent;
+  border:1px solid transparent;
+  border-radius:2px;
+  font:11px/20px Tahoma,"Microsoft YaHei",sans-serif;
+}
+.theme-winxp :is(.program-menu,.start-submenu,.office-menu) button:hover,
+.theme-winxp :is(.program-menu,.start-submenu,.office-menu) button:focus-visible {
+  color:#000;
+  background:linear-gradient(#eaf4ff,#c8def8);
+  border-color:#7aa7d8;
+  outline:0;
+}
+.theme-winxp :is(.program-menu,.start-submenu,.office-menu) button img {
+  width:20px;
+  height:20px;
+  flex:0 0 20px;
+  image-rendering:auto;
+}
+.theme-winxp .start-items :is(.program-group>button,.start-subgroup>button,.start-items>button) {
+  border-radius:2px;
+}
+.theme-winxp .start-items :is(.program-group>button,.start-subgroup>button,.start-items>button):hover,
+.theme-winxp .start-items :is(.program-group>button,.start-subgroup>button,.start-items>button):focus-visible {
+  color:#fff;
+  background:linear-gradient(#3d83df,#2865bf);
+  outline:0;
+}
+.theme-winxp .start-ico { width:32px; height:32px; flex:0 0 32px; image-rendering:auto; }
+
 /* Office XP uses flat gray toolbars with blue hot tracking. */
 .office-window .menubar,
 .office-window .office-toolbar { color:#111; background:linear-gradient(#f7f7f7,#dedede); border-color:#fff #9c9c9c #9c9c9c #fff; }
