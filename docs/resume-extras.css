@@ -395,7 +395,14 @@
 
 .context-menu button { width: 100%; padding: 5px 20px; border: 0; text-align: left; background: transparent; }
 .context-menu button:hover { color: #fff; background: #000080; }
+.context-menu button:disabled { color:#808080; text-shadow:1px 1px #fff; pointer-events:none; }
 .context-menu hr { margin: 3px 1px; border: 0; border-top: 1px solid #808080; border-bottom: 1px solid #fff; }
+.context-submenu-group { position:relative; }
+.context-menu .has-submenu { display:flex; align-items:center; justify-content:space-between; gap:10px; }
+.context-menu .has-submenu i { font:9px Arial; }
+.context-submenu { position:absolute; display:none; left:calc(100% - 3px); top:-4px; width:155px; padding:3px; background:#c0c0c0; border:2px outset #fff; box-shadow:2px 2px #000; }
+.context-menu.context-flip .context-submenu { left:auto; right:calc(100% - 3px); }
+.context-submenu-group:hover>.context-submenu,.context-submenu-group:focus-within>.context-submenu { display:block; }
 
 .property-tabs { display: flex; align-items: flex-end; padding: 8px 7px 0; }
 .property-tabs button { padding: 6px 9px; background: #c0c0c0; border: 2px outset #fff; border-bottom: 0; }
@@ -1205,26 +1212,19 @@ input[type="text"], input[type="password"], select, textarea { border-radius:0; 
 .start-brand b { color:#fff; }
 .start-brand span { color:#d8e8ff; }
 
-.word-workspace,
-.excel-workspace,
-.ppt-stage {
+:is(.word-workspace,.excel-workspace,.ppt-stage,.notepad-editor,.notepad,.resume-folder-body,.system-grid,.network-items,.recycle-items,.gallery-stage,.computer-explorer,.document-body) {
   overflow:scroll;
   scrollbar-width:auto;
   scrollbar-color:#c0c0c0 #dfdfdf;
   scrollbar-gutter:stable;
 }
-.word-workspace::-webkit-scrollbar,
-.excel-workspace::-webkit-scrollbar,
-.ppt-stage::-webkit-scrollbar { width:17px; height:17px; }
-.word-workspace::-webkit-scrollbar-track,
-.excel-workspace::-webkit-scrollbar-track,
-.ppt-stage::-webkit-scrollbar-track { background:#dfdfdf; box-shadow:inset 1px 1px #808080,inset -1px -1px #fff; }
-.word-workspace::-webkit-scrollbar-thumb,
-.excel-workspace::-webkit-scrollbar-thumb,
-.ppt-stage::-webkit-scrollbar-thumb { min-width:24px; min-height:24px; background:#c0c0c0; border:0; box-shadow:inset -1px -1px #0a0a0a,inset 1px 1px #fff,inset -2px -2px #808080,inset 2px 2px #dfdfdf; }
-.word-workspace::-webkit-scrollbar-corner,
-.excel-workspace::-webkit-scrollbar-corner,
-.ppt-stage::-webkit-scrollbar-corner { background:#c0c0c0; }
+:is(.word-workspace,.excel-workspace,.ppt-stage,.notepad-editor,.notepad,.resume-folder-body,.system-grid,.network-items,.recycle-items,.gallery-stage,.computer-explorer,.document-body)::-webkit-scrollbar { width:17px; height:17px; }
+:is(.word-workspace,.excel-workspace,.ppt-stage,.notepad-editor,.notepad,.resume-folder-body,.system-grid,.network-items,.recycle-items,.gallery-stage,.computer-explorer,.document-body)::-webkit-scrollbar-track { background:#dfdfdf; box-shadow:inset 1px 1px #808080,inset -1px -1px #fff; }
+:is(.word-workspace,.excel-workspace,.ppt-stage,.notepad-editor,.notepad,.resume-folder-body,.system-grid,.network-items,.recycle-items,.gallery-stage,.computer-explorer,.document-body)::-webkit-scrollbar-thumb { min-width:24px; min-height:24px; background:#c0c0c0; border:0; box-shadow:inset -1px -1px #0a0a0a,inset 1px 1px #fff,inset -2px -2px #808080,inset 2px 2px #dfdfdf; }
+:is(.word-workspace,.excel-workspace,.ppt-stage,.notepad-editor,.notepad,.resume-folder-body,.system-grid,.network-items,.recycle-items,.gallery-stage,.computer-explorer,.document-body)::-webkit-scrollbar-button { display:block; width:17px; height:17px; background-color:#c0c0c0; background-position:center; background-repeat:no-repeat; box-shadow:inset -1px -1px #0a0a0a,inset 1px 1px #fff,inset -2px -2px #808080,inset 2px 2px #dfdfdf; }
+:is(.word-workspace,.excel-workspace,.ppt-stage,.notepad-editor,.notepad,.resume-folder-body,.system-grid,.network-items,.recycle-items,.gallery-stage,.computer-explorer,.document-body)::-webkit-scrollbar-button:vertical:decrement { background-image:linear-gradient(135deg,transparent 50%,#000 50%),linear-gradient(225deg,transparent 50%,#000 50%); background-size:5px 5px; background-position:4px 8px,8px 8px; }
+:is(.word-workspace,.excel-workspace,.ppt-stage,.notepad-editor,.notepad,.resume-folder-body,.system-grid,.network-items,.recycle-items,.gallery-stage,.computer-explorer,.document-body)::-webkit-scrollbar-button:vertical:increment { background-image:linear-gradient(45deg,transparent 50%,#000 50%),linear-gradient(315deg,transparent 50%,#000 50%); background-size:5px 5px; background-position:4px 5px,8px 5px; }
+:is(.word-workspace,.excel-workspace,.ppt-stage,.notepad-editor,.notepad,.resume-folder-body,.system-grid,.network-items,.recycle-items,.gallery-stage,.computer-explorer,.document-body)::-webkit-scrollbar-corner { background:#c0c0c0; }
 
 .gallery-toolbar { min-height:38px; display:flex; align-items:center; gap:9px; padding:5px 7px; border-top:1px solid #fff; border-bottom:1px solid #808080; }
 .gallery-toolbar .win-button { min-width:118px; padding:5px 9px; }
