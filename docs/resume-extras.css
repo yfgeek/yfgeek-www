@@ -264,8 +264,11 @@
 
 .desktop.wallpaper-travel { background-image: url("assets/travel.jpg"); }
 .desktop.wallpaper-portrait { background-image: url("assets/me.jpg"); background-position: center 35%; }
+.desktop.wallpaper-code { background-image: url("assets/code.jpg"); background-position:center; }
+.desktop.wallpaper-raspberry { background-color:#dce8ef; background-image:url("assets/raspberry.png"); background-position:center; background-size:cover; }
+.desktop.wallpaper-food { background-color:#202020; background-image:url("assets/food.jpg"); background-position:center; }
 .desktop.wallpaper-blue { background-color: #3a6ea5; background-image: none; }
-.desktop.wallpaper-travel .wallpaper-mark, .desktop.wallpaper-portrait .wallpaper-mark { display: none; }
+.desktop.wallpaper-travel .wallpaper-mark, .desktop.wallpaper-portrait .wallpaper-mark, .desktop.wallpaper-code .wallpaper-mark, .desktop.wallpaper-raspberry .wallpaper-mark, .desktop.wallpaper-food .wallpaper-mark { display: none; }
 .desktop.wallpaper-classic { background-color: #008080; background-image: none; }
 .desktop.wallpaper-midnight { background-color: #00164d; background-image: radial-gradient(circle at 70% 20%, #344b8a 0 1px, transparent 2px), radial-gradient(circle at 25% 40%, #fff 0 1px, transparent 2px), radial-gradient(circle at 55% 75%, #6aa5d8 0 1px, transparent 2px); background-size: 170px 170px, 240px 240px, 310px 310px; }
 .desktop.wallpaper-classic::before { display: none; }
@@ -363,7 +366,7 @@
   grid-template-rows:64px 1fr 72px;
   color:#fff;
   background:#5a7edc;
-  font-family:Tahoma,"Microsoft YaHei",sans-serif;
+  font-family:Tahoma,"PingFang SC",sans-serif;
   transition:opacity .25s;
 }
 .login-screen.leaving { opacity:0; pointer-events:none; }
@@ -404,15 +407,31 @@
 .context-menu.context-flip .context-submenu { left:auto; right:calc(100% - 3px); }
 .context-submenu-group:hover>.context-submenu,.context-submenu-group:focus-within>.context-submenu { display:block; }
 
-.property-tabs { display: flex; align-items: flex-end; padding: 8px 7px 0; }
-.property-tabs button { padding: 6px 9px; background: #c0c0c0; border: 2px outset #fff; border-bottom: 0; }
-.property-tabs button.active { padding-top: 8px; background: #dfdfdf; position: relative; z-index: 2; }
+.property-tabs { position:relative; z-index:3; display:flex; align-items:flex-end; gap:2px; min-height:34px; padding:7px 9px 0; overflow-x:auto; overflow-y:hidden; scrollbar-width:none; }
+.property-tabs button { position:relative; flex:0 0 auto; min-width:0; height:27px; margin:0 0 -1px; padding:3px 10px 4px; color:#000; background:#d4d0c8; border:1px solid; border-color:#fff #808080 transparent #fff; border-radius:3px 3px 0 0; box-shadow:none; white-space:nowrap; }
+.property-tabs button::after { content:""; position:absolute; right:-2px; top:2px; bottom:0; width:1px; background:#404040; }
+.property-tabs button.active { z-index:2; height:30px; padding:4px 12px 6px; background:#dfdfdf; border-color:#fff #808080 #dfdfdf #fff; font-weight:normal; }
+.property-tabs button.active::before { content:""; position:absolute; left:2px; right:2px; top:1px; height:2px; background:#fff; }
+.property-tabs button:focus-visible { outline:1px dotted #000; outline-offset:-5px; }
+.display-body { overflow:hidden; }
 .display-body fieldset { margin: 0 10px 10px; border: 2px groove #fff; display: grid; grid-template-columns: 180px 1fr; gap: 15px; }
 .monitor-preview { width: 180px; height: 145px; padding: 14px 15px 27px; background: #777; border: 5px outset #ddd; }
 .monitor-preview > div { width: 100%; height: 100%; background: #3a6ea5 center/cover no-repeat; border: 2px inset #fff; }
 .wallpaper-list { display: flex; flex-direction: column; border: 2px inset #fff; background: #fff; max-height: 145px; overflow: auto; }
 .wallpaper-list button { border: 0; background: transparent; text-align: left; padding: 5px 7px; }
 .wallpaper-list button.selected { color: #fff; background: #000080; }
+.screensaver-fieldset,.display-settings-fieldset { grid-template-columns:1fr!important; align-content:start; gap:12px!important; padding:16px!important; }
+.screensaver-preview,.resolution-preview { min-height:150px; display:grid; place-content:center; justify-items:center; color:#fff; background:#00164d; border:8px solid #777; box-shadow:inset 0 0 0 2px #000,2px 2px #fff; }
+.screensaver-preview span { font:bold 40px Arial; color:#78b9ff; text-shadow:3px 3px #000; }
+.screensaver-preview small { letter-spacing:3px; }
+.screensaver-preview.disabled { color:#777; background:#000; }
+.screensaver-preview.disabled span { display:none; }
+.screensaver-fieldset label,.display-settings-fieldset label { display:flex; align-items:center; gap:8px; }
+.screensaver-fieldset select { flex:1; min-width:0; height:26px; background:#fff; border:2px inset #fff; }
+.wait-setting input { width:58px; height:25px; border:2px inset #fff; }
+.resolution-preview { min-height:135px; color:#dceaff; background:linear-gradient(160deg,#0052a4,#001d53); font:bold 20px Tahoma,sans-serif; }
+.display-settings-fieldset input[type="range"] { flex:1; min-width:100px; }
+.display-settings-fieldset output { min-width:78px; text-align:right; }
 
 .system-grid { display: grid; grid-template-columns: repeat(4, 1fr); grid-auto-rows: 100px; padding: 15px; background: #fff; }
 .system-grid button { display: flex; flex-direction: column; justify-content: center; align-items: center; gap: 7px; border: 1px solid transparent; background: transparent; }
@@ -421,7 +440,7 @@
 .empty-bin { display: grid; place-items: center; align-content: center; background: #fff; color: #666; }
 .empty-bin img { width: 48px; height: 48px; image-rendering: pixelated; }
 
-.notepad-editor { flex: 1; width: 100%; min-height: 0; resize: none; border: 2px inset #fff; padding: 5px; outline: 0; font: 14px/1.45 "Courier New", "Microsoft YaHei", monospace; }
+.notepad-editor { flex: 1; width: 100%; min-height: 0; resize: none; border: 2px inset #fff; padding: 5px; outline: 0; font: 14px/1.45 "Courier New", "PingFang SC", monospace; }
 .calc-body { padding: 10px; }
 .calc-body output { display: block; height: 38px; margin-bottom: 10px; padding: 7px; overflow: hidden; text-align: right; background: #fff; border: 2px inset #fff; font: 18px monospace; }
 .calc-grid { display: grid; grid-template-columns: repeat(4,1fr); gap: 7px; }
@@ -459,7 +478,7 @@
 .shutdown-body { display: grid; grid-template-columns: 55px 1fr; gap: 10px; padding: 15px; }
 .shutdown-body img { width: 32px; image-rendering: pixelated; }
 .shutdown-body fieldset { display: flex; flex-direction: column; gap: 13px; border: 2px groove #fff; }
-.shutdown-screen { position: fixed; inset: 0; z-index: 999; display: grid; place-content: center; place-items: center; gap: 18px; color: #fff; background: #000; font: 18px "MS Sans Serif", Arial; }
+.shutdown-screen { position: fixed; inset: 0; z-index: 999; display: grid; place-content: center; place-items: center; gap: 18px; color: #fff; background: #000; font: 18px Tahoma, Arial; }
 .shutdown-screen img { width: 64px; height: 64px; image-rendering: pixelated; }
 
 .program-group { position: relative; flex: 1; }
@@ -862,7 +881,7 @@
   box-shadow: 3px 3px #404040;
   outline: 0;
   caret-color: #000;
-  font: 12px/1.6 Arial, "Microsoft YaHei", sans-serif;
+  font: 12px/1.6 Arial, "PingFang SC", sans-serif;
 }
 
 .word-page::selection, .word-page *::selection { color: #fff; background: #000080; }
@@ -895,6 +914,17 @@
 .ppt-slide h1 { margin:20px 0; font-size:42px; }
 .ppt-slide h2 { color:#f2cf65; font-size:18px; }
 .ppt-slide p { margin-top:65px; font-size:18px; line-height:1.7; }
+.timeline-ppt-slide { position:relative; overflow:auto; padding:34px 38px 28px; color:#fff; background:#173b73; text-align:left; }
+.timeline-ppt-slide h1 { margin:0; color:#fff; font-size:32px; letter-spacing:1px; }
+.timeline-ppt-subtitle { margin:5px 0 18px!important; color:#dbeaff; font-size:14px!important; }
+.timeline-ppt-track { position:relative; display:grid; gap:11px; padding-left:18px; }
+.timeline-ppt-track::before { content:""; position:absolute; left:4px; top:5px; bottom:5px; width:3px; background:#f2cf65; }
+.timeline-ppt-track article { position:relative; display:grid; grid-template-columns:112px 1fr; column-gap:12px; padding:7px 10px 8px 14px; background:rgba(255,255,255,.1); border-left:3px solid #f2cf65; }
+.timeline-ppt-track article::before { content:""; position:absolute; left:-24px; top:11px; width:10px; height:10px; background:#f2cf65; border:2px solid #173b73; border-radius:50%; }
+.timeline-ppt-track time { color:#f2cf65; font:bold 12px Tahoma,sans-serif; }
+.timeline-ppt-track b { font-size:13px; }
+.timeline-ppt-track span { grid-column:2; margin-top:3px; color:#dbeaff; font-size:11px; line-height:1.45; }
+.timeline-ppt-foot { display:block; margin-top:17px; color:#b9d2f5; text-align:right; }
 
 .office-group { position: relative; }
 .office-group > button { width:100%; height:42px; }
@@ -913,7 +943,7 @@
   background: #fff;
   caret-color: #000;
   tab-size: 8;
-  font: 14px/1.35 "Courier New", "Microsoft YaHei", monospace;
+  font: 14px/1.35 "Courier New", "PingFang SC", monospace;
   white-space: pre;
   overflow: scroll;
 }
@@ -1069,7 +1099,7 @@ input[type="text"], input[type="password"], select, textarea { border-radius:0; 
 .ie-menu-icon { width:32px!important; height:32px!important; object-fit:fill; image-rendering:pixelated; }
 .ie-toolbar,.explorer-toolbar { min-height:55px; display:flex; align-items:stretch; gap:1px; padding:2px 4px; overflow-x:auto; border-top:1px solid #fff; border-bottom:1px solid #808080; scrollbar-width:none; }
 .ie-toolbar i,.explorer-toolbar i { width:2px; min-width:2px; height:43px; margin:3px 4px; border-left:1px solid #808080; border-right:1px solid #fff; }
-.ie-toolbar button,.explorer-toolbar button { min-width:50px; height:49px; display:flex; flex-direction:column; align-items:center; justify-content:center; gap:1px; padding:1px 4px; border:1px solid transparent; border-radius:0; color:#000; background:transparent; box-shadow:none; font:11px "MS Sans Serif",Tahoma,sans-serif; }
+.ie-toolbar button,.explorer-toolbar button { min-width:50px; height:49px; display:flex; flex-direction:column; align-items:center; justify-content:center; gap:1px; padding:1px 4px; border:1px solid transparent; border-radius:0; color:#000; background:transparent; box-shadow:none; font:11px Tahoma,Tahoma,sans-serif; }
 .ie-toolbar button img,.explorer-toolbar button img { width:22px; height:22px; object-fit:contain; image-rendering:pixelated; }
 .ie-toolbar button:hover:not(:disabled),.explorer-toolbar button:hover:not(:disabled) { border-color:#fff #808080 #808080 #fff; }
 .ie-toolbar button:active:not(:disabled),.explorer-toolbar button:active:not(:disabled) { border-color:#808080 #fff #fff #808080; transform:translate(1px,1px); }
@@ -1078,8 +1108,8 @@ input[type="text"], input[type="password"], select, textarea { border-radius:0; 
 .ie-addressbar { min-height:33px; display:flex; align-items:center; gap:5px; padding:3px 5px; border-bottom:1px solid #808080; }
 .ie-addressbar label { white-space:nowrap; }
 .ie-addressbar img { width:16px; height:16px; image-rendering:pixelated; }
-.ie-addressbar input { flex:1; min-width:0; height:24px; padding:2px 5px; background:#fff; border:2px inset #fff; font:12px "MS Sans Serif",Tahoma,sans-serif; }
-.ie-addressbar button { min-width:55px; height:25px; padding:0 8px; border:0; border-radius:0; background:#c0c0c0; box-shadow:inset -1px -1px #0a0a0a,inset 1px 1px #fff,inset -2px -2px #808080,inset 2px 2px #dfdfdf; font:12px "MS Sans Serif",Tahoma,sans-serif; }
+.ie-addressbar input { flex:1; min-width:0; height:24px; padding:2px 5px; background:#fff; border:2px inset #fff; font:12px Tahoma,Tahoma,sans-serif; }
+.ie-addressbar button { min-width:55px; height:25px; padding:0 8px; border:0; border-radius:0; background:#c0c0c0; box-shadow:inset -1px -1px #0a0a0a,inset 1px 1px #fff,inset -2px -2px #808080,inset 2px 2px #dfdfdf; font:12px Tahoma,Tahoma,sans-serif; }
 .ie-addressbar button:active { box-shadow:inset -1px -1px #fff,inset 1px 1px #0a0a0a,inset -2px -2px #dfdfdf,inset 2px 2px #808080; transform:translate(1px,1px); }
 .ie-viewport { position:relative; overflow:hidden; background:#fff; }
 .ie-viewport iframe { display:block; width:100%; height:100%; border:0; background:#fff; }
@@ -1279,7 +1309,7 @@ input[type="text"], input[type="password"], select, textarea { border-radius:0; 
 .dos-emulator-window { min-width:360px; min-height:300px; }
 .dos-menubar { overflow:hidden; }
 .dos-emulator-stage { position:relative; overflow:hidden; padding:0; background:#000; border:2px inset #fff; }
-.dos-emulator-stage iframe { display:block; width:100%; height:100%; border:0; background:#000; }
+.dos-emulator-stage iframe { position:absolute; inset:0; display:block; width:100%; height:100%; min-width:0; min-height:0; border:0; background:#000; }
 .dos-loading { position:absolute; z-index:2; inset:0; display:grid; place-content:center; justify-items:center; gap:8px; color:#c0c0c0; background:#000; text-align:center; font-family:"Courier New",monospace; }
 .dos-loading img { width:42px; height:42px; image-rendering:pixelated; }
 .dos-loading b { color:#fff; font-size:15px; }
@@ -1302,9 +1332,12 @@ input[type="text"], input[type="password"], select, textarea { border-radius:0; 
   .volume-popup { right:-3px; bottom:calc(100% + 8px); width:142px; height:255px; }
   .desktop-icon .desktop-folder-icon { width:42px; height:42px; flex-basis:42px; }
   .dos-emulator-window { min-width:0; min-height:0; }
+  .dos-emulator-window.mobile-dos-active { position:fixed!important; inset:0 0 var(--task) 0!important; width:100vw!important; height:calc(100dvh - var(--task))!important; max-width:none!important; max-height:none!important; transform:none!important; resize:none; }
   .dos-emulator-window .dos-menubar { min-height:36px; height:36px; flex-basis:36px; }
   .dos-emulator-window .dos-menubar button { min-width:max-content; }
-  .dos-emulator-stage { min-height:0; }
+  .dos-emulator-stage { flex:1 1 0!important; width:100%; min-width:0; min-height:120px; isolation:isolate; }
+  .dos-emulator-stage iframe { z-index:1; touch-action:none; }
+  .dos-loading { z-index:2; }
   .dos-emulator-window .statusbar { grid-template-columns:1fr; }
   .dos-emulator-window .statusbar span:first-child { display:none; }
 }
@@ -1316,7 +1349,7 @@ input[type="text"], input[type="password"], select, textarea { border-radius:0; 
   --navy:#0a246a;
   --gray:#808080;
   --shadow:#404040;
-  font-family:Tahoma,"Microsoft YaHei",sans-serif;
+  font-family:Tahoma,"PingFang SC",sans-serif;
   background:#3a6ea5;
 }
 .win2000 .desktop.wallpaper-blue { background-color:#3a6ea5; }
@@ -1337,7 +1370,7 @@ input[type="text"], input[type="password"], select, textarea { border-radius:0; 
   color:#fff;
   background:linear-gradient(90deg,#0a246a 0%,#3a6ea5 58%,#a6caf0 100%);
 }
-.win2000 .titlebar strong { font:bold 11px/16px Tahoma,"Microsoft YaHei",sans-serif; }
+.win2000 .titlebar strong { font:bold 11px/16px Tahoma,"PingFang SC",sans-serif; }
 .win2000 .title-icon { width:16px; height:16px; object-fit:contain; }
 .win2000 .window-actions { gap:2px; }
 .win2000 .window-actions button {
@@ -1353,7 +1386,7 @@ input[type="text"], input[type="password"], select, textarea { border-radius:0; 
 .win2000 .window-actions [data-action="close"]::before,
 .win2000 .window-actions [data-action="close"]::after { left:7px; top:2px; height:10px; }
 .win2000 .menubar { height:23px; flex-basis:23px; padding:1px 2px; }
-.win2000 .menubar button { padding:3px 7px; font:11px Tahoma,"Microsoft YaHei",sans-serif; }
+.win2000 .menubar button { padding:3px 7px; font:11px Tahoma,"PingFang SC",sans-serif; }
 .win2000 .menubar button:active { padding:2px 6px; }
 .win2000 .addressbar,
 .win2000 .ie-addressbar { background:#d4d0c8; }

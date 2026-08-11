@@ -11,7 +11,7 @@ body.theme-win98 {
   --shell-title-fg:#fff;
   --shell-selection:#000080;
   background:#008080;
-  font-family:"MS Sans Serif",Tahoma,"Microsoft YaHei",sans-serif;
+  font-family:Tahoma,Tahoma,"PingFang SC",sans-serif;
 }
 
 body.theme-win2000 {
@@ -28,7 +28,7 @@ body.theme-win2000 {
   --shell-title-fg:#fff;
   --shell-selection:#0a246a;
   background:#3a6ea5;
-  font-family:Tahoma,"Microsoft YaHei",sans-serif;
+  font-family:Tahoma,"PingFang SC",sans-serif;
 }
 
 body.theme-winxp {
@@ -46,7 +46,7 @@ body.theme-winxp {
   --shell-title-fg:#fff;
   --shell-selection:#316ac5;
   background:#004e98;
-  font-family:Tahoma,"Microsoft YaHei",sans-serif;
+  font-family:Tahoma,"PingFang SC",sans-serif;
 }
 
 .theme-win98 .desktop.wallpaper-blue { background-color:#008080; }
@@ -90,7 +90,7 @@ body.theme-winxp {
 }
 
 :is(.theme-win98,.theme-win2000) .titlebar strong {
-  font:bold 11px/16px Tahoma,"Microsoft YaHei",sans-serif;
+  font:bold 11px/16px Tahoma,"PingFang SC",sans-serif;
 }
 
 .theme-winxp .titlebar {
@@ -115,7 +115,7 @@ body.theme-winxp {
 }
 
 .theme-winxp .titlebar strong {
-  font:bold 13px/20px "Trebuchet MS",Tahoma,"Microsoft YaHei",sans-serif;
+  font:bold 13px/20px Tahoma,Tahoma,"PingFang SC",sans-serif;
   text-shadow:1px 1px #0a1883;
 }
 
@@ -256,7 +256,7 @@ body.theme-winxp {
   border:0;
   background:transparent;
   box-shadow:none;
-  font:11px/15px Tahoma,"Microsoft YaHei",sans-serif;
+  font:11px/15px Tahoma,"PingFang SC",sans-serif;
 }
 :is(.theme-win98,.theme-win2000) .menubar button:active,
 :is(.theme-win98,.theme-win2000) .menubar button.menu-open {
@@ -280,7 +280,7 @@ body.theme-winxp {
   border-radius:0;
   background:transparent;
   box-shadow:none;
-  font:11px/16px Tahoma,"Microsoft YaHei",sans-serif;
+  font:11px/16px Tahoma,"PingFang SC",sans-serif;
 }
 .theme-winxp .menubar button:active,
 .theme-winxp .menubar button.menu-open { padding:2px 7px; color:#fff; background:#316ac5; }
@@ -297,26 +297,26 @@ body.theme-winxp {
 :is(.theme-win98,.theme-win2000,.theme-winxp) .window-body { background:var(--shell-face); }
 :is(.theme-win98,.theme-win2000,.theme-winxp) :is(.resume-folder-body,.control-panel-grid,.system-grid,.network-items,.recycle-items,.gallery-stage,.computer-explorer,.ie-viewport,.document-body,.notepad,.notepad-editor) { background:#fff; }
 
-:is(.theme-win98,.theme-win2000) :is(.win-button,.dialog-actions button,.dialog-actions a,.calc-grid button,.mine-score button,.property-tabs button,.task-item,.start-button) {
+:is(.theme-win98,.theme-win2000) :is(.win-button,.dialog-actions button,.dialog-actions a,.calc-grid button,.mine-score button,.task-item,.start-button) {
   color:#000;
   background:var(--shell-face);
   border:0;
   border-radius:0;
   box-shadow:inset -1px -1px #000,inset 1px 1px var(--shell-lightest),inset -2px -2px var(--shell-dark),inset 2px 2px var(--shell-light);
 }
-:is(.theme-win98,.theme-win2000) :is(.win-button,.dialog-actions button,.dialog-actions a,.calc-grid button,.mine-score button,.property-tabs button,.task-item,.start-button):active {
+:is(.theme-win98,.theme-win2000) :is(.win-button,.dialog-actions button,.dialog-actions a,.calc-grid button,.mine-score button,.task-item,.start-button):active {
   box-shadow:inset 1px 1px #000,inset -1px -1px var(--shell-lightest),inset 2px 2px var(--shell-dark);
 }
 
-.theme-winxp :is(.win-button,.dialog-actions button,.dialog-actions a,.calc-grid button,.mine-score button,.property-tabs button) {
+.theme-winxp :is(.win-button,.dialog-actions button,.dialog-actions a,.calc-grid button,.mine-score button) {
   color:#000;
   background:linear-gradient(#fff,#ececec);
   border:1px solid #003c74;
   border-radius:4px;
   box-shadow:none;
 }
-.theme-winxp :is(.win-button,.dialog-actions button,.dialog-actions a,.calc-grid button,.mine-score button,.property-tabs button):hover { border-color:#0054e3; background:linear-gradient(#fff,#eef5ff); }
-.theme-winxp :is(.win-button,.dialog-actions button,.dialog-actions a,.calc-grid button,.mine-score button,.property-tabs button):active { background:#dfe7f3; box-shadow:inset 1px 2px #bdc9da; transform:none; }
+.theme-winxp :is(.win-button,.dialog-actions button,.dialog-actions a,.calc-grid button,.mine-score button):hover { border-color:#0054e3; background:linear-gradient(#fff,#eef5ff); }
+.theme-winxp :is(.win-button,.dialog-actions button,.dialog-actions a,.calc-grid button,.mine-score button):active { background:#dfe7f3; box-shadow:inset 1px 2px #bdc9da; transform:none; }
 .theme-winxp :is(.win-button,.dialog-actions button,.dialog-actions a).primary { outline:0; }
 .theme-winxp :is(.win-button,.dialog-actions button,.dialog-actions a):focus-visible { outline:1px dotted #000; outline-offset:-4px; }
 
@@ -405,6 +405,12 @@ body.theme-winxp {
 .theme-winxp .recycle-address { background-image:url("assets/icons/xp/recycle-empty.png"); }
 
 /* Display Properties appearance page */
+.theme-winxp .property-tabs { gap:1px; padding-top:8px; }
+.theme-winxp .property-tabs button { height:27px; padding:3px 10px 4px; color:#222; background:linear-gradient(#f8f8f8,#d8d8d8); border:1px solid; border-color:#fff #919b9c transparent #fff; border-radius:3px 3px 0 0; box-shadow:none; }
+.theme-winxp .property-tabs button::after { background:#919b9c; }
+.theme-winxp .property-tabs button:hover { color:#003399; background:linear-gradient(#fff,#e8f0ff); }
+.theme-winxp .property-tabs button.active { height:30px; padding:4px 12px 6px; color:#000; background:#ece9d8; border-color:#fff #919b9c #ece9d8 #fff; box-shadow:inset 0 2px #ffc73c; }
+.theme-winxp .property-tabs button.active::before { display:none; }
 .display-panel { height:calc(100% - 42px); }
 .display-panel[hidden] { display:none!important; }
 .display-panel>fieldset { height:calc(100% - 10px); }
@@ -428,7 +434,7 @@ body.theme-winxp {
 .theme-preview[data-theme-preview="win98"] .theme-preview-window header { background:linear-gradient(90deg,#000080,#1084d0); }
 .theme-preview[data-theme-preview="winxp"] .theme-preview-desktop { background:#004e98; }
 .theme-preview[data-theme-preview="winxp"] .theme-preview-window { background:#ececec; border-color:#5b68cd; border-radius:8px 8px 0 0; }
-.theme-preview[data-theme-preview="winxp"] .theme-preview-window header { height:27px; background:linear-gradient(180deg,#3d95ff 0 8%,#0054e3 14%,#0372ff 84%,#0144d0); border-radius:6px 6px 0 0; font:13px "Trebuchet MS",Tahoma,sans-serif; }
+.theme-preview[data-theme-preview="winxp"] .theme-preview-window header { height:27px; background:linear-gradient(180deg,#3d95ff 0 8%,#0054e3 14%,#0372ff 84%,#0144d0); border-radius:6px 6px 0 0; font:13px Tahoma,Tahoma,sans-serif; }
 .theme-preview[data-theme-preview="winxp"] .theme-preview-window header i { width:21px; height:21px; background:#2370ec; border:1px solid #fff; border-radius:3px; }
 .theme-preview[data-theme-preview="winxp"] .theme-preview-window header i:nth-of-type(3) { background-color:#e6593b; }
 .theme-preview[data-theme-preview="winxp"] .theme-preview-window header i { position:relative; background-image:none; }
@@ -462,7 +468,7 @@ body.theme-winxp {
   background:transparent;
   border:1px solid transparent;
   border-radius:3px;
-  font:11px Tahoma,"Microsoft YaHei",sans-serif;
+  font:11px Tahoma,"PingFang SC",sans-serif;
 }
 .theme-winxp :is(.explorer-toolbar,.ie-toolbar) button img { width:24px; height:24px; object-fit:contain; }
 .theme-winxp :is(.explorer-toolbar,.ie-toolbar) button:hover:not(:disabled) { background:#d7e7ff; border-color:#7a9fd3; }
@@ -570,7 +576,7 @@ body.theme-winxp {
   background:transparent;
   border:1px solid transparent;
   border-radius:2px;
-  font:11px/20px Tahoma,"Microsoft YaHei",sans-serif;
+  font:11px/20px Tahoma,"PingFang SC",sans-serif;
 }
 .theme-winxp :is(.program-menu,.start-submenu,.office-menu) button:hover,
 .theme-winxp :is(.program-menu,.start-submenu,.office-menu) button:focus-visible {
