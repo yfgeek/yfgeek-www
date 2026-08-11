@@ -12,14 +12,12 @@ For the user who want to edit this template, you should open the terminal and ty
 npm install
 ```
 
-After that, edit the archived homepage language files in `src/home/i18n`, or edit the Windows homepage directly in `src/windows`, then run `gulp` to rebuild `docs`.
+After that, edit the Windows homepage in `src/windows`, then run `gulp` to rebuild `docs`.
 
 | Folder name | Description |
 | ----------- | ----------- |
 | `src/windows` | Windows-style homepage source |
-| `src/home` | Archived classic homepage source |
 | `docs` | Published Windows-style homepage |
-| `docs/home` | Published archive of the previous homepage |
 
 Gulp reference: [gulpfile.js](gulpfile.js)
 
@@ -49,14 +47,12 @@ Demo: http://www.yfgeek.com
 npm install
 ```
 
-执行之后，可在 `src/home/i18n` 中维护旧版主页语言文件，或直接在 `src/windows` 中维护 Windows 主页；修改完成后执行 `gulp` 重新生成 `docs`。
+执行之后，可在 `src/windows` 中维护 Windows 主页；修改完成后执行 `gulp` 重新生成 `docs`。
 
 | 目录名 | 描述 |
 | ---- | ---- |
 | `src/windows` | Windows 风格主页源码 |
-| `src/home` | 原个人主页归档源码 |
 | `docs` | Windows 风格主页发布目录 |
-| `docs/home` | 原个人主页发布归档 |
 
 Gulp文件 : [gulpfile.js](gulpfile.js)
 
@@ -71,5 +67,4 @@ Gulp文件 : [gulpfile.js](gulpfile.js)
 ## Windows 风格主页
 
 当前交互式 Windows 个人主页发布在 `docs/`，部署后访问 `https://www.yfgeek.com/`。
-原个人主页归档在 `docs/home/`，部署后访问 `https://www.yfgeek.com/home/`。
 Windows 页面源码位于 `src/windows/`，默认使用 Windows XP Luna 主题，并兼容 Windows 98 与 Windows 2000 主题。
