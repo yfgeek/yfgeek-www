@@ -14,12 +14,25 @@
       history.replaceState(null, '', location.pathname + location.hash);
     }
   </script>
-  <link rel="stylesheet" href="styles.css?v=20260810.10">
-  <link rel="stylesheet" href="resume-extras.css?v=20260810.10">
-  <link rel="stylesheet" href="theme-adapter.css?v=20260810.10">
+  <link rel="stylesheet" href="styles.css?v=20260811.1">
+  <link rel="stylesheet" href="resume-extras.css?v=20260811.1">
+  <link rel="stylesheet" href="theme-adapter.css?v=20260811.1">
 </head>
-<body class="theme-winxp">
+<body class="theme-winxp shell-locked">
   <div class="boot-screen" id="bootScreen" aria-hidden="true"><div><img data-system-icon="logo" src="assets/icons/Logo_32x32_4.png" alt=""><section><small>Microsoft</small><b id="bootProductName">Windows XP</b><span id="bootEdition">Professional</span><em id="bootTagline">Microsoft Windows</em></section></div><i></i></div>
+  <section class="login-screen hidden" id="loginScreen" aria-label="Windows XP 用户登录">
+    <header><span>Microsoft Windows XP</span></header>
+    <div class="login-main">
+      <div class="login-welcome"><h1>欢迎使用</h1><p>要开始使用，请单击您的用户名</p></div>
+      <div class="login-divider" aria-hidden="true"></div>
+      <button class="login-account" id="loginAccount" type="button">
+        <img src="assets/me.jpg" alt="">
+        <span><b>极客凡</b><small>单击用户名开始</small></span>
+        <i aria-hidden="true">➜</i>
+      </button>
+    </div>
+    <footer><span>登录后即可浏览极客凡的个人主页</span><strong>Windows XP Professional</strong></footer>
+  </section>
   <main class="desktop wallpaper-blue" id="desktop" aria-label="极客凡的 Windows XP 桌面">
     <div class="wallpaper-mark" aria-hidden="true"><span>YFG</span><small>SECURITY SYSTEMS</small></div>
 
@@ -36,12 +49,12 @@
       <button class="desktop-icon" data-open="travel"><img class="os-icon desktop-folder-icon" src="assets/icons/w2k/folder.svg" alt=""><span>旅行相册</span></button>
       <button class="desktop-icon" data-open="food"><img class="os-icon desktop-folder-icon" src="assets/icons/w2k/folder.svg" alt=""><span>美食图鉴</span></button>
       <button class="desktop-icon" data-url="http://blog.yfgeek.com/"><span class="shortcut-wrap ie-shortcut"><img class="os-icon ie-icon" src="assets/icons/InternetExplorer6.png" alt=""><i>↗</i></span><span>探索文章</span></button>
-      <button class="desktop-icon" data-open="solitaire"><img class="os-icon" src="assets/icons/Sol1_32x32_4.svg" alt=""><span>纸牌</span></button>
-      <button class="desktop-icon" data-open="pinball"><img class="os-icon" src="assets/icons/Joy102_32x32_4.svg" alt=""><span>3D 弹球</span></button>
+      <button class="desktop-icon" data-open="solitaire"><img class="os-icon" data-system-icon="solitaire" src="assets/icons/Sol1_32x32_4.svg" alt=""><span>纸牌</span></button>
+      <button class="desktop-icon" data-open="pinball"><img class="os-icon" data-system-icon="pinball" src="assets/icons/Joy102_32x32_4.svg" alt=""><span>3D 弹球</span></button>
     </section>
 
     <section class="window active-window" id="window-home" data-app="home" style="--x:19vw;--y:7vh;--w:min(820px,74vw);--h:min(620px,78vh)" aria-label="欢迎窗口">
-      <header class="titlebar"><img class="title-icon" src="assets/icons/w2k/computer.svg" alt=""><strong>欢迎来到极客凡</strong><div class="window-actions"><button data-action="minimize" aria-label="最小化">_</button><button data-action="maximize" aria-label="最大化">□</button><button data-action="close" aria-label="关闭">×</button></div></header>
+      <header class="titlebar"><img class="title-icon" data-system-icon="home" src="assets/icons/w2k/home.svg" alt=""><strong>欢迎来到极客凡</strong><div class="window-actions"><button data-action="minimize" aria-label="最小化">_</button><button data-action="maximize" aria-label="最大化">□</button><button data-action="close" aria-label="关闭">×</button></div></header>
       <div class="menubar"><button>文件(<u>F</u>)</button><button>查看(<u>V</u>)</button><button>收藏(<u>A</u>)</button><button>帮助(<u>H</u>)</button></div>
       <div class="window-body home-body">
         <div class="home-photo"><img src="assets/me.jpg" alt="极客凡站在霓虹灯前的背影"></div>
@@ -313,22 +326,22 @@
     </section>
 
     <section class="window hidden remote-game-window" id="window-solitaire" data-app="solitaire" style="--x:24vw;--y:10vh;--w:620px;--h:470px" aria-label="纸牌窗口">
-      <header class="titlebar"><img class="title-icon" src="assets/icons/Sol1_16x16_4.svg" alt=""><strong>纸牌</strong><div class="window-actions"><button data-action="minimize" aria-label="最小化">_</button><button data-action="maximize" aria-label="最大化">□</button><button data-action="close" aria-label="关闭">×</button></div></header>
-      <div class="window-body remote-game-stage" data-game-width="585" data-game-height="405"><div class="game-loading"><img src="assets/icons/Sol1_32x32_4.svg" alt=""><b>正在发牌...</b><span>Solitaire</span></div><iframe id="solitaireFrame" title="纸牌游戏" src="about:blank" data-src="https://98.js.org/programs/js-solitaire/index.html" width="585" height="405" sandbox="allow-scripts allow-same-origin allow-forms allow-modals" allow="autoplay"></iframe></div>
+      <header class="titlebar"><img class="title-icon" data-system-icon="solitaire" src="assets/icons/Sol1_16x16_4.svg" alt=""><strong>纸牌</strong><div class="window-actions"><button data-action="minimize" aria-label="最小化">_</button><button data-action="maximize" aria-label="最大化">□</button><button data-action="close" aria-label="关闭">×</button></div></header>
+      <div class="window-body remote-game-stage" data-game-width="585" data-game-height="405"><div class="game-loading"><img data-system-icon="solitaire" src="assets/icons/Sol1_32x32_4.svg" alt=""><b>正在发牌...</b><span>Solitaire</span></div><iframe id="solitaireFrame" title="纸牌游戏" src="about:blank" data-src="https://98.js.org/programs/js-solitaire/index.html" width="585" height="405" sandbox="allow-scripts allow-same-origin allow-forms allow-modals" allow="autoplay"></iframe></div>
       <footer class="statusbar"><span>游戏：纸牌</span><span>鼠标或触摸操作</span></footer>
     </section>
 
     <section class="window hidden remote-game-window pinball-window" id="window-pinball" data-app="pinball" style="--x:22vw;--y:7vh;--w:636px;--h:500px" aria-label="3D 弹球窗口">
-      <header class="titlebar"><img class="title-icon" src="assets/icons/Joy102_16x16_4.svg" alt=""><strong>3D 弹球 - 太空军校生</strong><div class="window-actions"><button data-action="minimize" aria-label="最小化">_</button><button data-action="maximize" aria-label="最大化">□</button><button data-action="close" aria-label="关闭">×</button></div></header>
-      <div class="window-body remote-game-stage" data-game-width="600" data-game-height="436"><div class="game-loading pinball-loading"><img src="assets/icons/Joy102_32x32_4.svg" alt=""><b>3D Pinball</b><span>SPACE CADET</span><i></i></div><iframe id="pinballFrame" title="3D 弹球游戏" src="about:blank" data-src="https://98.js.org/programs/pinball/space-cadet.html" width="600" height="436" sandbox="allow-scripts allow-same-origin allow-forms allow-modals allow-pointer-lock" allow="autoplay; fullscreen"></iframe></div>
+      <header class="titlebar"><img class="title-icon" data-system-icon="pinball" src="assets/icons/Joy102_16x16_4.svg" alt=""><strong>3D 弹球 - 太空军校生</strong><div class="window-actions"><button data-action="minimize" aria-label="最小化">_</button><button data-action="maximize" aria-label="最大化">□</button><button data-action="close" aria-label="关闭">×</button></div></header>
+      <div class="window-body remote-game-stage" data-game-width="600" data-game-height="436"><div class="game-loading pinball-loading"><img data-system-icon="pinball" src="assets/icons/Joy102_32x32_4.svg" alt=""><b>3D Pinball</b><span>SPACE CADET</span><i></i></div><iframe id="pinballFrame" title="3D 弹球游戏" src="about:blank" data-src="https://98.js.org/programs/pinball/space-cadet.html" width="600" height="436" sandbox="allow-scripts allow-same-origin allow-forms allow-modals allow-pointer-lock" allow="autoplay; fullscreen"></iframe></div>
       <footer class="statusbar"><span>F2：新游戏　Z 与 /：挡板　空格：发射</span><span>SpaceCadetPinball</span></footer>
     </section>
 
     <section class="window hidden dos-emulator-window" id="window-dos" data-app="dos" style="--x:18vw;--y:7vh;--w:min(900px,84vw);--h:min(650px,82vh)" aria-label="MS-DOS 模拟器窗口">
-      <header class="titlebar"><img class="title-icon" src="assets/icons/w2k/dos.svg" alt=""><strong>MS-DOS 方式 - DOSBox</strong><div class="window-actions"><button data-action="minimize" aria-label="最小化">_</button><button data-action="maximize" aria-label="最大化">□</button><button data-action="close" aria-label="关闭">×</button></div></header>
+      <header class="titlebar"><img class="title-icon" src="assets/icons/w2k/dos.svg" alt=""><strong>MS-DOS 方式</strong><div class="window-actions"><button data-action="minimize" aria-label="最小化">_</button><button data-action="maximize" aria-label="最大化">□</button><button data-action="close" aria-label="关闭">×</button></div></header>
       <div class="menubar dos-menubar"><button data-dos-mode="shell">命令提示符(<u>C</u>)</button><button data-dos-mode="restart">重新启动(<u>R</u>)</button></div>
-      <div class="window-body dos-emulator-stage"><div class="dos-loading" id="dosLoading"><img src="assets/icons/w2k/dos.svg" alt=""><b>正在启动 DOSBox...</b><span>真实 x86 DOS 环境</span></div><iframe id="dosFrame" title="DOSBox 模拟器" src="about:blank" data-src="assets/dos/index.html?v=20260810.4" allow="autoplay; fullscreen" sandbox="allow-scripts allow-same-origin allow-pointer-lock allow-downloads"></iframe></div>
-      <footer class="statusbar"><span>DOSBox / WebAssembly</span><span>在 C:\&gt; 输入 MARIO 运行</span></footer>
+      <div class="window-body dos-emulator-stage"><div class="dos-loading" id="dosLoading"><img src="assets/icons/w2k/dos.svg" alt=""><b>正在启动 MS-DOS...</b><span>真实 x86 DOS 环境</span></div><iframe id="dosFrame" title="MS-DOS 模拟器" src="about:blank" data-src="assets/dos/index.html?v=20260810.4" allow="autoplay; fullscreen" sandbox="allow-scripts allow-same-origin allow-pointer-lock allow-downloads"></iframe></div>
+      <footer class="statusbar"><span>MS-DOS / WebAssembly</span><span>在 C:\&gt; 输入 MARIO 运行</span></footer>
     </section>
 
     <section class="window hidden dialog-window" id="window-run" data-app="run" style="--x:35vw;--y:28vh;--w:min(470px,90vw);--h:230px" aria-label="运行窗口"><header class="titlebar"><img class="title-icon" src="assets/icons/Runonce106_32x32_4.png" alt=""><strong>运行</strong><div class="window-actions"><button data-action="close" aria-label="关闭">×</button></div></header><div class="window-body run-body"><img src="assets/icons/Runonce106_32x32_4.png" alt=""><p>请输入程序、文件夹、文档或 Internet 资源的名称，Windows 将为您打开它。</p><label>打开(<u>O</u>): <input id="runInput" value=""></label></div><footer class="dialog-actions"><button class="win-button primary" id="runOk">确定</button><button class="win-button" data-action="close">取消</button></footer></section>
@@ -340,7 +353,7 @@
     <div class="start-menu hidden" id="startMenu">
       <div class="start-brand"><b>YFGeek</b><span id="shellVersion">XP</span><small id="shellEdition">Professional</small></div>
       <div class="start-items">
-        <div class="program-group"><button><img class="start-ico" src="assets/icons/FolderExe_32x32_4.png" alt=""><b>程序</b><span>▶</span></button><div class="program-menu"><div class="office-group"><button><img src="assets/icons/FolderExe_32x32_4.png" alt=""><span>Microsoft Office XP</span><b>▶</b></button><div class="office-menu"><button data-open="word"><span class="office-start-icon word-color">W</span>Microsoft Word</button><button data-open="excel"><span class="office-start-icon excel-color">X</span>Microsoft Excel</button><button data-open="powerpoint"><span class="office-start-icon ppt-color">P</span>Microsoft PowerPoint</button></div></div><button data-url="https://www.yfgeek.com/home"><img class="ie-menu-icon" src="assets/icons/InternetExplorer6.png" alt="">Internet Explorer</button><button data-open="notepad"><img src="assets/icons/w2k/notepad.svg" alt="">记事本</button><button data-open="paint"><img src="assets/icons/Mspaint_32x32_4.png" alt="">画图</button><button data-open="calculator"><img src="assets/icons/Calculator_32x32_4.png" alt="">计算器</button><button data-open="minesweeper"><img src="assets/icons/Winmine1_32x32_4.png" alt="">扫雷</button><button data-open="solitaire"><img src="assets/icons/Sol1_32x32_4.svg" alt="">纸牌</button><button data-open="pinball"><img src="assets/icons/Joy102_32x32_4.svg" alt="">3D 弹球</button><button data-open="dos"><img src="assets/icons/w2k/dos.svg" alt="">MS-DOS 方式</button></div></div>
+        <div class="program-group"><button><img class="start-ico" src="assets/icons/FolderExe_32x32_4.png" alt=""><b>程序</b><span>▶</span></button><div class="program-menu"><div class="office-group"><button><img src="assets/icons/FolderExe_32x32_4.png" alt=""><span>Microsoft Office XP</span><b>▶</b></button><div class="office-menu"><button data-open="word"><span class="office-start-icon word-color">W</span>Microsoft Word</button><button data-open="excel"><span class="office-start-icon excel-color">X</span>Microsoft Excel</button><button data-open="powerpoint"><span class="office-start-icon ppt-color">P</span>Microsoft PowerPoint</button></div></div><button data-url="https://www.yfgeek.com/home"><img class="ie-menu-icon" src="assets/icons/InternetExplorer6.png" alt="">Internet Explorer</button><button data-open="notepad"><img src="assets/icons/w2k/notepad.svg" alt="">记事本</button><button data-open="paint"><img src="assets/icons/Mspaint_32x32_4.png" alt="">画图</button><button data-open="calculator"><img src="assets/icons/Calculator_32x32_4.png" alt="">计算器</button><button data-open="minesweeper"><img src="assets/icons/Winmine1_32x32_4.png" alt="">扫雷</button><button data-open="solitaire"><img data-system-icon="solitaire" src="assets/icons/Sol1_32x32_4.svg" alt="">纸牌</button><button data-open="pinball"><img data-system-icon="pinball" src="assets/icons/Joy102_32x32_4.svg" alt="">3D 弹球</button><button data-open="dos"><img src="assets/icons/w2k/dos.svg" alt="">MS-DOS 方式</button></div></div>
         <div class="start-subgroup"><button><img class="start-ico" data-system-icon="favorites" src="assets/icons/Star_32x32_4.png" alt=""><b>收藏夹</b><span>▶</span></button><div class="start-submenu"><button data-url="http://blog.yfgeek.com/"><img src="assets/icons/Globe_32x32_4.png" alt="">YFGeek Blog</button></div></div>
         <div class="start-subgroup"><button><img class="start-ico" src="assets/icons/w2k/documents.svg" alt=""><b>文档</b><span>▶</span></button><div class="start-submenu"><button data-open="documents"><img src="assets/icons/w2k/documents.svg" alt="">我的文档</button><button data-open="resume-files"><img src="assets/icons/w2k/folder.svg" alt="">个人简历</button><button data-url="http://blog.yfgeek.com/"><img src="assets/icons/InternetExplorer6.png" alt="">探索文章</button><button data-open="travel"><img src="assets/icons/w2k/folder.svg" alt="">旅行相册</button><button data-open="food"><img src="assets/icons/w2k/folder.svg" alt="">美食图鉴</button></div></div>
         <div class="start-subgroup"><button><img class="start-ico" src="assets/icons/w2k/settings.svg" alt=""><b>设置</b><span>▶</span></button><div class="start-submenu"><button data-open="control-panel"><img src="assets/icons/w2k/settings.svg" alt="">控制面板</button><button data-open="display"><img src="assets/icons/w2k/monitor.svg" alt="">显示属性</button></div></div>
@@ -357,8 +370,15 @@
   <footer class="taskbar">
     <button class="start-button" id="startButton" aria-expanded="false"><img class="start-logo" data-system-icon="logo" src="assets/icons/Logo_32x32_4.png" alt=""><b>开始</b></button>
     <div class="task-divider"></div><div class="task-items" id="taskItems"></div>
-    <div class="tray"><button class="sound-toggle" id="soundToggle" type="button" aria-label="关闭系统声音" title="系统声音"><img class="speaker" src="assets/icons/w2k/speaker.svg" alt=""></button><time id="clock">00:00</time></div>
+    <div class="tray">
+      <div class="volume-popup hidden" id="volumePopup" role="dialog" aria-label="音量控制">
+        <strong>主音量</strong>
+        <div class="volume-slider"><span>高</span><input id="volumeRange" type="range" min="0" max="100" value="70" orient="vertical" aria-label="主音量"><span>低</span></div>
+        <label><input id="volumeMute" type="checkbox"> 静音</label>
+      </div>
+      <button class="sound-toggle" id="soundToggle" type="button" aria-label="打开音量控制" title="音量"><img class="speaker" src="assets/icons/w2k/speaker.svg" alt=""></button><time id="clock">00:00</time>
+    </div>
   </footer>
-  <script src="site.js?v=20260810.10"></script>
+  <script src="site.js?v=20260811.1"></script>
 </body>
 </html>

@@ -1,0 +1,25 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32">
+  <defs>
+    <linearGradient id="cab" x1="0" y1="0" x2="1" y2="1">
+      <stop stop-color="#5bb4ff"/>
+      <stop offset=".55" stop-color="#214fb2"/>
+      <stop offset="1" stop-color="#39226f"/>
+    </linearGradient>
+    <radialGradient id="ball" cx="35%" cy="30%">
+      <stop stop-color="#fff"/>
+      <stop offset=".3" stop-color="#dfe9f5"/>
+      <stop offset="1" stop-color="#6f7d91"/>
+    </radialGradient>
+    <filter id="shadow" x="-30%" y="-30%" width="170%" height="170%">
+      <feDropShadow dx="1" dy="1.2" stdDeviation=".7" flood-opacity=".55"/>
+    </filter>
+  </defs>
+  <path d="M9 2h14l6 26-13 3L3 26z" fill="url(#cab)" stroke="#132d67" stroke-width="1.2" filter="url(#shadow)"/>
+  <path d="M11 5h10l4.6 20-10 2.3-9.1-3.8z" fill="#123e98" stroke="#8cc8ff"/>
+  <circle cx="15" cy="11" r="3.3" fill="#f04b42" stroke="#ffdf80" stroke-width="1.2"/>
+  <circle cx="20.5" cy="17" r="3" fill="#ffcb26" stroke="#fff1a8" stroke-width="1"/>
+  <circle cx="12" cy="19" r="2.7" fill="#d752c6" stroke="#f6b8ed" stroke-width="1"/>
+  <path d="m10 24 5 2m9-4-4 4" stroke="#d9efff" stroke-width="2" stroke-linecap="round"/>
+  <circle cx="23.5" cy="8" r="2.5" fill="url(#ball)" stroke="#fff" stroke-width=".6"/>
+  <path d="M8 7c3-2 11-3 16 1" fill="none" stroke="#80d3ff" stroke-width=".8" opacity=".8"/>
+</svg>

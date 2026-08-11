@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no">
-  <title>YFGeek DOSBox</title>
+  <title>YFGeek MS-DOS</title>
   <link rel="stylesheet" href="runtime/js-dos.css">
   <style>
     html,body,#dos{width:100%;height:100%;margin:0;overflow:hidden;background:#000}
@@ -13,8 +13,8 @@
   </style>
 </head>
 <body>
-  <div id="dos" aria-label="DOSBox emulator"></div>
-  <div id="fallback"><b>DOSBox failed to start.</b><span>Refresh this window and try again.</span></div>
+  <div id="dos" aria-label="MS-DOS emulator"></div>
+  <div id="fallback"><b>MS-DOS failed to start.</b><span>Refresh this window and try again.</span></div>
   <script>
     // Keyboard Lock is top-level-only; the emulator runs in a local iframe.
     if(window.top!==window&&navigator.keyboard?.lock){try{Object.defineProperty(navigator.keyboard,'lock',{value:()=>Promise.resolve(),configurable:true})}catch{}}
