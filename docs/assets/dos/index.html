@@ -1,0 +1,42 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no">
+  <title>YFGeek DOSBox</title>
+  <link rel="stylesheet" href="runtime/js-dos.css">
+  <style>
+    html,body,#dos{width:100%;height:100%;margin:0;overflow:hidden;background:#000}
+    body{font-family:"Courier New",monospace}
+    #fallback{position:fixed;inset:0;display:none;place-content:center;gap:8px;padding:24px;color:#c0c0c0;background:#000;text-align:center}
+    #fallback b{color:#fff}
+  </style>
+</head>
+<body>
+  <div id="dos" aria-label="DOSBox emulator"></div>
+  <div id="fallback"><b>DOSBox failed to start.</b><span>Refresh this window and try again.</span></div>
+  <script>
+    // Keyboard Lock is top-level-only; the emulator runs in a local iframe.
+    if(window.top!==window&&navigator.keyboard?.lock){try{Object.defineProperty(navigator.keyboard,'lock',{value:()=>Promise.resolve(),configurable:true})}catch{}}
+    addEventListener('unhandledrejection',event=>{if(String(event.reason?.message||event.reason).includes('lock() request'))event.preventDefault()});
+    const nativeWarn=console.warn.bind(console);
+    console.warn=(...args)=>String(args[0]).startsWith("Can't create audio node with sampleRate === 0")?undefined:nativeWarn(...args);
+  </script>
+  <script src="runtime/js-dos.js"></script>
+  <script>
+    const player=Dos(document.getElementById('dos'),{
+      url:'msdos.jsdos?v=20260810.4',
+      pathPrefix:'runtime/',
+      pathSuffix:'?v=20260810.1',
+      autoStart:true,
+      countDownStart:0,
+      kiosk:true,
+      theme:'dark',
+      workerThread:true,
+      noCloud:true,
+      noNetworking:true
+    });
+    if(player?.catch)player.catch(()=>document.getElementById('fallback').style.display='grid');
+  </script>
+</body>
+</html>

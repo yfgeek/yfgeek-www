@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 32 32">
+  <defs>
+    <linearGradient id="r" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#f52b22"/><stop offset="1" stop-color="#b30d16"/></linearGradient>
+    <linearGradient id="g" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#82d43d"/><stop offset="1" stop-color="#2c8d25"/></linearGradient>
+    <linearGradient id="b" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#39a8f5"/><stop offset="1" stop-color="#1261bd"/></linearGradient>
+    <linearGradient id="y" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#ffd34a"/><stop offset="1" stop-color="#e28b12"/></linearGradient>
+    <filter id="s" x="-30%" y="-30%" width="160%" height="160%"><feDropShadow dx="1" dy="1" stdDeviation=".55" flood-color="#06437c" flood-opacity=".55"/></filter>
+  </defs>
+  <g filter="url(#s)" transform="translate(2 2) skewY(-9)">
+    <path fill="url(#r)" d="M1 2h11.8v10.4H1z"/>
+    <path fill="url(#g)" d="M13.4 1.8h13.1v10.1H13.4z"/>
+    <path fill="url(#b)" d="M1 13.5h11.8v13.1H1z"/>
+    <path fill="url(#y)" d="M13.4 13.1h13.1v13.4H13.4z"/>
+    <path fill="#fff" opacity=".22" d="M1 2h25.5v2H1z"/>
+  </g>
+</svg>

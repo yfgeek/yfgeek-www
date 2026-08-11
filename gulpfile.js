@@ -1,88 +1,68 @@
-/**
- * Gulp 自动化工具
- * Author   ：yfgeek
- */
 const gulp = require('gulp');
 const uglify = require('gulp-uglify');
 const htmlmin = require('gulp-htmlmin');
-const useref = require('gulp-useref');
 const cleanCSS = require('gulp-clean-css');
-const sass = require('gulp-sass')(require('sass'));
 
-// 压缩 js 文件
-function script() {
-    console.log('Processing JS files...');
-    return gulp.src('src/i18n/*.js')
+const windowsSource = ['src/windows/**/*', '!src/windows/**/.DS_Store'];
+
+function windows() {
+    return gulp.src(windowsSource, { encoding: false, dot: true })
+        .pipe(gulp.dest('docs'));
+}
+
+function homeScript() {
+    return gulp.src('src/home/i18n/*.js')
         .pipe(uglify())
-        .pipe(gulp.dest('docs/i18n'));
+        .pipe(gulp.dest('docs/home/i18n'));
 }
 
-// 压缩 css 文件
-function minicss() {
-    console.log('Processing CSS files...');
-    return gulp.src('src/media/*.css')
-        .pipe(cleanCSS({compatibility: 'ie8'}))
-        .pipe(gulp.dest('docs/media'));
+function homeCss() {
+    return gulp.src('src/home/media/*.css')
+        .pipe(cleanCSS({ compatibility: 'ie8' }))
+        .pipe(gulp.dest('docs/home/media'));
 }
 
-// 压缩html
-function html() {
-    console.log('Processing HTML files...');
-    return gulp.src('src/index.html')
-        .pipe(htmlmin({collapseWhitespace: true, removeComments: true}))
-        .pipe(gulp.dest('docs/'));
+function homeHtml() {
+    return gulp.src('src/home/index.html')
+        .pipe(htmlmin({ collapseWhitespace: true, removeComments: true }))
+        .pipe(gulp.dest('docs/home'));
 }
 
-// 复制图片
-function img() {
-    console.log('Processing image files...');
-    return gulp.src(['src/img/*'])
-        .pipe(gulp.dest('docs/img'));
+function homeImages() {
+    return gulp.src('src/home/img/*', { encoding: false })
+        .pipe(gulp.dest('docs/home/img'));
 }
 
-// 复制 JSON 文件
-function copyJson() {
-    console.log('Processing JSON files...');
-    return gulp.src('src/i18n/*.json')
-        .pipe(gulp.dest('docs/i18n'));
+function homeJson() {
+    return gulp.src('src/home/i18n/*.json')
+        .pipe(gulp.dest('docs/home/i18n'));
 }
 
-// 监听文件变化
+function homeGame() {
+    return gulp.src(['src/home/game/**/*', '!src/home/game/**/.DS_Store'], { encoding: false, dot: true })
+        .pipe(gulp.dest('docs/home/game'));
+}
+
+const build = gulp.parallel(windows, homeScript, homeCss, homeHtml, homeImages, homeJson, homeGame);
+
 function watch() {
-    console.log('Starting watch task...');
-    
-    // 先执行一次构建
     build();
-    
-    // 监听文件变化
-    gulp.watch('src/i18n/*.js', script).on('change', function(path) {
-        console.log('JS file changed:', path);
-    });
-    
-    gulp.watch('src/media/*.css', minicss).on('change', function(path) {
-        console.log('CSS file changed:', path);
-    });
-    
-    gulp.watch('src/index.html', html).on('change', function(path) {
-        console.log('HTML file changed:', path);
-    });
-    
-    gulp.watch('src/img/*', img).on('change', function(path) {
-        console.log('Image file changed:', path);
-    });
-    
-    console.log('Watch task started successfully');
+    gulp.watch(windowsSource, windows);
+    gulp.watch('src/home/i18n/*.js', homeScript);
+    gulp.watch('src/home/media/*.css', homeCss);
+    gulp.watch('src/home/index.html', homeHtml);
+    gulp.watch('src/home/img/*', homeImages);
+    gulp.watch('src/home/i18n/*.json', homeJson);
+    gulp.watch('src/home/game/**/*', homeGame);
 }
 
-// 构建任务
-const build = gulp.series(script, minicss, html, img, copyJson);
-
-// 导出任务
-exports.script = script;
-exports.minicss = minicss;
-exports.html = html;
-exports.img = img;
-exports.watch = watch;
+exports.windows = windows;
+exports.homeScript = homeScript;
+exports.homeCss = homeCss;
+exports.homeHtml = homeHtml;
+exports.homeImages = homeImages;
+exports.homeJson = homeJson;
+exports.homeGame = homeGame;
 exports.build = build;
-exports.copyJson = copyJson;
+exports.watch = watch;
 exports.default = build;
