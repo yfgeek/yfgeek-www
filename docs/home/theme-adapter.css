@@ -1,0 +1,562 @@
+/* Theme adapter for classic-stylesheets 2.1 by Niels Sonnich Poulsen. */
+body.theme-win98 {
+  --shell-desktop:#008080;
+  --shell-face:#c0c0c0;
+  --shell-light:#dfdfdf;
+  --shell-lightest:#fff;
+  --shell-dark:#808080;
+  --shell-darker:#404040;
+  --shell-title:linear-gradient(90deg,#000080,#1084d0);
+  --shell-title-inactive:linear-gradient(90deg,#808080,#b5b5b5);
+  --shell-title-fg:#fff;
+  --shell-selection:#000080;
+  background:#008080;
+  font-family:"MS Sans Serif",Tahoma,"Microsoft YaHei",sans-serif;
+}
+
+body.theme-win2000 {
+  --silver:#d4d0c8;
+  --light:#d4d0c8;
+  --shell-desktop:#3a6ea5;
+  --shell-face:#d4d0c8;
+  --shell-light:#e0e0e0;
+  --shell-lightest:#fff;
+  --shell-dark:#808080;
+  --shell-darker:#404040;
+  --shell-title:linear-gradient(90deg,#0a246a,#a6caf0);
+  --shell-title-inactive:linear-gradient(90deg,#808080,#c0c0c0);
+  --shell-title-fg:#fff;
+  --shell-selection:#0a246a;
+  background:#3a6ea5;
+  font-family:Tahoma,"Microsoft YaHei",sans-serif;
+}
+
+body.theme-winxp {
+  --task:32px;
+  --silver:#ececec;
+  --light:#f3f3f3;
+  --shell-desktop:#004e98;
+  --shell-face:#ececec;
+  --shell-light:#f7f7f7;
+  --shell-lightest:#fff;
+  --shell-dark:#aca899;
+  --shell-darker:#716f64;
+  --shell-title:linear-gradient(90deg,#003ddc 0 5px,transparent 5px),linear-gradient(270deg,rgba(0,14,125,.5),transparent 5px),linear-gradient(180deg,#3d95ff 0 5%,#0054e3 10%,#0372ff 84%,#026afe 90%,#0144d0 100%);
+  --shell-title-inactive:linear-gradient(180deg,#98b2e8 0 5%,#7996de 10%,#7d9be3 84%,#7a93df 100%);
+  --shell-title-fg:#fff;
+  --shell-selection:#316ac5;
+  background:#004e98;
+  font-family:Tahoma,"Microsoft YaHei",sans-serif;
+}
+
+.theme-win98 .desktop.wallpaper-blue { background-color:#008080; }
+.theme-win2000 .desktop.wallpaper-blue { background-color:#3a6ea5; }
+.theme-winxp .desktop.wallpaper-blue { background-color:#004e98; }
+
+:is(.theme-win98,.theme-win2000,.theme-winxp) .window {
+  background:var(--shell-face);
+}
+
+:is(.theme-win98,.theme-win2000) .window {
+  padding:3px;
+  border:1px solid var(--shell-light);
+  border-right-color:#000;
+  border-bottom-color:#000;
+  box-shadow:inset 1px 1px var(--shell-lightest),inset -1px -1px var(--shell-dark),1px 1px #000;
+}
+
+.theme-winxp .window {
+  padding:3px;
+  border:1px solid #5b68cd;
+  border-right-color:#4f53bc;
+  border-bottom-color:#4f53bc;
+  border-radius:8px 8px 0 0;
+  box-shadow:inset -1px -1px #6d74cd,inset 1px 0 #7480dc,1px 1px #00138c;
+}
+
+:is(.theme-win98,.theme-win2000) .titlebar {
+  height:20px;
+  min-height:20px;
+  flex-basis:20px;
+  gap:3px;
+  padding:1px 2px;
+  color:var(--shell-face);
+  background:var(--shell-title-inactive);
+}
+
+:is(.theme-win98,.theme-win2000) .active-window>.titlebar {
+  color:var(--shell-title-fg);
+  background:var(--shell-title);
+}
+
+:is(.theme-win98,.theme-win2000) .titlebar strong {
+  font:bold 11px/16px Tahoma,"Microsoft YaHei",sans-serif;
+}
+
+.theme-winxp .titlebar {
+  height:29px;
+  min-height:29px;
+  flex-basis:29px;
+  gap:4px;
+  margin:-3px -4px 0;
+  padding:3px 4px 3px 6px;
+  color:#d8e4f8;
+  background:var(--shell-title-inactive);
+  border:1px solid #688de0;
+  border-right-color:#00138c;
+  border-radius:8px 8px 0 0;
+}
+
+.theme-winxp .active-window>.titlebar {
+  color:#fff;
+  background:var(--shell-title);
+  border-top-color:#0058eb;
+  border-left-color:#001abc;
+}
+
+.theme-winxp .titlebar strong {
+  font:bold 13px/20px "Trebuchet MS",Tahoma,"Microsoft YaHei",sans-serif;
+  text-shadow:1px 1px #0a1883;
+}
+
+:is(.theme-win98,.theme-win2000,.theme-winxp) .title-icon {
+  width:16px;
+  height:16px;
+  flex:0 0 16px;
+  object-fit:contain;
+}
+
+:is(.theme-win98,.theme-win2000,.theme-winxp) .window-actions {
+  align-items:center;
+  gap:2px;
+  margin-left:auto;
+}
+
+:is(.theme-win98,.theme-win2000) .window-actions button {
+  position:relative;
+  width:20px;
+  height:18px;
+  min-width:20px;
+  min-height:18px;
+  padding:0!important;
+  color:transparent;
+  font-size:0;
+  background-color:var(--shell-face);
+  background-position:3px 3px;
+  background-repeat:no-repeat;
+  border:1px solid #000;
+  border-top-color:var(--shell-lightest);
+  border-left-color:var(--shell-lightest);
+  border-radius:0;
+  box-shadow:inset -1px -1px var(--shell-dark);
+  transform:none;
+}
+
+:is(.theme-win98,.theme-win2000) .window-actions button:active {
+  background-position:4px 4px;
+  border-color:var(--shell-dark) var(--shell-lightest) var(--shell-lightest) var(--shell-dark);
+  box-shadow:none;
+  transform:none;
+}
+
+:is(.theme-win98,.theme-win2000) .window-actions [data-action="minimize"] { background-image:url("assets/classic-stylesheets/win9x/minimize.svg"); }
+:is(.theme-win98,.theme-win2000) .window-actions [data-action="maximize"] { background-image:url("assets/classic-stylesheets/win9x/maximize.svg"); }
+:is(.theme-win98,.theme-win2000) .window.maximized .window-actions [data-action="maximize"] { background-image:url("assets/classic-stylesheets/win9x/restore.svg"); }
+:is(.theme-win98,.theme-win2000) .window-actions [data-action="close"] {
+  margin-left:2px;
+  background-image:url("assets/classic-stylesheets/win9x/close.svg");
+}
+
+:is(.theme-win98,.theme-win2000) .window-actions button::before,
+:is(.theme-win98,.theme-win2000) .window-actions button::after {
+  content:none!important;
+}
+
+.theme-winxp .window-actions { gap:2px; }
+.theme-winxp .window-actions button {
+  position:relative;
+  width:21px;
+  height:21px;
+  min-width:21px;
+  min-height:21px;
+  padding:0!important;
+  color:transparent;
+  font-size:0;
+  background:linear-gradient(135deg,#bfd1fc 0,transparent 20%),linear-gradient(90deg,#5e8bf7 0,transparent 40%),linear-gradient(180deg,#5e8bf7 0,transparent 30%),linear-gradient(135deg,#467ef5,#0760f3);
+  border:1px solid #fff;
+  border-radius:3px;
+  box-shadow:inset 1px 1px rgba(0,0,0,.1),inset -2px -2px 2px rgba(0,0,0,.3);
+  transform:none;
+}
+.theme-winxp .window-actions [data-action="close"] {
+  margin-left:2px;
+  background:linear-gradient(135deg,#efa390 0,transparent 20%),linear-gradient(90deg,#e98168 0,transparent 40%),linear-gradient(180deg,#e98168 0,transparent 30%),linear-gradient(135deg,#e66a4d,#e03802);
+}
+.theme-winxp .window-actions button:active { filter:brightness(.8); transform:none; }
+.theme-winxp .window-actions button::before { content:none!important; }
+.theme-winxp .window-actions button::after {
+  content:""!important;
+  position:absolute;
+  display:block!important;
+  left:50%;
+  top:50%;
+  width:11px;
+  height:11px;
+  background:#fff;
+  border:0;
+  box-shadow:none;
+  transform:translate(-50%,-50%)!important;
+  translate:0 0!important;
+  -webkit-mask-position:center;
+  -webkit-mask-repeat:no-repeat;
+  mask-position:center;
+  mask-repeat:no-repeat;
+}
+.theme-winxp .window-actions [data-action="minimize"]::after { -webkit-mask-image:url("assets/classic-stylesheets/winxp/minimize.svg"); mask-image:url("assets/classic-stylesheets/winxp/minimize.svg"); }
+.theme-winxp .window-actions [data-action="maximize"]::after { -webkit-mask-image:url("assets/classic-stylesheets/winxp/maximize.svg"); mask-image:url("assets/classic-stylesheets/winxp/maximize.svg"); }
+.theme-winxp .window.maximized .window-actions [data-action="maximize"]::after { -webkit-mask-image:url("assets/classic-stylesheets/winxp/restore.svg"); mask-image:url("assets/classic-stylesheets/winxp/restore.svg"); }
+.theme-winxp .window-actions [data-action="close"]::after { -webkit-mask-image:url("assets/classic-stylesheets/winxp/close.svg"); mask-image:url("assets/classic-stylesheets/winxp/close.svg"); }
+
+:is(.theme-win98,.theme-win2000) .menubar {
+  height:21px;
+  min-height:21px;
+  flex-basis:21px;
+  padding:1px 2px;
+  background:var(--shell-face);
+  border:0;
+}
+:is(.theme-win98,.theme-win2000) .menubar button {
+  height:19px;
+  padding:2px 6px;
+  border:0;
+  background:transparent;
+  box-shadow:none;
+  font:11px/15px Tahoma,"Microsoft YaHei",sans-serif;
+}
+:is(.theme-win98,.theme-win2000) .menubar button:active,
+:is(.theme-win98,.theme-win2000) .menubar button.menu-open {
+  padding:2px 6px;
+  color:#fff;
+  background:var(--shell-selection);
+  border:0;
+  box-shadow:none;
+}
+.theme-winxp .menubar {
+  height:24px;
+  min-height:24px;
+  flex-basis:24px;
+  padding:2px 3px;
+  background:#ececec;
+}
+.theme-winxp .menubar button {
+  height:20px;
+  padding:2px 7px;
+  border:0;
+  border-radius:0;
+  background:transparent;
+  box-shadow:none;
+  font:11px/16px Tahoma,"Microsoft YaHei",sans-serif;
+}
+.theme-winxp .menubar button:active,
+.theme-winxp .menubar button.menu-open { padding:2px 7px; color:#fff; background:#316ac5; }
+
+:is(.theme-win98,.theme-win2000,.theme-winxp) .addressbar,
+:is(.theme-win98,.theme-win2000,.theme-winxp) .ie-addressbar,
+:is(.theme-win98,.theme-win2000,.theme-winxp) .explorer-toolbar,
+:is(.theme-win98,.theme-win2000,.theme-winxp) .gallery-toolbar,
+:is(.theme-win98,.theme-win2000,.theme-winxp) .office-toolbar,
+:is(.theme-win98,.theme-win2000,.theme-winxp) .dialog-actions {
+  background:var(--shell-face);
+}
+
+:is(.theme-win98,.theme-win2000,.theme-winxp) .window-body { background:var(--shell-face); }
+:is(.theme-win98,.theme-win2000,.theme-winxp) :is(.resume-folder-body,.control-panel-grid,.system-grid,.network-items,.recycle-items,.gallery-stage,.computer-explorer,.ie-viewport,.document-body,.notepad,.notepad-editor) { background:#fff; }
+
+:is(.theme-win98,.theme-win2000) :is(.win-button,.dialog-actions button,.dialog-actions a,.calc-grid button,.mine-score button,.property-tabs button,.task-item,.start-button) {
+  color:#000;
+  background:var(--shell-face);
+  border:0;
+  border-radius:0;
+  box-shadow:inset -1px -1px #000,inset 1px 1px var(--shell-lightest),inset -2px -2px var(--shell-dark),inset 2px 2px var(--shell-light);
+}
+:is(.theme-win98,.theme-win2000) :is(.win-button,.dialog-actions button,.dialog-actions a,.calc-grid button,.mine-score button,.property-tabs button,.task-item,.start-button):active {
+  box-shadow:inset 1px 1px #000,inset -1px -1px var(--shell-lightest),inset 2px 2px var(--shell-dark);
+}
+
+.theme-winxp :is(.win-button,.dialog-actions button,.dialog-actions a,.calc-grid button,.mine-score button,.property-tabs button) {
+  color:#000;
+  background:linear-gradient(#fff,#ececec);
+  border:1px solid #003c74;
+  border-radius:4px;
+  box-shadow:none;
+}
+.theme-winxp :is(.win-button,.dialog-actions button,.dialog-actions a,.calc-grid button,.mine-score button,.property-tabs button):active { background:#dfe7f3; box-shadow:inset 1px 2px #bdc9da; }
+
+:is(.theme-win98,.theme-win2000,.theme-winxp) :is(.start-menu,.program-menu,.start-submenu,.office-menu,.system-menu,.context-menu) {
+  color:#000;
+  background:var(--shell-face);
+  border-color:var(--shell-lightest) var(--shell-darker) var(--shell-darker) var(--shell-lightest);
+}
+:is(.theme-win98,.theme-win2000,.theme-winxp) :is(.start-items,.program-menu,.start-submenu,.office-menu,.system-menu,.context-menu) button:hover { color:#fff; background:var(--shell-selection); }
+
+:is(.theme-win98,.theme-win2000,.theme-winxp) .start-menu {
+  width:268px;
+  height:auto;
+  max-height:calc(100vh - var(--task) - 2px);
+  grid-template-columns:38px 1fr;
+}
+:is(.theme-win98,.theme-win2000,.theme-winxp) .start-items { padding:3px; }
+:is(.theme-win98,.theme-win2000,.theme-winxp) .start-items>button,
+:is(.theme-win98,.theme-win2000,.theme-winxp) .start-items>.program-group,
+:is(.theme-win98,.theme-win2000,.theme-winxp) .start-items>.start-subgroup { min-height:38px; }
+:is(.theme-win98,.theme-win2000,.theme-winxp) .start-items>.program-group>button,
+:is(.theme-win98,.theme-win2000,.theme-winxp) .start-items>.start-subgroup>button { min-height:38px; }
+:is(.theme-win98,.theme-win2000,.theme-winxp) .start-ico { width:32px; height:32px; flex:0 0 32px; object-fit:contain; }
+:is(.theme-win98,.theme-win2000,.theme-winxp) .program-menu button,
+:is(.theme-win98,.theme-win2000,.theme-winxp) .start-submenu button,
+:is(.theme-win98,.theme-win2000,.theme-winxp) .office-menu button { min-height:26px; height:26px; padding:2px 7px; gap:8px; }
+:is(.theme-win98,.theme-win2000,.theme-winxp) .program-menu button img,
+:is(.theme-win98,.theme-win2000,.theme-winxp) .start-submenu button img,
+:is(.theme-win98,.theme-win2000,.theme-winxp) .office-menu button img { width:16px; height:16px; flex:0 0 16px; object-fit:contain; }
+:is(.theme-win98,.theme-win2000,.theme-winxp) .office-start-icon { width:16px; height:16px; flex:0 0 16px; font-size:11px; }
+:is(.theme-win98,.theme-win2000,.theme-winxp) .start-items hr { margin:3px 1px; }
+
+.theme-win98 .start-brand { background:linear-gradient(180deg,#000080,#1084d0); }
+.theme-win2000 .start-brand { background:linear-gradient(180deg,#000033,#0a246a 48%,#3a6ea5); }
+.theme-winxp .start-brand { background:linear-gradient(180deg,#16469b,#2d76d7); box-shadow:inset -1px 0 #8ebfff; }
+
+:is(.theme-win98,.theme-win2000) .taskbar { background:var(--shell-face); }
+:is(.theme-win98,.theme-win2000) .tray { background:var(--shell-face); }
+.theme-winxp .taskbar {
+  padding:3px 4px;
+  background:linear-gradient(180deg,#3168d5 0,#3888e9 9%,#245edb 18%,#245edb 88%,#1941a5 100%);
+  border:0;
+}
+.theme-winxp .start-button {
+  height:26px;
+  padding:1px 9px 2px 7px;
+  color:#fff;
+  background:linear-gradient(180deg,#72c465,#3c9b35 45%,#2f7d29);
+  border:1px solid #174e17;
+  border-radius:0 10px 10px 0;
+  box-shadow:inset 0 1px #9fda91;
+  font-style:italic;
+  text-shadow:1px 1px #245c20;
+}
+.theme-winxp .task-item { height:24px; color:#fff; background:#3c81e8; border:1px solid #1648a4; border-radius:2px; box-shadow:inset 1px 1px #63a3f2; }
+.theme-winxp .task-item.active { background:#1e52b7; box-shadow:inset 1px 1px #143d8d; }
+.theme-winxp .tray { color:#fff; background:#0b8bf0; border-color:#0b5db9 #48a7f0 #48a7f0 #0b5db9; }
+
+:is(.theme-win98,.theme-win2000,.theme-winxp) .desktop-icon.selected>span:last-child,
+:is(.theme-win98,.theme-win2000,.theme-winxp) .file-selected :is(b,span) { background:var(--shell-selection); }
+:is(.theme-win98,.theme-win2000,.theme-winxp) .ie-icon,
+:is(.theme-win98,.theme-win2000,.theme-winxp) .ie-menu-icon,
+:is(.theme-win98,.theme-win2000,.theme-winxp) .ie-addressbar>img { object-fit:contain; image-rendering:auto; }
+
+:is(.theme-win98,.theme-win2000,.theme-winxp) .w2k-address {
+  padding-left:23px;
+  background-color:#fff;
+  background-repeat:no-repeat;
+  background-position:3px center;
+  background-size:16px 16px;
+}
+.theme-win98 .folder-address { background-image:url("assets/icons/FolderFile_32x32_4.png"); }
+.theme-win98 .settings-address { background-image:url("assets/icons/Controls3000_32x32_4.png"); }
+.theme-win98 .computer-address { background-image:url("assets/icons/Computer_32x32_4.png"); }
+.theme-win98 .network-address { background-image:url("assets/icons/Network2_32x32_4.png"); }
+.theme-win98 .recycle-address { background-image:url("assets/icons/RecycleEmpty_32x32_4.png"); }
+.theme-win2000 .folder-address { background-image:url("assets/icons/w2k/folder.svg"); }
+.theme-win2000 .settings-address { background-image:url("assets/icons/w2k/settings.svg"); }
+.theme-win2000 .computer-address { background-image:url("assets/icons/w2k/computer.svg"); }
+.theme-win2000 .network-address { background-image:url("assets/icons/w2k/network.svg"); }
+.theme-win2000 .recycle-address { background-image:url("assets/icons/w2k/recycle-empty.svg"); }
+.theme-winxp .folder-address { background-image:url("assets/icons/xp/folder.png"); }
+.theme-winxp .settings-address { background-image:url("assets/icons/xp/settings.png"); }
+.theme-winxp .computer-address { background-image:url("assets/icons/xp/computer.png"); }
+.theme-winxp .network-address { background-image:url("assets/icons/xp/network.png"); }
+.theme-winxp .recycle-address { background-image:url("assets/icons/xp/recycle-empty.png"); }
+
+/* Display Properties appearance page */
+.display-panel { height:calc(100% - 42px); }
+.display-panel[hidden] { display:none!important; }
+.display-panel>fieldset { height:calc(100% - 10px); }
+.appearance-fieldset { grid-template-columns:1fr!important; grid-template-rows:1fr auto auto; gap:8px!important; }
+.theme-select-label { align-self:end; }
+#shellThemeSelect { width:100%; height:24px; padding:2px 4px; background:#fff; border:2px inset #fff; }
+.theme-preview { min-height:205px; padding:10px; background:#fff; border:2px inset #fff; }
+.theme-preview-desktop { width:100%; height:100%; padding:22px 34px; background:#3a6ea5; }
+.theme-preview-window { width:100%; height:100%; padding:3px; background:#d4d0c8; border:2px outset #fff; }
+.theme-preview-window header { height:20px; display:flex; align-items:center; gap:2px; padding:1px 2px 1px 4px; color:#fff; background:linear-gradient(90deg,#0a246a,#a6caf0); font:bold 11px Tahoma,sans-serif; }
+.theme-preview-window header span { flex:1; }
+.theme-preview-window header i { width:18px; height:16px; background:#d4d0c8 center no-repeat; border:2px outset #fff; }
+.theme-preview-window header i:nth-of-type(1) { background-image:url("assets/classic-stylesheets/win9x/minimize.svg"); }
+.theme-preview-window header i:nth-of-type(2) { background-image:url("assets/classic-stylesheets/win9x/maximize.svg"); }
+.theme-preview-window header i:nth-of-type(3) { margin-left:1px; background-image:url("assets/classic-stylesheets/win9x/close.svg"); }
+.theme-preview-window main { height:calc(100% - 20px); display:flex; align-items:flex-end; justify-content:flex-end; padding:10px; background:#d4d0c8; }
+.theme-preview-window main button { min-width:64px; min-height:23px; background:#d4d0c8; border:2px outset #fff; }
+.theme-preview[data-theme-preview="win98"] .theme-preview-desktop { background:#008080; }
+.theme-preview[data-theme-preview="win98"] .theme-preview-window,
+.theme-preview[data-theme-preview="win98"] .theme-preview-window main { background:#c0c0c0; }
+.theme-preview[data-theme-preview="win98"] .theme-preview-window header { background:linear-gradient(90deg,#000080,#1084d0); }
+.theme-preview[data-theme-preview="winxp"] .theme-preview-desktop { background:#004e98; }
+.theme-preview[data-theme-preview="winxp"] .theme-preview-window { background:#ececec; border-color:#5b68cd; border-radius:8px 8px 0 0; }
+.theme-preview[data-theme-preview="winxp"] .theme-preview-window header { height:27px; background:linear-gradient(180deg,#3d95ff 0 8%,#0054e3 14%,#0372ff 84%,#0144d0); border-radius:6px 6px 0 0; font:13px "Trebuchet MS",Tahoma,sans-serif; }
+.theme-preview[data-theme-preview="winxp"] .theme-preview-window header i { width:21px; height:21px; background:#2370ec; border:1px solid #fff; border-radius:3px; }
+.theme-preview[data-theme-preview="winxp"] .theme-preview-window header i:nth-of-type(3) { background-color:#e6593b; }
+.theme-preview[data-theme-preview="winxp"] .theme-preview-window header i { position:relative; background-image:none; }
+.theme-preview[data-theme-preview="winxp"] .theme-preview-window header i::after { content:""; position:absolute; left:50%; top:50%; width:11px; height:11px; background:#fff; transform:translate(-50%,-50%); -webkit-mask-position:center; -webkit-mask-repeat:no-repeat; mask-position:center; mask-repeat:no-repeat; }
+.theme-preview[data-theme-preview="winxp"] .theme-preview-window header i:nth-of-type(1)::after { -webkit-mask-image:url("assets/classic-stylesheets/winxp/minimize.svg"); mask-image:url("assets/classic-stylesheets/winxp/minimize.svg"); }
+.theme-preview[data-theme-preview="winxp"] .theme-preview-window header i:nth-of-type(2)::after { -webkit-mask-image:url("assets/classic-stylesheets/winxp/maximize.svg"); mask-image:url("assets/classic-stylesheets/winxp/maximize.svg"); }
+.theme-preview[data-theme-preview="winxp"] .theme-preview-window header i:nth-of-type(3)::after { -webkit-mask-image:url("assets/classic-stylesheets/winxp/close.svg"); mask-image:url("assets/classic-stylesheets/winxp/close.svg"); }
+.theme-preview[data-theme-preview="winxp"] .theme-preview-window main { height:calc(100% - 27px); background:#ececec; }
+.theme-preview[data-theme-preview="winxp"] .theme-preview-window main button { background:linear-gradient(#fff,#ececec); border:1px solid #003c74; border-radius:4px; }
+
+/* Windows XP shell: Luna blue chrome with neutral gray work surfaces. */
+.theme-winxp .desktop { height:calc(100% - var(--task)); }
+.theme-winxp :is(.os-icon,.folder-item-icon,.title-icon,.start-ico,.speaker,.task-item img,.explorer-toolbar img,.ie-toolbar img,.control-panel-grid img,.system-grid img,.network-body img) { image-rendering:auto; }
+.theme-winxp .addressbar,
+.theme-winxp .ie-addressbar,
+.theme-winxp .gallery-toolbar,
+.theme-winxp .dialog-actions { color:#222; background:#ececec; border-color:#fff #a7a7a7 #a7a7a7 #fff; }
+.theme-winxp .explorer-toolbar,
+.theme-winxp .ie-toolbar {
+  min-height:52px;
+  padding:2px 5px;
+  background:linear-gradient(#fafafa,#e5e5e5);
+  border-top:1px solid #fff;
+  border-bottom:1px solid #9e9e9e;
+}
+.theme-winxp :is(.explorer-toolbar,.ie-toolbar) i { height:39px; border-left-color:#aaa; border-right-color:#fff; }
+.theme-winxp :is(.explorer-toolbar,.ie-toolbar) button {
+  height:45px;
+  min-width:50px;
+  color:#1c1c1c;
+  background:transparent;
+  border:1px solid transparent;
+  border-radius:3px;
+  font:11px Tahoma,"Microsoft YaHei",sans-serif;
+}
+.theme-winxp :is(.explorer-toolbar,.ie-toolbar) button img { width:24px; height:24px; object-fit:contain; }
+.theme-winxp :is(.explorer-toolbar,.ie-toolbar) button:hover:not(:disabled) { background:#d7e7ff; border-color:#7a9fd3; }
+.theme-winxp :is(.explorer-toolbar,.ie-toolbar) button:active:not(:disabled) { background:#b9d2f5; border-color:#316ac5; transform:none; }
+.theme-winxp :is(.explorer-toolbar,.ie-toolbar) button:disabled img { filter:grayscale(.8); opacity:.38; }
+.theme-winxp :is(.home-body,.resume-folder-body,.control-panel-grid,.system-grid,.network-items,.recycle-items,.gallery-stage,.computer-explorer) { background:#fff; }
+.theme-winxp :is(.computer-preview,.network-body>aside,.explorer-side) { background:linear-gradient(180deg,#d6e5f8,#f7faff); border-color:#91a7c2; }
+.theme-winxp :is(.resume-folder-body,.system-grid,.network-items) button:hover,
+.theme-winxp .network-items a:hover { background:#e4efff; border-color:#7a9fd3; }
+.theme-winxp .desktop-icon.selected .os-icon,
+.theme-winxp .desktop-icon.selected .shortcut-wrap .os-icon { filter:brightness(.72) saturate(1.1); }
+
+.theme-winxp .taskbar {
+  height:32px;
+  padding:2px 0 2px 0;
+  gap:4px;
+  background:linear-gradient(180deg,#3168d5 0,#3888e9 8%,#245edb 18%,#245edb 88%,#1941a5 100%);
+  border:0;
+  box-shadow:inset 0 1px #5797ef;
+}
+.theme-winxp .start-button {
+  height:28px;
+  min-width:92px;
+  padding:1px 12px 2px 7px;
+  gap:5px;
+  color:#fff;
+  background:linear-gradient(180deg,#71c55f 0,#4aab3b 20%,#388a2f 84%,#256b20 100%);
+  border:1px solid #174e17;
+  border-left:0;
+  border-radius:0 13px 13px 0;
+  box-shadow:inset 0 1px #a5dc98,inset -1px -1px #1f671d;
+  font:bold italic 14px/24px Tahoma,sans-serif;
+  text-shadow:1px 1px #245c20;
+}
+.theme-winxp .start-button.active { background:linear-gradient(#2f7b27,#4da940); box-shadow:inset 1px 1px #174e17; }
+.theme-winxp .start-logo { width:20px; height:20px; object-fit:contain; image-rendering:auto; }
+.theme-winxp .start-button .start-logo { width:22px; height:22px; flex:0 0 22px; }
+.theme-winxp .boot-screen img[data-system-icon="logo"] { width:32px; height:32px; object-fit:contain; }
+:is(.theme-win98,.theme-win2000,.theme-winxp) .start-menu .ie-menu-icon { width:16px!important; height:16px!important; flex:0 0 16px; object-fit:contain; image-rendering:auto; }
+.theme-winxp .task-divider { margin:2px 0; border-left-color:#1946a4; border-right-color:#4e8dea; }
+.theme-winxp .task-items { gap:3px; padding:1px 0; }
+.theme-winxp .task-item {
+  height:25px;
+  padding:2px 7px;
+  color:#fff;
+  background:linear-gradient(#4b91ee,#3479da);
+  border:1px solid #1648a4;
+  border-radius:3px;
+  box-shadow:inset 1px 1px #6da9f5;
+  text-shadow:1px 1px #17458d;
+}
+.theme-winxp .task-item.active { padding:2px 7px; background:linear-gradient(#1e52b7,#19469f); box-shadow:inset 1px 1px #123a88; }
+.theme-winxp .task-item img,
+.theme-winxp .office-task-icon { width:18px; height:18px; flex:0 0 18px; object-fit:contain; image-rendering:auto; }
+.office-task-icon { display:inline-grid; place-items:center; color:#fff; border:1px solid rgba(255,255,255,.8); font:bold 11px/16px Tahoma,sans-serif; }
+.theme-winxp .tray { height:28px; padding:0 9px; color:#fff; background:linear-gradient(#19a6f5,#0986de); border:0; border-left:1px solid #0b5db9; box-shadow:inset 1px 1px #54bcf5; }
+.theme-winxp .tray .speaker { width:18px; height:18px; }
+
+.theme-winxp .start-menu {
+  bottom:32px;
+  width:304px;
+  grid-template-columns:1fr;
+  padding:0;
+  overflow:visible;
+  background:#fff;
+  border:2px solid #1d5db8;
+  border-radius:6px 6px 0 0;
+  box-shadow:2px 2px 4px rgba(0,0,0,.45);
+}
+.theme-winxp .start-brand {
+  height:51px;
+  display:flex;
+  flex-direction:row;
+  align-items:center;
+  gap:7px;
+  padding:7px 12px;
+  writing-mode:horizontal-tb;
+  transform:none;
+  color:#dceaff;
+  background:linear-gradient(180deg,#4894ea,#1f67c5);
+  border-radius:4px 4px 0 0;
+  box-shadow:inset 0 1px #82b9f3;
+}
+.theme-winxp .start-brand b { color:#fff; font:bold 18px Tahoma,sans-serif; }
+.theme-winxp .start-brand span { color:#fff; font:bold 15px Tahoma,sans-serif; }
+.theme-winxp .start-brand small { margin-left:auto; color:#dceaff; }
+.theme-winxp .start-items { padding:4px 5px 6px; background:#fff; }
+.theme-winxp :is(.program-menu,.start-submenu,.office-menu,.system-menu,.context-menu) { background:#fff; border:1px solid #316ac5; box-shadow:2px 2px 4px rgba(0,0,0,.4); }
+
+/* Office XP uses flat gray toolbars with blue hot tracking. */
+.office-window .menubar,
+.office-window .office-toolbar { color:#111; background:linear-gradient(#f7f7f7,#dedede); border-color:#fff #9c9c9c #9c9c9c #fff; }
+.office-window .menubar button { border:1px solid transparent; border-radius:2px; }
+.office-window .menubar button:hover,
+.office-window .menubar button.menu-open { padding:2px 7px; color:#000; background:#c9ddf7; border-color:#316ac5; }
+.office-window .office-toolbar { min-height:34px; padding:4px 6px; }
+.office-window .office-toolbar button { color:#111; background:transparent; border:1px solid transparent; border-radius:2px; box-shadow:none; }
+.office-window .office-toolbar button:hover { background:#c9ddf7; border-color:#316ac5; }
+.office-window .office-toolbar button:active { background:#a9c6ed; border-color:#1f4f91; transform:none; }
+.office-window .office-toolbar select { height:23px; background:#fff; border:1px solid #7f9db9; }
+.office-title-icon,
+.office-start-icon,
+.office-task-icon { border:1px solid rgba(255,255,255,.75); border-radius:2px; box-shadow:inset 1px 1px rgba(255,255,255,.25),1px 1px rgba(0,0,0,.25); }
+.office-xp-splash>div { background:linear-gradient(120deg,#fff 0 58%,#dbe9fb 58% 100%); border:1px solid #174b9b; box-shadow:4px 4px 10px rgba(0,0,0,.45); }
+.office-xp-splash small { color:#174b9b; font-size:15px; }
+.office-xp-splash h2 { color:#1d3f77; }
+.office-xp-splash i { height:10px; background:linear-gradient(90deg,#174b9b 0 40%,#08753e 40% 68%,#b43b25 68%); }
+
+@media (hover:none), (max-width:760px) {
+  .theme-winxp { --task:42px; }
+  :is(.theme-win98,.theme-win2000) .titlebar { height:32px; min-height:32px; flex-basis:32px; padding:4px; }
+  :is(.theme-win98,.theme-win2000) .window-actions button { width:27px; height:24px; min-width:27px; min-height:24px; background-position:center; }
+  .theme-winxp .titlebar { height:34px; min-height:34px; flex-basis:34px; padding:5px; }
+  .theme-winxp .window-actions button { width:29px; height:25px; min-width:29px; min-height:25px; }
+  :is(.theme-win98,.theme-win2000,.theme-winxp) .menubar { min-height:36px; height:36px; flex-basis:36px; padding:5px 3px; }
+  :is(.theme-win98,.theme-win2000,.theme-winxp) .menubar button { min-height:28px; height:28px; padding:5px 9px; }
+  :is(.theme-win98,.theme-win2000,.theme-winxp) .menubar button:active,
+  :is(.theme-win98,.theme-win2000,.theme-winxp) .menubar button.menu-open { padding:5px 9px; }
+  :is(.theme-win98,.theme-win2000,.theme-winxp) .start-menu { width:min(330px,94vw); }
+  :is(.theme-win98,.theme-win2000,.theme-winxp) .start-items>button,
+  :is(.theme-win98,.theme-win2000,.theme-winxp) .start-items>.program-group,
+  :is(.theme-win98,.theme-win2000,.theme-winxp) .start-items>.start-subgroup { min-height:44px; }
+  .theme-preview { min-height:180px; }
+  .theme-preview-desktop { padding:18px; }
+}

@@ -1,0 +1,364 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+  <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
+  <meta http-equiv="Pragma" content="no-cache">
+  <meta http-equiv="Expires" content="0">
+  <meta name="theme-color" content="#245edb">
+  <meta name="description" content="极客凡的经典 Windows 风格交互式个人简历">
+  <title>极客凡的电脑</title>
+  <script>
+    if (new URLSearchParams(location.search).has('v')) {
+      history.replaceState(null, '', location.pathname + location.hash);
+    }
+  </script>
+  <link rel="stylesheet" href="styles.css?v=20260810.10">
+  <link rel="stylesheet" href="resume-extras.css?v=20260810.10">
+  <link rel="stylesheet" href="theme-adapter.css?v=20260810.10">
+</head>
+<body class="theme-winxp">
+  <div class="boot-screen" id="bootScreen" aria-hidden="true"><div><img data-system-icon="logo" src="assets/icons/Logo_32x32_4.png" alt=""><section><small>Microsoft</small><b id="bootProductName">Windows XP</b><span id="bootEdition">Professional</span><em id="bootTagline">Microsoft Windows</em></section></div><i></i></div>
+  <main class="desktop wallpaper-blue" id="desktop" aria-label="极客凡的 Windows XP 桌面">
+    <div class="wallpaper-mark" aria-hidden="true"><span>YFG</span><small>SECURITY SYSTEMS</small></div>
+
+    <section class="desktop-icons" aria-label="桌面图标">
+      <button class="desktop-icon" data-open="documents" data-protected="true"><img class="os-icon" src="assets/icons/w2k/documents.svg" alt=""><span>我的文档</span></button>
+      <button class="desktop-icon" data-open="computer" data-protected="true"><img class="os-icon" src="assets/icons/w2k/computer.svg" alt=""><span>我的电脑</span></button>
+      <button class="desktop-icon" data-open="network" data-protected="true"><img class="os-icon" src="assets/icons/w2k/network.svg" alt=""><span>网上邻居</span></button>
+      <button class="desktop-icon" data-open="recycle" data-protected="true"><img class="os-icon" src="assets/icons/w2k/recycle-empty.svg" alt=""><span>回收站</span></button>
+      <button class="desktop-icon" data-url="https://www.yfgeek.com/home"><span class="shortcut-wrap ie-shortcut"><img class="os-icon ie-icon" src="assets/icons/InternetExplorer6.png" alt=""><i>↗</i></span><span>Internet Explorer</span></button>
+      <button class="desktop-icon" data-open="dos"><span class="shortcut-wrap"><img class="os-icon" src="assets/icons/w2k/dos.svg" alt=""><i>↗</i></span><span>MS-DOS 方式</span></button>
+      <button class="desktop-icon" data-open="resume-files"><img class="os-icon desktop-folder-icon" src="assets/icons/w2k/folder.svg" alt=""><span>个人简历</span></button>
+      <button class="desktop-icon" data-open="dev"><img class="os-icon desktop-folder-icon" src="assets/icons/w2k/folder.svg" alt=""><span>技术与项目</span></button>
+      <button class="desktop-icon" data-open="geek"><img class="os-icon desktop-folder-icon" src="assets/icons/w2k/folder.svg" alt=""><span>极客时间线</span></button>
+      <button class="desktop-icon" data-open="travel"><img class="os-icon desktop-folder-icon" src="assets/icons/w2k/folder.svg" alt=""><span>旅行相册</span></button>
+      <button class="desktop-icon" data-open="food"><img class="os-icon desktop-folder-icon" src="assets/icons/w2k/folder.svg" alt=""><span>美食图鉴</span></button>
+      <button class="desktop-icon" data-url="http://blog.yfgeek.com/"><span class="shortcut-wrap ie-shortcut"><img class="os-icon ie-icon" src="assets/icons/InternetExplorer6.png" alt=""><i>↗</i></span><span>探索文章</span></button>
+      <button class="desktop-icon" data-open="solitaire"><img class="os-icon" src="assets/icons/Sol1_32x32_4.svg" alt=""><span>纸牌</span></button>
+      <button class="desktop-icon" data-open="pinball"><img class="os-icon" src="assets/icons/Joy102_32x32_4.svg" alt=""><span>3D 弹球</span></button>
+    </section>
+
+    <section class="window active-window" id="window-home" data-app="home" style="--x:19vw;--y:7vh;--w:min(820px,74vw);--h:min(620px,78vh)" aria-label="欢迎窗口">
+      <header class="titlebar"><img class="title-icon" src="assets/icons/w2k/computer.svg" alt=""><strong>欢迎来到极客凡</strong><div class="window-actions"><button data-action="minimize" aria-label="最小化">_</button><button data-action="maximize" aria-label="最大化">□</button><button data-action="close" aria-label="关闭">×</button></div></header>
+      <div class="menubar"><button>文件(<u>F</u>)</button><button>查看(<u>V</u>)</button><button>收藏(<u>A</u>)</button><button>帮助(<u>H</u>)</button></div>
+      <div class="window-body home-body">
+        <div class="home-photo"><img src="assets/me.jpg" alt="极客凡站在霓虹灯前的背影"></div>
+        <div class="home-copy"><p class="welcome-overline">WELCOME TO YFGEEK.COM</p><h1>极客凡</h1><h2>人生是旷野。</h2><p>极客凡，INTJ，程序员出身，现在主攻网络安全与人工智能安全。智能家居和数码控，爱折腾，永远在尝试新东西。</p><p>走南闯北，环游世界的同时，偶尔也写点 bug。</p><div class="home-actions"><button class="win-button primary" data-open="profile">我是谁？</button><button class="win-button" data-open="word">查看简历</button><a class="win-button" href="http://blog.yfgeek.com/">探索文章</a></div></div>
+      </div>
+      <footer class="statusbar"><span>www.yfgeek.com</span><span>不忘初心，追随内心</span></footer>
+    </section>
+
+    <section class="window hidden" id="window-documents" data-app="documents" style="--x:22vw;--y:10vh;--w:min(760px,72vw);--h:min(560px,74vh)" aria-label="我的文档窗口">
+      <header class="titlebar"><img class="title-icon" src="assets/icons/w2k/documents.svg" alt=""><strong>我的文档</strong><div class="window-actions"><button data-action="minimize" aria-label="最小化">_</button><button data-action="maximize" aria-label="最大化">□</button><button data-action="close" aria-label="关闭">×</button></div></header>
+      <div class="menubar"><button>文件(<u>F</u>)</button><button>编辑(<u>E</u>)</button><button>查看(<u>V</u>)</button></div>
+      <div class="addressbar"><span>地址</span><div class="w2k-address folder-address" id="documentsAddress">C:\My Documents</div></div>
+      <div class="window-body resume-folder-body" id="documentsBody">
+        <button data-open="word"><span class="office-doc-icon word-color">W</span><b>极客凡_个人简历.doc</b><small>Microsoft Word 文档</small></button>
+        <button data-open="dev"><img class="folder-item-icon" src="assets/icons/w2k/folder.svg" alt=""><b>技术与项目</b><small>文件夹</small></button>
+        <button data-open="geek"><img class="folder-item-icon" src="assets/icons/w2k/folder.svg" alt=""><b>极客时间线</b><small>文件夹</small></button>
+        <button data-open="travel"><img class="folder-item-icon" src="assets/icons/w2k/folder.svg" alt=""><b>旅行相册</b><small>文件夹</small></button>
+        <button data-open="food"><img class="folder-item-icon" src="assets/icons/w2k/folder.svg" alt=""><b>美食图鉴</b><small>文件夹</small></button>
+        <button data-url="http://blog.yfgeek.com/"><span class="shortcut-wrap ie-shortcut"><img class="folder-item-icon" src="assets/icons/InternetExplorer6.png" alt=""><i>↗</i></span><b>探索文章.url</b><small>Internet 快捷方式</small></button>
+      </div>
+      <footer class="statusbar"><span id="documentsCount">6 个对象</span><span id="documentsStatus">我的文档</span></footer>
+    </section>
+
+    <section class="window hidden" id="window-resume-files" data-app="resume-files" style="--x:26vw;--y:14vh;--w:min(560px,76vw);--h:min(420px,66vh)" aria-label="个人简历文件夹窗口">
+      <header class="titlebar"><img class="title-icon" src="assets/icons/w2k/folder.svg" alt=""><strong>个人简历</strong><div class="window-actions"><button data-action="minimize" aria-label="最小化">_</button><button data-action="maximize" aria-label="最大化">□</button><button data-action="close" aria-label="关闭">×</button></div></header>
+      <div class="menubar"><button>文件(<u>F</u>)</button><button>编辑(<u>E</u>)</button><button>查看(<u>V</u>)</button></div>
+      <div class="addressbar"><span>地址</span><div class="w2k-address folder-address">C:\My Documents\个人简历</div></div>
+      <div class="window-body resume-folder-body">
+        <button data-open="word"><span class="office-doc-icon word-color">W</span><b>极客凡_个人简历.doc</b><small>Microsoft Word 文档</small></button>
+      </div>
+      <footer class="statusbar"><span>1 个对象</span><span>个人简历</span></footer>
+    </section>
+
+    <section class="window hidden" id="window-resume" data-app="resume" style="--x:18vw;--y:7vh;--w:min(760px,72vw);--h:min(620px,77vh)" aria-label="我的简历窗口">
+      <header class="titlebar">
+        <img class="title-icon" src="assets/icons/w2k/word.svg" alt=""><strong>我的简历 - 极客凡</strong>
+        <div class="window-actions">
+          <button data-action="minimize" aria-label="最小化">_</button><button data-action="maximize" aria-label="最大化">□</button><button data-action="close" aria-label="关闭">×</button>
+        </div>
+      </header>
+      <div class="menubar"><button>文件(<u>F</u>)</button><button>编辑(<u>E</u>)</button><button>查看(<u>V</u>)</button><button>帮助(<u>H</u>)</button></div>
+      <div class="window-body resume-body">
+        <header class="resume-header">
+          <div class="avatar" aria-hidden="true"><span>YFG</span></div>
+          <div><p class="system-label">USER PROFILE / VERIFIED</p><h1>极客凡</h1><h2>AI 安全负责人 · 安全架构师</h2></div>
+        </header>
+        <div class="quick-info">
+          <span><b>当前单位</b>中国建设银行总行 · 金融科技部</span>
+          <span><b>专业方向</b>AI 安全 / 网络安全 / 金融科技</span>
+          <span><b>所在地</b>北京</span>
+        </div>
+        <fieldset><legend>个人简介</legend><p>长期从事金融科技、安全架构、开放银行和人工智能安全建设，具备从标准规范、技术方案、平台研发到治理运营的复合经验。关注新技术安全风险，能够在集团级组织环境中推动跨团队协同、专项治理和安全能力落地。</p></fieldset>
+        <div class="resume-buttons">
+          <button class="win-button" data-open="experience">查看工作经历</button><button class="win-button" data-open="projects">打开项目档案</button><button class="win-button primary" data-open="contact">联系我</button>
+        </div>
+      </div>
+      <footer class="statusbar"><span>8+ 年专业经验</span><span>状态：在线</span></footer>
+    </section>
+
+    <section class="window hidden" id="window-experience" data-app="experience" style="--x:24vw;--y:12vh;--w:min(780px,70vw);--h:min(600px,74vh)" aria-label="工作经历窗口">
+      <header class="titlebar"><img class="title-icon" src="assets/icons/w2k/folder.svg" alt=""><strong>C:\极客凡\工作经历</strong><div class="window-actions"><button data-action="minimize" aria-label="最小化">_</button><button data-action="maximize" aria-label="最大化">□</button><button data-action="close" aria-label="关闭">×</button></div></header>
+      <div class="menubar"><button>文件(<u>F</u>)</button><button>编辑(<u>E</u>)</button><button>查看(<u>V</u>)</button></div>
+      <div class="addressbar"><span>地址</span><div class="w2k-address folder-address">C:\极客凡\工作经历</div></div>
+      <div class="window-body document-body">
+        <h2>工作经历</h2>
+        <article class="cv-entry"><div class="entry-date">2022.01<br>至今</div><div><h3>中国建设银行总行 · 金融科技部</h3><h4>AI 安全负责人</h4><ul><li>负责集团网络安全架构设计、安全治理落地及重点专项统筹。</li><li>主导人工智能内生安全与 AI 赋能网络安全能力规划和落地。</li><li>建立 API 安全风险监测体系，推动高风险接口治理闭环。</li><li>负责安全应急响应与事件溯源，推动业务和技术侧措施优化。</li></ul></div></article>
+        <article class="cv-entry"><div class="entry-date">2018.07<br>2022.01</div><div><h3>建信金融科技有限责任公司</h3><h4>开放银行管理平台技术负责人</h4><ul><li>带领团队负责网关、SDK 研发，以及渠道安全和风险控制方案。</li><li>为存款、贷款、基金、客户信息等组件提供统一 API 与 SDK 开放能力。</li><li>参与制定人民银行开放银行安全管理规范，主导安全传输设计并申请 6 项专利。</li></ul></div></article>
+      </div>
+      <footer class="statusbar"><span>2 个工作项目</span><span>企业级安全建设</span></footer>
+    </section>
+
+    <section class="window hidden" id="window-projects" data-app="projects" style="--x:16vw;--y:8vh;--w:min(900px,76vw);--h:min(650px,78vh)" aria-label="项目档案窗口">
+      <header class="titlebar"><img class="title-icon" src="assets/icons/w2k/folder.svg" alt=""><strong>项目档案</strong><div class="window-actions"><button data-action="minimize" aria-label="最小化">_</button><button data-action="maximize" aria-label="最大化">□</button><button data-action="close" aria-label="关闭">×</button></div></header>
+      <div class="menubar"><button>文件(<u>F</u>)</button><button>查看(<u>V</u>)</button><button>排列图标(<u>I</u>)</button></div>
+      <div class="window-body explorer-body">
+        <aside class="explorer-side"><strong>项目档案</strong><p>选择右侧文件，查看极客凡负责的代表项目。</p><div class="folder-art">📂</div></aside>
+        <div class="project-grid">
+          <button data-project="ai"><span class="file-icon">▥</span><b>AI内生安全.txt</b><small>2024 - 至今</small></button>
+          <button data-project="aiforsec"><span class="file-icon">▥</span><b>AI赋能安全.txt</b><small>2024 - 至今</small></button>
+          <button data-project="api"><span class="file-icon">▥</span><b>API安全体系.txt</b><small>2022 - 至今</small></button>
+          <button data-project="openbank"><span class="file-icon">▥</span><b>开放银行平台.txt</b><small>2018 - 2022</small></button>
+        </div>
+      </div>
+      <footer class="statusbar"><span>4 个对象</span><span>已选择 0 个对象</span></footer>
+    </section>
+
+    <section class="window hidden project-view" id="window-project-view" data-app="project-view" style="--x:30vw;--y:16vh;--w:min(620px,64vw);--h:min(500px,68vh)" aria-label="项目详情窗口">
+      <header class="titlebar"><img class="title-icon" src="assets/icons/w2k/notepad.svg" alt=""><strong id="project-titlebar">项目详情 - 记事本</strong><div class="window-actions"><button data-action="minimize" aria-label="最小化">_</button><button data-action="maximize" aria-label="最大化">□</button><button data-action="close" aria-label="关闭">×</button></div></header>
+      <div class="menubar"><button>文件(<u>F</u>)</button><button>编辑(<u>E</u>)</button><button>搜索(<u>S</u>)</button><button>帮助(<u>H</u>)</button></div>
+      <div class="notepad" id="project-content"></div>
+    </section>
+
+    <section class="window hidden" id="window-skills" data-app="skills" style="--x:29vw;--y:13vh;--w:min(650px,66vw);--h:min(540px,72vh)" aria-label="专业技能窗口">
+      <header class="titlebar"><img class="title-icon" src="assets/icons/w2k/settings.svg" alt=""><strong>控制面板 - 专业技能</strong><div class="window-actions"><button data-action="minimize" aria-label="最小化">_</button><button data-action="maximize" aria-label="最大化">□</button><button data-action="close" aria-label="关闭">×</button></div></header>
+      <div class="window-body skills-body">
+        <p>选择一个类别，查看已安装的专业能力：</p>
+        <div class="skill-panel">
+          <article><span>🛡</span><div><h3>安全领域</h3><p>安全架构、网络安全、应用安全、数据安全、API 安全、渗透测试、应急响应</p></div></article>
+          <article><span>◈</span><div><h3>AI 安全</h3><p>大模型安全、智能体安全、提示注入防御、越狱检测、模型应用防护、风险评估</p></div></article>
+          <article><span>⚙</span><div><h3>技术能力</h3><p>系统架构、加密算法、微服务框架、安全通信协议、渠道风控</p></div></article>
+          <article><span>⌁</span><div><h3>新兴技术</h3><p>人工智能安全、区块链、开放银行、金融科技、金融级 API 开放生态</p></div></article>
+        </div>
+      </div>
+      <footer class="dialog-actions"><button class="win-button primary" data-action="close">确定</button></footer>
+    </section>
+
+    <section class="window hidden" id="window-honors" data-app="honors" style="--x:26vw;--y:10vh;--w:min(720px,70vw);--h:min(600px,76vh)" aria-label="荣誉奖项窗口">
+      <header class="titlebar"><span class="mini-icon trophy-mini">★</span><strong>荣誉奖项</strong><div class="window-actions"><button data-action="minimize" aria-label="最小化">_</button><button data-action="maximize" aria-label="最大化">□</button><button data-action="close" aria-label="关闭">×</button></div></header>
+      <div class="window-body document-body honors-body"><h2>获奖记录</h2>
+        <ol><li><time>2023</time><div><b>“网鼎杯”网络安全大赛优秀人才</b><span>公安部</span></div></li><li><time>2020</time><div><b>金融领域企业标准“领跑者”先进个人</b><span>全国金融标准化技术委员会</span></div></li><li><time>2018</time><div><b>Northrop Grumman Prize 创新奖</b><span>区块链领域 · 2000 英镑奖金</span></div></li><li><time>2014</time><div><b>全国青年科普创新实验暨作品大赛全国二等奖</b><span>共青团中央</span></div></li><li><time>2010</time><div><b>NOIP 全国信息学奥林匹克联赛全国二等奖</b><span>中国计算机协会</span></div></li></ol>
+      </div>
+    </section>
+
+    <section class="window hidden dialog-window" id="window-contact" data-app="contact" style="--x:35vw;--y:22vh;--w:min(460px,82vw);--h:330px" aria-label="联系我窗口">
+      <header class="titlebar"><span class="mini-icon mail-mini"></span><strong>联系极客凡</strong><div class="window-actions"><button data-action="close" aria-label="关闭">×</button></div></header>
+      <div class="window-body contact-body"><span class="big-mail">✉</span><div><h2>建立连接</h2><p>网络安全 · 人工智能安全 · 金融科技</p><fieldset><legend>联系方式</legend><a href="tel:18600564100">电话：186 0056 4100</a><span>地点：北京市</span></fieldset></div></div>
+      <footer class="dialog-actions"><a class="win-button primary" href="tel:18600564100">拨打电话</a><button class="win-button" data-action="close">关闭</button></footer>
+    </section>
+
+    <section class="window hidden" id="window-profile" data-app="profile" style="--x:23vw;--y:10vh;--w:min(760px,72vw);--h:min(590px,76vh)" aria-label="关于极客凡窗口">
+      <header class="titlebar"><img class="title-icon" src="assets/icons/w2k/file.svg" alt=""><strong>关于极客凡.html</strong><div class="window-actions"><button data-action="minimize" aria-label="最小化">_</button><button data-action="maximize" aria-label="最大化">□</button><button data-action="close" aria-label="关闭">×</button></div></header>
+      <div class="menubar"><button>文件(<u>F</u>)</button><button>编辑(<u>E</u>)</button><button>查看(<u>V</u>)</button></div>
+      <div class="window-body profile-body"><img src="assets/me.jpg" alt="极客凡个人主页照片"><div><p class="welcome-overline">ABOUT YFGEEK</p><h2>IT 极客，热爱生活。</h2><p>对美食、旅游、政治、历史、文化以及任何新生事物感兴趣，对任何技术充满敬畏之心。</p><fieldset><legend>我是谁？</legend><p>极客凡，INTJ，程序员出身，现在主攻网络安全和人工智能安全。智能家居和数码控，爱折腾，永远在尝试新东西。</p></fieldset><fieldset><legend>喜爱计算机？</legend><p>没错。从第一次接触计算机就爱上了它。Mac 党，但偏爱 Linux；喜欢从原理到实践，喜欢让想法真正运行起来。</p></fieldset></div></div>
+    </section>
+
+    <section class="window hidden" id="window-dev" data-app="dev" style="--x:18vw;--y:8vh;--w:min(880px,76vw);--h:min(650px,80vh)" aria-label="技术与项目窗口">
+      <header class="titlebar"><img class="title-icon" src="assets/icons/w2k/folder.svg" alt=""><strong>技术与项目</strong><div class="window-actions"><button data-action="minimize" aria-label="最小化">_</button><button data-action="maximize" aria-label="最大化">□</button><button data-action="close" aria-label="关闭">×</button></div></header>
+      <div class="menubar"><button>文件(<u>F</u>)</button><button>查看(<u>V</u>)</button><button>收藏(<u>A</u>)</button></div>
+      <div class="window-body legacy-projects">
+        <article><img src="assets/code.jpg" alt="代码编辑器"><div><h2>编程开发</h2><p>曾经的 OIer，喜欢研究算法。从小到大接触过 PHP、Java、Python、Golang 等编程语言，前端偏爱 React 系列。</p></div></article>
+        <article><img src="assets/raspberry.png" alt="树莓派温湿度检测项目"><div><h2>树莓派温湿度系统</h2><p>基于 Raspberry Pi、DHT11/DHT22 与 LCD1602 的实时温湿度监测系统，并提供 React 重构版本。</p></div></article>
+        <article><img src="assets/bitcoin.png" alt="区块链图形"><div><h2>BlockVotes</h2><p>基于区块链技术的新一代投票系统，致力于兼顾选民隐私与选票公开透明。</p><a href="http://blockvotes.com">访问项目 →</a></div></article>
+      </div>
+      <footer class="statusbar"><span>3 个项目类别</span><span>编程 / 安全 / 创新</span></footer>
+    </section>
+
+    <section class="window hidden" id="window-geek" data-app="geek" style="--x:25vw;--y:9vh;--w:min(720px,70vw);--h:min(640px,79vh)" aria-label="极客时间线窗口">
+      <header class="titlebar"><img class="title-icon" src="assets/icons/w2k/notepad.svg" alt=""><strong>极客时间线.txt - 记事本</strong><div class="window-actions"><button data-action="minimize" aria-label="最小化">_</button><button data-action="maximize" aria-label="最大化">□</button><button data-action="close" aria-label="关闭">×</button></div></header>
+      <div class="menubar"><button>文件(<u>F</u>)</button><button>编辑(<u>E</u>)</button><button>搜索(<u>S</u>)</button></div>
+      <div class="notepad geek-note"><h2>极客成长记录</h2><p>随着互联网的发展，我这一代人也长大了。</p><ul><li><b>很小的时候</b>：照猫画虎做出一个 VB6 小程序，如获珍宝。</li><li><b>小学</b>：把 IIS6 与 ASP 当作最喜欢的玩具。</li><li><b>初中</b>：折腾百度空间、Web 安全与 Python 小程序。</li><li><b>高中</b>：做博客模板、学习前端、参加 NOIP，感受算法之美。</li><li><b>后来</b>：喜欢上 Ubuntu、Linux 与开源社区，也热衷刷机、越狱和 Root。</li><li><b>大学</b>：拥抱 GitHub，做白帽子，写 Web 前后端，完成各种小项目。</li><li><b>现在</b>：从金融科技走向网络安全与 AI 安全，技术的热爱一直都在。</li></ul><blockquote>时间维度很宽广，而喜爱技术的我，一直都在。<br><b>不忘初心，追随内心。</b></blockquote></div>
+    </section>
+
+    <section class="window hidden gallery-window" id="window-travel" data-app="travel" style="--x:24vw;--y:12vh;--w:min(760px,72vw);--h:min(560px,74vh)" aria-label="旅行相册窗口">
+      <header class="titlebar"><img class="title-icon" src="assets/icons/w2k/folder.svg" alt=""><strong>旅行相册</strong><div class="window-actions"><button data-action="minimize" aria-label="最小化">_</button><button data-action="maximize" aria-label="最大化">□</button><button data-action="close" aria-label="关闭">×</button></div></header>
+      <div class="menubar"><button>文件(<u>F</u>)</button><button>编辑(<u>E</u>)</button><button>查看(<u>V</u>)</button></div>
+      <div class="gallery-toolbar"><button class="win-button" data-gallery-pick="travel">选择照片目录...</button><span id="travelGalleryPath">C:\YFGeek\Photos\Travel</span></div>
+      <div class="window-body gallery-stage" id="travelGallery"><button class="gallery-item" data-gallery-src="assets/travel.jpg"><img src="assets/travel.jpg" alt="旅行摄影"><span>travel.jpg</span></button></div>
+      <footer class="statusbar"><span id="travelGalleryCount">1 个图像</span><span>旅行相册</span></footer>
+    </section>
+
+    <section class="window hidden gallery-window" id="window-food" data-app="food" style="--x:27vw;--y:14vh;--w:min(720px,70vw);--h:min(530px,72vh)" aria-label="美食图鉴窗口">
+      <header class="titlebar"><img class="title-icon" src="assets/icons/w2k/folder.svg" alt=""><strong>美食图鉴</strong><div class="window-actions"><button data-action="minimize" aria-label="最小化">_</button><button data-action="maximize" aria-label="最大化">□</button><button data-action="close" aria-label="关闭">×</button></div></header>
+      <div class="menubar"><button>文件(<u>F</u>)</button><button>编辑(<u>E</u>)</button><button>查看(<u>V</u>)</button></div>
+      <div class="gallery-toolbar"><button class="win-button" data-gallery-pick="food">选择照片目录...</button><span id="foodGalleryPath">C:\YFGeek\Photos\Food</span></div>
+      <div class="window-body gallery-stage" id="foodGallery"><button class="gallery-item" data-gallery-src="assets/food.jpg"><img src="assets/food.jpg" alt="烹饪与美食"><span>food.jpg</span></button></div>
+      <footer class="statusbar"><span id="foodGalleryCount">1 个图像</span><span>美食图鉴</span></footer>
+    </section>
+
+    <section class="window hidden dialog-window" id="window-about" data-app="about" style="--x:34vw;--y:20vh;--w:min(500px,84vw);--h:350px" aria-label="关于此电脑窗口">
+      <header class="titlebar"><img class="title-icon" src="assets/icons/w2k/computer.svg" alt=""><strong>关于此电脑</strong><div class="window-actions"><button data-action="close" aria-label="关闭">×</button></div></header>
+      <div class="window-body about-body"><div class="about-logo">W<span id="aboutVersionMark">2000</span></div><div><h2 id="aboutSystemName">YFG Security 2000</h2><p id="aboutThemeDescription">Microsoft Windows 2000 风格个人简历</p><hr><p>注册用户：极客凡<br>系统角色：yfgeek<br>版本：1.0.1</p></div></div>
+      <footer class="dialog-actions"><button class="win-button primary" data-action="close">确定</button></footer>
+    </section>
+
+    <section class="window hidden" id="window-control-panel" data-app="control-panel" style="--x:24vw;--y:12vh;--w:min(680px,76vw);--h:min(520px,72vh)" aria-label="控制面板窗口">
+      <header class="titlebar"><img class="title-icon" src="assets/icons/w2k/settings.svg" alt=""><strong>控制面板</strong><div class="window-actions"><button data-action="minimize" aria-label="最小化">_</button><button data-action="maximize" aria-label="最大化">□</button><button data-action="close" aria-label="关闭">×</button></div></header>
+      <div class="menubar"><button>文件(<u>F</u>)</button><button>编辑(<u>E</u>)</button><button>查看(<u>V</u>)</button><button>帮助(<u>H</u>)</button></div><div class="addressbar"><span>地址</span><div class="w2k-address settings-address">控制面板</div></div>
+      <div class="window-body control-panel-grid"><button data-open="display"><img src="assets/icons/w2k/monitor.svg" alt=""><span>显示</span></button><button data-control="datetime"><img src="assets/icons/Timedate_32x32_4.png" alt=""><span>日期/时间</span></button><button data-control="fonts"><img src="assets/icons/Fontext1_32x32_4.png" alt=""><span>字体</span></button><button data-control="keyboard"><img src="assets/icons/KeyboardMouse_32x32_4.png" alt=""><span>键盘</span></button><button data-control="regional"><img src="assets/icons/Intl101_32x32_4.png" alt=""><span>区域设置</span></button><button data-control="programs"><img src="assets/icons/Appwiz1500_32x32_4.png" alt=""><span>添加/删除程序</span></button><button data-control="password"><img src="assets/icons/Password100_32x32_4.png" alt=""><span>密码</span></button><button data-open="about"><img src="assets/icons/w2k/system.svg" alt=""><span>系统</span></button></div>
+      <footer class="statusbar"><span>8 个对象</span><span>控制面板</span></footer>
+    </section>
+
+    <section class="window hidden dialog-window" id="window-control-detail" data-app="control-detail" style="--x:34vw;--y:21vh;--w:min(490px,90vw);--h:330px" aria-label="控制面板属性窗口"><header class="titlebar"><img class="title-icon" id="controlDetailIcon" src="assets/icons/Controls3000_16x16_4.png" alt=""><strong id="controlDetailTitle">属性</strong><div class="window-actions"><button data-action="close" aria-label="关闭">×</button></div></header><div class="window-body control-detail" id="controlDetailBody"></div><footer class="dialog-actions"><button class="win-button primary" data-action="close">确定</button><button class="win-button" data-action="close">取消</button></footer></section>
+
+    <section class="window hidden dialog-window" id="window-display" data-app="display" style="--x:32vw;--y:14vh;--w:min(540px,90vw);--h:455px" aria-label="显示属性窗口">
+      <header class="titlebar"><img class="title-icon" src="assets/icons/w2k/monitor.svg" alt=""><strong>显示 属性</strong><div class="window-actions"><button data-action="close" aria-label="关闭">×</button></div></header>
+      <div class="window-body display-body">
+        <div class="property-tabs" role="tablist"><button class="active" role="tab" aria-selected="true" data-display-tab="background">背景</button><button disabled>屏幕保护程序</button><button role="tab" aria-selected="false" data-display-tab="appearance">外观</button><button disabled>设置</button></div>
+        <div class="display-panel active" data-display-panel="background"><fieldset><legend>墙纸</legend><div class="monitor-preview"><div id="wallpaperPreview"></div></div><div class="wallpaper-list"><button class="selected" data-wallpaper="blue">Windows 蓝</button><button data-wallpaper="travel">YFGeek 旅行</button><button data-wallpaper="portrait">霓虹极客凡</button><button data-wallpaper="classic">经典青色</button><button data-wallpaper="midnight">午夜蓝</button></div></fieldset></div>
+        <div class="display-panel" data-display-panel="appearance" hidden><fieldset class="appearance-fieldset"><legend>窗口和按钮</legend><div class="theme-preview" id="themePreview" data-theme-preview="winxp"><div class="theme-preview-desktop"><div class="theme-preview-window"><header><span>活动窗口</span><i></i><i></i><i></i></header><main><button>确定</button></main></div></div></div><label class="theme-select-label" for="shellThemeSelect">配色方案：</label><select id="shellThemeSelect"><option value="win98">Windows 98</option><option value="win2000">Windows 2000</option><option value="winxp" selected>Windows XP Default blue (Luna)</option></select></fieldset></div>
+      </div>
+      <footer class="dialog-actions"><button class="win-button primary" data-save-wallpaper>确定</button><button class="win-button" data-action="close">取消</button><button class="win-button" data-apply-wallpaper>应用</button></footer>
+    </section>
+
+    <section class="window hidden" id="window-computer" data-app="computer" style="--x:20vw;--y:10vh;--w:min(700px,72vw);--h:min(520px,72vh)" aria-label="我的电脑窗口">
+      <header class="titlebar"><img class="title-icon" src="assets/icons/w2k/computer.svg" alt=""><strong>我的电脑</strong><div class="window-actions"><button data-action="minimize" aria-label="最小化">_</button><button data-action="maximize" aria-label="最大化">□</button><button data-action="close" aria-label="关闭">×</button></div></header>
+      <div class="menubar"><button>文件(<u>F</u>)</button><button>编辑(<u>E</u>)</button><button>查看(<u>V</u>)</button><button>帮助(<u>H</u>)</button></div>
+      <div class="addressbar"><span>地址</span><div class="w2k-address computer-address">我的电脑</div></div>
+      <div class="window-body computer-explorer"><aside class="computer-preview" id="computerPreview"><img src="assets/icons/w2k/computer.svg" alt=""><h2>我的电脑</h2><p>选择本地磁盘以查看空间使用情况。</p></aside><div class="system-grid"><button data-drive="c" data-protected="true"><img src="assets/icons/ReaderClosed_32x32_4.png" alt=""><span>本地磁盘 (C:)</span></button></div></div>
+      <footer class="statusbar"><span>1 个对象</span><span>本地计算机</span></footer>
+    </section>
+
+    <section class="window hidden" id="window-network" data-app="network" style="--x:25vw;--y:13vh;--w:min(640px,76vw);--h:min(470px,68vh)" aria-label="网上邻居窗口">
+      <header class="titlebar"><img class="title-icon" src="assets/icons/w2k/network.svg" alt=""><strong>网上邻居</strong><div class="window-actions"><button data-action="minimize" aria-label="最小化">_</button><button data-action="maximize" aria-label="最大化">□</button><button data-action="close" aria-label="关闭">×</button></div></header><div class="menubar"><button>文件(<u>F</u>)</button><button>编辑(<u>E</u>)</button><button>查看(<u>V</u>)</button><button>帮助(<u>H</u>)</button></div><div class="addressbar"><span>地址</span><div class="w2k-address network-address">网上邻居</div></div>
+      <div class="window-body network-body"><aside><img src="assets/icons/w2k/network.svg" alt=""><h2>网上邻居</h2><p>浏览 YFGeek 网络中的站点与共享资源。网页会交由 Internet Explorer 打开。</p></aside><div class="network-items"><a href="http://blog.yfgeek.com/"><img src="assets/icons/Globe_32x32_4.png" alt=""><span>YFGeek Blog</span></a></div></div><footer class="statusbar"><span>1 个对象</span><span>Internet</span></footer>
+    </section>
+
+    <section class="window hidden" id="window-recycle" data-app="recycle" style="--x:31vw;--y:18vh;--w:min(520px,82vw);--h:360px" aria-label="回收站窗口">
+      <header class="titlebar"><img class="title-icon" src="assets/icons/w2k/recycle-empty.svg" alt=""><strong>回收站</strong><div class="window-actions"><button data-action="minimize" aria-label="最小化">_</button><button data-action="maximize" aria-label="最大化">□</button><button data-action="close" aria-label="关闭">×</button></div></header>
+      <div class="menubar"><button>文件(<u>F</u>)</button><button>编辑(<u>E</u>)</button><button>查看(<u>V</u>)</button></div><div class="addressbar"><span>地址</span><div class="w2k-address recycle-address">回收站</div></div>
+      <div class="window-body empty-bin" id="recycleBody"><img src="assets/icons/w2k/recycle-empty.svg" alt=""><p>回收站是空的。</p></div><footer class="statusbar"><span id="recycleCount">0 个对象</span><span>0 字节</span></footer>
+    </section>
+
+    <section class="window hidden ie-window maximized" id="window-ie" data-app="ie" style="--x:10vw;--y:5vh;--w:min(1000px,84vw);--h:min(720px,86vh)" aria-label="Internet Explorer 窗口">
+      <header class="titlebar"><img class="title-icon" src="assets/icons/InternetExplorer6.png" alt=""><strong id="ieTitle">Microsoft Internet Explorer</strong><div class="window-actions"><button data-action="minimize" aria-label="最小化">_</button><button data-action="maximize" aria-label="还原">□</button><button data-action="close" aria-label="关闭">×</button></div></header>
+      <div class="menubar"><button>文件(<u>F</u>)</button><button>编辑(<u>E</u>)</button><button>查看(<u>V</u>)</button><button>收藏(<u>A</u>)</button><button>工具(<u>T</u>)</button><button>帮助(<u>H</u>)</button></div>
+      <div class="ie-toolbar" aria-label="浏览器工具栏"><button id="ieBack" title="后退" aria-label="后退"><img src="assets/icons/w2k/back.svg" alt=""><span>后退</span></button><button id="ieForward" title="前进" aria-label="前进"><img src="assets/icons/w2k/forward.svg" alt=""><span>前进</span></button><i></i><button id="ieStop" title="停止" aria-label="停止"><img src="assets/icons/Close_16x16_4.svg" alt=""><span>停止</span></button><button id="ieRefresh" title="刷新" aria-label="刷新"><img src="assets/icons/w2k/refresh.svg" alt=""><span>刷新</span></button><button id="ieHome" title="主页" aria-label="主页"><img src="assets/icons/w2k/home.svg" alt=""><span>主页</span></button><i></i><button id="ieSearch" title="搜索" aria-label="搜索"><img src="assets/icons/FindDc2_16x16_4.svg" alt=""><span>搜索</span></button><button id="ieFavorites" title="收藏夹" aria-label="收藏夹"><img src="assets/icons/Star_32x32_4.png" alt=""><span>收藏夹</span></button><button id="ieHistory" title="历史" aria-label="历史"><img src="assets/icons/Timedate_32x32_4.png" alt=""><span>历史</span></button><i></i><button id="iePrint" title="打印" aria-label="打印"><img src="assets/icons/Print_16x16_4.svg" alt=""><span>打印</span></button></div>
+      <form class="ie-addressbar" id="ieAddressForm"><label for="ieAddress">地址(<u>D</u>)</label><img src="assets/icons/InternetExplorer6.png" alt=""><input id="ieAddress" type="text" inputmode="url" autocomplete="url" value="https://www.yfgeek.com/home"><button type="submit">转到</button></form>
+      <div class="window-body ie-viewport"><iframe id="ieFrame" title="网页预览" src="about:blank" sandbox="allow-forms allow-scripts allow-same-origin" referrerpolicy="strict-origin-when-cross-origin"></iframe><div class="ie-welcome" id="ieWelcome"><img src="assets/icons/InternetExplorer6.png" alt=""><h2>Internet Explorer</h2><p>正在准备浏览网页...</p></div></div>
+      <footer class="statusbar"><span id="ieStatus">完成</span><span>Internet 区域</span></footer>
+    </section>
+
+    <section class="window hidden dialog-window browser-choice" id="window-browser-choice" data-app="browser-choice" style="--x:32vw;--y:22vh;--w:min(520px,92vw);--h:320px" aria-label="选择网页打开方式">
+      <header class="titlebar"><img class="title-icon" src="assets/icons/InternetExplorer6.png" alt=""><strong>Internet Explorer</strong><div class="window-actions"><button data-action="close" aria-label="关闭">×</button></div></header>
+      <div class="window-body browser-choice-body"><img src="assets/icons/InternetExplorer6.png" alt=""><div><h2>您希望怎样打开网页？</h2><p>这是第一次启动 Internet Explorer。选择一次后，系统会记住您的设置。</p><fieldset><legend>网页打开方式</legend><label><input type="radio" name="browser-mode" value="internal" checked> 在 YFGeek 系统内部打开</label><label><input type="radio" name="browser-mode" value="external"> 在独立的浏览器标签页中打开</label></fieldset><small>以后可在 Internet Explorer 的“工具”菜单中重新选择。</small></div></div>
+      <footer class="dialog-actions"><button class="win-button primary" id="browserChoiceOk">确定</button><button class="win-button" id="browserChoiceCancel">取消</button></footer>
+    </section>
+
+    <section class="window hidden dialog-window mobile-notice" id="window-mobile-notice" data-app="mobile-notice" style="--x:calc(50vw - 230px);--y:24vh;--w:min(460px,92vw);--h:285px" aria-label="移动设备体验提示">
+      <header class="titlebar"><img class="title-icon" src="assets/icons/w2k/start.svg" alt=""><strong>移动设备提示</strong><div class="window-actions"><button data-action="close" aria-label="关闭">×</button></div></header>
+      <div class="window-body mobile-notice-body"><img src="assets/icons/w2k/computer.svg" alt=""><div><h2>建议使用 PC 获得完整体验</h2><p>为了获得更接近经典 Windows 系统的真实体验，建议在 PC 电脑上访问本页面。</p><p>移动版为了方便触摸操作，已适当放大按钮、菜单和窗口控制区域，部分布局也会自动调整。</p></div></div>
+      <footer class="dialog-actions"><button class="win-button primary" id="mobileNoticeOk">确定</button></footer>
+    </section>
+
+    <section class="window hidden dialog-window system-dialog" id="window-system-dialog" data-app="system-dialog" style="--x:calc(50vw - 220px);--y:27vh;--w:min(440px,92vw);--h:245px" aria-label="系统消息">
+      <header class="titlebar"><img class="title-icon" src="assets/icons/w2k/start.svg" alt=""><strong id="systemDialogTitle">Windows</strong><div class="window-actions"><button data-action="close" aria-label="关闭">×</button></div></header>
+      <div class="window-body system-dialog-body"><img id="systemDialogIcon" src="assets/icons/InfoBubble_32x32_4.svg" alt=""><div><p id="systemDialogMessage"></p><label class="system-dialog-input hidden" id="systemDialogInputRow"><span id="systemDialogInputLabel">输入：</span><input id="systemDialogInput" type="text" autocomplete="off"></label></div></div>
+      <footer class="dialog-actions" id="systemDialogActions"></footer>
+    </section>
+
+    <section class="window hidden office-window" id="window-word" data-app="word" style="--x:12vw;--y:4vh;--w:min(980px,82vw);--h:min(720px,86vh)" aria-label="Microsoft Word XP 窗口">
+      <header class="titlebar"><span class="office-title-icon word-color">W</span><strong id="wordTitle">极客凡_个人简历.doc - Microsoft Word</strong><div class="window-actions"><button data-action="minimize" aria-label="最小化">_</button><button data-action="maximize" aria-label="最大化">□</button><button data-action="close" aria-label="关闭">×</button></div></header>
+      <div class="menubar"><button>文件(<u>F</u>)</button><button>编辑(<u>E</u>)</button><button>查看(<u>V</u>)</button><button>插入(<u>I</u>)</button><button>格式(<u>O</u>)</button><button>工具(<u>T</u>)</button><button>表格(<u>A</u>)</button><button>窗口(<u>W</u>)</button><button>帮助(<u>H</u>)</button></div>
+      <div class="office-toolbar"><button data-office-command="new" title="新建">▤</button><button data-office-command="save" title="保存">▣</button><button data-office-command="print" title="打印">▧</button><i></i><select id="wordFont" aria-label="字体"><option>宋体</option><option>Arial</option><option>Courier New</option></select><select id="wordSize" aria-label="字号"><option>10</option><option selected>12</option><option>14</option><option>18</option><option>24</option></select><button data-format="bold" title="粗体"><b>B</b></button><button data-format="italic" title="斜体"><i>I</i></button><button data-format="underline" title="下划线"><u>U</u></button><button data-format="justifyLeft" title="左对齐">≡</button><button data-format="justifyCenter" title="居中">≡</button></div>
+      <div class="word-ruler"><span>1</span><span>2</span><span>3</span><span>4</span><span>5</span><span>6</span><span>7</span><span>8</span><span>9</span><span>10</span><span>11</span><span>12</span><span>13</span><span>14</span><span>15</span><span>16</span></div>
+      <div class="window-body word-workspace"><article class="word-page" id="wordDocument" contenteditable="true" spellcheck="false">
+        <header class="doc-header"><h1>极客凡</h1><p>网络安全 · 人工智能安全 · 金融科技</p><p>18600564100 · 北京市 · 中共党员</p></header>
+        <section><h2>个人简介</h2><p>长期从事金融科技、安全架构、开放银行和人工智能安全建设，具备从标准规范、技术方案、平台研发到治理运营的复合经验。关注新技术安全风险，能够在集团级组织环境中推动跨团队协同、专项治理和安全能力落地。</p></section>
+        <section><h2>工作经历</h2><h3>中国建设银行总行 · 金融科技部 <span>AI 安全负责人｜2022.01 - 至今</span></h3><ul><li>负责集团网络安全架构设计、安全治理落地及重点专项统筹，推动集团一体化安全能力建设与运营。</li><li>主导人工智能安全体系建设，负责人工智能内生安全（Securing AI）和人工智能赋能网络安全（AI for Security）能力规划与落地。</li><li>主导建立 API 安全风险监测体系，推动高风险接口治理和整改闭环。</li><li>牵头集团网络与信息安全检查，负责安全应急响应与事件溯源。</li></ul><h3>建信金融科技有限责任公司 <span>技术负责人｜2018.07 - 2022.01</span></h3><ul><li>任开放银行管理平台技术负责人，负责网关、SDK 研发以及渠道安全和风险控制方案。</li><li>为存款、信用卡、贷款、基金、代收代付和客户信息等组件提供统一 API 与 SDK 开放能力。</li><li>参与制定人民银行开放银行安全管理规范，主导应用安全传输设计，申请 6 项相关专利。</li></ul></section>
+        <section><h2>项目经验</h2><h3>人工智能内生安全体系 <span>AI 安全负责人｜2024.06 - 至今</span></h3><ul><li>制定覆盖业务、模型、数据和网络安全的人工智能安全体系。</li><li>建设提示词注入防御、越狱识别、敏感信息拦截和输出合规审查等 AI 安全护栏。</li><li>建立 Skill 安全检测、智能体身份权限、行为监控与异常监测机制。</li><li>组织大模型及应用风险评估，配合监管机构完成备案和检查。</li></ul><h3>人工智能赋能网络安全 <span>AI 安全负责人｜2024.06 - 至今</span></h3><ul><li>围绕攻防、运营、研发和管理制定 AI 赋能安全实施方案。</li><li>建设一体化安全智能底座，沉淀安全知识库、插件和智能体。</li><li>建设安全数字员工，融合安全知识、安全大数据和 MCP 服务能力。</li></ul><h3>API 安全风险体系 <span>安全架构师｜2022.01 - 至今</span></h3><ul><li>建立接口资产清单、分类分级、安全评估和持续监测机制。</li><li>开展越权访问、敏感信息泄露、未授权调用等高风险场景检查。</li></ul><h3>开放银行核心平台研发 <span>技术负责人｜2018.07 - 2022.01</span></h3><ul><li>主导 API 网关、安全中心、SDK 与文件网关等核心组件研发和安全设计。</li><li>覆盖加解密、访问控制、流量管控、签名验签、令牌管控、灰度发布、文件分片与断点续传。</li></ul></section>
+        <section><h2>专业技能</h2><p><b>安全领域：</b>安全架构、网络安全、应用安全、数据安全、API 安全、渗透测试、应急响应</p><p><b>AI 安全：</b>大模型安全、智能体安全、提示注入防御、越狱检测、模型防护、风险评估</p><p><b>技术能力：</b>系统架构、加密算法、微服务框架、安全通信协议、渠道风控</p></section>
+        <section><h2>荣誉奖项</h2><ul><li>2023年 第三届“网鼎杯”网络安全大赛优秀人才</li><li>2020年 金融领域企业标准“领跑者”先进个人</li><li>2018年 Northrop Grumman Prize 创新奖</li><li>2014 年 全国青年科普创新实验暨作品大赛全国二等奖</li><li>2010年 NOIP 全国信息学奥林匹克联赛全国二等奖</li></ul></section>
+      </article></div><footer class="statusbar word-status"><span>第 1 页　1 节</span><span id="wordStatus">字数：0　中文（中国）</span></footer>
+    </section>
+
+    <section class="window hidden office-window" id="window-excel" data-app="excel" style="--x:18vw;--y:8vh;--w:min(820px,78vw);--h:min(600px,78vh)" aria-label="Microsoft Excel XP 窗口"><header class="titlebar"><span class="office-title-icon excel-color">X</span><strong id="excelTitle">Book1 - Microsoft Excel</strong><div class="window-actions"><button data-action="minimize" aria-label="最小化">_</button><button data-action="maximize" aria-label="最大化">□</button><button data-action="close" aria-label="关闭">×</button></div></header><div class="menubar"><button>文件(<u>F</u>)</button><button>编辑(<u>E</u>)</button><button>查看(<u>V</u>)</button><button>插入(<u>I</u>)</button><button>格式(<u>O</u>)</button><button>工具(<u>T</u>)</button><button>数据(<u>D</u>)</button><button>窗口(<u>W</u>)</button><button>帮助(<u>H</u>)</button></div><div class="office-toolbar"><button data-office-save="excel" title="保存">▣</button><button title="打印">▧</button><i></i><span class="formula-name">A1</span><span class="formula-bar">=</span></div><div class="window-body excel-workspace"><table id="excelSheet"><thead><tr><th></th><th>A</th><th>B</th><th>C</th><th>D</th><th>E</th></tr></thead><tbody><tr><th>1</th><td contenteditable="true">领域</td><td contenteditable="true">能力</td><td contenteditable="true">年限</td><td contenteditable="true">等级</td><td contenteditable="true">状态</td></tr><tr><th>2</th><td contenteditable="true">AI 安全</td><td contenteditable="true">体系建设</td><td contenteditable="true">2+</td><td contenteditable="true">专家</td><td contenteditable="true">持续建设</td></tr><tr><th>3</th><td contenteditable="true">API 安全</td><td contenteditable="true">风险治理</td><td contenteditable="true">4+</td><td contenteditable="true">专家</td><td contenteditable="true">持续运营</td></tr><tr><th>4</th><td contenteditable="true">金融科技</td><td contenteditable="true">平台研发</td><td contenteditable="true">8+</td><td contenteditable="true">专家</td><td contenteditable="true">已部署</td></tr><tr><th>5</th><td contenteditable="true"></td><td contenteditable="true"></td><td contenteditable="true"></td><td contenteditable="true"></td><td contenteditable="true"></td></tr></tbody></table></div><footer class="statusbar"><span>Sheet1</span><span>就绪</span></footer></section>
+
+    <section class="window hidden office-window" id="window-powerpoint" data-app="powerpoint" style="--x:20vw;--y:9vh;--w:min(820px,78vw);--h:min(590px,78vh)" aria-label="Microsoft PowerPoint XP 窗口"><header class="titlebar"><span class="office-title-icon ppt-color">P</span><strong id="powerpointTitle">演示文稿1 - Microsoft PowerPoint</strong><div class="window-actions"><button data-action="minimize" aria-label="最小化">_</button><button data-action="maximize" aria-label="最大化">□</button><button data-action="close" aria-label="关闭">×</button></div></header><div class="menubar"><button>文件(<u>F</u>)</button><button>编辑(<u>E</u>)</button><button>查看(<u>V</u>)</button><button>插入(<u>I</u>)</button><button>格式(<u>O</u>)</button><button>工具(<u>T</u>)</button><button>幻灯片放映(<u>S</u>)</button><button>窗口(<u>W</u>)</button><button>帮助(<u>H</u>)</button></div><div class="office-toolbar"><button data-office-save="powerpoint" title="保存">▣</button><button title="新幻灯片">▤</button><i></i><button data-format="bold"><b>B</b></button><button data-format="italic"><i>I</i></button></div><div class="window-body ppt-workspace"><aside><button class="selected">1</button></aside><div class="ppt-stage"><article class="ppt-slide" contenteditable="true"><h1>极客凡</h1><h2>AI SECURITY · FINTECH · CYBER DEFENSE</h2><p>在复杂的金融系统中，让安全成为可持续运行的能力。</p></article></div></div><footer class="statusbar"><span>幻灯片 1 / 1</span><span>Microsoft PowerPoint</span></footer></section>
+
+    <section class="window hidden" id="window-notepad" data-app="notepad" style="--x:27vw;--y:12vh;--w:min(650px,74vw);--h:min(500px,70vh)" aria-label="记事本窗口">
+      <header class="titlebar"><img class="title-icon" src="assets/icons/w2k/notepad.svg" alt=""><strong id="notepadTitle">无标题 - 记事本</strong><div class="window-actions"><button data-action="minimize" aria-label="最小化">_</button><button data-action="maximize" aria-label="最大化">□</button><button data-action="close" aria-label="关闭">×</button></div></header>
+      <div class="menubar"><button>文件(<u>F</u>)</button><button>编辑(<u>E</u>)</button><button>搜索(<u>S</u>)</button><button>帮助(<u>H</u>)</button></div><textarea class="notepad-editor" id="notepadEditor" wrap="off" spellcheck="false">欢迎来到 YFGeek 2000！
+
+这里是一台可以使用的个人主页电脑。
+你可以写下任何内容，文本会保存在当前浏览器中。</textarea><footer class="statusbar"><span id="notePosition">第 1 行，第 1 列</span><span id="noteStatus">已就绪</span></footer>
+    </section>
+
+    <section class="window hidden dialog-window" id="window-calculator" data-app="calculator" style="--x:38vw;--y:18vh;--w:285px;--h:390px" aria-label="计算器窗口">
+      <header class="titlebar"><img class="title-icon" src="assets/icons/Calculator_16x16_4.png" alt=""><strong>计算器</strong><div class="window-actions"><button data-action="close" aria-label="关闭">×</button></div></header><div class="menubar"><button>编辑(<u>E</u>)</button><button>查看(<u>V</u>)</button><button>帮助(<u>H</u>)</button></div>
+      <div class="window-body calc-body"><output id="calcDisplay">0</output><div class="calc-grid"><button data-calc="clear" class="wide">C</button><button data-calc="back">←</button><button data-calc="/">÷</button><button data-calc="7">7</button><button data-calc="8">8</button><button data-calc="9">9</button><button data-calc="*">×</button><button data-calc="4">4</button><button data-calc="5">5</button><button data-calc="6">6</button><button data-calc="-">−</button><button data-calc="1">1</button><button data-calc="2">2</button><button data-calc="3">3</button><button data-calc="+">+</button><button data-calc="0" class="wide">0</button><button data-calc=".">.</button><button data-calc="equals">=</button></div></div>
+    </section>
+
+    <section class="window hidden" id="window-paint" data-app="paint" style="--x:18vw;--y:8vh;--w:min(760px,78vw);--h:min(570px,76vh)" aria-label="画图窗口">
+      <header class="titlebar"><img class="title-icon" src="assets/icons/Mspaint_16x16_4.png" alt=""><strong>无标题 - 画图</strong><div class="window-actions"><button data-action="minimize" aria-label="最小化">_</button><button data-action="maximize" aria-label="最大化">□</button><button data-action="close" aria-label="关闭">×</button></div></header><div class="menubar"><button>文件(<u>F</u>)</button><button>编辑(<u>E</u>)</button><button>查看(<u>V</u>)</button><button>图像(<u>I</u>)</button><button>帮助(<u>H</u>)</button></div>
+      <div class="window-body paint-body"><aside><button data-paint-clear title="清空">□</button><button class="active" title="铅笔">✎</button><div class="paint-colors"><button data-color="#000000" style="--c:#000"></button><button data-color="#000080" style="--c:#000080"></button><button data-color="#008080" style="--c:#008080"></button><button data-color="#ff0000" style="--c:#f00"></button><button data-color="#ffff00" style="--c:#ff0"></button><button data-color="#ffffff" style="--c:#fff"></button></div></aside><div class="canvas-wrap"><canvas id="paintCanvas" width="640" height="430" aria-label="画图画布"></canvas></div></div><footer class="statusbar"><span>拖动鼠标或手指绘图</span><span>640 × 430</span></footer>
+    </section>
+
+    <section class="window hidden dialog-window" id="window-minesweeper" data-app="minesweeper" style="--x:38vw;--y:14vh;--w:300px;--h:410px" aria-label="扫雷窗口">
+      <header class="titlebar"><img class="title-icon" src="assets/icons/Winmine1_16x16_4.png" alt=""><strong>扫雷</strong><div class="window-actions"><button data-action="minimize" aria-label="最小化">_</button><button data-action="close" aria-label="关闭">×</button></div></header><div class="menubar"><button data-mine-new>游戏(<u>G</u>)</button><button>帮助(<u>H</u>)</button></div><div class="window-body mine-body"><div class="mine-score"><b id="mineCount">010</b><button id="mineReset">☺</button><b id="mineTime">000</b></div><div class="mine-grid" id="mineGrid"></div></div>
+    </section>
+
+    <section class="window hidden remote-game-window" id="window-solitaire" data-app="solitaire" style="--x:24vw;--y:10vh;--w:620px;--h:470px" aria-label="纸牌窗口">
+      <header class="titlebar"><img class="title-icon" src="assets/icons/Sol1_16x16_4.svg" alt=""><strong>纸牌</strong><div class="window-actions"><button data-action="minimize" aria-label="最小化">_</button><button data-action="maximize" aria-label="最大化">□</button><button data-action="close" aria-label="关闭">×</button></div></header>
+      <div class="window-body remote-game-stage" data-game-width="585" data-game-height="405"><div class="game-loading"><img src="assets/icons/Sol1_32x32_4.svg" alt=""><b>正在发牌...</b><span>Solitaire</span></div><iframe id="solitaireFrame" title="纸牌游戏" src="about:blank" data-src="https://98.js.org/programs/js-solitaire/index.html" width="585" height="405" sandbox="allow-scripts allow-same-origin allow-forms allow-modals" allow="autoplay"></iframe></div>
+      <footer class="statusbar"><span>游戏：纸牌</span><span>鼠标或触摸操作</span></footer>
+    </section>
+
+    <section class="window hidden remote-game-window pinball-window" id="window-pinball" data-app="pinball" style="--x:22vw;--y:7vh;--w:636px;--h:500px" aria-label="3D 弹球窗口">
+      <header class="titlebar"><img class="title-icon" src="assets/icons/Joy102_16x16_4.svg" alt=""><strong>3D 弹球 - 太空军校生</strong><div class="window-actions"><button data-action="minimize" aria-label="最小化">_</button><button data-action="maximize" aria-label="最大化">□</button><button data-action="close" aria-label="关闭">×</button></div></header>
+      <div class="window-body remote-game-stage" data-game-width="600" data-game-height="436"><div class="game-loading pinball-loading"><img src="assets/icons/Joy102_32x32_4.svg" alt=""><b>3D Pinball</b><span>SPACE CADET</span><i></i></div><iframe id="pinballFrame" title="3D 弹球游戏" src="about:blank" data-src="https://98.js.org/programs/pinball/space-cadet.html" width="600" height="436" sandbox="allow-scripts allow-same-origin allow-forms allow-modals allow-pointer-lock" allow="autoplay; fullscreen"></iframe></div>
+      <footer class="statusbar"><span>F2：新游戏　Z 与 /：挡板　空格：发射</span><span>SpaceCadetPinball</span></footer>
+    </section>
+
+    <section class="window hidden dos-emulator-window" id="window-dos" data-app="dos" style="--x:18vw;--y:7vh;--w:min(900px,84vw);--h:min(650px,82vh)" aria-label="MS-DOS 模拟器窗口">
+      <header class="titlebar"><img class="title-icon" src="assets/icons/w2k/dos.svg" alt=""><strong>MS-DOS 方式 - DOSBox</strong><div class="window-actions"><button data-action="minimize" aria-label="最小化">_</button><button data-action="maximize" aria-label="最大化">□</button><button data-action="close" aria-label="关闭">×</button></div></header>
+      <div class="menubar dos-menubar"><button data-dos-mode="shell">命令提示符(<u>C</u>)</button><button data-dos-mode="restart">重新启动(<u>R</u>)</button></div>
+      <div class="window-body dos-emulator-stage"><div class="dos-loading" id="dosLoading"><img src="assets/icons/w2k/dos.svg" alt=""><b>正在启动 DOSBox...</b><span>真实 x86 DOS 环境</span></div><iframe id="dosFrame" title="DOSBox 模拟器" src="about:blank" data-src="assets/dos/index.html?v=20260810.4" allow="autoplay; fullscreen" sandbox="allow-scripts allow-same-origin allow-pointer-lock allow-downloads"></iframe></div>
+      <footer class="statusbar"><span>DOSBox / WebAssembly</span><span>在 C:\&gt; 输入 MARIO 运行</span></footer>
+    </section>
+
+    <section class="window hidden dialog-window" id="window-run" data-app="run" style="--x:35vw;--y:28vh;--w:min(470px,90vw);--h:230px" aria-label="运行窗口"><header class="titlebar"><img class="title-icon" src="assets/icons/Runonce106_32x32_4.png" alt=""><strong>运行</strong><div class="window-actions"><button data-action="close" aria-label="关闭">×</button></div></header><div class="window-body run-body"><img src="assets/icons/Runonce106_32x32_4.png" alt=""><p>请输入程序、文件夹、文档或 Internet 资源的名称，Windows 将为您打开它。</p><label>打开(<u>O</u>): <input id="runInput" value=""></label></div><footer class="dialog-actions"><button class="win-button primary" id="runOk">确定</button><button class="win-button" data-action="close">取消</button></footer></section>
+
+    <section class="window hidden dialog-window" id="window-shutdown" data-app="shutdown" style="--x:34vw;--y:25vh;--w:min(500px,90vw);--h:260px" aria-label="关闭系统窗口"><header class="titlebar"><img class="title-icon" src="assets/icons/w2k/logout.svg" alt=""><strong>关闭 Windows</strong><div class="window-actions"><button data-action="close" aria-label="关闭">×</button></div></header><div class="window-body shutdown-body"><img src="assets/icons/w2k/logout.svg" alt=""><fieldset><legend>您希望计算机做什么？</legend><label><input type="radio" name="power" value="shutdown" checked> 关闭计算机</label><label><input type="radio" name="power" value="restart"> 重新启动计算机</label></fieldset></div><footer class="dialog-actions"><button class="win-button primary" id="powerOk">是</button><button class="win-button" data-action="close">否</button></footer></section>
+
+    <div class="shutdown-screen hidden" id="shutdownScreen"><img src="assets/icons/w2k/start.svg" alt=""><p>现在可以安全地关闭计算机了。</p><button class="win-button" id="powerOn">重新启动</button></div>
+
+    <div class="start-menu hidden" id="startMenu">
+      <div class="start-brand"><b>YFGeek</b><span id="shellVersion">XP</span><small id="shellEdition">Professional</small></div>
+      <div class="start-items">
+        <div class="program-group"><button><img class="start-ico" src="assets/icons/FolderExe_32x32_4.png" alt=""><b>程序</b><span>▶</span></button><div class="program-menu"><div class="office-group"><button><img src="assets/icons/FolderExe_32x32_4.png" alt=""><span>Microsoft Office XP</span><b>▶</b></button><div class="office-menu"><button data-open="word"><span class="office-start-icon word-color">W</span>Microsoft Word</button><button data-open="excel"><span class="office-start-icon excel-color">X</span>Microsoft Excel</button><button data-open="powerpoint"><span class="office-start-icon ppt-color">P</span>Microsoft PowerPoint</button></div></div><button data-url="https://www.yfgeek.com/home"><img class="ie-menu-icon" src="assets/icons/InternetExplorer6.png" alt="">Internet Explorer</button><button data-open="notepad"><img src="assets/icons/w2k/notepad.svg" alt="">记事本</button><button data-open="paint"><img src="assets/icons/Mspaint_32x32_4.png" alt="">画图</button><button data-open="calculator"><img src="assets/icons/Calculator_32x32_4.png" alt="">计算器</button><button data-open="minesweeper"><img src="assets/icons/Winmine1_32x32_4.png" alt="">扫雷</button><button data-open="solitaire"><img src="assets/icons/Sol1_32x32_4.svg" alt="">纸牌</button><button data-open="pinball"><img src="assets/icons/Joy102_32x32_4.svg" alt="">3D 弹球</button><button data-open="dos"><img src="assets/icons/w2k/dos.svg" alt="">MS-DOS 方式</button></div></div>
+        <div class="start-subgroup"><button><img class="start-ico" data-system-icon="favorites" src="assets/icons/Star_32x32_4.png" alt=""><b>收藏夹</b><span>▶</span></button><div class="start-submenu"><button data-url="http://blog.yfgeek.com/"><img src="assets/icons/Globe_32x32_4.png" alt="">YFGeek Blog</button></div></div>
+        <div class="start-subgroup"><button><img class="start-ico" src="assets/icons/w2k/documents.svg" alt=""><b>文档</b><span>▶</span></button><div class="start-submenu"><button data-open="documents"><img src="assets/icons/w2k/documents.svg" alt="">我的文档</button><button data-open="resume-files"><img src="assets/icons/w2k/folder.svg" alt="">个人简历</button><button data-url="http://blog.yfgeek.com/"><img src="assets/icons/InternetExplorer6.png" alt="">探索文章</button><button data-open="travel"><img src="assets/icons/w2k/folder.svg" alt="">旅行相册</button><button data-open="food"><img src="assets/icons/w2k/folder.svg" alt="">美食图鉴</button></div></div>
+        <div class="start-subgroup"><button><img class="start-ico" src="assets/icons/w2k/settings.svg" alt=""><b>设置</b><span>▶</span></button><div class="start-submenu"><button data-open="control-panel"><img src="assets/icons/w2k/settings.svg" alt="">控制面板</button><button data-open="display"><img src="assets/icons/w2k/monitor.svg" alt="">显示属性</button></div></div>
+        <button data-open="run"><img class="start-ico" src="assets/icons/ComputerFind_32x32_4.png" alt=""><b>查找</b></button>
+        <button data-open="about"><img class="start-ico" src="assets/icons/HelpBook_32x32_4.png" alt=""><b>帮助</b></button>
+        <button data-open="run"><img class="start-ico" src="assets/icons/Runonce106_32x32_4.png" alt=""><b>运行...</b></button>
+        <hr><button data-open="shutdown"><img class="start-ico" src="assets/icons/PowerOff_32x32_4.png" alt=""><b>关闭系统...</b></button>
+      </div>
+    </div>
+
+    <div class="context-menu hidden" id="contextMenu" role="menu"><button data-context="arrange">排列图标</button><button data-context="refresh">刷新</button><hr><button data-open="display">属性</button></div>
+  </main>
+
+  <footer class="taskbar">
+    <button class="start-button" id="startButton" aria-expanded="false"><img class="start-logo" data-system-icon="logo" src="assets/icons/Logo_32x32_4.png" alt=""><b>开始</b></button>
+    <div class="task-divider"></div><div class="task-items" id="taskItems"></div>
+    <div class="tray"><button class="sound-toggle" id="soundToggle" type="button" aria-label="关闭系统声音" title="系统声音"><img class="speaker" src="assets/icons/w2k/speaker.svg" alt=""></button><time id="clock">00:00</time></div>
+  </footer>
+  <script src="site.js?v=20260810.10"></script>
+</body>
+</html>
