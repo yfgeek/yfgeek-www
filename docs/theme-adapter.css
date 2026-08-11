@@ -242,7 +242,7 @@ body.theme-winxp {
 .theme-winxp .window.maximized .window-actions [data-action="maximize"]::after { left:calc(50% + 2px); top:calc(50% + 2px); transform:translate(-50%,-50%)!important; }
 .theme-winxp .window-actions [data-action="close"]::after { -webkit-mask-image:url("assets/classic-stylesheets/winxp/close.svg"); mask-image:url("assets/classic-stylesheets/winxp/close.svg"); }
 
-:is(.theme-win98,.theme-win2000) .menubar {
+:is(.theme-win98,.theme-win2000) .app-menubar {
   height:21px;
   min-height:21px;
   flex-basis:21px;
@@ -250,7 +250,7 @@ body.theme-winxp {
   background:var(--shell-face);
   border:0;
 }
-:is(.theme-win98,.theme-win2000) .menubar button {
+:is(.theme-win98,.theme-win2000) .app-menubar button {
   height:19px;
   padding:2px 6px;
   border:0;
@@ -258,22 +258,22 @@ body.theme-winxp {
   box-shadow:none;
   font:11px/15px Tahoma,"PingFang SC",sans-serif;
 }
-:is(.theme-win98,.theme-win2000) .menubar button:active,
-:is(.theme-win98,.theme-win2000) .menubar button.menu-open {
+:is(.theme-win98,.theme-win2000) .app-menubar button:active,
+:is(.theme-win98,.theme-win2000) .app-menubar button.menu-open {
   padding:2px 6px;
   color:#fff;
   background:var(--shell-selection);
   border:0;
   box-shadow:none;
 }
-.theme-winxp .menubar {
+.theme-winxp .app-menubar {
   height:24px;
   min-height:24px;
   flex-basis:24px;
   padding:2px 3px;
   background:#ececec;
 }
-.theme-winxp .menubar button {
+.theme-winxp .app-menubar button {
   height:20px;
   padding:2px 7px;
   border:0;
@@ -282,8 +282,36 @@ body.theme-winxp {
   box-shadow:none;
   font:11px/16px Tahoma,"PingFang SC",sans-serif;
 }
-.theme-winxp .menubar button:active,
-.theme-winxp .menubar button.menu-open { padding:2px 7px; color:#fff; background:#316ac5; }
+.theme-winxp .app-menubar button:active,
+.theme-winxp .app-menubar button.menu-open { padding:2px 7px; color:#fff; background:#316ac5; }
+
+/* Shared application chrome: every built-in app and game uses this menu layer. */
+.app-menubar {
+  display:flex;
+  align-items:center;
+  flex-shrink:0;
+  overflow-x:auto;
+  overflow-y:hidden;
+  scrollbar-width:none;
+  overscroll-behavior-x:contain;
+}
+.app-menubar::-webkit-scrollbar { display:none; }
+.app-menubar button {
+  flex:0 0 auto;
+  min-width:max-content;
+  margin:0;
+  white-space:nowrap;
+  touch-action:manipulation;
+  user-select:none;
+  -webkit-user-select:none;
+  -webkit-tap-highlight-color:transparent;
+}
+.app-menu-popup {
+  max-height:calc(100dvh - var(--task) - 12px);
+  overflow-y:auto;
+  overscroll-behavior:contain;
+}
+.app-menu-popup button { touch-action:manipulation; }
 
 :is(.theme-win98,.theme-win2000,.theme-winxp) .addressbar,
 :is(.theme-win98,.theme-win2000,.theme-winxp) .ie-addressbar,
@@ -661,11 +689,11 @@ body.theme-winxp {
 }
 
 /* Office XP uses flat gray toolbars with blue hot tracking. */
-.office-window .menubar,
+.office-window .app-menubar,
 .office-window .office-toolbar { color:#111; background:linear-gradient(#f7f7f7,#dedede); border-color:#fff #9c9c9c #9c9c9c #fff; }
-.office-window .menubar button { border:1px solid transparent; border-radius:2px; }
-.office-window .menubar button:hover,
-.office-window .menubar button.menu-open { padding:2px 7px; color:#000; background:#c9ddf7; border-color:#316ac5; }
+.office-window .app-menubar button { border:1px solid transparent; border-radius:2px; }
+.office-window .app-menubar button:hover,
+.office-window .app-menubar button.menu-open { padding:2px 7px; color:#000; background:#c9ddf7; border-color:#316ac5; }
 .office-window .office-toolbar { min-height:34px; padding:4px 6px; }
 .office-window .office-toolbar button { color:#111; background:transparent; border:1px solid transparent; border-radius:2px; box-shadow:none; }
 .office-window .office-toolbar button:hover { background:#c9ddf7; border-color:#316ac5; }

@@ -14,9 +14,9 @@
       history.replaceState(null, '', location.pathname + location.hash);
     }
   </script>
-  <link rel="stylesheet" href="styles.css?v=20260811.12">
-  <link rel="stylesheet" href="resume-extras.css?v=20260811.12">
-  <link rel="stylesheet" href="theme-adapter.css?v=20260811.12">
+  <link rel="stylesheet" href="styles.css?v=20260811.14">
+  <link rel="stylesheet" href="resume-extras.css?v=20260811.14">
+  <link rel="stylesheet" href="theme-adapter.css?v=20260811.14">
 </head>
 <body class="theme-winxp shell-locked">
   <div class="boot-screen" id="bootScreen" aria-hidden="true"><div><img data-system-icon="logo" src="assets/icons/Logo_32x32_4.png" alt=""><section><small>YFGeek</small><b id="bootProductName">YFGeek XP</b><span id="bootEdition">Professional</span><em id="bootTagline">YFGeek Desktop</em></section></div><i></i></div>
@@ -323,12 +323,14 @@
 
     <section class="window hidden remote-game-window" id="window-solitaire" data-app="solitaire" style="--x:24vw;--y:10vh;--w:620px;--h:470px" aria-label="纸牌窗口">
       <header class="titlebar"><img class="title-icon" data-system-icon="solitaire" src="assets/icons/Sol1_16x16_4.svg" alt=""><strong>纸牌</strong><div class="window-actions"><button data-action="minimize" aria-label="最小化">_</button><button data-action="maximize" aria-label="最大化">□</button><button data-action="close" aria-label="关闭">×</button></div></header>
+      <div class="menubar"><button>游戏(<u>G</u>)</button><button>帮助(<u>H</u>)</button></div>
       <div class="window-body remote-game-stage" data-game-width="585" data-game-height="405"><div class="game-loading"><img data-system-icon="solitaire" src="assets/icons/Sol1_32x32_4.svg" alt=""><b>正在发牌...</b><span>Solitaire</span></div><iframe id="solitaireFrame" title="纸牌游戏" src="about:blank" data-src="https://98.js.org/programs/js-solitaire/index.html" width="585" height="405" sandbox="allow-scripts allow-same-origin allow-forms allow-modals" allow="autoplay"></iframe></div>
       <footer class="statusbar"><span>游戏：纸牌</span><span>鼠标或触摸操作</span></footer>
     </section>
 
     <section class="window hidden remote-game-window pinball-window" id="window-pinball" data-app="pinball" style="--x:22vw;--y:7vh;--w:636px;--h:500px" aria-label="3D 弹球窗口">
       <header class="titlebar"><img class="title-icon" data-system-icon="pinball" src="assets/icons/Joy102_16x16_4.svg" alt=""><strong>3D 弹球 - 太空军校生</strong><div class="window-actions"><button data-action="minimize" aria-label="最小化">_</button><button data-action="maximize" aria-label="最大化">□</button><button data-action="close" aria-label="关闭">×</button></div></header>
+      <div class="menubar"><button>游戏(<u>G</u>)</button><button>帮助(<u>H</u>)</button></div>
       <div class="window-body remote-game-stage" data-game-width="600" data-game-height="436"><div class="game-loading pinball-loading"><img data-system-icon="pinball" src="assets/icons/Joy102_32x32_4.svg" alt=""><b>3D Pinball</b><span>SPACE CADET</span><i></i></div><iframe id="pinballFrame" title="3D 弹球游戏" src="about:blank" data-src="https://98.js.org/programs/pinball/space-cadet.html" width="600" height="436" sandbox="allow-scripts allow-same-origin allow-forms allow-modals allow-pointer-lock" allow="autoplay; fullscreen"></iframe></div>
       <footer class="statusbar"><span>F2：新游戏　Z 与 /：挡板　空格：发射</span><span>SpaceCadetPinball</span></footer>
     </section>
@@ -375,6 +377,6 @@
       <button class="sound-toggle" id="soundToggle" type="button" aria-label="打开音量控制" title="音量"><img class="speaker" src="assets/icons/w2k/speaker.svg" alt=""></button><time id="clock">00:00</time>
     </div>
   </footer>
-  <script src="site.js?v=20260811.12"></script>
+  <script src="site.js?v=20260811.14"></script>
 </body>
 </html>

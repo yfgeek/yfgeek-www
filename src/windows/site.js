@@ -46,6 +46,7 @@ const remoteGameApps=new Set(['solitaire','pinball']);
 const embeddedApps=new Set(['dos']);
 function fitRemoteGame(win){const stage=win?.querySelector('.remote-game-stage'),frame=stage?.querySelector('iframe');if(!stage||!frame||!stage.clientWidth||!stage.clientHeight)return;const baseWidth=Number(stage.dataset.gameWidth),baseHeight=Number(stage.dataset.gameHeight),allowUpscale=win.classList.contains('maximized')||isMobileOrTablet(),scale=Math.max(.1,Math.min(stage.clientWidth/baseWidth,stage.clientHeight/baseHeight,allowUpscale?2.5:1)),scaledHeight=Math.round(baseHeight*scale);frame.style.marginLeft=`-${baseWidth/2}px`;frame.style.top=`${Math.max(0,Math.round((stage.clientHeight-scaledHeight)/2))}px`;frame.style.setProperty('--game-scale',String(scale));stage.style.setProperty('--scaled-game-height',`${scaledHeight}px`)}
 function prepareRemoteGame(app,win){const frame=win.querySelector('iframe[data-src]'),loading=win.querySelector('.game-loading');if(!frame||frame.dataset.started)return;frame.dataset.started='true';loading?.classList.remove('hidden');const started=Date.now();frame.addEventListener('load',()=>{if(frame.src==='about:blank')return;setTimeout(()=>loading?.classList.add('hidden'),Math.max(0,900-(Date.now()-started)));fitRemoteGame(win);playSystemSound('notify')},{once:true});frame.src=frame.dataset.src;fitRemoteGame(win)}
+function restartRemoteGame(app,win){const frame=win?.querySelector('iframe[data-src]');if(!frame)return;frame.src='about:blank';delete frame.dataset.started;requestAnimationFrame(()=>prepareRemoteGame(app,win))}
 function loadDosFrame(url){const frame=$('#dosFrame'),loading=$('#dosLoading');if(!frame)return;frame.dataset.src=url;frame.dataset.started='true';loading?.classList.remove('hidden');frame.src='about:blank';requestAnimationFrame(()=>{const started=Date.now();frame.addEventListener('load',()=>{if(frame.src==='about:blank')return;setTimeout(()=>loading?.classList.add('hidden'),Math.max(0,700-(Date.now()-started)));playSystemSound('notify')},{once:true});frame.src=url})}
 function prepareEmbeddedApp(app,win){if(app!=='dos')return;const frame=win.querySelector('iframe[data-src]');if(frame&&!frame.dataset.started)loadDosFrame(frame.dataset.src)}
 function setDosMode(mode){const frame=$('#dosFrame'),win=$('#window-dos'),url='assets/dos/index.html?v=20260811.5';openAppCore('dos',win);if(mode==='restart'||frame?.src==='about:blank')requestAnimationFrame(()=>loadDosFrame(url))}
@@ -139,7 +140,6 @@ Object.entries(explorerParents).forEach(([app,parent])=>{const win=getWindow(app
 
 $$(fileItemSelector).forEach(bindShellItem);
 $$('[data-open]:not(.desktop-icon)').filter(el=>!el.matches(fileItemSelector)).forEach(el=>el.addEventListener('click',e=>{e.stopPropagation();openApp(el.dataset.open)}));
-$$('[data-dos-mode]').forEach(el=>el.addEventListener('click',e=>{e.stopPropagation();closeSystemMenu();setDosMode(el.dataset.dosMode)}));
 const controlDetails={datetime:['日期/时间','Timedate','<div class="control-clock">'+new Date().toLocaleTimeString('zh-CN')+'</div><label>时区 <select><option>（GMT+08:00）北京，重庆，香港特别行政区</option></select></label>'],fonts:['字体','Fontext1','<p>此计算机上安装的字体：</p><div class="font-list"><span style="font-family:Arial">Arial</span><span style="font-family:serif">Times New Roman</span><span style="font-family:monospace">Courier New</span><span>宋体</span></div>'],keyboard:['键盘 属性','KeyboardMouse','<fieldset><legend>字符重复</legend><label>重复延迟 <input type="range" min="1" max="10" value="6"></label><label>重复速度 <input type="range" min="1" max="10" value="8"></label></fieldset>'],regional:['区域设置 属性','Intl101','<label>区域 <select><option>中文（中国）</option><option>English (United States)</option></select></label><p>数字：123,456,789.00<br>货币：¥123.00<br>日期：2026/7/14</p>'],programs:['添加/删除程序','Appwiz1500','<p>当前安装的程序：</p><div class="installed-programs"><b>YFGeek Office XP</b><span>Word / Excel / PowerPoint</span><b>YFGeek XP Accessories</b><span>记事本 / 画图 / 扫雷</span></div>'],password:['密码 属性','Controls3000','<p>更改 YFGeek 账户密码：</p><label>旧密码 <input type="password"></label><label>新密码 <input type="password"></label>']};
 function showControlDetail(el){selectFile(el);const d=controlDetails[el.dataset.control];if(!d)return;$('#controlDetailTitle').textContent=d[0];$('#controlDetailIcon').src=`assets/icons/${d[1]}_16x16_4.png`;$('#controlDetailBody').innerHTML=d[2];openApp('control-detail')}
 $$('[data-control]').forEach(el=>{el.addEventListener('click',e=>{e.stopPropagation();selectFile(el);if(isMobileOrTablet())showControlDetail(el)});el.addEventListener('dblclick',()=>{if(!isMobileOrTablet())showControlDetail(el)});el.addEventListener('keydown',e=>{if(e.key==='Enter')showControlDetail(el)})});
@@ -199,53 +199,46 @@ addEventListener('pointerdown',e=>{if(!e.target.closest('#contextMenu'))hideTran
 addEventListener('keydown',event=>{if(event.target.matches('input,textarea,[contenteditable="true"]'))return;const win=$('.window.active-window:not(.hidden)'),container=shellContainerFor(win)||$('.desktop-icons'),selected=shellSelection(win)||$('.desktop-icon.selected');if((event.ctrlKey||event.metaKey)&&event.key.toLowerCase()==='c'&&selected){event.preventDefault();copyShellItem(selected)}if((event.ctrlKey||event.metaKey)&&event.key.toLowerCase()==='x'&&selected){event.preventDefault();copyShellItem(selected,'cut')}if((event.ctrlKey||event.metaKey)&&event.key.toLowerCase()==='v'&&shellClipboard){event.preventDefault();pasteShellItems(container)}if(event.key==='Delete'&&selected){event.preventDefault();deleteShellItem(selected)}});
 
 // Application menu bars
-const menuPopup=document.createElement('div');menuPopup.className='system-menu hidden';document.body.appendChild(menuPopup);
-function closeSystemMenu(){$$('.menubar button.menu-open').forEach(b=>b.classList.remove('menu-open'));hideTransientMenu(menuPopup)}
-function addMenuItem(label,action,shortcut=''){const b=document.createElement('button');const text=document.createElement('span'),key=document.createElement('kbd');text.textContent=label;key.textContent=shortcut;b.append(text,key);b.addEventListener('click',()=>{closeSystemMenu();playSystemSound('open');action()});menuPopup.appendChild(b)}
-function addMenuDivider(){menuPopup.appendChild(document.createElement('hr'))}
-function menuItems(kind,win){
-  const app=win.dataset.app;menuPopup.innerHTML='';
-  if(kind==='文件'){
-    if(app==='ie'){addMenuItem('打开地址...',()=>ieAddress.focus(),'Ctrl+L');addMenuItem('主页',()=>loadInternalBrowser(ieHome),'Alt+Home');addMenuDivider();addMenuItem('关闭',()=>closeWindow(win),'Alt+F4');return}
-    if(app==='documents'){addMenuItem('刷新',()=>win.querySelector('.window-body')?.animate([{opacity:.5},{opacity:1}],{duration:140}),'F5');addMenuDivider();addMenuItem('关闭',()=>closeWindow(win),'Alt+F4');return}
-    if(app==='notepad')addMenuItem('新建',noteNew,'Ctrl+N');
-    if(app==='word')addMenuItem('新建文档',()=>{editorFileState.word=null;$('#wordDocument').innerHTML='<p><br></p>';markWordDirty()},'Ctrl+N');
-    if(['notepad','word','excel','powerpoint'].includes(app)){addMenuItem('打开...',()=>openEditorFile(app),'Ctrl+O');addMenuItem('保存',()=>app==='notepad'?noteSave():app==='word'?saveWord():officeSave(win),'Ctrl+S');addMenuItem('另存为...',()=>saveEditor(app,{saveAs:true}),'Ctrl+Shift+S')}else addMenuItem('打开个人简历',()=>openApp('word'),'Ctrl+O');
-    if(app==='word')addMenuItem('打印...',()=>window.print(),'Ctrl+P');
-    addMenuDivider();addMenuItem('关闭',()=>closeWindow(win),'Alt+F4');
-  }else if(kind==='编辑'){
-    const container=shellContainerFor(win),selected=()=>shellSelection(win);if(container){addMenuItem('剪切',()=>copyShellItem(selected(),'cut'),'Ctrl+X');addMenuItem('复制',()=>copyShellItem(selected()),'Ctrl+C');addMenuItem('粘贴',()=>pasteShellItems(container),'Ctrl+V');addMenuDivider();addMenuItem('删除',()=>deleteShellItem(selected()),'Del')}else{addMenuItem('撤销',()=>document.execCommand('undo'),'Ctrl+Z');addMenuDivider();addMenuItem('剪切',()=>document.execCommand('cut'),'Ctrl+X');addMenuItem('复制',()=>document.execCommand('copy'),'Ctrl+C');addMenuItem('删除',()=>document.execCommand('delete'),'Del');addMenuDivider();addMenuItem('全选',()=>{const input=win.querySelector('textarea,input');if(input){input.focus();input.select()}else{win.querySelector('[contenteditable]')?.focus();document.execCommand('selectAll')}},'Ctrl+A');if(app==='notepad')addMenuItem('时间/日期',()=>note.setRangeText(new Date().toLocaleString('zh-CN'),note.selectionStart,note.selectionEnd,'end'),'F5')}
-  }else if(kind==='查看'){
-    addMenuItem('刷新',()=>app==='ie'?loadInternalBrowser(ieAddress.value):win.querySelector('.window-body')?.animate([{opacity:.5},{opacity:1}],{duration:140}),'F5');const status=win.querySelector('.statusbar');if(status)addMenuItem(status.classList.contains('hidden')?'显示状态栏':'隐藏状态栏',()=>status.classList.toggle('hidden'));
-  }else if(kind==='收藏'){
-    addMenuItem('YFGeek 博客',()=>requestWebOpen('https://blog.yfgeek.com'));
-  }else if(kind==='图像'){
-    addMenuItem('清除图像',clearPaint);addMenuItem('反色',invertPaint);
-  }else if(kind==='游戏'){
-    addMenuItem('新游戏',newMineGame,'F2');
-  }else if(kind==='搜索'){
-    addMenuItem('查找...',()=>{showSystemPrompt({title:'查找',message:'请输入要查找的内容：',label:'查找内容：'}).then(term=>{if(term)window.find?.(term)})},'Ctrl+F');
-  }else if(kind==='插入'){
-    addMenuItem('日期和时间',()=>document.execCommand('insertText',false,new Date().toLocaleDateString('zh-CN')));if(app==='powerpoint')addMenuItem('新幻灯片',addPowerPointSlide);
-  }else if(kind==='格式'){
-    addMenuItem('粗体',()=>document.execCommand('bold'),'Ctrl+B');addMenuItem('斜体',()=>document.execCommand('italic'),'Ctrl+I');addMenuItem('下划线',()=>document.execCommand('underline'),'Ctrl+U');
-  }else if(kind==='工具'){
-    if(app==='ie'){addMenuItem('重新选择网页打开方式...',resetBrowserMode);addMenuItem('Internet 选项...',()=>openApp('control-panel'))}else{addMenuItem('拼写和语法',()=>{const s=win.querySelector('.statusbar span:last-child');if(s)s.textContent='拼写和语法检查完成';showSystemDialog({title:'YFGeek Office',message:'拼写和语法检查完成。',type:'info'})});addMenuItem('字数统计',()=>{const s=win.querySelector('[contenteditable]')?.innerText.length||0;showSystemDialog({title:'字数统计',message:`字数：${s}`,type:'info'})})}
-  }else if(kind==='表格'){
-    addMenuItem('插入 2×2 表格',()=>document.execCommand('insertHTML',false,'<table border="1"><tr><td>　</td><td>　</td></tr><tr><td>　</td><td>　</td></tr></table>'));
-  }else if(kind==='数据'){
-    addMenuItem('按第一列排序',sortExcel);addMenuItem('重新计算',()=>$('#window-excel .statusbar span:last-child').textContent='计算完成');
-  }else if(kind==='幻灯片放映'){
-    addMenuItem('观看放映',startSlideShow,'F5');
-  }else if(kind==='窗口'){
-    addMenuItem('最小化',()=>minimizeWindow(win));addMenuItem('最大化/还原',()=>maximizeWindow(win));
-  }else if(kind==='帮助'){
-    addMenuItem('帮助主题',()=>openApp('about'));addMenuDivider();addMenuItem('关于 YFGeek',()=>openApp('about'));
-  }else{
-    addMenuItem('排列图标',arrangeDesktop);addMenuItem('刷新',()=>win.querySelector('.window-body')?.animate([{opacity:.5},{opacity:1}],{duration:140}));
-  }
-}
-$$('.menubar button:not([data-dos-mode])').forEach(button=>button.addEventListener('click',e=>{e.stopPropagation();const already=button.classList.contains('menu-open'),win=button.closest('.window'),kind=button.textContent.split('(')[0].trim();closeSystemMenu();if(already)return;menuItems(kind,win);const r=button.getBoundingClientRect();menuPopup.style.left=Math.min(r.left,innerWidth-220)+'px';menuPopup.style.top=r.bottom+'px';showTransientMenu(menuPopup);button.classList.add('menu-open')}));
+const menuPopup=document.createElement('div');menuPopup.className='system-menu app-menu-popup hidden';menuPopup.setAttribute('role','menu');document.body.appendChild(menuPopup);
+const menuKeys={文件:'file',编辑:'edit',查看:'view',收藏:'favorites',图像:'image',游戏:'game',搜索:'search',插入:'insert',格式:'format',工具:'tools',表格:'table',数据:'data','幻灯片放映':'slideshow',窗口:'window',帮助:'help',排列图标:'arrange'};
+const menuCommand=(label,action,shortcut='')=>({label,action,shortcut});
+const menuDivider=()=>({separator:true});
+const refreshWindow=win=>win.querySelector('.window-body')?.animate([{opacity:.5},{opacity:1}],{duration:140});
+const applicationMenus={
+  file:({app,win})=>{
+    if(app==='ie')return[menuCommand('打开地址...',()=>ieAddress.focus(),'Ctrl+L'),menuCommand('主页',()=>loadInternalBrowser(ieHome),'Alt+Home'),menuDivider(),menuCommand('关闭',()=>closeWindow(win),'Alt+F4')];
+    if(app==='documents')return[menuCommand('刷新',()=>refreshWindow(win),'F5'),menuDivider(),menuCommand('关闭',()=>closeWindow(win),'Alt+F4')];
+    const items=[];
+    if(app==='notepad')items.push(menuCommand('新建',noteNew,'Ctrl+N'));
+    if(app==='word')items.push(menuCommand('新建文档',()=>{editorFileState.word=null;$('#wordDocument').innerHTML='<p><br></p>';markWordDirty()},'Ctrl+N'));
+    if(['notepad','word','excel','powerpoint'].includes(app))items.push(menuCommand('打开...',()=>openEditorFile(app),'Ctrl+O'),menuCommand('保存',()=>app==='notepad'?noteSave():app==='word'?saveWord():officeSave(win),'Ctrl+S'),menuCommand('另存为...',()=>saveEditor(app,{saveAs:true}),'Ctrl+Shift+S'));
+    else items.push(menuCommand('打开个人简历',()=>openApp('word'),'Ctrl+O'));
+    if(app==='word')items.push(menuCommand('打印...',()=>window.print(),'Ctrl+P'));
+    items.push(menuDivider(),menuCommand('关闭',()=>closeWindow(win),'Alt+F4'));return items;
+  },
+  edit:({app,win})=>{const container=shellContainerFor(win),selected=()=>shellSelection(win);if(container)return[menuCommand('剪切',()=>copyShellItem(selected(),'cut'),'Ctrl+X'),menuCommand('复制',()=>copyShellItem(selected()),'Ctrl+C'),menuCommand('粘贴',()=>pasteShellItems(container),'Ctrl+V'),menuDivider(),menuCommand('删除',()=>deleteShellItem(selected()),'Del')];const items=[menuCommand('撤销',()=>document.execCommand('undo'),'Ctrl+Z'),menuDivider(),menuCommand('剪切',()=>document.execCommand('cut'),'Ctrl+X'),menuCommand('复制',()=>document.execCommand('copy'),'Ctrl+C'),menuCommand('删除',()=>document.execCommand('delete'),'Del'),menuDivider(),menuCommand('全选',()=>{const input=win.querySelector('textarea,input');if(input){input.focus();input.select()}else{win.querySelector('[contenteditable]')?.focus();document.execCommand('selectAll')}},'Ctrl+A')];if(app==='notepad')items.push(menuCommand('时间/日期',()=>note.setRangeText(new Date().toLocaleString('zh-CN'),note.selectionStart,note.selectionEnd,'end'),'F5'));return items},
+  view:({app,win})=>{const items=[menuCommand('刷新',()=>app==='ie'?loadInternalBrowser(ieAddress.value):refreshWindow(win),'F5')],status=win.querySelector('.statusbar');if(status)items.push(menuCommand(status.classList.contains('hidden')?'显示状态栏':'隐藏状态栏',()=>status.classList.toggle('hidden')));return items},
+  favorites:()=>[menuCommand('YFGeek 博客',()=>requestWebOpen('https://blog.yfgeek.com'))],
+  image:()=>[menuCommand('清除图像',clearPaint),menuCommand('反色',invertPaint)],
+  game:({app,win})=>remoteGameApps.has(app)?[menuCommand('重新开始',()=>restartRemoteGame(app,win),'F2'),menuDivider(),menuCommand('最大化/还原',()=>maximizeWindow(win))]:[menuCommand('新游戏',newMineGame,'F2')],
+  search:()=>[menuCommand('查找...',()=>{showSystemPrompt({title:'查找',message:'请输入要查找的内容：',label:'查找内容：'}).then(term=>{if(term)window.find?.(term)})},'Ctrl+F')],
+  insert:({app})=>{const items=[menuCommand('日期和时间',()=>document.execCommand('insertText',false,new Date().toLocaleDateString('zh-CN')))];if(app==='powerpoint')items.push(menuCommand('新幻灯片',addPowerPointSlide));return items},
+  format:()=>[menuCommand('粗体',()=>document.execCommand('bold'),'Ctrl+B'),menuCommand('斜体',()=>document.execCommand('italic'),'Ctrl+I'),menuCommand('下划线',()=>document.execCommand('underline'),'Ctrl+U')],
+  tools:({app,win})=>app==='ie'?[menuCommand('重新选择网页打开方式...',resetBrowserMode),menuCommand('Internet 选项...',()=>openApp('control-panel'))]:[menuCommand('拼写和语法',()=>{const status=win.querySelector('.statusbar span:last-child');if(status)status.textContent='拼写和语法检查完成';showSystemDialog({title:'YFGeek Office',message:'拼写和语法检查完成。',type:'info'})}),menuCommand('字数统计',()=>{const count=win.querySelector('[contenteditable]')?.innerText.length||0;showSystemDialog({title:'字数统计',message:`字数：${count}`,type:'info'})})],
+  table:()=>[menuCommand('插入 2×2 表格',()=>document.execCommand('insertHTML',false,'<table border="1"><tr><td>　</td><td>　</td></tr><tr><td>　</td><td>　</td></tr></table>'))],
+  data:()=>[menuCommand('按第一列排序',sortExcel),menuCommand('重新计算',()=>$('#window-excel .statusbar span:last-child').textContent='计算完成')],
+  slideshow:()=>[menuCommand('观看放映',startSlideShow,'F5')],
+  window:({win})=>[menuCommand('最小化',()=>minimizeWindow(win)),menuCommand('最大化/还原',()=>maximizeWindow(win))],
+  help:()=>[menuCommand('帮助主题',()=>openApp('about')),menuDivider(),menuCommand('关于 YFGeek',()=>openApp('about'))],
+  arrange:({win})=>[menuCommand('排列图标',arrangeDesktop),menuCommand('刷新',()=>refreshWindow(win))]
+};
+function closeSystemMenu(){$$('.app-menubar button.menu-open').forEach(button=>{button.classList.remove('menu-open');button.setAttribute('aria-expanded','false')});hideTransientMenu(menuPopup)}
+function runMenuCommand(command){closeSystemMenu();playSystemSound('open');command.action?.()}
+function renderApplicationMenu(commands){menuPopup.replaceChildren();commands.forEach(command=>{if(command.separator){const divider=document.createElement('hr');divider.setAttribute('role','separator');menuPopup.appendChild(divider);return}const button=document.createElement('button'),label=document.createElement('span'),shortcut=document.createElement('kbd');button.type='button';button.setAttribute('role','menuitem');label.textContent=command.label;shortcut.textContent=command.shortcut||'';button.append(label,shortcut);const recentTouch=bindTouchTap(button,()=>runMenuCommand(command));button.addEventListener('click',event=>{event.stopPropagation();if(recentTouch()){event.preventDefault();return}runMenuCommand(command)});menuPopup.appendChild(button)})}
+function menuKeyFor(button){if(button.dataset.menu)return button.dataset.menu;const label=button.textContent.split('(')[0].trim();return menuKeys[label]||'arrange'}
+function toggleApplicationMenu(button){const win=button.closest('.window'),alreadyOpen=button.classList.contains('menu-open'),provider=applicationMenus[menuKeyFor(button)];closeSystemMenu();if(alreadyOpen||!win||!provider)return;const commands=provider({app:win.dataset.app,win}).filter(Boolean);if(!commands.length)return;renderApplicationMenu(commands);const rect=button.getBoundingClientRect();menuPopup.style.left=Math.max(4,rect.left)+'px';menuPopup.style.top=rect.bottom+'px';showTransientMenu(menuPopup);const popupRect=menuPopup.getBoundingClientRect();menuPopup.style.left=Math.max(4,Math.min(rect.left,innerWidth-popupRect.width-8))+'px';if(popupRect.bottom>innerHeight-8)menuPopup.style.top=Math.max(4,innerHeight-popupRect.height-8)+'px';button.classList.add('menu-open');button.setAttribute('aria-expanded','true')}
+function bindApplicationMenuBar(bar){bar.classList.add('app-menubar');bar.setAttribute('role','menubar');bar.querySelectorAll('button').forEach(button=>{button.type='button';button.setAttribute('role','menuitem');if(button.dataset.dosMode){const activate=()=>{closeSystemMenu();setDosMode(button.dataset.dosMode)},recentTouch=bindTouchTap(button,activate);button.addEventListener('click',event=>{event.stopPropagation();if(recentTouch()){event.preventDefault();return}activate()});return}button.dataset.menu=menuKeyFor(button);button.setAttribute('aria-haspopup','menu');button.setAttribute('aria-expanded','false');const recentTouch=bindTouchTap(button,()=>toggleApplicationMenu(button));button.addEventListener('click',event=>{event.stopPropagation();if(recentTouch()){event.preventDefault();return}toggleApplicationMenu(button)})})}
+$$('.menubar').forEach(bindApplicationMenuBar);
 addEventListener('pointerdown',e=>{if(!e.target.closest('.system-menu,.menubar'))closeSystemMenu()});
 addEventListener('keydown',e=>{if(e.key==='Escape')closeSystemMenu();if(e.altKey&&e.key.toLowerCase()==='f'){const win=$('.window.active-window:not(.hidden)'),button=win?.querySelector('.menubar button');if(button){e.preventDefault();button.click()}}});
 
