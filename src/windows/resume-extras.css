@@ -880,7 +880,16 @@
   font: 9px monospace;
 }
 
-.word-workspace { flex:1 1 0; min-height:0; padding:24px; overflow:scroll!important; background:#808080; scrollbar-gutter:stable both-edges; }
+.word-scroll-host { flex:1 1 0; min-height:0; display:grid; grid-template-columns:minmax(0,1fr) 17px; overflow:hidden; }
+.word-workspace { min-width:0; min-height:0; padding:24px; overflow:scroll!important; background:#808080; border-right:0; scrollbar-gutter:auto; }
+.office-scrollbar { min-height:0; display:grid; grid-template-rows:17px minmax(0,1fr) 17px; background:#d4d0c8; border-left:1px solid #808080; user-select:none; touch-action:none; }
+.office-scrollbar > button { position:relative; width:17px; height:17px; min-width:17px; min-height:17px; padding:0; background:#d4d0c8; border:0; border-radius:0; box-shadow:inset -1px -1px #404040,inset 1px 1px #fff,inset -2px -2px #808080; }
+.office-scrollbar > button::after { content:""; position:absolute; left:5px; width:0; height:0; border-left:4px solid transparent; border-right:4px solid transparent; }
+.office-scrollbar > button:first-child::after { top:5px; border-bottom:6px solid #000; }
+.office-scrollbar > button:last-child::after { top:6px; border-top:6px solid #000; }
+.office-scrollbar > button:active { box-shadow:inset 1px 1px #404040,inset -1px -1px #fff; }
+.office-scroll-track { position:relative; min-height:0; background:#eee; box-shadow:inset 1px 0 #aaa; }
+.office-scroll-track > i { position:absolute; left:1px; top:0; width:15px; min-height:24px; background:#d4d0c8; box-shadow:inset -1px -1px #404040,inset 1px 1px #fff,inset -2px -2px #808080; cursor:default; }
 .word-page {
   width: 760px;
   min-height: 1080px;
