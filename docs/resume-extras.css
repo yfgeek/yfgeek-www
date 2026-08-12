@@ -576,6 +576,7 @@
   background: transparent;
   box-shadow: 1px 1px #000;
 }
+.window-ghost.xp-window-ghost { border:1px solid #2b66c3; outline:0; background:rgba(74,133,226,.22); box-shadow:0 0 0 1px rgba(255,255,255,.75) inset,2px 2px 5px rgba(0,0,0,.28); border-radius:4px; }
 
 .window:not(.hidden) { animation: win98-show .08s step-end; }
 @keyframes win98-show { from { visibility: hidden; } to { visibility: visible; } }
@@ -884,7 +885,7 @@
 }
 
 .word-scroll-host { flex:1 1 0; min-height:0; display:grid; grid-template-columns:minmax(0,1fr) 17px; overflow:hidden; }
-.word-workspace { min-width:0; min-height:0; padding:24px; overflow:scroll!important; background:#808080; border-right:0; scrollbar-gutter:auto; }
+.word-workspace { min-width:0; min-height:0; padding:24px; overflow:hidden!important; background:#808080; border-right:0; scrollbar-gutter:auto; }
 .office-scrollbar { min-height:0; display:grid; grid-template-rows:17px minmax(0,1fr) 17px; background:#d4d0c8; border-left:1px solid #808080; user-select:none; touch-action:none; }
 .office-scrollbar > button { position:relative; width:17px; height:17px; min-width:17px; min-height:17px; padding:0; background:#d4d0c8; border:0; border-radius:0; box-shadow:inset -1px -1px #404040,inset 1px 1px #fff,inset -2px -2px #808080; }
 .office-scrollbar > button::after { content:""; position:absolute; left:5px; width:0; height:0; border-left:4px solid transparent; border-right:4px solid transparent; }
@@ -905,6 +906,22 @@
   caret-color: #000;
   font: 12px/1.6 Arial, "PingFang SC", sans-serif;
 }
+
+.remote-game-stage { overflow:hidden; }
+.remote-game-stage iframe { clip-path:inset(var(--game-crop,0px) 0 0 0); }
+
+.osk-body { padding:10px; display:flex; flex-direction:column; justify-content:center; gap:7px; background:#c0c0c0; overflow:auto; }
+.osk-row { display:flex; gap:5px; min-height:36px; }
+.osk-key { flex:1 1 0; min-width:34px; min-height:34px; padding:3px 5px; color:#111; background:#d4d0c8; border:2px outset #fff; font:13px Tahoma,"PingFang SC",sans-serif; }
+.osk-key:active,.osk-key.active { border-style:inset; background:#b8cbe6; }
+.osk-space { flex:5 1 0; }
+.osk-special { flex:1.6 1 0; }
+.osk-always-on-top { z-index:2200!important; }
+.word-scroll-host .word-workspace { overflow:auto!important; scrollbar-width:none!important; }
+.word-scroll-host .word-workspace::-webkit-scrollbar { display:none!important; width:0!important; height:0!important; }
+.theme-touch-choices { display:none; grid-template-columns:repeat(3,1fr); gap:6px; }
+.theme-touch-choices button { min-height:34px; padding:5px; background:#d4d0c8; border:2px outset #fff; }
+.theme-touch-choices button.selected { border-style:inset; background:#b9d2f5; outline:1px dotted #315a9b; outline-offset:-5px; }
 
 .word-page::selection, .word-page *::selection { color: #fff; background: #000080; }
 .doc-header { text-align: center; border-bottom: 2px solid #222; padding-bottom: 12px; }
@@ -1258,11 +1275,16 @@ input[type="text"], input[type="password"], select, textarea { border-radius:0; 
   /* Fixed-size game canvases stay proportional on portrait screens.  Size the
      window to the canvas instead of leaving a large letterboxed stage. */
   .remote-game-window { height:auto!important; min-height:0!important; max-height:calc(100dvh - var(--task))!important; }
-  .remote-game-window .remote-game-stage { flex:0 0 auto; aspect-ratio:585 / 405; }
-  .pinball-window .remote-game-stage { aspect-ratio:600 / 436; }
+  .remote-game-window .remote-game-stage { flex:0 0 auto; aspect-ratio:585 / 385; }
+  .pinball-window .remote-game-stage { aspect-ratio:600 / 414; }
   .remote-game-window .statusbar span:last-child { display:none; }
   .remote-game-window .statusbar { grid-template-columns:1fr; }
   .remote-game-stage { touch-action:manipulation; }
+  .theme-touch-choices { display:grid; }
+  #shellThemeSelect { min-height:36px; font-size:14px; }
+  .osk-window { height:auto!important; max-height:calc(100dvh - var(--task))!important; }
+  .osk-body { min-height:230px; }
+  .osk-key { min-width:24px; padding:2px; font-size:11px; }
 }
 
 /* YFGeek classic shell refinements */
