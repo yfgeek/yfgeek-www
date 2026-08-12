@@ -298,6 +298,8 @@
 .shortcut-wrap i { position: absolute; left: -3px; bottom: -2px; width: 12px; height: 12px; color: #000; background: #fff; border: 1px solid #000; font: bold 9px/10px Arial; text-shadow: none; }
 .ra2-icon { background: #050505; border: 1px solid #808080; }
 .ra2-icon .os-icon { object-fit: cover; }
+.gta-icon { background:#17152e; border:1px solid #6a7293; }
+.gta-icon .os-icon { object-fit:cover; image-rendering:auto; }
 .desktop-icon.selected .shortcut-wrap .os-icon { filter: sepia(.5) saturate(3) hue-rotate(170deg) brightness(.72); }
 
 .resume-folder-body button.file-selected,
@@ -473,7 +475,8 @@
 .run-body { display: grid; grid-template-columns: 45px 1fr; gap: 10px; padding: 14px; }
 .run-body img { width: 32px; image-rendering: pixelated; }
 .run-body p { margin: 0; line-height: 1.5; }
-.run-body label { grid-column: 1/-1; display: grid; grid-template-columns: 75px 1fr; align-items: center; }
+.run-body label { grid-column: 1/-1; display: grid; grid-template-columns: max-content minmax(0,1fr); align-items: center; gap: 6px; }
+.run-body label span { white-space: nowrap; }
 .run-body input { min-width: 0; border: 2px inset #fff; height: 24px; }
 .shutdown-body { display: grid; grid-template-columns: 55px 1fr; gap: 10px; padding: 15px; }
 .shutdown-body img { width: 32px; image-rendering: pixelated; }
@@ -1203,7 +1206,7 @@ input[type="text"], input[type="password"], select, textarea { border-radius:0; 
   button,a,.desktop-icon,.titlebar { touch-action:manipulation; -webkit-tap-highlight-color:transparent; }
   :root { --task:50px; }
   .desktop { height:calc(100dvh - var(--task)); }
-  .desktop-icons { position:relative!important; inset:auto!important; width:100%!important; height:auto!important; display:grid!important; grid-template-columns:repeat(3,minmax(90px,1fr))!important; grid-auto-rows:96px!important; gap:4px!important; padding:12px 8px 80px; }
+  .desktop-icons { position:relative!important; inset:auto!important; width:100%!important; height:auto!important; display:grid!important; grid-template-columns:repeat(var(--desktop-mobile-columns,3),minmax(90px,1fr))!important; grid-template-rows:repeat(var(--desktop-mobile-rows,5),96px)!important; grid-auto-flow:column!important; grid-auto-columns:minmax(90px,1fr); gap:4px!important; padding:12px 8px 80px; }
   .desktop-icon { position:static!important; width:100%!important; height:92px!important; font-size:13px; }
   .window { left:0!important; top:0!important; width:100%!important; height:calc(100dvh - var(--task))!important; border-width:1px; }
   .titlebar { height:36px; flex-basis:36px; padding:5px; }
@@ -1230,6 +1233,9 @@ input[type="text"], input[type="password"], select, textarea { border-radius:0; 
   .ie-toolbar,.explorer-toolbar { min-height:61px; overflow-x:auto; }
   .ie-toolbar button,.explorer-toolbar button { min-width:58px; height:55px; font-size:11px; }
   .ie-toolbar button img,.explorer-toolbar button img { width:25px; height:25px; }
+  .explorer-toolbar { display:grid!important; grid-template-columns:repeat(6,minmax(0,1fr)); grid-auto-rows:55px; gap:2px; align-content:start; min-height:116px!important; height:auto!important; overflow:hidden!important; }
+  .explorer-toolbar > i { display:none!important; }
+  .explorer-toolbar button { width:100%; min-width:0!important; touch-action:manipulation; }
   .ie-addressbar { min-height:42px; }
   .ie-addressbar label { display:none; }
   .ie-addressbar input { height:32px; font-size:14px; }
@@ -1249,6 +1255,11 @@ input[type="text"], input[type="password"], select, textarea { border-radius:0; 
   .system-dialog-body { grid-template-columns:38px 1fr; gap:9px; padding:18px 13px 10px; overflow:auto; }
   .system-dialog-body>img { width:30px; height:30px; }
   .system-dialog .dialog-actions { flex:0 0 auto; padding:10px 14px 12px; }
+  /* Fixed-size game canvases stay proportional on portrait screens.  Size the
+     window to the canvas instead of leaving a large letterboxed stage. */
+  .remote-game-window { height:auto!important; min-height:0!important; max-height:calc(100dvh - var(--task))!important; }
+  .remote-game-window .remote-game-stage { flex:0 0 auto; aspect-ratio:585 / 405; }
+  .pinball-window .remote-game-stage { aspect-ratio:600 / 436; }
   .remote-game-window .statusbar span:last-child { display:none; }
   .remote-game-window .statusbar { grid-template-columns:1fr; }
   .remote-game-stage { touch-action:manipulation; }

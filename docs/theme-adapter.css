@@ -530,6 +530,8 @@ body.theme-winxp {
 .theme-winxp .ie-addressbar .ie-go-button:hover { background:#d7e7ff; border-color:#316ac5; }
 .theme-winxp .ie-addressbar .ie-go-button:active { background:#b9d2f5; transform:none; box-shadow:none; }
 .theme-winxp .ie-addressbar .ie-go-button img { width:18px; height:18px; }
+.theme-winxp .remote-game-stage { background:#087b18; }
+.theme-winxp .pinball-window .remote-game-stage { background:#000; }
 .theme-winxp :is(.home-body,.resume-folder-body,.control-panel-grid,.system-grid,.network-items,.recycle-items,.gallery-stage,.computer-explorer) { background:#fff; }
 .theme-winxp :is(.computer-preview,.network-body>aside,.explorer-side) { background:linear-gradient(180deg,#d6e5f8,#f7faff); border-color:#91a7c2; }
 .theme-winxp :is(.resume-folder-body,.system-grid,.network-items) button:hover,
@@ -727,6 +729,61 @@ body.theme-winxp {
 .office-window .office-toolbar button:hover { background:#c9ddf7; border-color:#316ac5; }
 .office-window .office-toolbar button:active { background:#a9c6ed; border-color:#1f4f91; transform:none; }
 .office-window .office-toolbar button > img { width:16px; height:16px; }
+
+/* Luna scrollbar values mirror the bundled classic-stylesheets XP theme. */
+.theme-winxp .office-scrollbar {
+  padding:0 1px;
+  background:#eeede5;
+  border-left:0;
+}
+.theme-winxp .office-scrollbar > button {
+  width:15px;
+  min-width:15px;
+  height:16px;
+  min-height:16px;
+  margin:0 0 1px;
+  background:radial-gradient(circle at 0 0,#eeede5,#aec8f7 75%);
+  border:1px solid #fff;
+  border-radius:2px;
+  box-shadow:0 1px #a0b5d3,1px 0 #7c9fd3,inset 1px 1px #b7caf5,inset -1px -1px #b3c8f5;
+}
+.theme-winxp .office-scrollbar > button:hover {
+  background:radial-gradient(circle at 0 0,#fdffff,#b9dafb 75%);
+  box-shadow:0 1px #a0b5d3,1px 0 #7c9fd3,inset 1px 1px #abbee9,inset -1px -1px #8da8e1;
+}
+.theme-winxp .office-scrollbar > button:active {
+  background:radial-gradient(circle at 0 0,#6e8ef1,#d2deeb 75%);
+  box-shadow:0 1px #a0b5d3,1px 0 #7c9fd3,inset 1px 1px #98a1dd,inset -1px -1px #b1c6f3;
+}
+.theme-winxp .office-scrollbar > button::after { left:2px; border-left-width:4px; border-right-width:4px; }
+.theme-winxp .office-scrollbar > button:first-child::after { top:4px; border-bottom-color:#4d6185; }
+.theme-winxp .office-scrollbar > button:last-child::after { top:5px; border-top-color:#4d6185; }
+.theme-winxp .office-scroll-track {
+  background:linear-gradient(to right,#f3f1ec,#fefefb);
+  box-shadow:none;
+}
+.theme-winxp .office-scroll-track > i {
+  left:0;
+  width:15px;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  background:linear-gradient(to right,#c8d6fb,#b9cbf3);
+  border:1px solid #fff;
+  border-radius:2px;
+  box-shadow:1px 1px #7da0d4,inset 1px -1px #b4c8f6,inset 0 1px #bdcef7,inset 0 2px #d1e0fd;
+}
+.theme-winxp .office-scroll-track > i:hover { background:linear-gradient(to right,#dae9ff,#cce1ff); }
+.theme-winxp .office-scroll-track > i:active { background:linear-gradient(to right,#a8bef6,#92b2f6); }
+.theme-winxp .office-scroll-track > i::after {
+  content:"";
+  width:7px;
+  height:8px;
+  background:repeating-linear-gradient(to bottom,#eef4fe,#eef4fe 1px,#8cb0f8 1px,#8cb0f8 2px);
+}
+.theme-winxp :is(.word-workspace,.excel-workspace,.ppt-stage,.notepad-editor,.notepad,.resume-folder-body,.system-grid,.network-items,.recycle-items,.gallery-stage,.computer-explorer,.document-body) {
+  scrollbar-color:#b9cbf3 #f3f1ec;
+}
 .office-window .office-toolbar select { height:23px; background:#fff; border:1px solid #7f9db9; }
 .office-title-icon,
 .office-start-icon,

@@ -1,0 +1,15 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 48 48">
+  <defs>
+    <linearGradient id="sky" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#3a2a82"/>
+      <stop offset=".58" stop-color="#f05b9d"/>
+      <stop offset="1" stop-color="#f5a85f"/>
+    </linearGradient>
+  </defs>
+  <rect x="1" y="1" width="46" height="46" rx="2" fill="url(#sky)" stroke="#18132d" stroke-width="2"/>
+  <circle cx="34" cy="15" r="7" fill="#ffd37a" opacity=".9"/>
+  <path d="M8 36V15m0 5-5-5m5 3 5-6m-5 13-6-3m6 0 7-4" fill="none" stroke="#1a1730" stroke-width="2"/>
+  <path d="M2 38c9-5 16-2 23-4s12-5 21-2v14H2z" fill="#17152e" opacity=".92"/>
+  <text x="25" y="29" fill="#fff" stroke="#17152e" stroke-width="1.4" paint-order="stroke" text-anchor="middle" font-family="Arial Black,Arial,sans-serif" font-size="10" font-weight="900">VICE</text>
+  <text x="27" y="40" fill="#ff82c4" stroke="#17152e" stroke-width="1.2" paint-order="stroke" text-anchor="middle" font-family="cursive" font-size="11" font-weight="700" font-style="italic">CITY</text>
+</svg>
