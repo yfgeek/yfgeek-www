@@ -188,7 +188,9 @@ arrangeDesktop();addEventListener('resize',()=>{arrangeDesktop();$$('.remote-gam
 let shellUnlocked=false;
 function showLoginScreen(){const boot=$('#bootScreen'),login=$('#loginScreen');boot?.classList.add('done');setTimeout(()=>{boot?.remove();if(activeShellTheme==='winxp')login?.classList.remove('hidden');else{shellUnlocked=true;document.body.classList.remove('shell-locked');login?.remove();if(isMobileOrTablet()&&!mobileNoticeSeen())setTimeout(()=>openApp('mobile-notice'),350)}},300)}
 function unlockShell(){if(shellUnlocked)return;shellUnlocked=true;unlockSystemAudio(true);const login=$('#loginScreen');login?.classList.add('leaving');document.body.classList.remove('shell-locked');setTimeout(()=>login?.remove(),280);setTimeout(()=>{if(isMobileOrTablet()){const welcome=getWindow('home');if(welcome&&!welcome.classList.contains('hidden'))minimizeWindow(welcome);if(!mobileNoticeSeen())openApp('mobile-notice')}},350)}
-setTimeout(showLoginScreen,1250);
+const bootDurations={win98:2100,win2000:2300,winxp:2400};
+const initialBootTheme=document.documentElement.dataset.bootTheme||activeShellTheme;
+setTimeout(showLoginScreen,matchMedia('(prefers-reduced-motion: reduce)').matches?900:bootDurations[initialBootTheme]);
 $('#loginAccount').addEventListener('click',unlockShell);
 function isMobileOrTablet(){const touchLike=matchMedia('(pointer:coarse)').matches||matchMedia('(hover:none)').matches||navigator.maxTouchPoints>0;return innerWidth<=760||(innerWidth<=1180&&touchLike)}
 function mobileNoticeSeen(){try{return localStorage.getItem('yf-mobile-notice-v1')==='seen'}catch{return false}}
@@ -289,6 +291,7 @@ function setShellText(selector,value){const element=$(selector);if(element)eleme
 function applyShellTheme(name,save=false){
   if(!shellThemes.includes(name))return;
   activeShellTheme=name;
+  document.documentElement.dataset.bootTheme=name;
   document.body.classList.remove('win2000',...shellThemes.map(theme=>`theme-${theme}`));
   document.body.classList.add(`theme-${name}`);
   if(name==='win2000')document.body.classList.add('win2000');

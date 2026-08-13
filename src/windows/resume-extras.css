@@ -1111,13 +1111,6 @@ input[type="text"], input[type="password"], select, textarea { border-radius:0; 
 .office-splash i { position:absolute; left:0; right:0; bottom:0; height:7px; background:linear-gradient(90deg,#174b9b 0 33%,#08753e 33% 66%,#b43b25 66%); }
 .office-splash.leaving { opacity:0; transition:opacity .15s; }
 
-.boot-screen { color:#000; background:linear-gradient(#8bc4ef 0 55%,#dff4ff 72%,#f7fbff); }
-.boot-screen > div { width:min(560px,90vw); padding:35px; background:rgba(255,255,255,.72); border:1px solid #fff; box-shadow:0 0 0 1px #557c9a; }
-.boot-screen b { color:#123f7c; text-shadow:1px 1px #fff; }
-.boot-screen span { color:#555; }
-.boot-screen > i { border:2px inset #fff; background:#c0c0c0; }
-.boot-screen > i::before { background:#000080; }
-
 .control-panel-grid { display:grid; grid-template-columns:repeat(auto-fill,105px); grid-auto-rows:90px; align-content:start; gap:7px; padding:12px; background:#fff; }
 .control-panel-grid button { width:100px; height:86px; display:flex; flex-direction:column; align-items:center; gap:5px; padding:5px; border:1px solid transparent; background:transparent; }
 .control-panel-grid img { width:32px; height:32px; image-rendering:pixelated; }
@@ -1543,28 +1536,6 @@ input[type="text"], input[type="password"], select, textarea { border-radius:0; 
 .win2000 .program-menu button:hover,
 .win2000 .system-menu button:hover,
 .win2000 .context-menu button:hover { color:#fff; background:#0a246a; }
-.win2000 .boot-screen {
-  color:#000;
-  background:#fff;
-}
-.win2000 .boot-screen>div {
-  width:min(560px,90vw);
-  display:flex;
-  align-items:center;
-  gap:20px;
-  padding:0 24px;
-  background:transparent;
-  border:0;
-  box-shadow:none;
-}
-.win2000 .boot-screen img { width:64px; height:64px; }
-.win2000 .boot-screen section { display:grid; align-items:end; grid-template-columns:auto auto; column-gap:8px; }
-.win2000 .boot-screen small { grid-column:1/-1; color:#000; font:bold 11px Arial,sans-serif; }
-.win2000 .boot-screen b { color:#173b73; text-shadow:none; font:italic bold 30px Arial,sans-serif; }
-.win2000 .boot-screen span { grid-column:auto; align-self:end; color:#000; font:bold 16px Arial,sans-serif; }
-.win2000 .boot-screen em { grid-column:1/-1; margin-top:4px; color:#666; font:normal 10px Arial,sans-serif; }
-.win2000 .boot-screen>i { bottom:18%; width:210px; height:12px; border:1px solid #808080; background:#d4d0c8; }
-.win2000 .boot-screen>i::before { background:#0a246a; }
 .win2000 .about-logo { color:#173b73; }
 .win2000 .about-logo span { color:#3a6ea5; font-size:22px; }
 

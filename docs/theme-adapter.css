@@ -810,3 +810,517 @@ body.theme-winxp {
   .theme-preview { min-height:180px; }
   .theme-preview-desktop { padding:18px; }
 }
+
+/* Windows XP push buttons and tabs, matched to the bundled classic stylesheet. */
+.theme-winxp :is(
+  .win-button,
+  .dialog-actions button,
+  .dialog-actions a,
+  .calc-grid button,
+  .mine-score button,
+  .osk-key,
+  .theme-touch-choices button
+) {
+  position:relative;
+  color:#000;
+  background:linear-gradient(180deg,#fff 0%,#f0f0ea 100%);
+  border:1px solid #003c74;
+  border-radius:4px;
+  box-shadow:-1px -1px 0 #e2ded4,1px 1px 0 #fbfaf8,inset -1px -2px 1px #d6d0c5;
+  text-shadow:none;
+  transform:none;
+}
+.theme-winxp :is(.win-button,.dialog-actions button,.dialog-actions a) {
+  min-width:90px;
+  padding:2px 16px 3px;
+  line-height:1;
+}
+.theme-winxp :is(
+  .win-button,
+  .dialog-actions button,
+  .dialog-actions a,
+  .calc-grid button,
+  .mine-score button,
+  .osk-key,
+  .theme-touch-choices button
+)::after {
+  content:"";
+  position:absolute;
+  inset:0;
+  display:none;
+  border-radius:3px;
+  pointer-events:none;
+}
+.theme-winxp :is(
+  .win-button,
+  .dialog-actions button,
+  .dialog-actions a,
+  .calc-grid button,
+  .mine-score button,
+  .osk-key,
+  .theme-touch-choices button
+):focus {
+  outline:0;
+}
+.theme-winxp :is(
+  .win-button,
+  .dialog-actions button,
+  .dialog-actions a,
+  .calc-grid button,
+  .mine-score button,
+  .osk-key,
+  .theme-touch-choices button
+):focus::after,
+.theme-winxp .theme-touch-choices button.selected::after {
+  display:block;
+  border:2px solid rgba(111,152,207,.698);
+}
+@media (hover:hover) {
+  .theme-winxp :is(
+    .win-button,
+    .dialog-actions button,
+    .dialog-actions a,
+    .calc-grid button,
+    .mine-score button,
+    .osk-key,
+    .theme-touch-choices button
+  ):not(:disabled):hover::after {
+    display:block;
+    border:2px solid rgba(245,192,93,.698);
+  }
+}
+.theme-winxp :is(.win-button,.dialog-actions button,.dialog-actions a).primary::after {
+  display:block;
+  border:2px solid rgba(111,152,207,.698);
+}
+.theme-winxp :is(
+  .win-button,
+  .dialog-actions button,
+  .dialog-actions a,
+  .calc-grid button,
+  .mine-score button,
+  .osk-key,
+  .theme-touch-choices button
+):focus-visible::after {
+  outline:1px dotted #563a2e;
+  outline-offset:-2px;
+}
+.theme-winxp :is(
+  .win-button,
+  .dialog-actions button,
+  .calc-grid button,
+  .mine-score button,
+  .osk-key,
+  .theme-touch-choices button
+):disabled {
+  color:#a1a192!important;
+  background:#f5f4ea;
+  border-color:#c9c7ba;
+  box-shadow:none;
+  text-shadow:none!important;
+}
+.theme-winxp :is(
+  .win-button,
+  .dialog-actions button,
+  .dialog-actions a,
+  .calc-grid button,
+  .mine-score button,
+  .osk-key,
+  .theme-touch-choices button
+):not(:disabled):active,
+.theme-winxp .osk-key.active {
+  background:#e2e1d9;
+  box-shadow:inset 1px 2px 1px #d1ccc1,inset 0 -1px 1px #fff;
+  transform:none;
+}
+.theme-winxp :is(.win-button,.dialog-actions button,.dialog-actions a):not(:disabled):active {
+  padding:2px 16px 3px;
+}
+.theme-winxp :is(.calc-grid button,.mine-score button):not(:disabled):active {
+  padding:0;
+}
+.theme-winxp :is(
+  .win-button,
+  .dialog-actions button,
+  .dialog-actions a,
+  .calc-grid button,
+  .mine-score button,
+  .osk-key,
+  .theme-touch-choices button
+):not(:disabled):active::after,
+.theme-winxp .osk-key.active::after {
+  display:none;
+}
+.theme-winxp .theme-touch-choices button.selected {
+  background:linear-gradient(180deg,#fff 0%,#f0f0ea 100%);
+  border:1px solid #003c74;
+  outline:0;
+}
+
+.theme-winxp .property-tabs {
+  gap:1px;
+  min-height:34px;
+  padding:8px 12px 0;
+}
+.theme-winxp .property-tabs button {
+  position:relative;
+  z-index:0;
+  width:auto;
+  min-width:0;
+  height:auto;
+  min-height:22px;
+  margin:0 0 -1px;
+  padding:4px 10px;
+  color:#000;
+  background:linear-gradient(to bottom right,#fff,#efeee8);
+  border:1px solid #91a7b4;
+  border-bottom:0;
+  border-radius:3px 3px 0 0;
+  box-shadow:inset -1px -1px 0 #ecebe6;
+  line-height:1;
+  transform:none;
+}
+.theme-winxp .property-tabs button::before,
+.theme-winxp .property-tabs button::after {
+  content:none;
+  display:none;
+}
+.theme-winxp .property-tabs button:hover {
+  color:#000;
+  background:linear-gradient(to bottom right,#fff,#efeee8);
+  border-top-color:#e68b2c;
+  box-shadow:inset 0 2px 0 #ffc73c;
+}
+.theme-winxp .property-tabs button:focus,
+.theme-winxp .property-tabs button:active {
+  outline:0;
+}
+.theme-winxp .property-tabs button:focus-visible {
+  outline:1px dotted #000;
+  outline-offset:-3px;
+}
+.theme-winxp .property-tabs button[aria-selected="true"],
+.theme-winxp .property-tabs button.active {
+  z-index:1;
+  height:auto;
+  margin:-2px -2px -1px;
+  padding:2px 12px 6px;
+  color:#000;
+  background:#fcfcfe;
+  border:1px solid #919b9c;
+  border-bottom:0;
+  border-top-color:#e68b2c;
+  box-shadow:inset 0 2px 0 #ffc73c;
+}
+.theme-winxp .display-panel {
+  height:calc(100% - 44px);
+  margin:0 10px 10px;
+  padding:10px;
+  background:linear-gradient(180deg,#fcfcfe 0%,#f4f3ee 100%);
+  border:1px solid #919b9c;
+  box-shadow:inset -1px -1px 0 #fcfcfe,1px 1px 0 #d0cebf,2px 2px 0 #e3e0d0;
+}
+.theme-winxp .display-panel > fieldset {
+  height:100%;
+  margin:0;
+}
+.theme-preview[data-theme-preview="winxp"] .theme-preview-window main button {
+  position:relative;
+  padding:2px 16px 3px;
+  background:linear-gradient(180deg,#fff 0%,#f0f0ea 100%);
+  border:1px solid #003c74;
+  border-radius:4px;
+  box-shadow:-1px -1px 0 #e2ded4,1px 1px 0 #fbfaf8,inset -1px -2px 1px #d6d0c5;
+}
+
+@media (hover:none), (max-width:760px) {
+  .theme-winxp :is(.win-button,.dialog-actions button,.dialog-actions a) {
+    min-height:34px;
+  }
+  .theme-winxp .property-tabs {
+    padding-inline:11px;
+  }
+}
+
+/* Theme-specific startup screens follow each system generation's composition. */
+.boot-screen {
+  position:fixed;
+  inset:0;
+  z-index:10000;
+  display:block;
+  overflow:hidden;
+  font-family:Arial,Tahoma,sans-serif;
+  transition:opacity .32s linear;
+}
+.boot-screen.done { opacity:0; pointer-events:none; }
+.boot-brand,.boot-status,.boot-meter { position:absolute; }
+.boot-screen > :is(.boot-brand,.boot-status,.boot-meter) {
+  padding:0;
+  background-color:transparent;
+  border:0;
+  box-shadow:none;
+}
+.boot-brand section { min-width:0; }
+.boot-brand :is(small,b,span,em),.boot-status :is(span,small) { display:block; }
+.boot-mark {
+  position:relative;
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  grid-template-rows:1fr 1fr;
+  gap:3px;
+  flex:0 0 auto;
+  transform:skewY(-7deg);
+  filter:drop-shadow(2px 2px 0 rgba(0,0,0,.28));
+}
+.boot-mark i:nth-child(1) { background:#f04435; }
+.boot-mark i:nth-child(2) { background:#58a83f; }
+.boot-mark i:nth-child(3) { background:#3477c8; }
+.boot-mark i:nth-child(4) { background:#f3c63a; }
+
+/* YFGeek 98: cloudy sky and the classic bottom scanning strip. */
+html[data-boot-theme="win98"] .boot-screen {
+  color:#07135b;
+  background:
+    radial-gradient(ellipse at 13% 24%,rgba(255,255,255,.96) 0 8%,rgba(255,255,255,.68) 9% 15%,transparent 26%),
+    radial-gradient(ellipse at 80% 19%,rgba(255,255,255,.9) 0 7%,rgba(255,255,255,.52) 12%,transparent 24%),
+    radial-gradient(ellipse at 54% 76%,rgba(255,255,255,.78) 0 9%,rgba(255,255,255,.38) 15%,transparent 28%),
+    linear-gradient(180deg,#61aadb 0%,#9bd4ef 54%,#e7f5fb 100%);
+}
+html[data-boot-theme="win98"] .boot-screen::before {
+  content:"";
+  position:absolute;
+  inset:0;
+  opacity:.42;
+  background:repeating-linear-gradient(0deg,rgba(255,255,255,.1) 0 1px,rgba(20,83,143,.08) 1px 2px);
+}
+html[data-boot-theme="win98"] .boot-brand {
+  left:50%;
+  top:43%;
+  width:min(650px,88vw);
+  display:flex;
+  align-items:center;
+  gap:24px;
+  padding:0;
+  background:transparent;
+  border:0;
+  box-shadow:none;
+  transform:translate(-50%,-50%);
+}
+html[data-boot-theme="win98"] .boot-mark { width:104px; height:92px; gap:5px; }
+html[data-boot-theme="win98"] .boot-brand section { position:relative; padding-top:14px; }
+html[data-boot-theme="win98"] .boot-brand small {
+  position:absolute;
+  top:0;
+  left:3px;
+  color:#111;
+  font:bold 14px/1 Arial,sans-serif;
+  letter-spacing:.5px;
+}
+html[data-boot-theme="win98"] .boot-brand b {
+  color:#101b71;
+  font:italic 700 clamp(42px,8vw,76px)/.92 Arial,sans-serif;
+  letter-spacing:-2px;
+  text-shadow:2px 2px 0 #fff;
+}
+html[data-boot-theme="win98"] .boot-brand span {
+  position:absolute;
+  right:2px;
+  bottom:-24px;
+  color:#111;
+  font:bold 18px Arial,sans-serif;
+}
+html[data-boot-theme="win98"] .boot-brand em { display:none; }
+html[data-boot-theme="win98"] .boot-meter {
+  left:0;
+  right:0;
+  bottom:0;
+  width:auto;
+  height:24px;
+  overflow:hidden;
+  background:#00156a;
+  border:0;
+}
+html[data-boot-theme="win98"] .boot-meter::before {
+  content:"";
+  position:absolute;
+  top:0;
+  left:-28%;
+  width:28%;
+  height:3px;
+  background:linear-gradient(90deg,transparent,#73e8ff,#fff,#73e8ff,transparent);
+  animation:boot98-scan 1.35s linear infinite;
+}
+html[data-boot-theme="win98"] .boot-meter i { display:none; }
+html[data-boot-theme="win98"] .boot-status {
+  left:18px;
+  right:18px;
+  bottom:5px;
+  z-index:1;
+  display:flex;
+  justify-content:space-between;
+  color:#fff;
+  font:11px Tahoma,sans-serif;
+}
+html[data-boot-theme="win98"] .boot-status small { color:#dbe6ff; }
+
+/* YFGeek 2000: white professional startup panel and segmented progress. */
+html[data-boot-theme="win2000"] .boot-screen {
+  color:#000;
+  background:linear-gradient(180deg,#fff 0 72%,#f2f2f2 100%);
+}
+html[data-boot-theme="win2000"] .boot-screen::after {
+  content:"";
+  position:absolute;
+  left:0;
+  right:0;
+  bottom:0;
+  height:27%;
+  border-top:1px solid #d1d1d1;
+  background:linear-gradient(#fafafa,#e7e7e7);
+}
+html[data-boot-theme="win2000"] .boot-brand {
+  left:50%;
+  top:42%;
+  width:min(620px,88vw);
+  display:flex;
+  align-items:center;
+  gap:25px;
+  padding:0;
+  background:transparent;
+  border:0;
+  box-shadow:none;
+  transform:translate(-50%,-50%);
+}
+html[data-boot-theme="win2000"] .boot-mark { width:86px; height:76px; }
+html[data-boot-theme="win2000"] .boot-brand section { display:grid; grid-template-columns:auto auto; align-items:end; column-gap:10px; }
+html[data-boot-theme="win2000"] .boot-brand small { grid-column:1/-1; margin:0 0 2px 3px; color:#000; font:bold 13px Arial,sans-serif; }
+html[data-boot-theme="win2000"] .boot-brand b { color:#183b75; font:italic 700 clamp(38px,7vw,66px)/.92 Arial,sans-serif; letter-spacing:-2px; text-shadow:none; }
+html[data-boot-theme="win2000"] .boot-brand span { grid-column:auto; padding-bottom:6px; color:#000; font:bold clamp(14px,2.5vw,22px) Arial,sans-serif; }
+html[data-boot-theme="win2000"] .boot-brand em { grid-column:1/-1; margin:9px 0 0 4px; color:#666; font:normal 12px Arial,sans-serif; }
+html[data-boot-theme="win2000"] .boot-meter {
+  z-index:2;
+  left:50%;
+  bottom:15%;
+  width:min(270px,60vw);
+  height:16px;
+  padding:2px;
+  overflow:hidden;
+  background:#fff;
+  border:1px solid #7f7f7f;
+  box-shadow:inset 1px 1px #d8d8d8;
+  transform:translateX(-50%);
+}
+html[data-boot-theme="win2000"] .boot-meter::before {
+  content:"";
+  display:block;
+  width:0;
+  height:100%;
+  background:repeating-linear-gradient(90deg,#173b73 0 12px,transparent 12px 15px);
+  animation:boot2000-fill 2.05s steps(16,end) forwards;
+}
+html[data-boot-theme="win2000"] .boot-meter i { display:none; }
+html[data-boot-theme="win2000"] .boot-status {
+  z-index:2;
+  left:0;
+  right:0;
+  bottom:calc(15% + 24px);
+  width:auto;
+  display:block;
+  color:#333;
+  font:11px Tahoma,sans-serif;
+  transform:none;
+}
+html[data-boot-theme="win2000"] .boot-status span { width:min(270px,60vw); margin:0 auto; }
+html[data-boot-theme="win2000"] .boot-status small { position:fixed; left:18px; bottom:15px; color:#777; }
+
+/* YFGeek XP: black field with three moving Luna-blue pips. */
+html:not([data-boot-theme]) .boot-screen,
+html[data-boot-theme="winxp"] .boot-screen { color:#fff; background:#000; }
+html:not([data-boot-theme]) .boot-brand,
+html[data-boot-theme="winxp"] .boot-brand {
+  left:50%;
+  top:43%;
+  width:min(510px,86vw);
+  display:flex;
+  align-items:center;
+  gap:22px;
+  padding:0;
+  background:transparent;
+  border:0;
+  box-shadow:none;
+  transform:translate(-50%,-50%);
+}
+html:not([data-boot-theme]) .boot-mark,
+html[data-boot-theme="winxp"] .boot-mark { width:78px; height:70px; }
+html:not([data-boot-theme]) .boot-brand section,
+html[data-boot-theme="winxp"] .boot-brand section { display:grid; grid-template-columns:auto auto; align-items:end; column-gap:9px; }
+html:not([data-boot-theme]) .boot-brand small,
+html[data-boot-theme="winxp"] .boot-brand small { grid-column:1/-1; margin-left:2px; color:#fff; font:13px Arial,sans-serif; }
+html:not([data-boot-theme]) .boot-brand b,
+html[data-boot-theme="winxp"] .boot-brand b { color:#fff; font:italic 700 clamp(40px,7vw,64px)/.95 Arial,sans-serif; letter-spacing:-2px; text-shadow:none; }
+html:not([data-boot-theme]) .boot-brand span,
+html[data-boot-theme="winxp"] .boot-brand span { grid-column:auto; padding-bottom:5px; color:#ef6d24; font:bold 17px Arial,sans-serif; }
+html:not([data-boot-theme]) .boot-brand em,
+html[data-boot-theme="winxp"] .boot-brand em { grid-column:1/-1; margin:8px 0 0 3px; color:#b5b5b5; font:11px Arial,sans-serif; letter-spacing:2px; text-transform:uppercase; }
+html:not([data-boot-theme]) .boot-meter,
+html[data-boot-theme="winxp"] .boot-meter {
+  left:50%;
+  bottom:24%;
+  width:150px;
+  height:17px;
+  padding:3px 4px;
+  display:flex;
+  gap:4px;
+  overflow:hidden;
+  background:#111;
+  border:1px solid #777;
+  border-radius:3px;
+  box-shadow:inset 0 0 0 1px #000;
+  transform:translateX(-50%);
+}
+html:not([data-boot-theme]) .boot-meter i,
+html[data-boot-theme="winxp"] .boot-meter i {
+  width:23px;
+  height:9px;
+  flex:0 0 23px;
+  background:linear-gradient(90deg,#0b45a5,#62a9ff,#0b45a5);
+  border-radius:1px;
+  box-shadow:0 0 3px #286de0;
+  animation:bootxp-pips 1.25s linear infinite;
+}
+html:not([data-boot-theme]) .boot-meter i:nth-child(2),
+html[data-boot-theme="winxp"] .boot-meter i:nth-child(2) { animation-delay:-.12s; }
+html:not([data-boot-theme]) .boot-meter i:nth-child(3),
+html[data-boot-theme="winxp"] .boot-meter i:nth-child(3) { animation-delay:-.24s; }
+html:not([data-boot-theme]) .boot-status,
+html[data-boot-theme="winxp"] .boot-status {
+  left:22px;
+  right:22px;
+  bottom:18px;
+  display:flex;
+  justify-content:space-between;
+  color:#b8b8b8;
+  font:10px Tahoma,sans-serif;
+}
+html:not([data-boot-theme]) .boot-status span,
+html[data-boot-theme="winxp"] .boot-status span { visibility:hidden; }
+
+@keyframes boot98-scan { to { transform:translateX(460%); } }
+@keyframes boot2000-fill { to { width:100%; } }
+@keyframes bootxp-pips { from { transform:translateX(-86px); } to { transform:translateX(170px); } }
+
+@media (max-width:600px) {
+  html[data-boot-theme="win98"] .boot-brand { gap:14px; }
+  html[data-boot-theme="win98"] .boot-mark { width:74px; height:66px; }
+  html[data-boot-theme="win2000"] .boot-brand { gap:15px; }
+  html[data-boot-theme="win2000"] .boot-mark { width:62px; height:56px; }
+  html:not([data-boot-theme]) .boot-mark,
+  html[data-boot-theme="winxp"] .boot-mark { width:58px; height:52px; }
+  html:not([data-boot-theme]) .boot-brand,
+  html[data-boot-theme="winxp"] .boot-brand { gap:14px; }
+}
+
+@media (prefers-reduced-motion:reduce) {
+  .boot-meter::before,.boot-meter i { animation:none!important; }
+  html[data-boot-theme="win2000"] .boot-meter::before { width:72%; }
+}

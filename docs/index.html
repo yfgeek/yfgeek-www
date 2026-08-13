@@ -13,13 +13,26 @@
     if (new URLSearchParams(location.search).has('v')) {
       history.replaceState(null, '', location.pathname + location.hash);
     }
+    try {
+      const bootTheme = localStorage.getItem('yf-shell-theme-v2');
+      if (['win98', 'win2000', 'winxp'].includes(bootTheme)) {
+        document.documentElement.dataset.bootTheme = bootTheme;
+      }
+    } catch {}
   </script>
-  <link rel="stylesheet" href="styles.css?v=20260812.19">
-  <link rel="stylesheet" href="resume-extras.css?v=20260812.19">
-  <link rel="stylesheet" href="theme-adapter.css?v=20260812.19">
+  <link rel="stylesheet" href="styles.css?v=20260813.2">
+  <link rel="stylesheet" href="resume-extras.css?v=20260813.2">
+  <link rel="stylesheet" href="theme-adapter.css?v=20260813.2">
 </head>
 <body class="theme-winxp shell-locked">
-  <div class="boot-screen" id="bootScreen" aria-hidden="true"><div><img data-system-icon="logo" src="assets/icons/Logo_32x32_4.png" alt=""><section><small>YFGeek</small><b id="bootProductName">YFGeek XP</b><span id="bootEdition">Professional</span><em id="bootTagline">YFGeek Desktop</em></section></div><i></i></div>
+  <div class="boot-screen" id="bootScreen" aria-hidden="true">
+    <div class="boot-brand">
+      <div class="boot-mark"><i></i><i></i><i></i><i></i></div>
+      <section><small>YFGeek</small><b id="bootProductName">YFGeek XP</b><span id="bootEdition">Professional</span><em id="bootTagline">YFGeek Desktop</em></section>
+    </div>
+    <div class="boot-meter"><i></i><i></i><i></i></div>
+    <div class="boot-status"><span>正在启动...</span><small>Copyright © YFGeek</small></div>
+  </div>
   <section class="login-screen hidden" id="loginScreen" aria-label="YFGeek XP 用户登录">
     <header><span>YFGeek XP</span></header>
     <div class="login-main">
@@ -385,6 +398,6 @@
       <button class="sound-toggle" id="soundToggle" type="button" aria-label="打开音量控制" title="音量"><img class="speaker" src="assets/icons/w2k/speaker.svg" alt=""></button><time id="clock">00:00</time>
     </div>
   </footer>
-  <script src="site.js?v=20260812.19"></script>
+  <script src="site.js?v=20260813.2"></script>
 </body>
 </html>
