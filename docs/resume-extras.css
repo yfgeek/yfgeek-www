@@ -414,6 +414,9 @@
 .resolution-preview { min-height:135px; color:#dceaff; background:linear-gradient(160deg,#0052a4,#001d53); font:bold 20px Tahoma,sans-serif; }
 .display-settings-fieldset input[type="range"] { flex:1; min-width:100px; }
 .display-settings-fieldset output { min-width:78px; text-align:right; }
+.resolution-scale-labels { display:grid; grid-template-columns:repeat(5,minmax(0,1fr)); gap:4px; margin-top:-9px; color:#555; font-size:10px; text-align:center; }
+.resolution-scale-labels span,.resolution-scale-labels b { min-width:0; overflow:hidden; white-space:nowrap; text-overflow:ellipsis; font-weight:normal; }
+.resolution-scale-labels b { color:#0b4ca3; font-weight:bold; }
 
 .system-grid { display: grid; grid-template-columns: repeat(4, 1fr); grid-auto-rows: 100px; padding: 15px; background: #fff; }
 .system-grid button { display: flex; flex-direction: column; justify-content: center; align-items: center; gap: 7px; border: 1px solid transparent; background: transparent; }
