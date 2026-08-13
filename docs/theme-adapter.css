@@ -480,6 +480,8 @@ body.theme-winxp {
 .theme-winxp .ie-addressbar,
 .theme-winxp .gallery-toolbar,
 .theme-winxp .dialog-actions { color:#222; background:#ececec; border-color:#fff #a7a7a7 #a7a7a7 #fff; }
+.theme-win98 .hack-tool-body,.theme-win2000 .hack-tool-body { background:#c0c0c0; }
+.theme-winxp .hack-tool-body { background:#ece9d8; }
 .theme-winxp .explorer-toolbar,
 .theme-winxp .ie-toolbar {
   min-height:52px;
@@ -1062,20 +1064,7 @@ body.theme-winxp {
 }
 .boot-brand section { min-width:0; }
 .boot-brand :is(small,b,span,em),.boot-status :is(span,small) { display:block; }
-.boot-mark {
-  position:relative;
-  display:grid;
-  grid-template-columns:1fr 1fr;
-  grid-template-rows:1fr 1fr;
-  gap:3px;
-  flex:0 0 auto;
-  transform:skewY(-7deg);
-  filter:drop-shadow(2px 2px 0 rgba(0,0,0,.28));
-}
-.boot-mark i:nth-child(1) { background:#f04435; }
-.boot-mark i:nth-child(2) { background:#58a83f; }
-.boot-mark i:nth-child(3) { background:#3477c8; }
-.boot-mark i:nth-child(4) { background:#f3c63a; }
+.boot-mark { position:relative; flex:0 0 auto; background:center/contain no-repeat; }
 
 /* YFGeek 98: cloudy sky and the classic bottom scanning strip. */
 html[data-boot-theme="win98"] .boot-screen {
@@ -1106,7 +1095,7 @@ html[data-boot-theme="win98"] .boot-brand {
   box-shadow:none;
   transform:translate(-50%,-50%);
 }
-html[data-boot-theme="win98"] .boot-mark { width:104px; height:92px; gap:5px; }
+html[data-boot-theme="win98"] .boot-mark { width:112px; height:100px; background-image:url("assets/icons/Logo_32x32_4.png"); image-rendering:pixelated; }
 html[data-boot-theme="win98"] .boot-brand section { position:relative; padding-top:14px; }
 html[data-boot-theme="win98"] .boot-brand small {
   position:absolute;
@@ -1129,7 +1118,8 @@ html[data-boot-theme="win98"] .boot-brand span {
   color:#111;
   font:bold 18px Arial,sans-serif;
 }
-html[data-boot-theme="win98"] .boot-brand em { display:none; }
+html[data-boot-theme="win98"] .boot-brand span { display:none; }
+html[data-boot-theme="win98"] .boot-brand em { position:absolute; right:2px; bottom:-24px; display:block; color:#111; font:normal bold 18px Arial,sans-serif; }
 html[data-boot-theme="win98"] .boot-meter {
   left:0;
   right:0;
@@ -1191,7 +1181,7 @@ html[data-boot-theme="win2000"] .boot-brand {
   box-shadow:none;
   transform:translate(-50%,-50%);
 }
-html[data-boot-theme="win2000"] .boot-mark { width:86px; height:76px; }
+html[data-boot-theme="win2000"] .boot-mark { width:92px; height:82px; background-image:url("assets/icons/w2k/start.svg"); image-rendering:pixelated; }
 html[data-boot-theme="win2000"] .boot-brand section { display:grid; grid-template-columns:auto auto; align-items:end; column-gap:10px; }
 html[data-boot-theme="win2000"] .boot-brand small { grid-column:1/-1; margin:0 0 2px 3px; color:#000; font:bold 13px Arial,sans-serif; }
 html[data-boot-theme="win2000"] .boot-brand b { color:#183b75; font:italic 700 clamp(38px,7vw,66px)/.92 Arial,sans-serif; letter-spacing:-2px; text-shadow:none; }
@@ -1251,7 +1241,7 @@ html[data-boot-theme="winxp"] .boot-brand {
   transform:translate(-50%,-50%);
 }
 html:not([data-boot-theme]) .boot-mark,
-html[data-boot-theme="winxp"] .boot-mark { width:78px; height:70px; }
+html[data-boot-theme="winxp"] .boot-mark { width:74px; height:66px; background-image:url("assets/icons/xp/start.svg"); }
 html:not([data-boot-theme]) .boot-brand section,
 html[data-boot-theme="winxp"] .boot-brand section { display:grid; grid-template-columns:auto auto; align-items:end; column-gap:9px; }
 html:not([data-boot-theme]) .boot-brand small,
@@ -1323,4 +1313,59 @@ html[data-boot-theme="winxp"] .boot-status span { visibility:hidden; }
 @media (prefers-reduced-motion:reduce) {
   .boot-meter::before,.boot-meter i { animation:none!important; }
   html[data-boot-theme="win2000"] .boot-meter::before { width:72%; }
+}
+
+/* Display Properties: functional virtual resolution and touch scaling. */
+.resolution-preview {
+  width:min(260px,80%);
+  min-height:0;
+  aspect-ratio:var(--preview-ratio,4/3);
+  justify-self:center;
+  align-self:center;
+  display:grid;
+  place-content:center;
+  gap:5px;
+}
+.resolution-preview small { color:#aacdf7; font:11px Tahoma,sans-serif; }
+.resolution-control { min-height:38px; }
+.resolution-control input[type="range"] { min-height:34px; touch-action:pan-x; }
+.touch-scale-control { min-height:38px; cursor:default; user-select:none; }
+.touch-scale-control input { width:18px; height:18px; flex:0 0 18px; touch-action:manipulation; }
+
+body.virtual-resolution-active { background:#000; }
+body.virtual-resolution-active .desktop {
+  position:fixed;
+  left:var(--resolution-offset-x);
+  top:var(--resolution-offset-y);
+  width:var(--virtual-width);
+  height:var(--virtual-desktop-height);
+  transform:scale(var(--resolution-scale));
+  transform-origin:top left;
+}
+body.virtual-resolution-active .taskbar {
+  left:var(--resolution-offset-x);
+  right:auto;
+  top:var(--resolution-taskbar-top);
+  bottom:auto;
+  width:var(--virtual-width);
+  transform:scale(var(--resolution-scale));
+  transform-origin:top left;
+}
+body.virtual-resolution-active :is(.start-menu,.start-submenu,.program-menu,.office-menu) { bottom:0; }
+
+@media (hover:none), (max-width:760px) {
+  .touch-scale-control { min-height:46px; padding:5px 0; }
+  .touch-scale-control input { width:24px; height:24px; flex-basis:24px; }
+  .resolution-control { flex-wrap:wrap; min-height:54px; }
+  .resolution-control input[type="range"] { order:2; flex-basis:100%; width:100%; }
+  body.touch-controls-compact { --task:38px; }
+  body.touch-controls-compact .desktop-icons { grid-template-rows:repeat(var(--desktop-mobile-rows,5),82px)!important; padding-top:7px; }
+  body.touch-controls-compact .desktop-icon { height:78px!important; font-size:11px; }
+  body.touch-controls-compact .titlebar { height:29px; min-height:29px; flex-basis:29px; padding:3px; }
+  body.touch-controls-compact .window-actions button { width:26px; height:23px; min-width:26px; min-height:23px; }
+  body.touch-controls-compact .menubar { min-height:30px; height:30px; flex-basis:30px; }
+  body.touch-controls-compact .menubar button { min-height:24px; height:24px; padding:4px 7px; }
+  body.touch-controls-compact .taskbar { padding:4px 4px calc(3px + env(safe-area-inset-bottom)); }
+  body.touch-controls-compact :is(.start-button,.task-item,.tray) { height:29px; }
+  body.touch-controls-compact .dialog-actions :is(.win-button,button) { min-height:28px; }
 }

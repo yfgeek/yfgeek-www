@@ -8,6 +8,7 @@
   <meta http-equiv="Expires" content="0">
   <meta name="theme-color" content="#245edb">
   <meta name="description" content="极客凡的经典桌面系统风格交互式个人简历">
+  <link rel="icon" href="assets/icons/Logo_16x16_4.png" type="image/png">
   <title>极客凡的电脑</title>
   <script>
     if (new URLSearchParams(location.search).has('v')) {
@@ -20,15 +21,15 @@
       }
     } catch {}
   </script>
-  <link rel="stylesheet" href="styles.css?v=20260813.2">
-  <link rel="stylesheet" href="resume-extras.css?v=20260813.2">
-  <link rel="stylesheet" href="theme-adapter.css?v=20260813.2">
+  <link rel="stylesheet" href="styles.css?v=20260813.5">
+  <link rel="stylesheet" href="resume-extras.css?v=20260813.5">
+  <link rel="stylesheet" href="theme-adapter.css?v=20260813.5">
 </head>
 <body class="theme-winxp shell-locked">
   <div class="boot-screen" id="bootScreen" aria-hidden="true">
     <div class="boot-brand">
-      <div class="boot-mark"><i></i><i></i><i></i><i></i></div>
-      <section><small>YFGeek</small><b id="bootProductName">YFGeek XP</b><span id="bootEdition">Professional</span><em id="bootTagline">YFGeek Desktop</em></section>
+      <div class="boot-mark" aria-hidden="true"></div>
+      <section><small id="bootVendor">YFGeek</small><b id="bootProductName">YFGeek</b><span id="bootEdition">xp</span><em id="bootTagline">Professional</em></section>
     </div>
     <div class="boot-meter"><i></i><i></i><i></i></div>
     <div class="boot-status"><span>正在启动...</span><small>Copyright © YFGeek</small></div>
@@ -58,6 +59,7 @@
       <button class="desktop-icon" data-open="dos"><span class="shortcut-wrap"><img class="os-icon" src="assets/icons/w2k/dos.svg" alt=""><i>↗</i></span><span>MS-DOS 方式</span></button>
       <button class="desktop-icon" data-open="resume-files"><img class="os-icon desktop-folder-icon" src="assets/icons/w2k/folder.svg" alt=""><span>个人简历</span></button>
       <button class="desktop-icon" data-open="dev"><img class="os-icon desktop-folder-icon" src="assets/icons/w2k/folder.svg" alt=""><span>技术与项目</span></button>
+      <button class="desktop-icon" data-open="hack"><img class="os-icon desktop-folder-icon" src="assets/icons/w2k/folder.svg" alt=""><span>Hack</span></button>
       <button class="desktop-icon" data-open="travel"><img class="os-icon desktop-folder-icon" src="assets/icons/w2k/folder.svg" alt=""><span>旅行相册</span></button>
       <button class="desktop-icon" data-open="food"><img class="os-icon desktop-folder-icon" src="assets/icons/w2k/folder.svg" alt=""><span>美食图鉴</span></button>
       <button class="desktop-icon" data-url="https://blog.yfgeek.com"><span class="shortcut-wrap ie-shortcut"><img class="os-icon ie-icon" src="assets/icons/InternetExplorer6.png" alt=""><i>↗</i></span><span>探索文章</span></button>
@@ -84,11 +86,12 @@
       <div class="window-body resume-folder-body" id="documentsBody">
         <button data-open="word"><span class="office-doc-icon word-color">W</span><b>极客凡_个人简历.doc</b><small>YFGeek Word 文档</small></button>
         <button data-open="dev"><img class="folder-item-icon" src="assets/icons/w2k/folder.svg" alt=""><b>技术与项目</b><small>文件夹</small></button>
+        <button data-open="hack"><img class="folder-item-icon" src="assets/icons/w2k/folder.svg" alt=""><b>Hack</b><small>文件夹</small></button>
         <button data-open="travel"><img class="folder-item-icon" src="assets/icons/w2k/folder.svg" alt=""><b>旅行相册</b><small>文件夹</small></button>
         <button data-open="food"><img class="folder-item-icon" src="assets/icons/w2k/folder.svg" alt=""><b>美食图鉴</b><small>文件夹</small></button>
         <button data-url="https://blog.yfgeek.com"><span class="shortcut-wrap ie-shortcut"><img class="folder-item-icon" src="assets/icons/InternetExplorer6.png" alt=""><i>↗</i></span><b>探索文章.url</b><small>Internet 快捷方式</small></button>
       </div>
-      <footer class="statusbar"><span id="documentsCount">5 个对象</span><span><b id="documentsAccess">内置目录</b> · <i id="documentsStatus">我的文档</i></span></footer>
+      <footer class="statusbar"><span id="documentsCount">6 个对象</span><span><b id="documentsAccess">内置目录</b> · <i id="documentsStatus">我的文档</i></span></footer>
     </section>
 
     <section class="window hidden" id="window-resume-files" data-app="resume-files" style="--x:26vw;--y:14vh;--w:min(560px,76vw);--h:min(420px,66vh)" aria-label="个人简历文件夹窗口">
@@ -205,6 +208,67 @@
       <footer class="statusbar"><span>3 个项目类别</span><span>编程 / 安全 / 创新</span></footer>
     </section>
 
+    <section class="window hidden" id="window-hack" data-app="hack" style="--x:20vw;--y:9vh;--w:min(860px,76vw);--h:min(610px,78vh)" aria-label="Hack 工具文件夹窗口">
+      <header class="titlebar"><img class="title-icon" src="assets/icons/w2k/folder.svg" alt=""><strong>Hack</strong><div class="window-actions"><button data-action="minimize" aria-label="最小化">_</button><button data-action="maximize" aria-label="最大化">□</button><button data-action="close" aria-label="关闭">×</button></div></header>
+      <div class="menubar"><button>文件(<u>F</u>)</button><button>编辑(<u>E</u>)</button><button>查看(<u>V</u>)</button><button>收藏(<u>A</u>)</button></div>
+      <div class="addressbar"><span>地址</span><div class="w2k-address folder-address">C:\My Documents\Hack</div></div>
+      <div class="window-body resume-folder-body">
+        <button data-open="hack-codec"><img class="folder-item-icon" src="assets/icons/hack/codec.svg" alt=""><b>编码转换器.exe</b><small>本地应用程序</small></button>
+        <button data-open="hack-hash"><img class="folder-item-icon" src="assets/icons/hack/hash.svg" alt=""><b>哈希计算器.exe</b><small>本地应用程序</small></button>
+        <button data-open="hack-jwt"><img class="folder-item-icon" src="assets/icons/hack/jwt.svg" alt=""><b>JWT 分析器.exe</b><small>本地应用程序</small></button>
+        <button data-open="hack-subnet"><img class="folder-item-icon" src="assets/icons/hack/subnet.svg" alt=""><b>IPv4 子网计算器.exe</b><small>本地应用程序</small></button>
+        <button data-open="hack-password"><img class="folder-item-icon" src="assets/icons/hack/password.svg" alt=""><b>密码生成器.exe</b><small>本地应用程序</small></button>
+        <button data-url="https://gchq.github.io/CyberChef/"><span class="shortcut-wrap ie-shortcut"><img class="folder-item-icon" src="assets/icons/InternetExplorer6.png" alt=""><i>↗</i></span><b>CyberChef.url</b><small>编码、解码与数据分析</small></button>
+        <button data-url="https://jwt.io/"><span class="shortcut-wrap ie-shortcut"><img class="folder-item-icon" src="assets/icons/InternetExplorer6.png" alt=""><i>↗</i></span><b>JWT.io.url</b><small>JWT 解码与调试</small></button>
+        <button data-url="https://www.virustotal.com/gui/home/url"><span class="shortcut-wrap ie-shortcut"><img class="folder-item-icon" src="assets/icons/InternetExplorer6.png" alt=""><i>↗</i></span><b>VirusTotal.url</b><small>URL 与公开威胁情报</small></button>
+        <button data-url="https://urlscan.io/"><span class="shortcut-wrap ie-shortcut"><img class="folder-item-icon" src="assets/icons/InternetExplorer6.png" alt=""><i>↗</i></span><b>urlscan.io.url</b><small>网页扫描与威胁分析</small></button>
+        <button data-url="https://www.shodan.io/"><span class="shortcut-wrap ie-shortcut"><img class="folder-item-icon" src="assets/icons/InternetExplorer6.png" alt=""><i>↗</i></span><b>Shodan.url</b><small>互联网资产检索</small></button>
+        <button data-url="https://crt.sh/"><span class="shortcut-wrap ie-shortcut"><img class="folder-item-icon" src="assets/icons/InternetExplorer6.png" alt=""><i>↗</i></span><b>crt.sh.url</b><small>证书透明度与子域检索</small></button>
+        <button data-url="https://dnsdumpster.com/"><span class="shortcut-wrap ie-shortcut"><img class="folder-item-icon" src="assets/icons/InternetExplorer6.png" alt=""><i>↗</i></span><b>DNSDumpster.url</b><small>DNS 与域名侦察</small></button>
+        <button data-url="https://www.ssllabs.com/ssltest/"><span class="shortcut-wrap ie-shortcut"><img class="folder-item-icon" src="assets/icons/InternetExplorer6.png" alt=""><i>↗</i></span><b>SSL Labs.url</b><small>TLS 配置检查</small></button>
+        <button data-url="https://securityheaders.com/"><span class="shortcut-wrap ie-shortcut"><img class="folder-item-icon" src="assets/icons/InternetExplorer6.png" alt=""><i>↗</i></span><b>Security Headers.url</b><small>HTTP 安全响应头检查</small></button>
+        <button data-url="https://gtfobins.github.io/"><span class="shortcut-wrap ie-shortcut"><img class="folder-item-icon" src="assets/icons/InternetExplorer6.png" alt=""><i>↗</i></span><b>GTFOBins.url</b><small>Unix 权限提升知识库</small></button>
+        <button data-url="https://lolbas-project.github.io/"><span class="shortcut-wrap ie-shortcut"><img class="folder-item-icon" src="assets/icons/InternetExplorer6.png" alt=""><i>↗</i></span><b>LOLBAS.url</b><small>系统原生二进制知识库</small></button>
+        <button data-url="https://book.hacktricks.wiki/"><span class="shortcut-wrap ie-shortcut"><img class="folder-item-icon" src="assets/icons/InternetExplorer6.png" alt=""><i>↗</i></span><b>HackTricks.url</b><small>渗透测试技术手册</small></button>
+      </div>
+      <footer class="statusbar"><span>17 个对象</span><span>本地工具不会上传输入内容</span></footer>
+    </section>
+
+    <section class="window hidden hack-tool-window" id="window-hack-codec" data-app="hack-codec" style="--x:25vw;--y:12vh;--w:min(680px,82vw);--h:min(520px,72vh)" aria-label="编码转换器窗口">
+      <header class="titlebar"><img class="title-icon" src="assets/icons/hack/codec.svg" alt=""><strong>编码转换器</strong><div class="window-actions"><button data-action="minimize" aria-label="最小化">_</button><button data-action="maximize" aria-label="最大化">□</button><button data-action="close" aria-label="关闭">×</button></div></header>
+      <div class="menubar"><button>文件(<u>F</u>)</button><button>编辑(<u>E</u>)</button><button>转换(<u>T</u>)</button><button>帮助(<u>H</u>)</button></div>
+      <div class="window-body hack-tool-body"><label class="hack-tool-mode">转换方式：<select id="codecMode"><option value="base64-encode">文本 → Base64</option><option value="base64-decode">Base64 → 文本</option><option value="url-encode">URL 编码</option><option value="url-decode">URL 解码</option><option value="hex-encode">文本 → Hex</option><option value="hex-decode">Hex → 文本</option></select></label><label>输入<textarea id="codecInput" spellcheck="false" placeholder="在此输入文本"></textarea></label><div class="hack-tool-actions"><button class="win-button primary" id="codecRun">转换</button><button class="win-button" id="codecSwap">交换</button><button class="win-button" data-copy-target="codecOutput">复制结果</button><button class="win-button" data-clear-tool="codec">清空</button></div><label>结果<textarea id="codecOutput" readonly spellcheck="false"></textarea></label></div>
+      <footer class="statusbar"><span id="codecStatus">就绪</span><span>离线处理</span></footer>
+    </section>
+
+    <section class="window hidden hack-tool-window" id="window-hack-hash" data-app="hack-hash" style="--x:27vw;--y:13vh;--w:min(700px,84vw);--h:min(500px,70vh)" aria-label="哈希计算器窗口">
+      <header class="titlebar"><img class="title-icon" src="assets/icons/hack/hash.svg" alt=""><strong>哈希计算器</strong><div class="window-actions"><button data-action="minimize" aria-label="最小化">_</button><button data-action="maximize" aria-label="最大化">□</button><button data-action="close" aria-label="关闭">×</button></div></header>
+      <div class="menubar"><button>文件(<u>F</u>)</button><button>编辑(<u>E</u>)</button><button>计算(<u>C</u>)</button><button>帮助(<u>H</u>)</button></div>
+      <div class="window-body hack-tool-body"><label>输入文本<textarea id="hashInput" spellcheck="false" placeholder="支持 SHA-1、SHA-256、SHA-384 和 SHA-512"></textarea></label><div class="hack-tool-actions"><button class="win-button primary" id="hashRun">计算哈希</button><button class="win-button" data-clear-tool="hash">清空</button></div><div class="hash-results"><label>SHA-1<input id="hashSha1" readonly></label><label>SHA-256<input id="hashSha256" readonly></label><label>SHA-384<input id="hashSha384" readonly></label><label>SHA-512<input id="hashSha512" readonly></label></div></div>
+      <footer class="statusbar"><span id="hashStatus">就绪</span><span>Web Crypto</span></footer>
+    </section>
+
+    <section class="window hidden hack-tool-window" id="window-hack-jwt" data-app="hack-jwt" style="--x:23vw;--y:10vh;--w:min(760px,86vw);--h:min(580px,76vh)" aria-label="JWT 分析器窗口">
+      <header class="titlebar"><img class="title-icon" src="assets/icons/hack/jwt.svg" alt=""><strong>JWT 分析器</strong><div class="window-actions"><button data-action="minimize" aria-label="最小化">_</button><button data-action="maximize" aria-label="最大化">□</button><button data-action="close" aria-label="关闭">×</button></div></header>
+      <div class="menubar"><button>文件(<u>F</u>)</button><button>编辑(<u>E</u>)</button><button>分析(<u>A</u>)</button><button>帮助(<u>H</u>)</button></div>
+      <div class="window-body hack-tool-body"><label>JWT Token<textarea id="jwtInput" class="jwt-input" spellcheck="false" placeholder="粘贴 header.payload.signature"></textarea></label><div class="hack-tool-actions"><button class="win-button primary" id="jwtRun">分析</button><button class="win-button" data-clear-tool="jwt">清空</button></div><div class="jwt-results"><label>Header<textarea id="jwtHeader" readonly spellcheck="false"></textarea></label><label>Payload<textarea id="jwtPayload" readonly spellcheck="false"></textarea></label></div><p class="hack-tool-note">仅解码，不验证签名。请勿将敏感令牌发送到不受信任的网站。</p></div>
+      <footer class="statusbar"><span id="jwtStatus">等待输入</span><span>本地解码</span></footer>
+    </section>
+
+    <section class="window hidden hack-tool-window" id="window-hack-subnet" data-app="hack-subnet" style="--x:29vw;--y:15vh;--w:min(630px,84vw);--h:min(500px,70vh)" aria-label="IPv4 子网计算器窗口">
+      <header class="titlebar"><img class="title-icon" src="assets/icons/hack/subnet.svg" alt=""><strong>IPv4 子网计算器</strong><div class="window-actions"><button data-action="minimize" aria-label="最小化">_</button><button data-action="maximize" aria-label="最大化">□</button><button data-action="close" aria-label="关闭">×</button></div></header>
+      <div class="menubar"><button>文件(<u>F</u>)</button><button>编辑(<u>E</u>)</button><button>计算(<u>C</u>)</button><button>帮助(<u>H</u>)</button></div>
+      <div class="window-body hack-tool-body subnet-tool"><fieldset><legend>网络参数</legend><label>IPv4 / CIDR<input id="subnetInput" value="192.168.1.10/24" inputmode="decimal" spellcheck="false"></label><button class="win-button primary" id="subnetRun">计算</button></fieldset><dl class="subnet-results"><dt>IP 地址</dt><dd id="subnetIp">-</dd><dt>子网掩码</dt><dd id="subnetMask">-</dd><dt>网络地址</dt><dd id="subnetNetwork">-</dd><dt>广播地址</dt><dd id="subnetBroadcast">-</dd><dt>可用主机范围</dt><dd id="subnetHosts">-</dd><dt>地址数量</dt><dd id="subnetCount">-</dd></dl></div>
+      <footer class="statusbar"><span id="subnetStatus">输入 IPv4/CIDR 后计算</span><span>IPv4</span></footer>
+    </section>
+
+    <section class="window hidden hack-tool-window" id="window-hack-password" data-app="hack-password" style="--x:31vw;--y:17vh;--w:min(600px,86vw);--h:min(440px,66vh)" aria-label="密码生成器窗口">
+      <header class="titlebar"><img class="title-icon" src="assets/icons/hack/password.svg" alt=""><strong>密码生成器</strong><div class="window-actions"><button data-action="minimize" aria-label="最小化">_</button><button data-action="maximize" aria-label="最大化">□</button><button data-action="close" aria-label="关闭">×</button></div></header>
+      <div class="menubar"><button>文件(<u>F</u>)</button><button>编辑(<u>E</u>)</button><button>生成(<u>G</u>)</button><button>帮助(<u>H</u>)</button></div>
+      <div class="window-body hack-tool-body password-tool"><fieldset><legend>生成选项</legend><label>长度 <input id="passwordLength" type="number" min="8" max="128" value="20"></label><label><input id="passwordUpper" type="checkbox" checked> 大写字母</label><label><input id="passwordLower" type="checkbox" checked> 小写字母</label><label><input id="passwordDigits" type="checkbox" checked> 数字</label><label><input id="passwordSymbols" type="checkbox" checked> 符号</label></fieldset><label>生成结果<input id="passwordOutput" class="password-output" readonly></label><div class="hack-tool-actions"><button class="win-button primary" id="passwordRun">生成</button><button class="win-button" data-copy-target="passwordOutput">复制</button></div><div class="password-meter"><i id="passwordMeter"></i></div></div>
+      <footer class="statusbar"><span id="passwordStatus">使用安全随机数生成</span><span>本地工具</span></footer>
+    </section>
+
     <section class="window hidden gallery-window" id="window-travel" data-app="travel" style="--x:24vw;--y:12vh;--w:min(760px,72vw);--h:min(560px,74vh)" aria-label="旅行相册窗口">
       <header class="titlebar"><img class="title-icon" src="assets/icons/w2k/folder.svg" alt=""><strong>旅行相册</strong><div class="window-actions"><button data-action="minimize" aria-label="最小化">_</button><button data-action="maximize" aria-label="最大化">□</button><button data-action="close" aria-label="关闭">×</button></div></header>
       <div class="menubar"><button>文件(<u>F</u>)</button><button>编辑(<u>E</u>)</button><button>查看(<u>V</u>)</button></div>
@@ -243,9 +307,9 @@
         <div class="display-panel active" role="tabpanel" data-display-panel="background"><fieldset><legend>墙纸</legend><div class="monitor-preview"><div id="wallpaperPreview"></div></div><div class="wallpaper-list" role="listbox" aria-label="可用墙纸"><button class="selected" type="button" data-wallpaper="blue">YFGeek 蓝</button><button type="button" data-wallpaper="travel">YFGeek 旅行</button><button type="button" data-wallpaper="portrait">霓虹极客凡</button><button type="button" data-wallpaper="code">代码世界</button><button type="button" data-wallpaper="raspberry">树莓派</button><button type="button" data-wallpaper="food">美食随拍</button><button type="button" data-wallpaper="classic">经典青色</button><button type="button" data-wallpaper="midnight">午夜蓝</button></div></fieldset></div>
         <div class="display-panel" role="tabpanel" data-display-panel="screensaver" hidden><fieldset class="screensaver-fieldset"><legend>屏幕保护程序</legend><div class="screensaver-preview"><span>YFG</span><small>SECURITY SYSTEMS</small></div><label>屏幕保护程序：<select id="screensaverSelect"><option>YFGeek 徽标</option><option>星空</option><option>无</option></select></label><label class="wait-setting">等待：<input type="number" min="1" max="60" value="10"> 分钟</label></fieldset></div>
         <div class="display-panel" role="tabpanel" data-display-panel="appearance" hidden><fieldset class="appearance-fieldset"><legend>窗口和按钮</legend><div class="theme-preview" id="themePreview" data-theme-preview="winxp"><div class="theme-preview-desktop"><div class="theme-preview-window"><header><span>活动窗口</span><i></i><i></i><i></i></header><main><button>确定</button></main></div></div></div><label class="theme-select-label" for="shellThemeSelect">配色方案：</label><select id="shellThemeSelect"><option value="win98">YFGeek 98</option><option value="win2000">YFGeek 2000</option><option value="winxp" selected>YFGeek XP 默认蓝色</option></select><div class="theme-touch-choices" role="group" aria-label="配色方案快捷选择"><button type="button" data-theme-choice="win98">98</button><button type="button" data-theme-choice="win2000">2000</button><button type="button" data-theme-choice="winxp" class="selected">XP 蓝色</button></div></fieldset></div>
-        <div class="display-panel" role="tabpanel" data-display-panel="settings" hidden><fieldset class="display-settings-fieldset"><legend>屏幕区域</legend><div class="resolution-preview">YFGeek Display</div><label>分辨率：<input id="resolutionRange" type="range" min="0" max="3" value="2"><output id="resolutionOutput">1024 × 768</output></label><label><input type="checkbox" checked> 在移动设备上放大触控控件</label></fieldset></div>
+        <div class="display-panel" role="tabpanel" data-display-panel="settings" hidden><fieldset class="display-settings-fieldset"><legend>屏幕区域</legend><div class="resolution-preview"><span>YFGeek Display</span><small id="resolutionPreviewValue">1024 × 768</small></div><label class="resolution-control" for="resolutionRange">分辨率：<input id="resolutionRange" type="range" min="0" max="3" step="1" value="2"><output id="resolutionOutput" for="resolutionRange">1024 × 768</output></label><label class="touch-scale-control" for="touchScaleEnabled"><input id="touchScaleEnabled" type="checkbox" checked><span>在移动设备上放大触控控件</span></label></fieldset></div>
       </div>
-      <footer class="dialog-actions"><button class="win-button primary" data-save-wallpaper>确定</button><button class="win-button" data-action="close">取消</button><button class="win-button" data-apply-wallpaper>应用</button></footer>
+      <footer class="dialog-actions"><button class="win-button primary" data-save-wallpaper>确定</button><button class="win-button" data-cancel-display>取消</button><button class="win-button" data-apply-wallpaper>应用</button></footer>
     </section>
 
     <section class="window hidden" id="window-computer" data-app="computer" style="--x:20vw;--y:10vh;--w:min(700px,72vw);--h:min(520px,72vh)" aria-label="我的电脑窗口">
@@ -374,7 +438,7 @@
       <div class="start-items">
         <div class="program-group"><button><img class="start-ico" src="assets/icons/FolderExe_32x32_4.png" alt=""><b>程序</b><span>▶</span></button><div class="program-menu"><div class="office-group"><button><img src="assets/icons/FolderExe_32x32_4.png" alt=""><span>YFGeek Office XP</span><b>▶</b></button><div class="office-menu"><button data-open="word"><span class="office-start-icon word-color">W</span>YFGeek Word</button><button data-open="excel"><span class="office-start-icon excel-color">X</span>YFGeek Excel</button><button data-open="powerpoint"><span class="office-start-icon ppt-color">P</span>YFGeek PowerPoint</button></div></div><button data-url="https://blog.yfgeek.com"><img class="ie-menu-icon" src="assets/icons/InternetExplorer6.png" alt="">Internet Explorer</button><button data-open="notepad"><img src="assets/icons/w2k/notepad.svg" alt="">记事本</button><button data-open="paint"><img src="assets/icons/Mspaint_32x32_4.png" alt="">画图</button><button data-open="calculator"><img src="assets/icons/Calculator_32x32_4.png" alt="">计算器</button><button data-open="osk"><img src="assets/icons/KeyboardMouse_32x32_4.png" alt="">屏幕键盘</button><button data-open="minesweeper"><img src="assets/icons/Winmine1_32x32_4.png" alt="">扫雷</button><button data-open="solitaire"><img data-system-icon="solitaire" src="assets/icons/Sol1_32x32_4.svg" alt="">纸牌</button><button data-open="pinball"><img data-system-icon="pinball" src="assets/icons/Joy102_32x32_4.svg" alt="">3D 弹球</button><button data-open="dos"><img src="assets/icons/w2k/dos.svg" alt="">MS-DOS 方式</button></div></div>
         <div class="start-subgroup"><button><img class="start-ico" data-system-icon="favorites" src="assets/icons/Star_32x32_4.png" alt=""><b>收藏夹</b><span>▶</span></button><div class="start-submenu"><button data-url="https://blog.yfgeek.com"><img src="assets/icons/Globe_32x32_4.png" alt="">YFGeek Blog</button></div></div>
-        <div class="start-subgroup"><button><img class="start-ico" src="assets/icons/w2k/documents.svg" alt=""><b>文档</b><span>▶</span></button><div class="start-submenu"><button data-open="documents"><img src="assets/icons/w2k/documents.svg" alt="">我的文档</button><button data-open="resume-files"><img src="assets/icons/w2k/folder.svg" alt="">个人简历</button><button data-url="https://blog.yfgeek.com"><img src="assets/icons/InternetExplorer6.png" alt="">探索文章</button><button data-open="travel"><img src="assets/icons/w2k/folder.svg" alt="">旅行相册</button><button data-open="food"><img src="assets/icons/w2k/folder.svg" alt="">美食图鉴</button></div></div>
+        <div class="start-subgroup"><button><img class="start-ico" src="assets/icons/w2k/documents.svg" alt=""><b>文档</b><span>▶</span></button><div class="start-submenu"><button data-open="documents"><img src="assets/icons/w2k/documents.svg" alt="">我的文档</button><button data-open="resume-files"><img src="assets/icons/w2k/folder.svg" alt="">个人简历</button><button data-open="hack"><img src="assets/icons/w2k/folder.svg" alt="">Hack</button><button data-url="https://blog.yfgeek.com"><img src="assets/icons/InternetExplorer6.png" alt="">探索文章</button><button data-open="travel"><img src="assets/icons/w2k/folder.svg" alt="">旅行相册</button><button data-open="food"><img src="assets/icons/w2k/folder.svg" alt="">美食图鉴</button></div></div>
         <div class="start-subgroup"><button><img class="start-ico" src="assets/icons/w2k/settings.svg" alt=""><b>设置</b><span>▶</span></button><div class="start-submenu"><button data-open="control-panel"><img src="assets/icons/w2k/settings.svg" alt="">控制面板</button><button data-open="display"><img src="assets/icons/w2k/monitor.svg" alt="">显示属性</button></div></div>
         <button data-open="run"><img class="start-ico" src="assets/icons/ComputerFind_32x32_4.png" alt=""><b>查找</b></button>
         <button data-open="about"><img class="start-ico" src="assets/icons/HelpBook_32x32_4.png" alt=""><b>帮助</b></button>
@@ -398,6 +462,6 @@
       <button class="sound-toggle" id="soundToggle" type="button" aria-label="打开音量控制" title="音量"><img class="speaker" src="assets/icons/w2k/speaker.svg" alt=""></button><time id="clock">00:00</time>
     </div>
   </footer>
-  <script src="site.js?v=20260813.2"></script>
+  <script src="site.js?v=20260813.5"></script>
 </body>
 </html>

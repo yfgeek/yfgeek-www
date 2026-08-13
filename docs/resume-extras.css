@@ -338,26 +338,6 @@
 .task-item span { overflow: hidden; text-overflow: ellipsis; }
 .win-button:focus-visible, .menubar button:focus-visible { outline: 1px dotted #000; outline-offset: -4px; }
 
-.boot-screen {
-  position: fixed;
-  inset: 0;
-  z-index: 1000;
-  display: grid;
-  place-items: center;
-  color: #fff;
-  background: #000;
-  transition: opacity .25s;
-}
-
-.boot-screen.done { opacity: 0; pointer-events: none; }
-.boot-screen > div { display: grid; grid-template-columns: 45px auto; align-items: center; }
-.boot-screen img { width: 32px; height: 32px; image-rendering: pixelated; }
-.boot-screen b { font: italic bold 24px Arial; }
-.boot-screen span { grid-column: 2; color: #bbb; }
-.boot-screen > i { position: absolute; bottom: 15%; width: 190px; height: 14px; border: 2px inset #fff; }
-.boot-screen > i::before { content: ""; display: block; height: 100%; width: 45%; background: #000080; animation: boot-progress .8s steps(5) infinite; }
-@keyframes boot-progress { from { transform: translateX(-100%); } to { transform: translateX(320%); } }
-
 .shell-locked .desktop,
 .shell-locked .taskbar { visibility:hidden; }
 .login-screen {
@@ -495,7 +475,6 @@
 
 @media (max-width: 760px) {
   .window:not(.maximized) { resize: none; }
-  .boot-screen b { font-size: 18px; }
   .desktop { background-position: center; }
   .system-grid { grid-template-columns: repeat(3, 1fr); grid-auto-rows: 90px; padding: 8px; }
   .display-body fieldset { grid-template-columns: 1fr; }
@@ -1006,6 +985,45 @@
   #desktop, #window-word, .word-workspace, #wordDocument { display:block!important; position:static!important; width:auto!important; height:auto!important; overflow:visible!important; margin:0!important; padding:0!important; border:0!important; box-shadow:none!important; }
   #desktop::before, #window-word > :not(.word-workspace), .taskbar { display:none!important; }
   .word-page { font-size:10pt; }
+}
+
+/* Local security utilities inside the Hack folder. */
+.hack-tool-body { min-height:0; padding:10px; display:flex; flex-direction:column; gap:9px; overflow:auto; background:#ece9d8; }
+.hack-tool-body>label { min-height:0; display:flex; flex-direction:column; gap:4px; font-size:12px; }
+.hack-tool-body textarea { width:100%; min-height:78px; flex:1 1 90px; resize:none; padding:5px 7px; color:#111; background:#fff; border:2px inset #fff; font:12px/1.45 "Courier New",monospace; }
+.hack-tool-body input:not([type="checkbox"]):not([type="number"]) { min-width:0; height:25px; padding:3px 5px; color:#111; background:#fff; border:2px inset #fff; font:12px "Courier New",monospace; }
+.hack-tool-mode { flex:0 0 auto!important; flex-direction:row!important; align-items:center; gap:7px!important; }
+.hack-tool-mode select { min-width:180px; height:25px; color:#111; background:#fff; border:2px inset #fff; }
+.hack-tool-actions { flex:0 0 auto; display:flex; flex-wrap:wrap; gap:7px; }
+.hack-tool-note { flex:0 0 auto; margin:0; padding:6px 8px; color:#544100; background:#fff9c9; border:1px solid #c6b95c; font-size:11px; }
+.hash-results { display:grid; grid-template-columns:1fr; gap:5px; }
+.hash-results label { display:grid; grid-template-columns:70px minmax(0,1fr); align-items:center; gap:6px; }
+.jwt-input { flex:0 0 86px!important; }
+.jwt-results { min-height:150px; flex:1 1 auto; display:grid; grid-template-columns:1fr 1fr; gap:8px; }
+.jwt-results label { min-height:0; display:flex; flex-direction:column; gap:4px; }
+.jwt-results textarea { min-height:120px; }
+.subnet-tool fieldset,.password-tool fieldset { margin:0; padding:10px; border:2px groove #fff; }
+.subnet-tool fieldset { display:grid; grid-template-columns:minmax(0,1fr) auto; align-items:end; gap:8px; }
+.subnet-tool fieldset label { display:flex; flex-direction:column; gap:4px; }
+.subnet-results { display:grid; grid-template-columns:130px minmax(0,1fr); margin:0; background:#fff; border:2px inset #fff; }
+.subnet-results dt,.subnet-results dd { min-width:0; margin:0; padding:7px 9px; border-bottom:1px solid #ddd; }
+.subnet-results dt { background:#f2f2f2; font-weight:bold; }
+.subnet-results dd { overflow-wrap:anywhere; font-family:"Courier New",monospace; }
+.password-tool fieldset { display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); gap:8px 16px; }
+.password-tool fieldset label { display:flex; align-items:center; gap:6px; }
+.password-tool input[type="number"] { width:74px; height:25px; border:2px inset #fff; }
+.password-output { height:34px!important; font-size:15px!important; }
+.password-meter { height:13px; padding:2px; background:#fff; border:2px inset #fff; }
+.password-meter i { display:block; width:0; height:100%; background:#3c9b43; transition:width .15s; }
+@media (max-width:760px), (pointer:coarse) {
+  .hack-tool-window { --x:0!important; --y:0!important; --w:100vw!important; --h:calc(100% - var(--task))!important; }
+  .hack-tool-body { padding:9px; gap:8px; }
+  .hack-tool-body textarea { min-height:92px; font-size:14px; }
+  .hack-tool-mode { align-items:stretch; flex-direction:column!important; }
+  .hack-tool-mode select,.hack-tool-body input:not([type="checkbox"]) { min-height:34px; font-size:14px; }
+  .jwt-results { grid-template-columns:1fr; }
+  .subnet-tool fieldset { grid-template-columns:1fr; }
+  .subnet-results { grid-template-columns:108px minmax(0,1fr); }
 }
 
 /* Final Win98 control fidelity */
