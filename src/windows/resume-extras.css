@@ -305,23 +305,8 @@
 .resume-folder-body button.file-selected,
 .project-grid button.file-selected,
 .system-grid button.file-selected {
-  border-color: transparent;
-  background: transparent;
-}
-
-.resume-folder-body button.file-selected img,
-.project-grid button.file-selected .file-icon,
-.system-grid button.file-selected img {
-  filter: sepia(.65) saturate(3) hue-rotate(170deg) brightness(.72);
-}
-
-.resume-folder-body button.file-selected b,
-.project-grid button.file-selected b,
-.system-grid button.file-selected span {
-  color: #fff;
-  background: #000080;
-  outline: 1px dotted #000;
-  outline-offset: 1px;
+  outline: 1px dotted #808080;
+  outline-offset: -1px;
 }
 
 .resume-folder-body button:focus,
@@ -765,28 +750,15 @@
 .system-grid button.file-selected {
   border-color: transparent;
   background: transparent;
+  outline: 1px dotted #808080;
+  outline-offset: -1px;
 }
 
-.resume-folder-body button.file-selected img,
-.project-grid button.file-selected .file-icon,
-.system-grid button.file-selected img {
-  filter: saturate(.7) brightness(.7) contrast(1.15);
-}
-
-.window.active-window .resume-folder-body button.file-selected b,
-.window.active-window .project-grid button.file-selected b,
-.window.active-window .system-grid button.file-selected span {
-  color: #fff;
-  background: #000080;
-  outline: 1px dotted #000;
-  outline-offset: 1px;
-}
-
-.window:not(.active-window) .resume-folder-body button.file-selected b,
-.window:not(.active-window) .project-grid button.file-selected b,
-.window:not(.active-window) .system-grid button.file-selected span {
-  color: #fff;
-  background: #808080;
+.resume-folder-body button.file-selected b,
+.project-grid button.file-selected b,
+.system-grid button.file-selected span {
+  color: #000;
+  background: transparent;
   outline: none;
 }
 
@@ -1142,6 +1114,16 @@ input[type="text"], input[type="password"], select, textarea { border-radius:0; 
 .control-detail select,.control-detail input { min-width:190px; }
 .control-clock { margin:5px auto 20px; padding:10px; color:#0f0; background:#000; border:2px inset #fff; text-align:center; font:24px monospace; }
 .font-list,.installed-programs { display:grid; gap:5px; padding:8px; background:#fff; border:2px inset #fff; }
+.file-properties { display:grid; gap:10px; }
+.file-properties-head { display:flex; align-items:center; gap:10px; }
+.file-properties-head img { width:32px; height:32px; flex:0 0 32px; image-rendering:pixelated; }
+.file-properties-head input { flex:1; min-width:0; height:24px; padding:2px 5px; background:#fff; border:2px inset #fff; font:12px Tahoma,Tahoma,sans-serif; }
+.file-properties-grid { display:grid; grid-template-columns:auto 1fr; gap:7px 10px; align-items:center; }
+.file-properties-grid span { white-space:nowrap; color:#333; }
+.file-properties-grid b { font-weight:normal; overflow:hidden; text-overflow:ellipsis; white-space:nowrap; }
+.file-properties-attrs { border:2px groove #fff; margin:2px 0 0; padding:8px 12px; display:flex; gap:18px; }
+.file-properties-attrs legend { padding:0 4px; }
+.file-properties-attrs label { display:inline-flex; align-items:center; gap:5px; justify-content:flex-start; margin:0; }
 .installed-programs span { margin-bottom:8px; color:#555; }
 
 .article-folder { grid-template-columns:repeat(auto-fill,105px); align-content:start; }
@@ -1497,10 +1479,7 @@ input[type="text"], input[type="password"], select, textarea { border-radius:0; 
   height:32px;
   flex-basis:32px;
 }
-.win2000 .desktop-icon.selected>span:last-child,
-.win2000 .resume-folder-body button.file-selected b,
-.win2000 .project-grid button.file-selected b,
-.win2000 .system-grid button.file-selected span { background:#0a246a; }
+.win2000 .desktop-icon.selected>span:last-child { background:#0a246a; }
 .win2000 .desktop-icon.selected .os-icon,
 .win2000 .desktop-icon.selected .shortcut-wrap .os-icon { filter:brightness(.68) saturate(1.25); }
 .win2000 .taskbar {
